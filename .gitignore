@@ -87,3 +87,5 @@ sympy-plots-for-*.tex/
 *.tdo
 # xindy
 *.xdy
+# common editor remnants
+*~

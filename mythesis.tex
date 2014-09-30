@@ -31,9 +31,8 @@
 % Instead of colouring  links, cites, table of contents etc.
 % put them in a coloured box for the screen version.
 % This is probably a good idea when you print your thesis.
-% \hypersetup{colorlinks=false,
-%   linkbordercolor=blue,citebordercolor=magenta,urlbordercolor=darkgreen
-% }
+\hypersetup{colorlinks=false,
+  linkbordercolor=blue,citebordercolor=magenta,urlbordercolor=darkgreen}
 
 %------------------------------------------------------------------------------
 % When writing your thesis it is often helpful to have the date and
@@ -47,7 +46,7 @@
 % \backgroundsetup{contents=DRAFT, color=blue!30}
 
 % In order to check if your labels are referenced try the refcheck package
-% \usepackage{refcheck}
+\usepackage{refcheck}
 
 %------------------------------------------------------------------------------
 % Use bibtex8 for TeX Live 2009
@@ -79,33 +78,33 @@
 %
 % You can include the following lines if you want to shorten your
 % bibliography by not including url fields
-% \AtEveryBibitem{\clearfield{url}}
-% \AtEveryCitekey{\clearfield{url}}
+\AtEveryBibitem{\clearfield{url}}
+\AtEveryCitekey{\clearfield{url}}
 
 %------------------------------------------------------------------------------
 % The following definitions are used to produce the title pages
 % needed at various stages
 \newcommand{\thesistitle}{Title of the Thesis}
-\newcommand*{\thesisauthor}{Author's name}
-\newcommand*{\thesistown}{Place of birth}
+\newcommand*{\thesisauthor}{Lukas Schulte}
+\newcommand*{\thesistown}{Mainz}
 \renewcommand*{\InstituteName}{\PI}
 \renewcommand*{\inInstitute}{\inPI}
 \renewcommand*{\InstituteAddress}{\PIaddress}
 % Adjust \thesisreferee...text depending on male/female referee
 \newcommand*{\thesisrefereeonetext}{1.\ Gutachter}
-\newcommand*{\thesisrefereeone}{Prof.\ Dr.\ John Smith}
+\newcommand*{\thesisrefereeone}{Prof.\ Dr.\ Marek Kowalski}
 \newcommand*{\thesisrefereetwotext}{2.\ Gutachterin}
-\newcommand*{\thesisrefereetwo}{Prof.\ Dr.\ Anne Jones}
+\newcommand*{\thesisrefereetwo}{Prof.\ Dr.\ NN}
 % Date when thesis was submitted (Master/Diplom)
 % Year or Month, Year when thesis was submitted (PhD)
-\newcommand*{\thesissubmit}{XX.YY.2013}
+\newcommand*{\thesissubmit}{XX.YY.2015}
 % \newcommand*{\thesissubmit}{Month 2013}
 % Date of thesis examination (PhD)
-\newcommand*{\thesispromotion}{XX.YY.2013}
+\newcommand*{\thesispromotion}{XX.YY.2015}
 % Month and year of the final printed version of the thesis
 \newcommand*{\thesismonth}{MMM}
-\newcommand*{\thesisyear}{2013}
-\newcommand*{\thesisnumber}{BONN-IR-2013-XXX}
+\newcommand*{\thesisyear}{2015}
+\newcommand*{\thesisnumber}{BONN-IR-2015-XXX}
 
 %------------------------------------------------------------------------------
 % The abstract is only needed for the printed version and should be in
@@ -163,7 +162,7 @@
 %------------------------------------------------------------------------------
 % PhD Title page
 % Use this command when you submit your thesis
-% \input{../cover/PhD_Submit_Title}
+\input{../cover/PhD_Submit_Title}
 % Use this command for the print version
 % \input{../cover/PhD_Final_Title}
 
@@ -177,7 +176,7 @@
 %------------------------------------------------------------------------------
 % Master Title page
 % Use this command when you submit your thesis
-\input{../cover/Master_Submit_Title}
+% \input{../cover/Master_Submit_Title}
 % Use this command for the print version
 % \input{../cover/Master_Final_Title}
 
@@ -190,7 +189,7 @@
 %------------------------------------------------------------------------------
 % You can add your acknowledgements here - don't forget to also add
 % them to \includeonly above
-\include{thesis_acknowledge}
+% \include{thesis_acknowledge}
 
 \tableofcontents
 
@@ -244,7 +243,7 @@
 %------------------------------------------------------------------------------
 % You could instead add your acknowledgements here - don't forget to
 % also add them to \includeonly above
-% \include{thesis_acknowledge}
+\include{thesis_acknowledge}
 
 %------------------------------------------------------------------------------
 % CV needed when you submit your PhD thesis
