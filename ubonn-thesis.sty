@@ -1,0 +1,278 @@
+%
+% Style file containing the setup for a thesis
+% produced in the Physikalisches Institut, Universität Bonn
+%------------------------------------------------------------------------------
+\ProvidesPackage{ubonn-thesis}[2013/07/12 Version 2.1 University of Bonn thesis package]
+
+% Set TeX Live version
+\providecommand*{\texlive}{2011}
+
+% Set institute information
+\providecommand*{\InstituteName}{\PI}
+\providecommand*{\inInstitute}{\inPI}
+\providecommand*{\InstituteAddress}{\PIaddress}
+
+%------------------------------------------------------------------------------
+% General KOMA script options - other options affecting header/footer
+% section titles and captions are at the end of this file
+%
+\KOMAoptions{fontsize=11pt,paper=a4,twoside}
+% Add List of Figures/Tables to Table of Contents
+\KOMAoptions{listof=totoc}
+% Also add bibliography to the Table of Contents - this option only
+% works for BiBTeX. If you use biblatex you have to add the option
+% [heading=bibintoc] to \printbibliography
+\KOMAoptions{bibliography=totocnumbered}
+% No paragraph indentation, but instead half-line space
+% \KOMAoptions{parskip=half}
+%
+%------------------------------------------------------------------------------
+% Page layout
+% You can either use geometry or the built-in typearea
+% Typarea allows you to easily take into acccount extra space needed
+% for binding using the BCOR parameter.
+% The DIV parameter tells it how many elements the page
+% should be split into.
+% \RequirePackage[scale=0.75]{geometry}
+\KOMAoptions{DIV=14,BCOR=8mm}
+\KOMAoptions{headinclude=true}
+% Header and footer
+\RequirePackage[headsepline]{scrpage2}
+%
+%------------------------------------------------------------------------------
+% Font, input encoding and language
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+% AMS math (for some font collections this has to come before their selection)
+\RequirePackage{amsmath,amssymb}
+% Nicer fractions
+\RequirePackage{xfrac}
+% ifthen to allow easy switching between TeX Live and siunitx versions etc.
+\RequirePackage{ifthen}
+%
+% Font collection to use
+% \RequirePackage{lmodern}
+% Variations with times
+% \RequirePackage{mathptmx}      % Included as an option in ATLAS papers
+\RequirePackage[varg]{txfonts} % Used in ATLAS papers
+% \RequirePackage{times}
+% Math design
+% \RequirePackage[utopia]{mathdesign}
+% \RequirePackage[charter]{mathdesign}
+% Palatino
+% \RequirePackage{mathpazo}
+% \RequirePackage{pxfonts}
+% Collections with different fonts for numbers in text and math mode
+% \RequirePackage{bookman}
+% \RequirePackage{newcent}
+% \RequirePackage{palatino}
+
+%------------------------------------------------------------------------------
+% Specify the language(s) in the documentclass and then use babel.
+% csquotes is recommended for quoting correctly for the language used
+% The option autostyle=true continuously adapts the style to the language.
+% Use autostyle=once to fix it to the main language of the document.
+\RequirePackage{babel}
+% \RequirePackage[german=guillemets,autostyle=true,style=mythesis]{csquotes}
+\ifthenelse {\texlive = 2009} {%
+  % Use babel=true for older versions (2009 and earlier) of csquotes
+  \RequirePackage[babel=true]{csquotes}
+}{%
+  % Use autostyle=true for newer versions (2011 and later) of csquotes
+  % Use American quotes `` xxx `yyy' '' instead of British default.
+  \RequirePackage[autostyle=true]{csquotes}
+  % \RequirePackage[german=guillemets,autostyle=true]{csquotes}
+}
+
+% It seems common in British documents to use American-like quotes,
+% i.e. outer double quotes and inner single quotes
+% The following commands define a new variant called myenglish
+% and then use this variant if the language is set to british or UKenglish
+\DeclareQuoteStyle[mybritish]{myenglish}%
+  {\textquotedblleft}{\textquotedblright}%
+  {\textquoteleft}{\textquoteright}
+\DeclareQuoteAlias[mybritish]{myenglish}{myenglish}
+\DeclareQuoteAlias{myenglish}{british}
+\DeclareQuoteAlias{myenglish}{UKenglish}
+
+% It is possible for you to define your own quotation style
+% \DeclareQuoteStyle{mythesis}%
+%   {\textquotedblleft}{\textquotedblright}%
+%   {\textquoteleft}{\textquoteright}
+% \setquotestyle{mythesis}
+
+%------------------------------------------------------------------------------
+\ifthenelse {\texlive = 2009} {%
+  \RequirePackage[seperr,
+  repeatunits = false,
+  alsoload = hep]{siunitx}
+  \sisetup{obeyall}
+}{%
+  \RequirePackage[separate-uncertainty,
+  range-units = repeat]{siunitx}
+  \sisetup{detect-family = true}
+}
+% Units - for German thesis \num{4.3} will be printed as 4,3
+\addto\extrasngerman{\sisetup{locale = DE}}
+\addto\extrasamerican{\sisetup{locale = US}}
+\addto\extrasUSenglish{\sisetup{locale = US}}
+\addto\extrasbritish{\sisetup{locale = UK}}
+\addto\extrasUKenglish{\sisetup{locale = UK}}
+% \RequirePackage{units}
+% \RequirePackage{hepunits}
+% \RequirePackage[squaren]{SIunits}
+
+%------------------------------------------------------------------------------
+% Graphics
+\ifthenelse {\texlive = 2009} {%
+  \RequirePackage{feynmf}
+}{
+  \RequirePackage{feynmp}
+  \DeclareGraphicsRule{*}{mps}{*}{}
+}
+\RequirePackage{subfig}
+% \RequirePackage[lofdepth,lotdepth]{subfig}
+\RequirePackage{graphicx}
+
+%------------------------------------------------------------------------------
+% Tables
+\RequirePackage{rotating}
+\RequirePackage{array}
+\RequirePackage{dcolumn}
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+% Be careful trying to use ziffer and dcolumn together
+% \RequirePackage{ziffer}
+% Multiple references - does not seem to work together with hyperref
+% Also is not compatible with biblatex, which is probably the way of
+% the future
+% \RequirePackage{mcite}
+% Chemical elements
+\RequirePackage[version=3]{mhchem}
+%
+\RequirePackage{xcolor}
+\RequirePackage{xspace}
+\RequirePackage{setspace}
+\RequirePackage{scrdate,scrtime}
+
+%------------------------------------------------------------------------------
+% Add ability to click on links and references.
+% Define some darker colours first
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{darkyellow}{rgb}{0.5,0.5,0}
+\definecolor{darkcyan}{rgb}{0,0.5,0.5}
+\definecolor{darkmagenta}{rgb}{0.5,0,0.5}
+% Note that the colours also apply to the printed version.
+% It probably make sense to keep them for an online version and set
+% them all to black when producing the printed thesis.
+% The hyperref package should come last
+\PassOptionsToPackage{hyphens}{url}
+% \RequirePackage[colorlinks=true,linkcolor=blue,citecolor=green,
+% urlcolor=black,bookmarksopen]{hyperref}
+\RequirePackage[colorlinks=true,linkcolor=blue,citecolor=darkmagenta,
+urlcolor=darkgreen,bookmarksopen]{hyperref}
+% \newcommand{\url}[1]{\texttt{#1}}
+
+%------------------------------------------------------------------------------
+% More options for KOMA script
+%
+% General font for title, section headings etc.
+% \setkomafont{disposition}{\rmfamily\bfseries\upshape}
+\setkomafont{title}{\normalfont\bfseries\huge}
+\setkomafont{subtitle}{\normalfont\Large}
+
+% Do not put a dot after Section/Chapter, nor in the figure caption.
+\KOMAoptions{numbers=noendperiod}
+% Write Chapter 1 at beginning of each chapter
+% \KOMAoptions{chapterprefix=true,appendixprefix=true}
+% Packages to change the chapter heading format
+\RequirePackage{titlesec}
+\titleformat{\chapter}[display]
+  {\bfseries\sffamily\huge}
+  {\filleft\MakeUppercase{\Large\chaptertitlename} \Huge\thechapter}
+  {2ex}
+  {\titlerule
+    \vspace{1ex}%
+    \filright}
+  [\vspace{1ex}%
+  \titlerule]
+% \newcommand*{\justifyheading}{\raggedleft}
+% \titleformat{\chapter}[display]
+%   {\normalfont\huge\bfseries\justifyheading}{{\fontsize{60}{72}\selectfont\thechapter}}
+%   {20pt}{\Huge}
+% \RequirePackage[Sonny]{fncychap}
+% \RequirePackage[libertine]{quotchap}
+
+% Do not centre one-line figure captions.
+% \KOMAoptions{captions=nooneline}
+% Font and layout for figure and table captions
+\setkomafont{caption}{\normalfont\small}
+% \setkomafont{caption}{\normalfont\slshape}
+% Do not include a : after the figure/table number
+% \renewcommand*{\captionformat}{\ }
+% \renewcommand*{\figureformat}{\bfseries\slshape Fig.\ \thefigure}
+\setcapindent{0pt}
+
+% Set the header and footer
+% The optional argument is for pages in scrplain mode - first page of chapters etc.
+% The required argument is for the usual scrheadings pages
+%
+% Use the following to debug what header/footer is used where
+% \ihead[Scrplain ihead]{Scrheadings ihead}
+% \chead[Scrplain chead]{Scrheadings chead}
+% \ohead[Scrplain ohead]{Scrheadings ohead}
+% \ifoot[Scrplain ifoot]{Scrheadings ifoot}
+% \cfoot[Scrplain cfoot]{Scrheadings cfoot}
+% \ofoot[Scrplain ofoot]{Scrheadings ofoot}
+%
+% \cfoot[\thepage]{\thepage}
+\pagestyle{scrheadings}
+
+% Default width for figures
+\newlength{\figwidth}
+\setlength{\figwidth}{0.8\textwidth}
+
+% More space between rows in tables
+% \setlength{\extrarowheight}{0.5ex}
+
+% Footnote settings
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\ }
+
+% Unit of length used for Feynman graphs in feynmf
+\setlength{\unitlength}{1mm}
+
+% Make sure everything is set up properly, even after spacings have
+% been changed.
+\KOMAoptions{DIV=last}
+
+% Institutes names and addresses - maybe put in an extra file?
+\newcommand*{\PI}{Physikalisches Institut}
+\newcommand*{\inPI}{im Physikalischen Institut}
+\newcommand{\PIaddress}{Physikalisches Institut der\\
+Universität Bonn\\
+Nussallee 12\\
+D-53115 Bonn}
+
+\newcommand*{\HISKP}{Helmholtz-Institut für\\ Strahlen- und Kernphysik}
+\newcommand*{\inHISKP}{im Helmholtz-Institut für Strahlen- und Kernphysik}
+\newcommand{\HISKPaddress}{Helmholtz-Institut für\\
+ Strahlen- und Kernphysik\\
+Universität Bonn\\
+Nussallee 14--16\\
+D-53115 Bonn}
+
+\newcommand*{\IAP}{Institut für Angewandte Physik}
+\newcommand*{\inIAP}{im Institut für Angewandte Physik}
+\newcommand{\IAPaddress}{Institut für Angewandte Physik\\
+Universität Bonn\\
+Wegelstr.\ 8\\
+D-53115 Bonn}
+
+\newcommand*{\AIFA}{Argelander-Institut für Astronomie}
+\newcommand*{\inAIFA}{im Argelander-Institut für Astronomie}
+\newcommand{\AIFAaddress}{Argelander-Institut für Astronomie\\
+Universität Bonn\\
+Auf dem Hügel 71\\
+D-53121 Bonn}
