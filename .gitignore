@@ -13,6 +13,7 @@
 # *.ps
 # *.eps
 # *.pdf
+mythesis.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

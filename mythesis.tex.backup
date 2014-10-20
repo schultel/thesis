@@ -123,14 +123,6 @@
 % comma after the filename, otherwise it will simply be ignored!
 % \includeonly{%
 %   thesis_intro,
-%   thesis_theory_nus,
-%   thesis_theory_osc,
-%   thesis_theory_fisher,
-%   thesis_detector,
-%   thesis_simulation,
-%   thesis_ana_input,
-%   thesis_ana_results,
-%   thesis_ana_comb,
 %   thesis_appendix,
 %   thesis_acknowledge
 % }
@@ -142,13 +134,7 @@
   {../figs/},%
   {../figs/cover/},%
   {../figs/graphics/},%
-  {../feynmf/},%
-  {figs/},%
-  {figs/theory/},%
-  {figs/detector/},%
-  {figs/sim/},%
-  {figs/analysis/},%
-  {figs/appendix/}%
+  {../feynmf/}%
 }
 
 %------------------------------------------------------------------------------
@@ -227,12 +213,7 @@
 
 \include{thesis_simulation}
 
-\include{thesis_ana_input}
-\include{thesis_ana_results}
-\include{thesis_ana_comb}
-
-\include{thesis_conclusion}
-
+\include{thesis}
 %------------------------------------------------------------------------------
 \appendix
 % \part*{Appendix}
