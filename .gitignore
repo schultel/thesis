@@ -90,3 +90,6 @@ sympy-plots-for-*.tex/
 *.xdy
 # common editor remnants
 *~
+*.backup
+# AFS index files
+.__afs*

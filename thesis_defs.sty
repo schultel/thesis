@@ -14,6 +14,12 @@
 % {\catcode`\,=\active
 %  \gdef ,{\obeyspaces\futurelet\next\CommaCheck}}
 % \def\CommaCheck{\if\space\next\CommaPunct\else\CommaOrdinary\fi}
+% 
+% Nice Greek Letters
+%
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
 %
 % A few useful definitions
 %
@@ -44,6 +50,28 @@
 % Particles
 %
 \newcommand*{\KoS}{\ensuremath{K_{S}^{0}}\xspace}
+\newcommand*{\nue}{\ensuremath{\nu_e}\xspace}
+\newcommand*{\nuebar}{\ensuremath{\bar\nu_e}\xspace}
+\newcommand*{\numu}{\ensuremath{\nu_\mu}\xspace}
+\newcommand*{\numubar}{\ensuremath{\bar\nu_\mu}\xspace}
+\newcommand*{\nutau}{\ensuremath{\nu_\tau}\xspace}
+\newcommand*{\nutaubar}{\ensuremath{\bar\tau_\mu}\xspace}
+\newcommand*{\nux}{\ensuremath{\nu_X}\xspace}
+\newcommand*{\nuxbar}{\ensuremath{\bar\nu_X}\xspace}
+
+% 
+% Neutrino Oscillations
+% 
+\newcommand*{\deltam21}{\ensuremath{\Delta m^2_{21}}\xspace}
+\newcommand*{\deltam31}{\ensuremath{\Delta m^2_{31}}\xspace}
+\newcommand*{\deltam32}{\ensuremath{\Delta m^2_{32}}\xspace}
+\newcommand*{\deltam}{\ensuremath{\Delta m^2}\xspace}
+\newcommand*{\deltaM}{\ensuremath{\Delta M^2}\xspace}
+\newcommand*{\theta12}{\ensuremath{\theta_{12}}\xspace}
+\newcommand*{\theta13}{\ensuremath{\theta_{13}}\xspace}
+\newcommand*{\theta23}{\ensuremath{\theta_{23}}\xspace}
+\newcommand*{\sinsq}[1]{\ensuremath{\sin^2(#1)}}
+\newcommand*{\sinsq2}[1]{\ensuremath{\sin^2(2 #1)}}
 %
 % Kinematics
 %
