@@ -54,6 +54,7 @@
 % Use biber   for TeX Live 2011 or later
 % Add option backref=true to also find out where citations are
 % referred to.
+% TODO: Find out how to include collaboration names
 \ifthenelse {\texlive = 2009} {%
   \usepackage[backend=bibtex8,hyperref=true,bibencoding=latin1,
     style=numeric-comp,sorting=none,block=ragged,firstinits=true]{biblatex}
@@ -78,8 +79,16 @@
 %
 % You can include the following lines if you want to shorten your
 % bibliography by not including url fields
-\AtEveryBibitem{\clearfield{url}}
-\AtEveryCitekey{\clearfield{url}}
+\AtEveryBibitem{
+  \ifentrytype{online}{}{
+    \clearfield{url}
+  }
+}
+% \AtEveryCitekey{
+%   \ifentrytype{online}{}{
+%     \clearfield{url}
+%   }
+% }
 
 %------------------------------------------------------------------------------
 % The following definitions are used to produce the title pages
