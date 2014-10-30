@@ -172,18 +172,29 @@ $W$ boson subsequently decays into a charged lepton and a neutrino.
 
 \begin{figure}
  \centering
- \begin{fmffile}{beta_plus}
- \begin{fmfgraph*}(50,50) \fmfpen{thin}
-  \fmfbottom{i1,d1,o1}
-  \fmfright{o0,o2,o3}
-  \fmf{fermion}{i1,v1,o1}
+ \begin{fmffile}{beta_minus}
+ \begin{fmfgraph*}(80,50) \fmfpen{thin}
+ \fmfstraight
+  \fmfleft{i0,i1,i2,i3,i41,i42,i5,i51,i6}
+  \fmfright{o0,o1,o2,o3,o41,o42,o5,051,o6}
+  \fmf{fermion}{i0,o0}
+  \fmflabel{$u$}{i0}
+  \fmflabel{$u$}{o0}
+  \fmf{fermion}{i1,o1}
+  \fmflabel{$d$}{i1}
+  \fmflabel{$d$}{o1}
+  \fmf{fermion}{i2,v1,o2}
+  \fmflabel{$d$}{i2}
+  \fmflabel{$u$}{o2}
   \fmffreeze
-  \fmf{fermion}{o2,v2,o3}
-  \fmf{dashes,lab=$W^+$,l.side=left,tension=1.5}{v1,v2}
+  \fmf{fermion}{o5,v2,o6}
+  \fmflabel{$e^-$}{o6}
+  \fmflabel{\nuebar}{o5}
+  \fmf{dashes,lab=$W^-$,l.side=left,tension=1.5}{v1,v2}
  \end{fmfgraph*}
  \end{fmffile}
- \write18{mpost beta_plus}
-\caption{$\beta^+$ decay}
+ \write18{mpost beta_minus}
+\caption{Feynman diagram of a $\beta^-$ decay}
 \end{figure}
 
 \subsubsection{Nuclear Reactors}
