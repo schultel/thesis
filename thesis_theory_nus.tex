@@ -131,13 +131,71 @@ the focus. The planned PINGU experiment (see Sec.~\ref{sec:PINGU}), whose
 simulation is the main topic of this thesis, is aimed to reach unprecedented
 accuracy in measuring the parameters \thet{23} and \dm{31}.
 
-\subsection{Neutrino Mass Hierarchy}
-\label{sec:NMH}
+
+\subsection{Neutrino Sources}
+\label{sec:NuSources}
+
+As discussed above, neutrinos do not participate in the strong and
+electromagnetic interaction, leaving only weak processes for them to be created
+or detected. On the other hand, neutrinos are produced in nearly every weak
+interaction, making them a very common particle that can stem from a variety of
+different sources in very different energy ranges.
+
+\subsubsection{Natural Radioactivity}
+On Earth, the most common source is the $\beta$ decay of natural radionuclides.
+Depending on the type of the decay ($\beta^+$ or $\beta^-$), an electron
+(anti-) neutrino is emitted along with the charged lepton. The general
+equations read:
+\begin{eqnarray}
+ \beta^+: & ^A_Z\mathrm{X} & \to\quad  ^A_{Z-1}\mathrm{Y} + e^+ + \nue \\
+ \beta^-: & ^A_Z\mathrm{X} & \to\quad  ^A_{Z+1}\mathrm{Y} + e^- + \nuebar
+\end{eqnarray}
+Examples for typical $\beta$ emitters are $^{40}$K (both $\beta^+$ and
+$\beta^-$) and intermediate products from the decay chains of $^{232}$Th or
+$^{238}$U ($\beta^-$), the neutrino energies are usually on the scale of few
+MeV.
+
+In fact, the $\beta$ decay was the original reason to propose the existence of
+the then un-detectable neutrino. Since only the daughter nucleus and the
+charged lepton were visible as decay products, the process seemed to be a
+two-body decay. This means that the energies of the decay products are exactly
+determined from kinematics and hence the emitted electrons or positrons would
+be monoenergetic. Observations showed, however, a broad spectrum in energy
+instead of a single line. Without violating the conservation of energy, this
+can only be achieved if a third particle is produced in the process, which is
+electrically neutral but can carry away energy and momentum. 
+
+On the subatomic level, in a $\beta^+$ decay one proton inside a nucleus emits a
+virtual $W^+$ boson, turning an $u$ into a $d$ quark, and becomes a neutron.
+During a $\beta^-$ decay, the opposite happens via the emission of a $W^-$. The
+$W$ boson subsequently decays into a charged lepton and a neutrino.
+
+\begin{figure}
+ \centering
+ \begin{fmffile}{beta_plus}
+ \begin{fmfgraph*}(50,50) \fmfpen{thin}
+  \fmfbottom{i1,d1,o1}
+  \fmfright{o0,o2,o3}
+  \fmf{fermion}{i1,v1,o1}
+  \fmffreeze
+  \fmf{fermion}{o2,v2,o3}
+  \fmf{dashes,lab=$W^+$,l.side=left,tension=1.5}{v1,v2}
+ \end{fmfgraph*}
+ \end{fmffile}
+ \write18{mpost beta_plus}
+\caption{$\beta^+$ decay}
+\end{figure}
+
+\subsubsection{Nuclear Reactors}
 
 
-\subsection{Neutrino Interactions}
-\label{sec:NuInt}
+\subsubsection{Solar Neutrinos}
 
 
-\subsection{Atmospheric Neutrinos}
+\subsubsection{Atmospheric Neutrinos}
 \label{sec:AtmNus}
+
+
+\subsubsection{Astrophysical Neutrinos}
+
+\subsection{Detection of Neutrinos}
