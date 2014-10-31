@@ -167,8 +167,9 @@ electrically neutral but can carry away energy and momentum.
 
 On the subatomic level, in a $\beta^+$ decay one proton inside a nucleus emits a
 virtual $W^+$ boson, turning an $u$ into a $d$ quark, and becomes a neutron.
-During a $\beta^-$ decay, the opposite happens via the emission of a $W^-$. The
-$W$ boson subsequently decays into a charged lepton and a neutrino.
+During a $\beta^-$ decay, the opposite happens via the emission of a $W^-$, as
+shown in Fig.~\ref{fig:beta_minus}. The $W$ boson subsequently decays into a
+charged lepton and a neutrino.
 
 \begin{figure}
  \centering
@@ -195,9 +196,49 @@ $W$ boson subsequently decays into a charged lepton and a neutrino.
  \end{fmffile}
  \write18{mpost beta_minus}
 \caption{Feynman diagram of a $\beta^-$ decay}
+\label{fig:beta_minus}
 \end{figure}
 
+% TODO: say something about 0n2b decay?
+
+
 \subsubsection{Nuclear Reactors}
+
+In nuclear reactors, the controlled fission of heavy elements is used for the
+generation of electrical power. The intermediate products of these nuclear
+fissions are unstable isotopes that usually have a large surplus of neutrons
+compared to a stable configuration. These unstable nuclides undergo a series of
+$\beta^-$ decays until they they reach a stable ratio of proton and neutron
+numbers.
+
+Since in each of those $\beta$ decays neutrinos are emitted, a nuclear reactor
+provides a strong and steady flux of \nuebar, which can be monitored via the
+thermal power of the reactor. This makes reactor neutrinos a popular target for
+experiments, especially for the study of neutrino oscillations. The main
+challenge in such experiments is the accurate modelling of the neutrino energy
+spectrum, which is the sum of the spectra of all of the different $\beta$
+decays in the decay chain. Even though there are very elaborate flux models
+available, there might still be components unaccounted for, resulting in
+unexpected features in the measured neutrino flux \cite{RENO_5MeV}.
+
+
+\subsubsection{Neutrino Beams}
+
+Another artificial source of neutrinos, but somewhat higher in energy
+(typically at a few GeV) are neutrino beams. Since the neutral neutrinos cannot
+be accelerated directly, usually a high-energy, high-intensity proton beam is
+aimed at a target in which it produces mesons, mostly pions and kaons, in whose
+subsequent decay neutrinos are produced \cite{NuBeams}:
+\begin{eqnarray}
+ \pi^+ & \to & \mu^+ + \numu \\
+ \pi^- & \to & \mu^- + \numubar
+\end{eqnarray}
+
+Such beams are the source of neutrinos that can be controlled best in terms of
+energy and intensity, making them a preferred choice for precision experiments
+such as measurements of neutrino cross-sections. However they are very expensive
+to build and operate in contrast to natural sources or nuclear reactors, the
+latter usually being operated by commercial power suppliers.
 
 
 \subsubsection{Solar Neutrinos}
