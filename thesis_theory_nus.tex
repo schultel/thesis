@@ -252,14 +252,16 @@ producing the energy that powers the Sun's radiation\cite{RolfsRodney}.
 
 \begin{figure}
 \centering
-  \subfloat[The different branches of the pp chain. \label{fig:pp_network}]
+  \subfloat[The different branches of the pp chain.
+    ``Lost'' energy is not dissipated into the Sun, but carried away by
+    neutrinos. \label{fig:pp_network}]
     {\includegraphics[width=0.45\textwidth]{pp_chain}}\qquad
   \subfloat[The solar neutrino spectrum from the pp chain.
+    The neutrino fluxes are in units of cm$^{-2}$\,s$^{-1}$\,MeV$^{-1}$ for
+    continuous and cm$^{-2}$\,s$^{-1}$ for discrete components.
     \label{fig:solar_nu_spectrum}]
     {\includegraphics[width=0.45\textwidth]{solar_nu_spectrum}}
   \caption{The reactions and resulting neutrino spectrum of the solar pp chain.
-    The neutrino fluxes are in units of cm$^{-2}$\,s$^{-1}$\,MeV$^{-1}$ for
-    continuous and cm$^{-2}$\,s$^{-1}$ for line sources.
     Figures adopted from \cite{RolfsRodney}.}
 \label{fig:solar_nus}
 \end{figure}
@@ -292,34 +294,88 @@ are monoenergetic at 1.44\,MeV. Once a deuteron is produced, it quickly (YYY\,s)
 merges with another proton to $^3_2\mathrm{He}$ and emits a photon.
 
 At this stage, the pp chain divides into three different branches (see
-Fig.~\ref{fig:pp_network}). In the main branch, two $^3_2\mathrm{He}$ nuclei
-fuse to $^4_2\mathrm{He}$ and two protons that can then enter the pp chain
-again. However in terms of neutrinos, the two subdominant branches ppII and
-ppIII are much more interesting, especially since the pep and pp neutrinos, who
-make up the main part of the solar neutrinos, are very low in energy and thus
-difficult to detect.
+Fig.~\ref{fig:pp_network}). In the main branch, ppI, two $^3_2\mathrm{He}$
+nuclei fuse to $^4_2\mathrm{He}$, also called an $\alpha$ particle, and two
+protons that can then enter the pp chain again. However in terms of neutrinos,
+the two subdominant branches ppII and ppIII are much more interesting,
+especially since the pep and pp neutrinos, who make up the main part of the
+solar neutrinos, are very low in energy and thus difficult to detect.
 
 If a $^3_2\mathrm{He}$ does not fuse with another $^3_2\mathrm{He}$, but with
 a $^4_2\mathrm{He}$ instead, $^7_4\mathrm{Be}$ is formed. In most cases, this
 will then capture an electron to produce $^7_3\mathrm{Li}$ under the emission
-of a neutrino:
+of a neutrino in the ppII branch:
 \begin{equation}
  ^7_4\mathrm{Be} + e^- \to\ ^7_3\mathrm{Li} + \nue
 \end{equation}
-These so-called $^7$Be neutrinos have an energy of XYZ\,MeV. Due to this high
+These so-called $^7$Be neutrinos have an energy of 0.86\,MeV. Due to this high
 energy and their rather high flux portion of about 14\,\%, they were targeted
 in the first detection of solar neutrinos \cite{DaviesNuOsc}. The
 $^7_3\mathrm{Li}$ finally catches another proton to form two $^4_2\mathrm{He}$
 nuclei.
 
 Sometimes, the $^7_4\mathrm{Be}$ reacts with a proton rather than an electron
-and forms $^8_5\mathrm{B}$, which is a $\beta^+$ emitter with a half-life of
-0.77\,s \cite{Nuklidkarte}.
+(ppIII branch) and forms $^8_5\mathrm{B}$, which is a $\beta^+$ emitter with a
+half-life of 0.77\,s \cite{Nuklidkarte}. Although their flux is very low, the
+very high Q-value of 14.1\,MeV of this decay makes the so-called $^8$B a
+favourable target for the search for solar neutrinos.
+
+The excited $^8_4\mathrm{Be}$ created in the decay
+\begin{equation}
+ ^8_5\mathrm{B} \to\ ^8_4\mathrm{Be^*} + e^+ + \nue
+\end{equation}
+will then further decay into two $\alpha$ particles immediately.
 
 
 \subsubsection{Atmospheric Neutrinos}
 \label{sec:AtmNus}
 
+Several orders of magnitude higher in energy are neutrinos that are created in
+the interaction of high-energy charged particles with atoms in the Earth's
+atmosphere. During the past decades, the spectrum of these particles, the 
+so-called cosmic radiation, has been measured in great detail over many orders
+of magnitude. Although it covers such a wide range in energy and flux, it shows
+almost no features and can be described by a simple power law with a spectral
+index of $\gamma=-2.7$, softening to $\gamma=-3.0$ at the so-called ``knee'' at
+a few PeV and turning back to $\gamma=-2.7$ at the ``ankle'' at the highest
+energies \cite{CosmRad}.
+
+\begin{figure}
+\centering
+  \subfloat[The all particle spectrum of the charged cosmic radiation. Figure
+    taken from \cite{CosmRaySpec}. \label{fig:CosmRaySpec}]
+    {\includegraphics[height=7cm]{CosmicRaySpectrum}}\qquad
+  \subfloat[Predictions and Measurements of the atmospheric flux of electron and
+    muon neutrinos. Figure taken from \cite{IC_AtmCscd}.
+    \label{fig:AtmFlux}]
+    {\includegraphics[height=7cm]{AtmFlux}}
+  \caption{Spectra of the cosmic radiation at Earth and the resulting
+    atmospheric neutrino spectrum.}
+\label{fig:solar_nus}
+\end{figure}
+
+The origin of the cosmic radiation is not fully established yet. However it is
+commonly assumed that the particles are accelerated in non-thermal processes,
+usually moving shock fronts, that develop in extreme astrophysical environments.
+This mechanism is known as Fermi acceleration \cite{FermiAcc}. 
+Candidates for the acceleration sites are both galactic sources, such as
+supernova remnants, as well as extragalactic ones like gamma ray bursts or
+active galaxies. Due to their small size and rather low energy density, galactic
+sources are believed to dominate the low-energy part of the spectrum in the GeV
+to TeV regime, while the extragalactic contribution takes over at the knee
+region.
+
+When such a high energy particle hits the Earth's atmosphere, it interacts with
+a nucleus in the air (usually nitrogen or oxygen) in a so-called deep-inelastic
+scattering process. Since the energy of the incoming particle is far beyond all
+binding energies in the nucleus, it is completely disrupted. From the fragments
+of the nucleus that are still highly energetic, a shower of secondary particles
+develops, that then travels down to Earth.
+
+Main components of these particle showers are muons and pions. Due to their
+high Lorentz boost, the muons have a free path of several kilometers \cite{PDG},
+so that most of them can penetrate the Earth's surface and decay at rest deep
+underground. 
 
 \subsubsection{Supernova Neutrinos}
 % FIXME: mention them?
