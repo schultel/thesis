@@ -20,7 +20,8 @@ AWKDIR=..
 	cleanfeynmf cleanfeynmp cleantikz cleanpictpdf \
 	cleanblx cleanbbl \
 	cleanglo \
-	help test
+	help test \
+	outline
 
 thesis: thesis11
 
@@ -122,3 +123,6 @@ test:
 	@echo "Feynmf Feynman graphs files: $(FEYNFILES)"
 	@echo "TikZ   Feynman graphs dir: $(TIKZDIRNAME)"
 	@echo "TikZ   Feynman graphs files: $(TIKZFILES)"
+
+outline:
+	pdftk A=mythesis.pdf cat A3-4 output outline.pdf
