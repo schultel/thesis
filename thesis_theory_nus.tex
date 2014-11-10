@@ -345,13 +345,15 @@ energies \cite{CosmRad}.
   \subfloat[The all particle spectrum of the charged cosmic radiation. Figure
     taken from \cite{CosmRaySpec}. \label{fig:CosmRaySpec}]
     {\includegraphics[height=7cm]{CosmicRaySpectrum}}\qquad
-  \subfloat[Predictions and Measurements of the atmospheric flux of electron and
-    muon neutrinos. Figure taken from \cite{IC_AtmCscd}.
+  \subfloat[The atmospheric flux of electron and muon neutrinos.
+    Predictions for the conventional flux are from \cite{Honda2007} (solid
+    lines) and \cite{Bartol} (dashed), the band for the prompt flux is
+    according to \cite{PromptFlux}. Figure taken from \cite{IC_AtmCscd}.
     \label{fig:AtmFlux}]
     {\includegraphics[height=7cm]{AtmFlux}}
   \caption{Spectra of the cosmic radiation at Earth and the resulting
     atmospheric neutrino spectrum.}
-\label{fig:solar_nus}
+\label{fig:cosmic_rays_atm_nus}
 \end{figure}
 
 The origin of the cosmic radiation is not fully established yet. However it is
@@ -372,10 +374,40 @@ binding energies in the nucleus, it is completely disrupted. From the fragments
 of the nucleus that are still highly energetic, a shower of secondary particles
 develops, that then travels down to Earth.
 
-Main components of these particle showers are muons and pions. Due to their
-high Lorentz boost, the muons have a free path of several kilometers \cite{PDG},
-so that most of them can penetrate the Earth's surface and decay at rest deep
-underground. 
+Main components of these particle showers are muons and pions. Both particles
+are relatively short-lived\footnote{$\tau_\mu = 2.2 \times 10^{-6}$\,s and
+$\tau_\pi = 2.6 \times 10^{-8}$\,s \cite{PDG}} and produce neutrinos in their
+decay:
+\begin{eqnarray}
+ \pi^\pm &\to\ & \mu^\pm + \numu(\numubar) \\
+ \mu^\pm &\to\ & e^\pm + \nue(\nuebar) + \numubar(\numu)
+\end{eqnarray}
+As one can see from the above equations, these so-called conventional
+atmospheric neutrinos coming mostly from pion decay have a flavour ratio of
+$\overset{(-)}{\numu}:\overset{(-)}{\nue} = 2:1$.
+
+Their energy spectrum is linked to the primary spectrum of cosmic rays since the
+secondary pions and muons follow the primary energy distribution directly. Thus
+being highly relativistic, their livetime is Lorentz boosted by a factor $\gamma
+\propto E$. This means that the higher the pion's (or muon's) energy, the higher
+its probability \emph{not} to decay into neutrinos in-flight but reach the
+Earth's surface and interact there, producing another shower of much less
+energetic particles. Hence the spectrum of conventional atmospheric neutrinos
+is suppressed roughly by a factor of $1/E$ with respect to the primary cosmic
+ray distribution.
+
+For a more precise calculation, details of high-energy proton interactions and
+the geomagnetic field have to be taken into account \cite{Honda2007, Bartol}. As
+shown in Fig.~\ref{fig:cosmic_rays_atm_nus}, these predictions show good
+agreement with measurements.
+
+Another predicted, but not yet observed component of the atmospheric neutrino
+flux are the so-called prompt neutrinos. They originate from charmed mesons,
+mostly kaons, that are rarely produced in cosmic ray induced air showers as
+well. Since these are so short-lived that they always decay in-flight
+(``promptly'') despite of their relativistic boost, their energy spectrum
+is the same as the primary one and thus harder than the conventional component,
+but with a much smaller normalisation.
 
 \subsubsection{Supernova Neutrinos}
 % FIXME: mention them?
