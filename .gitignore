@@ -98,3 +98,5 @@ sympy-plots-for-*.tex/
 *.swp
 # AFS index files
 .__afs*
+# My not-ready-for-thesis figures, to avoid too many outdated versions
+figs/analysis_workbench/*
