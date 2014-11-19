@@ -91,7 +91,7 @@ sympy-plots-for-*.tex/
 *.xdy
 # metapost stuff (from feynmf)
 *.mp
-*.t1
+*.t[1-9]
 # common editor remnants
 *~
 *.backup
