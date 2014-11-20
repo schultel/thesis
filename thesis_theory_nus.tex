@@ -604,5 +604,124 @@ Fig.~\ref{fig:nue_e_CC}, only that the target is either a whole (for
 quasi-elastic and resonant processes) or a quark inside a nucleon (deep
 inelastic scattering).
 
+\begin{figure}
+ \centering
+ \begin{fmffile}{nux_NC}
+ \begin{fmfgraph*}(50,30) \fmfpen{thin}
+ \fmfstraight
+  \fmfleftn{i}{8}
+  \fmfrightn{o}{8}
+  \fmf{heavy}{i2,v1}
+  \fmfv{decor.shape=circle,decor.filled=shaded}{v1}
+  \fmf{vanilla}{v1,o2}
+  \fmflabel{nucleus}{i2}
+  \fmflabel{hadronic\ shower}{o2}
+  \fmf{fermion}{i8,v2,o8}
+  \fmflabel{$\nu$}{i8}
+  \fmflabel{$\nu'$}{o8}
+  \fmf{dashes,lab=$Z^0$,l.side=left,tension=1.5}{v1,v2}
+  \fmffreeze
+  \fmf{vanilla}{v1,o1}
+  \fmf{vanilla}{v1,o3}
+ \end{fmfgraph*}
+ \end{fmffile}
+ \write18{mpost nux_NC}
+\caption{Neutral current interaction between a neutrino and a nucleus.}
+\label{fig:nux_NC}
+\end{figure}
+
+From the detection point of view, this means that there are four classes of
+events. The first are neutral current interactions of any neutrino flavour, as
+shown in Fig.~\ref{fig:nux_NC}. In this case, we have in the final state the
+scattered neutrino $\nu'$ and a hadronic shower or cascade consisting
+of a variety of mesons, fermions, and photons developing from the fragments of
+the stricken nucleus. Experimentally, the outgoing neutrino is impossible to
+detect, meaning that the fraction of the total interaction energy that is
+carried by this neutrino remains invisible. In beam experiments, where the
+energy of the incoming particles is known, this is commonly referred to as
+``missing energy''.
+
+\begin{figure}
+\centering
+  \subfloat[\label{fig:nue_CC}]
+    {
+     \begin{fmffile}{nue_CC}
+      \begin{fmfgraph*}(30,20) \fmfpen{thin}
+      \fmfstraight
+        \fmfleftn{i}{8}
+        \fmfrightn{o}{8}
+        \fmf{heavy}{i2,v1}
+        \fmfv{decor.shape=circle,decor.filled=shaded}{v1}
+        \fmf{vanilla}{v1,o2}
+        \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
+        \fmf{fermion}{i7,v2}
+        \fmflabel{\nue}{i7}
+        \fmf{phantom}{v2,o7}
+        \fmffreeze
+        \fmf{fermion,lab=$e^-$,l.side=left,tension=2}{v2,v3}
+        \fmf{vanilla}{v3,o7}
+        \fmflabel{EM\ shower}{o7}
+        \fmf{vanilla}{v1,o1}
+        \fmf{vanilla}{v1,o3}
+        \fmf{vanilla}{v3,o6}
+        \fmf{vanilla}{v3,o8}
+      \end{fmfgraph*}
+     \end{fmffile}
+     \write18{mpost nue_CC}
+    }\quad
+  \subfloat[\label{fig:numu_CC}]
+    {
+     \begin{fmffile}{numu_CC}
+      \begin{fmfgraph*}(30,20) \fmfpen{thin}
+      \fmfstraight
+        \fmfleftn{i}{8}
+        \fmfrightn{o}{8}
+        \fmf{heavy}{i2,v1}
+        \fmfv{decor.shape=circle,decor.filled=shaded}{v1}
+        \fmf{vanilla}{v1,o2}
+        \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
+        \fmf{fermion}{i7,v2,o7}
+        \fmflabel{\nue}{i7}
+        \fmflabel{$\mu^-$}{o7}
+        \fmffreeze
+        \fmf{vanilla}{v1,o1}
+        \fmf{vanilla}{v1,o3}
+      \end{fmfgraph*}
+     \end{fmffile}
+     \write18{mpost numu_CC}
+    }\quad
+  \subfloat[\label{fig:nutau_CC}]
+    {
+     \begin{fmffile}{nutau_CC}
+      \begin{fmfgraph*}(30,20) \fmfpen{thin}
+      \fmfstraight
+        \fmfleftn{i}{8}
+        \fmfrightn{o}{8}
+        \fmf{heavy}{i2,v1}
+        \fmfv{decor.shape=circle,decor.filled=shaded}{v1}
+        \fmf{vanilla}{v1,o2}
+        \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
+        \fmf{fermion}{i7,v2}
+        \fmflabel{\nue}{i7}
+        \fmf{phantom}{v2,o7}
+        \fmffreeze
+        \fmf{fermion,lab=$e^-$,l.side=left,tension=2}{v2,v3}
+        \fmf{vanilla}{v3,o7}
+        \fmflabel{EM\ shower}{o7}
+        \fmf{vanilla}{v1,o1}
+        \fmf{vanilla}{v1,o3}
+        \fmf{vanilla}{v3,o6}
+        \fmf{vanilla}{v3,o8}
+      \end{fmfgraph*}
+     \end{fmffile}
+     \write18{mpost nutau_CC}
+    }
+  \caption{Charged current interactions between a \nue (a), \numu (b), and
+\nutau           (c) and a nucleus.}
+\label{fig:nu_CC}
+\end{figure}
+
+
+
 
 \subsubsection{Cherenkov effect}
