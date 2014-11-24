@@ -658,9 +658,9 @@ energy of the incoming particles is known, this is commonly referred to as
         \fmflabel{\nue}{i7}
         \fmf{phantom}{v2,o7}
         \fmffreeze
-        \fmf{fermion,lab=$e^-$,l.side=left,tension=2}{v2,v3}
+        \fmf{fermion,lab=$e$,l.side=left,tension=2}{v2,v3}
         \fmf{vanilla}{v3,o7}
-        \fmflabel{EM\ shower}{o7}
+        \fmflabel{EM\ shower}{o6}
         \fmf{vanilla}{v1,o1}
         \fmf{vanilla}{v1,o3}
         \fmf{vanilla}{v3,o6}
@@ -668,7 +668,7 @@ energy of the incoming particles is known, this is commonly referred to as
       \end{fmfgraph*}
      \end{fmffile}
      \write18{mpost nue_CC}
-    }\quad
+    }\qquad\qquad
   \subfloat[\label{fig:numu_CC}]
     {
      \begin{fmffile}{numu_CC}
@@ -682,36 +682,38 @@ energy of the incoming particles is known, this is commonly referred to as
         \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
         \fmf{fermion}{i7,v2,o7}
         \fmflabel{\nue}{i7}
-        \fmflabel{$\mu^-$}{o7}
+        \fmflabel{$\mu$}{o7}
         \fmffreeze
         \fmf{vanilla}{v1,o1}
         \fmf{vanilla}{v1,o3}
       \end{fmfgraph*}
      \end{fmffile}
      \write18{mpost numu_CC}
-    }\quad
+    }\qquad\qquad
   \subfloat[\label{fig:nutau_CC}]
     {
      \begin{fmffile}{nutau_CC}
       \begin{fmfgraph*}(30,20) \fmfpen{thin}
       \fmfstraight
         \fmfleftn{i}{8}
-        \fmfrightn{o}{8}
+        \fmfrightn{o}{10}
         \fmf{heavy}{i2,v1}
         \fmfv{decor.shape=circle,decor.filled=shaded}{v1}
         \fmf{vanilla}{v1,o2}
         \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
         \fmf{fermion}{i7,v2}
-        \fmflabel{\nue}{i7}
+        \fmflabel{\nutau}{i7}
         \fmf{phantom}{v2,o7}
         \fmffreeze
-        \fmf{fermion,lab=$e^-$,l.side=left,tension=2}{v2,v3}
+        \fmf{fermion,lab=$\tau$,l.side=left,tension=5}{v2,v3}
         \fmf{vanilla}{v3,o7}
-        \fmflabel{EM\ shower}{o7}
+        \fmflabel{hadr./EM\ shower}{o7}
         \fmf{vanilla}{v1,o1}
         \fmf{vanilla}{v1,o3}
         \fmf{vanilla}{v3,o6}
         \fmf{vanilla}{v3,o8}
+        \fmf{fermion}{v3,o10}
+        \fmflabel{\nutau}{o10}
       \end{fmfgraph*}
      \end{fmffile}
      \write18{mpost nutau_CC}
