@@ -1,0 +1,15 @@
+Goals
+ - WOM: Sensitivität als Funktion der Energie-auflösung -> Shift-methode
+   -> Schon gemacht, sieht aber merkwürdig aus. Genauer untersuchen.
+ - mDOM: Plots von Kai, no-noise Argument
+   -> Parametrisierungen sind da, muss nur noch durchlaufen (15min).
+ - Problem mit nicht-linearitäten
+   -> Wie? Vgl. mit pisa/LLR?
+ - PINGU-JUNO Potential?
+   -> Ist fertig, vergleiche Ergebnis mit internem JUNO-Paper
+ - PISA Fisher Analyse implementieren -> Thomas?
+   -> Sebastian/Tim/Lukas, passiert Ende Nov, Anfang Dez 2014
+Stretch goals
+ - PINGU-ORCA Vergleich? In Arbeit?
+ - Oscillation NIM-Paper?
+ - PINGU osc. paramaters -> Juan Pablo?

@@ -389,7 +389,7 @@ $\overset{(-)}{\numu}:\overset{(-)}{\nue} = 2:1$.
 
 Their energy spectrum is linked to the primary spectrum of cosmic rays since the
 secondary pions and muons follow the primary energy distribution directly. Thus
-being highly relativistic, their livetime is Lorentz boosted by a factor $\gamma
+being highly relativistic, their lifetime is Lorentz boosted by a factor $\gamma
 \propto E$. This means that the higher the pion's (or muon's) energy, the higher
 its probability \emph{not} to decay into neutrinos in-flight but reach the
 Earth's surface and interact there, producing another shower of much less
@@ -635,11 +635,17 @@ events. The first are neutral current interactions of any neutrino flavour, as
 shown in Fig.~\ref{fig:nux_NC}. In this case, we have in the final state the
 scattered neutrino $\nu'$ and a hadronic shower or cascade consisting
 of a variety of mesons, fermions, and photons developing from the fragments of
-the stricken nucleus. Experimentally, the outgoing neutrino is impossible to
-detect, meaning that the fraction of the total interaction energy that is
-carried by this neutrino remains invisible. In beam experiments, where the
-energy of the incoming particles is known, this is commonly referred to as
-``missing energy''.
+the stricken nucleus.
+
+The details of the development of such a hadronic shower are not fully
+understood and have to be modelled in MonteCarlo based simulations. However,
+since the involved particles are mostly short-lived and strongly interacting,
+the typical size is on the order of one meter or below. 
+
+The outgoing neutrino on the other hand is virtually impossible to detect,
+meaning that the fraction of the total interaction energy that is carried by
+this neutrino remains invisible. In beam experiments, where the energy of the
+incoming particles is known, this is commonly referred to as ``missing energy''.
 
 \begin{figure}
 \centering
@@ -681,7 +687,7 @@ energy of the incoming particles is known, this is commonly referred to as
         \fmf{vanilla}{v1,o2}
         \fmf{dashes,lab=$W$,l.side=left}{v1,v2}
         \fmf{fermion}{i7,v2,o7}
-        \fmflabel{\nue}{i7}
+        \fmflabel{\numu}{i7}
         \fmflabel{$\mu$}{o7}
         \fmffreeze
         \fmf{vanilla}{v1,o1}
@@ -719,10 +725,63 @@ energy of the incoming particles is known, this is commonly referred to as
      \write18{mpost nutau_CC}
     }
   \caption{Charged current interactions between a \nue (a), \numu (b), and
-\nutau           (c) and a nucleus.}
+           \nutau (c) and a nucleus.}
 \label{fig:nu_CC}
 \end{figure}
 
+In charged current interactions, the neutrino scatters off a nucleus by
+exchanging a $W$ boson. From the fragmented nucleus, a hadronic shower develops
+similarly to the neutral current case. The outgoing lepton however is now a
+charged one, the flavour corresponding to the incoming neutrino's flavour. This
+charged lepton now dominates the event signature:
+
+\begin{itemize}
+ \item[Electron:] In dense matter, a GeV electron will trigger an
+  electromagnetic shower by radiating high-energy photons (bremsstrahlung),
+  which in turn will create electron-positron pairs. The typical scale length
+  $X_0$ of such a shower is given by
+  \begin{equation}
+   \frac{1}{X_0} = 4\alpha r_e^2 \frac{N_A}{A}
+                    \left\{ Z^2 \left[L_\mathrm{rad} - f(Z) \right]
+                    + Z\,L\mathrm{rad}'\right\} \quad,
+   \label{eqn:rad_length}
+  \end{equation}
+  where $\alpha$ is the fine structure constant, $r_e$ the classical electron
+  radius, and $N_A$ Avogadro's number. $A$ and $Z$ are atomic mass and charge
+  of the medium, and $L_\mathrm{rad}$, $L_\mathrm{rad}'$, and $f(Z)$
+  semi-empirical parameters that have been tabulated \cite{PDG, bremsstrahlung}.
+  For water, the scale length is $X_\mathrm{0,\,H_2O} =
+  24.33\,\mathrm{g/cm}^2$, meaning that the typical size of such a shower is
+  about one meter, as water has a density of $\varrho_\mathrm{H_2O} =
+  1$\,g/cm$^3$.
+ \item[Muon:] In contrast to the much lighter electron, a muon of a few GeV is
+  a so-called minimum ionising particle. This means it is in the minimum region
+  of the Bethe-Bloch formula for the energy loss of a charged particle:
+  \begin{equation}
+   \left\langle -\frac{dE}{dx}\right\rangle = Kz^2\frac{Z}{A}\frac{1}{\beta^2}
+      \left[ \frac{1}{2}\ln\frac{2m_ec^2\beta^2\gamma^2 W_\mathrm{max}}{I^2}
+             - \beta^2 - \frac{\delta(\beta\gamma)}{2} \right] \quad.
+   \label{eqn:bethe-bloch}
+  \end{equation}
+  Here, $K = 4\pi N_A r_e^2 m_ec^2$, $z=1$ is the electrical charge of the
+  muon, $I$ the mean excitation potential of the material, $\delta(\beta\gamma)$
+  a density effect correction, and $W_\mathrm{max}$  the maximum energy transfer
+  in a single collision between the muon and an  electron in the medium.
+  $\beta = v/c$ and $\gamma$ are the Lorentz variables \cite{PDG}.
+
+  This expression has a wide minimum in the range $\beta\gamma\approx 1 - 100$, 
+  corresponding to a muon momentum in the low GeV/$c$ regime. Here,
+  (\ref{eqn:bethe-bloch}) evaluates to $\langle dE/dx\rangle \approx
+  2$\,MeV/(g/cm$^2$), hence for a medium with a density of 1\,g/cm$^3$ a muon
+  has a range of approximately 5\,m/GeV before it has deposited all its energy
+  and decays at rest.
+ \item[Tau:] In principle, a tau lepton is a minimum ionising particle as well.
+  But with a lifetime of only $2.9\times10^{-13}$\,s and a mass of 1.78\,GeV, at
+  GeV energies it can travel at most a few hundred microns before it decays. In
+  its decay, a \nutau has to be created again, whose energy has to be considered
+  ``missing'' again. The remaining decay products form an electromagnetic or
+  hadronic shower, depending on their nature.
+\end{itemize}
 
 
 
