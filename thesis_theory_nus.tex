@@ -753,7 +753,7 @@ charged lepton now dominates the event signature:
   semi-empirical parameters that have been tabulated \cite{PDG, bremsstrahlung}.
   For water, the scale length is $X_\mathrm{0,\,H_2O} =
   24.33\,\mathrm{g/cm}^2$, meaning that the typical size of such a shower is
-  about one meter, as water has a density of $\varrho_\mathrm{H_2O} =
+  about one metre, as water has a density of $\varrho_\mathrm{H_2O} =
   1$\,g/cm$^3$.
  \item[Muon:] In contrast to the much lighter electron, a muon of a few GeV is
   a so-called minimum ionising particle. This means it is in the minimum region
@@ -784,5 +784,137 @@ charged lepton now dominates the event signature:
   hadronic shower, depending on their nature.
 \end{description}
 
+In a large detector with detection units spaced widely on a scale of several 
+meters, as the PINGU neutrino telescope described in Sec.~\ref{sec:PINGU}, the 
+four event classes discussed above can only be categorized into two channels: 
+tracks and cascades. 
+\begin{description}
+ \item[Tracks] correspond to \numu CC events. A muon track of several meters 
+  length is pointing away from the hadronic shower at the event vertex. In 
+  principle, this allows for a good directional reconstruction of the event. 
+  For the energy reconstruction on the other hand there is the disadvantage 
+  that the outgoing muon might not be fully contained in the detector, then 
+  only a fraction of its total energy can be recorded.
+ \item[Cascades] encompass all other types of events. A hadronic shower is 
+  always present, and another shower of electromagnetic or hadronic nature 
+  overlays it, if a CC interaction has occurred. The displacement of the second 
+  shower (if it exists) is far smaller than a millimetre and hence not 
+  resolvable. Also the showers themselves have to be considered point-like, but 
+  have some directionality since the momentum of the incoming neutrino is 
+  transferred to the final state. 
+  
+  The achievable directional resolution is still worse than for tracks since 
+  the events lack a long lever arm in form of an extended muon trajectory. Yet 
+  the energy resolution should be better at least for \nue CC events, since the 
+  event is always fully contained in the detector. For NC and \nutau CC events 
+  the energy of the outgoing neutrino in the final state is invisible, causing 
+  a reconstruction bias towards low energy.
+\end{description}
 
-\subsubsection{Cherenkov effect}
+
+\subsubsection{Cherenkov Effect}
+
+As discussed above, high fluxes and/or large target volumes are required for 
+the detection of neutrino interactions. Since the atmospheric flux is rather 
+low compared to focused, high-intensity artificial beams, there is no way 
+around building a megaton scale detector when searching for atmospheric 
+neutrinos. Obviously, a ``conventional'' detector for subatomic 
+particles\footnote{made up from e.\,g.\ wire chambers, solid state 
+scintillators, ...} is not feasible at this dimensions.
+
+The common choice for measuring natural (i.\,e.\ low) neutrino fluxes above 
+MeV energies are water-based Cherenkov detectors. A large volume of water or 
+ice serves as both target and detector: The neutrinos interact with the protons 
+and neutrons in the water molecules, and afterwards the relativistic charged 
+particles emit light via the Cherenkov effect, which propagates in the 
+transparent medium and can finally be detected (usually using photomultiplier 
+tubes) to reconstruct the underlying neutrino event.
+
+% TODO: find graphics
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{Cherenkov}
+%   \caption{Illustration of the Cherenkov effect (schematic). Picture taken from 
+% \cite{???}}
+% \label{fig:Cherenkov}
+% \end{figure}
+
+Whenever a charged particle moves through a dielectric medium, it shortly 
+polarises the atoms along its path, which in turn emit electromagnetic waves. 
+Usually waves from neighbouring cancel, such that no net effect is observable. 
+If, however, the velocity of the charged particle is higher than the local 
+phase velocity of light given by the index of refraction,
+\begin{equation}
+ v > c_{\mathrm{medium}} = c/n \quad,
+\end{equation}
+the wave fronts interfere constructively to form a shock front of conical 
+shape, similar to the Mach cone in supersonic motion (see 
+Fig.~\ref{fig:Cherenkov}). Photons are emitted almost\footnote{As group and 
+phase velocity differ, the angle is not quite 90\textdegree.} rectangular to 
+the shock front.
+
+The opening angle of the Cherenkov cone is given by the relation
+\begin{equation}
+  \cos \vartheta_{\mathrm{Ch}} = 
+      \frac{c_{\mathrm{medium}}}{v} = \frac{1}{\beta n} \quad.
+\end{equation}
+It depends on the particle's velocity and hence its energy. Usually, the 
+constituents of the particle showers are relativistic, so $\beta \simeq 1$ and 
+hence 
+\begin{equation}
+  \vartheta_{\mathrm{Ch}} \simeq \arccos \frac{1}{n_{\mathrm{ice}}} 
+      \simeq \mathrm{41^{\circ}}
+  \label{eqn:ChkovAngle}
+\end{equation}
+for ice with $n_{\mathrm{ice}} \simeq 1.32$ \cite{PriceWoschnagg}.
+
+The energy loss due to Cherenkov radiation is described by the Frank-Tamm 
+formula that can be found in \cite{Jackson}:
+\begin{equation}
+  \frac{dE}{dx} = \frac{(Z e)^2}{c^2} \int_{n(\omega)>1/\beta^2} \omega 
+    \left( 1 - \frac{1}{(\beta n(\omega))^2} \right) d\omega \quad.
+\end{equation}
+This integral does not diverge as the refractive index drops below 1 in the 
+ultraviolet region.
+
+Its contribution to the total energy dissipation of the particle\footnote{Which 
+is described by the Bethe-Bloch formula (\ref{eqn:bethe-bloch})} is marginal, 
+but from this the rate of photon production can be inferred. Expressed as an 
+energy spectrum, the number of photons generated per track length is
+\cite{PDG}
+\begin{equation}
+  \frac{d^2 N_{\gamma}}{dx\,dE} 
+    = \frac{\alpha Z^2}{\hbar c} \sin^2 \vartheta_{\mathrm{Ch}}
+    = \frac{\alpha Z^2}{\hbar c} \left(1-\frac{1}{(\beta n(E))^2}\right) \quad,
+\end{equation}
+where for simplicity the refractive index was treated as constant. Evaluating 
+the constants, one finds for particles of unit charge ($Z^2 = 1$) in polar ice:
+\begin{equation}
+  \frac{d^2 N_{\gamma}}{dx\,dE} 
+    \approx 370\,\sin^2\vartheta_{\mathrm{Ch}}\,\mathrm{eV}^{-1}\mathrm{cm}^{-1}
+    \approx 175 \,\mathrm{eV}^{-1}\mathrm{cm}^{-1} \quad.
+\end{equation}
+One also often finds a version of this formula giving a wavelength spectrum 
+\cite{PDG}:
+\begin{equation}
+  \frac{d^2 N_{\gamma}}{dx\,d\lambda} = \frac{2\pi\alpha Z^2}{\lambda^2}
+    \left(1-\frac{1}{(\beta n(\lambda))^2}\right) \quad.
+  \label{eqn:FrankTammWvl}
+\end{equation}
+Here the $1/\lambda^2$ dependency of the spectrum becomes evident\footnote{This 
+is the reason for the bright blue colour in which Cherenkov light appears to 
+the human eye.}. When using this wavelength dependent equation, one has to bear 
+in mind that $\lambda$ always means the \emph{vacuum} wavelength and not the 
+wavelength in the medium that differs from that in the vacuum by a factor of 
+$n$.
+
+As mentioned above, the energy dependent expression can be treated as constant 
+with good accuracy. Then the integration over a certain energy interval becomes 
+trivial and one can easily estimate the number of Cherenkov photons for a
+certain particle. Again using the values for polar ice, the calculation yields a 
+number of
+\begin{equation}
+  \frac{dN_{\gamma}}{dx} \approx 325 \,\mathrm{cm}^{-1}
+  \label{eqn:Chkov_Nphot_per_track_length}
+\end{equation}
+photons in the visible range between 300\,nm and 600\,nm of vacuum wavelength. 
