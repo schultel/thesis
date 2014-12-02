@@ -24,6 +24,8 @@ following.
 \subsection{Vacuum Oscillations}
 \label{sec:VacOsc}
 
+% TODO: Find textbook as reference
+
 There are two bases of eigenstates to which a neutrino can be decomposed: the
 flavour and the mass base. The flavour eigenstates are \ket{\nue}, \ket{\numu},
 and \ket{\nutau}, which will be summarised as \ket{\nu_\alpha}. These are the
@@ -31,7 +33,7 @@ eigenstates of the weak interaction, hence neutrinos are always produced as a
 pure flavour eigenstate and have to be projected back onto these eigenstates
 whenever they interact.
 
-On the other hand there are the three mass eigenstates \ket{\nu_1}, \ket{nu_2},
+On the other hand there are the three mass eigenstates \ket{\nu_1}, \ket{\nu_2},
 and \ket{\nu_3}, summarised as \ket{\nu_i}, corresponding to the three neutrino
 masses $m_i$. The absolute values of these masses are yet unknown, but since
 neutrino oscillations have been observed, at least two of them have to be
@@ -44,8 +46,50 @@ only depends on its mass.
 
 Changes between the two bases are carried out via the so-called PMNS
 matrix\footnote{After Bruno Pontecorvo, Ziro Maki, Masami Nagakawa, and Shoichi
-Sakata}
+Sakata} $\mathcal{U}_\mathrm{PMNS}$ that can be parametrised using three Euler
+angles \thet{ij}, also called mixing angles, and one complex phase angle
+$\delta$:
+\begin{equation}
+ \mathcal{U}_\mathrm{PMNS} =
+ \begin{pmatrix}
+  U_{e1} & U_{e2} & U_{e3} \\
+  U_{\mu 1} & U_{\mu 2} & U_{\mu 3} \\
+  U_{\tau 1} & U_{\tau 2} & U_{\tau 3}
+ \end{pmatrix}
+ =
+ \begin{pmatrix}
+  1 & 0 & 0 \\
+  0 & c_{23} & s_{23} \\
+  0 & -s_{23} & c_{23}
+ \end{pmatrix}
+ \begin{pmatrix}
+  c_{13} & 0 & s_{13}e^{-i\delta} \\
+  0 & 1 & 0 \\
+  -s_{13}e^{i\delta} & 0 & c_{13}
+ \end{pmatrix}
+ \begin{pmatrix}
+  c_{12} & s_{12} & 0 \\
+  -s_{12} & c_{12} & 0 \\
+  0 & 0 & 1
+ \end{pmatrix}
+\label{eqn:PMNS}
+\end{equation}
+Here, $s_{ij}$ and $c_{ij}$ are shorthands for $\sin\thet{ij}$ and
+$\cos\thet{ij}$, respectively. Transformations between flavour and mass base
+are then given by
+\begin{eqnarray}
+ \ket{\nu_\alpha} = \sum_i U_{\alpha i} \ket{\nu_i}\quad, \\
+ \ket{\nu_i} = \sum_\alpha U^*_{\alpha i} \ket{\nu_\alpha}\quad.
+\end{eqnarray}
 
+To ensure lepton number conservation, unitarity of $\mathcal{U}_\mathrm{PMNS}$
+has to be required. Any deviation from this can be interpreted as a hint for
+additional neutrino flavours that don't participate in the weak
+interaction\footnote{Measurements of the $Z^0$ decay width have shown that only
+three weakly interacting neutrino flavours exist \cite{Zwidth}---at least at
+masses up to half the $Z^0$ mass, $m_\nu < m_{Z^0}/2 = 45.6$\,GeV.}. Such
+signals have been reported (e.\,g.\ \cite{MiniBooNE}), but the overall
+picture remains inconclusive \cite{PDG}.
 
 \subsection{Neutrino Mass Hierarchy}
 \label{sec:NMH}
