@@ -44,6 +44,8 @@ the propagation of a neutrino in vacuum since the corresponding Hamiltonian
 \end{equation}
 only depends on its mass.
 
+\subsubsection{General Case}
+
 Changes between the two bases are carried out via the so-called PMNS
 matrix\footnote{After Bruno Pontecorvo, Ziro Maki, Masami Nagakawa, and Shoichi
 Sakata} $\mathcal{U}_\mathrm{PMNS}$ that can be parametrised using three Euler
@@ -78,8 +80,8 @@ Here, $s_{ij}$ and $c_{ij}$ are shorthands for $\sin\thet{ij}$ and
 $\cos\thet{ij}$, respectively. Transformations between flavour and mass base
 are then given by
 \begin{eqnarray}
- \ket{\nu_\alpha} = \sum_i U_{\alpha i} \ket{\nu_i}\quad, \\
- \ket{\nu_i} = \sum_\alpha U^*_{\alpha i} \ket{\nu_\alpha}\quad.
+ \ket{\nu_\alpha} = \sum_i U^*_{\alpha i} \ket{\nu_i}\quad, \\
+ \ket{\nu_i} = \sum_\alpha U_{\alpha i} \ket{\nu_\alpha}\quad.
 \end{eqnarray}
 
 To ensure lepton number conservation, unitarity of $\mathcal{U}_\mathrm{PMNS}$
@@ -90,6 +92,46 @@ three weakly interacting neutrino flavours exist \cite{Zwidth}---at least at
 masses up to half the $Z^0$ mass, $m_\nu < m_{Z^0}/2 = 45.6$\,GeV.}. Such
 signals have been reported (e.\,g.\ \cite{MiniBooNE}), but the overall
 picture remains inconclusive \cite{PDG}.
+
+% TODO: Check indices and stars!
+If now a pure flavour eigenstate \ket{\nu_\alpha} is produced at an energy $E$,
+the probability to detect it as \ket{\nu_\beta} after propagating over a
+distance $L$ has to be calculated according to
+\begin{equation}
+ P_{\alpha\to\beta} = \left|\Braket{\nu_\beta
+                            \left|\,\mathcal{U}^*\,\left|\,\hat{H}
+                             \,\right|\,\mathcal{U}\,\right|
+                             \nu_\alpha}\right|^2 \quad.
+ \label{eqn:osc_prob_hamiltonian}
+\end{equation}
+In the mass base, the propagation of the neutrinos can be described as plain
+waves,
+\begin{equation}
+ \Ket{\nu_i(t)} = e^{-i(E_i t - \vec{p}_i\cdot \vec{x})}\Ket{\nu_i(0)} \quad,
+\end{equation}
+and assuming relativistic neutrinos ($m_i \ll E_i \Rightarrow v \approx c$) one
+can approximate in natural units\footnote{$\hbar = c = 1$}
+\begin{eqnarray}
+ E_i =       \sqrt{ \vec{p}_i^2 - m_i^2 }
+     \approx p_i + \frac{m_i^2}{2p_i} \quad, \\
+ E_i t - \vec{p}_i\cdot \vec{x} = (p_i + \frac{m_i^2}{2p_i}) L - p_i L
+                                \approx \frac{m_i^2}{2E}
+\end{eqnarray}
+With this, (\ref{eqn:osc_prob_hamiltonian}) reduces to
+\begin{equation}
+ P_{\alpha\to\beta} = \left|\sum_i U^*_{\beta i} U_{\alpha i}
+                      e^{-i m_i^2 L / 2E} \right|^2 \quad.
+ \label{eqn:osc_prob_reduced}
+\end{equation}
+
+Due to the unitarity of $\mathcal{U}_\mathrm{PMNS}$, this oscillation
+probability collapses to $P_{\alpha\to\beta} = \delta_{\alpha\beta}$ if all
+$m_i$ are equal. Hence the observation of actual flavour conversion means that
+the $m_i$ are different from each other and in particular different from zero
+(at least two of them), contradicting the standard model prediction of
+vanishing neutrino masses.
+
+\subsubsection{Two Flavour Case}
 
 \subsection{Neutrino Mass Hierarchy}
 \label{sec:NMH}
