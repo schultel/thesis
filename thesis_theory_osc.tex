@@ -10,16 +10,20 @@ phenomena alone. Its shortcomings are e.\,g.\ the missing inclusion of the
 fourth fundamental force, gravity, and an explanation of the fundamental
 asymmetry between bosons and fermions.
 There are theoretical extensions to the Standard Model addressing these
-questions, such as quantum gravity \cite{QuantumGravity} and supersymmetry
-\cite{SUSY}, but all of them lack experimental evidence so far.
+questions, such as ``Grand Unified Theories'', supersymmetry, and many others 
+\cite{Nagashima}, but all of them lack experimental evidence so far.
 
 Yet there is one effect of so-called ``Physics beyond the Standard Model'' that
 has been well established experimentally during the past years: neutrino
 oscillations. As already mentioned in Sec.~\ref{sec:NusInSM}, this term refers
 to neutrinos changing their flavour when travelling over macroscopic distances,
 which can be explained by finite neutrino masses, while in the Standard Model
-they have zero mass. The theory behind this process will be described in the
-following.
+they have zero mass.
+
+The theory behind this process will be described in the following. In-depth
+treatments of this topic can be found in many textbooks, e.\,g.\
+\cite{GiuntiKim, Zuber, Nagashima, XingZhou}. In terms of notation, we will
+follow \cite{GiuntiKim} here.
 
 \subsection{Vacuum Oscillations}
 \label{sec:VacOsc}
@@ -34,8 +38,8 @@ pure flavour eigenstate and have to be projected back onto these eigenstates
 whenever they interact.
 
 On the other hand there are the three mass eigenstates \ket{\nu_1}, \ket{\nu_2},
-and \ket{\nu_3}, summarised as \ket{\nu_i}, corresponding to the three neutrino
-masses $m_i$. The absolute values of these masses are yet unknown, but since
+and \ket{\nu_3}, summarised as \ket{\nu_k}, corresponding to the three neutrino
+masses $m_k$. The absolute values of these masses are yet unknown, but since
 neutrino oscillations have been observed, at least two of them have to be
 different from zero. The mass eigenstates have to be considered when describing
 the propagation of a neutrino in vacuum since the corresponding Hamiltonian
@@ -48,9 +52,9 @@ only depends on its mass.
 
 Changes between the two bases are carried out via the so-called PMNS
 matrix\footnote{After Bruno Pontecorvo, Ziro Maki, Masami Nagakawa, and Shoichi
-Sakata} $\mathcal{U}_\mathrm{PMNS}$ that can be parametrised using three Euler
+Sakata.} $\mathcal{U}_\mathrm{PMNS}$ that can be parametrised using three Euler
 angles \thet{ij}, also called mixing angles, and one complex phase angle
-$\delta$:
+$\delta$ that is related to possible CP violation:
 \begin{equation}
  \mathcal{U}_\mathrm{PMNS} =
  \begin{pmatrix}
@@ -80,8 +84,8 @@ Here, $s_{ij}$ and $c_{ij}$ are shorthands for $\sin\thet{ij}$ and
 $\cos\thet{ij}$, respectively. Transformations between flavour and mass base
 are then given by
 \begin{eqnarray}
- \ket{\nu_\alpha} = \sum_i U^*_{\alpha i} \ket{\nu_i}\quad, \\
- \ket{\nu_i} = \sum_\alpha U_{\alpha i} \ket{\nu_\alpha}\quad.
+ \ket{\nu_\alpha} = \sum_i U^*_{\alpha k}\, \ket{\nu_k}\quad, \\
+ \ket{\nu_k} = \sum_\alpha U_{\alpha k}\, \ket{\nu_\alpha}\quad.
 \end{eqnarray}
 
 To ensure lepton number conservation, unitarity of $\mathcal{U}_\mathrm{PMNS}$
@@ -93,7 +97,6 @@ masses up to half the $Z^0$ mass, $m_\nu < m_{Z^0}/2 = 45.6$\,GeV.}. Such
 signals have been reported (e.\,g.\ \cite{MiniBooNE}), but the overall
 picture remains inconclusive \cite{PDG}.
 
-% TODO: Check indices and stars!
 If now a pure flavour eigenstate \ket{\nu_\alpha} is produced at an energy $E$,
 the probability to detect it as \ket{\nu_\beta} after propagating over a
 distance $L$ has to be calculated according to
@@ -107,31 +110,112 @@ distance $L$ has to be calculated according to
 In the mass base, the propagation of the neutrinos can be described as plain
 waves,
 \begin{equation}
- \Ket{\nu_i(t)} = e^{-i(E_i t - \vec{p}_i\cdot \vec{x})}\Ket{\nu_i(0)} \quad,
+ \Ket{\nu_i(t)} = \exp\left(-i(E_i t - \vec{p}_i\cdot \vec{x})\right)\,
+  \Ket{\nu_i(0)} \quad,
 \end{equation}
 and assuming relativistic neutrinos ($m_i \ll E_i \Rightarrow v \approx c$) one
 can approximate in natural units\footnote{$\hbar = c = 1$}
 \begin{eqnarray}
  E_i =       \sqrt{ \vec{p}_i^2 - m_i^2 }
      \approx p_i + \frac{m_i^2}{2p_i} \quad, \\
- E_i t - \vec{p}_i\cdot \vec{x} = (p_i + \frac{m_i^2}{2p_i}) L - p_i L
-                                \approx \frac{m_i^2}{2E}
+ E_i t - \vec{p}_i\cdot \vec{x} = \left(p_i + \frac{m_i^2}{2p_i}\right) L
+                                  - p_i L \approx \frac{m_i^2}{2E}
 \end{eqnarray}
 With this, (\ref{eqn:osc_prob_hamiltonian}) reduces to
 \begin{equation}
- P_{\alpha\to\beta} = \left|\sum_i U^*_{\beta i} U_{\alpha i}
-                      e^{-i m_i^2 L / 2E} \right|^2 \quad.
+%  P_{\alpha\to\beta} = \left|\sum_i U^*_{\beta i} U_{\alpha i} \,
+%                       e^{-i m_i^2 L / 2E} \right|^2 \quad.
+ P_{\alpha\to\beta} = \sum_{k,j} U^*_{\alpha k} U_{\beta k} U_{\alpha j}
+                        U^*_{\beta j}
+                        \exp\left( -i\frac{\dm{kj}L}{2E} \right)
  \label{eqn:osc_prob_reduced}
 \end{equation}
+with the squared mass differences
+\begin{equation}
+ \dm{kj} \equiv m^2_k - m^2_j \quad.
+\end{equation}
+Using the unitarity of $\mathcal{U}_\mathrm{PMNS}$,
+(\ref{eqn:osc_prob_reduced}) can be rewritten as
+\begin{eqnarray}
+ P_{\alpha\to\beta} = \delta_{\alpha\beta}
+                      &-& 2\sum_{k>j} \Re\left[ U^*_{\alpha k} U_{\beta k}
+                                              U_{\alpha j} U^*_{\beta j} \right]
+                                    \left[1-\cos \frac{\dm{kj}L}{2E} \right]
+                                    \nonumber \\
+                      &+& 2\sum_{k>j} \Im\left[ U^*_{\alpha k} U_{\beta k}
+                                              U_{\alpha j} U^*_{\beta j} \right]
+                                    \sin \frac{\dm{kj}L}{2E} \quad.
+\end{eqnarray}
 
-Due to the unitarity of $\mathcal{U}_\mathrm{PMNS}$, this oscillation
-probability collapses to $P_{\alpha\to\beta} = \delta_{\alpha\beta}$ if all
-$m_i$ are equal. Hence the observation of actual flavour conversion means that
-the $m_i$ are different from each other and in particular different from zero
-(at least two of them), contradicting the standard model prediction of
-vanishing neutrino masses.
+Obviously, this oscillation probability collapses to $P_{\alpha\to\beta} =
+\delta_{\alpha\beta}$ if all $m_i$ are equal. Hence the observation of actual
+flavour conversion means that the $m_i$ are different from each other and in
+particular different from zero (at least two of them), contradicting the
+standard model prediction of vanishing neutrino masses. Additionally, the
+second oscillatory term only contributes if there actually is CP violation in
+the neutrino sector---otherwise the mixing matrix (\ref{eqn:PMNS}) is real.
+
+For antineutrinos, the oscillation probability is derived fully analogue, only
+with $\mathcal{U}_\mathrm{PMNS}$ being replaced by its complex conjugate. Hence
+differing vacuum oscillation probabilities for neutrinos and antineutrinos are
+a proof of CP violation.
 
 \subsubsection{Two Flavour Case}
+
+In many cases\footnote{In particular, if the survival probability of a certain
+flavour is measured.} it is sufficient to consider only two neutrino flavours in
+the oscillation. Then there is only one mass splitting
+\begin{equation}
+ \dm{} \equiv \dm{21} \equiv m^2_2 - m^2_1
+\end{equation}
+and the mixing matrix $\mathcal{U}$ can be parametrised by one effective mixing
+angle
+\begin{equation}
+ \mathcal{U} =
+ \begin{pmatrix}
+ \cos\vartheta & \sin\vartheta \\
+ - \sin\vartheta & \cos\vartheta
+ \end{pmatrix} \quad.
+\end{equation}
+The expression for the transition probability simplifies to
+\begin{equation}
+ P_{\alpha\to\beta} = \sin^2 2\vartheta \sin^2\left( \frac{\dm{}L}{4E} \right)
+                    = \sin^2 2\vartheta\sin^2\left(\frac{\pi\,L}{L^\mathrm{osc}}
+                       \right)\quad,
+ \label{eqn:twoflavour_prob}
+\end{equation}
+introducing the oscillation length
+\begin{equation}
+ L^\mathrm{osc} \equiv \frac{4\pi\,E}{\dm{}}
+  \approx 2.47 \frac{E\,[\si{\GeV}]}{\dm{}\,[\si{\eVsq}]} \si{\km} \qquad
+  (\alpha \neq \beta) \quad.
+\end{equation}
+
+From (\ref{eqn:twoflavour_prob}), the two different groups of parameters in
+neutrino oscillation phenomenology and how they influence the oscillation
+probabilities, become obvious:
+The mixing angles define the amplitude of the oscillation, with $\vartheta
+\approx \ang{45}$ giving rise to so-called ``maximum mixing'' where a full
+transition from one flavour to another is possible. The mass splittings
+determine the frequency at a given neutrino energy, expressed through the
+oscillation length at which the first oscillation minimum appears.
+
+So from an experimental point of view, placing a detector at a distance $L =
+L^\mathrm{osc}$ from the neutrino source is preferential, since here the
+oscillation effects are strongest. If $L \ll L^\mathrm{osc}$, the flavour
+transition has not yet happened while at $L \gg L^\mathrm{osc}$ only the
+average transition probability
+\begin{equation}
+ \left\langle P_{\alpha\to\beta} \right\rangle
+  = \frac{1}{2}\sin^2 2\vartheta
+\end{equation}
+can be measured and no information on \dm{} can be obtained\footnote{Here it
+is assumed that in a real experiment one will always have a continuous
+neutrino energy spectrum and hence a distribution of oscillation lengths.
+Hence the fast oscillations will smear out on a distance $L \gg
+L^\mathrm{osc}$.}.
+
+\subsubsection{Current Status}
 
 \subsection{Neutrino Mass Hierarchy}
 \label{sec:NMH}
