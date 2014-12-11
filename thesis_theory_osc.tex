@@ -42,11 +42,14 @@ and \ket{\nu_3}, summarised as \ket{\nu_k}, corresponding to the three neutrino
 masses $m_k$. The absolute values of these masses are yet unknown, but since
 neutrino oscillations have been observed, at least two of them have to be
 different from zero. The mass eigenstates have to be considered when describing
-the propagation of a neutrino in vacuum since the corresponding Hamiltonian
+the propagation of a neutrino in vacuum since they are the eigenstates of the
+corresponding Hamiltonian
 \begin{equation}
- \hat{H} = -\frac{\hbar^2}{2m}\nabla^2
+%  \hat{H} = -\frac{\hbar^2}{2m}\nabla^2
+ \hat{H}\,\ket{\nu_k} = E_k\,\ket{\nu_k} \quad.
+ \label{eqn:vac_hamiltonian}
 \end{equation}
-only depends on its mass.
+% only depends on its mass.
 
 \subsubsection{General Case}
 
@@ -102,7 +105,7 @@ the probability to detect it as \ket{\nu_\beta} after propagating over a
 distance $L$ has to be calculated according to
 \begin{equation}
  P_{\alpha\to\beta} = \left|\Braket{\nu_\beta
-                            \left|\,\mathcal{U}^*\,\left|\,\hat{H}
+                            \left|\,\mathcal{U}^\dagger\,\left|\,\hat{H}
                              \,\right|\,\mathcal{U}\,\right|
                              \nu_\alpha}\right|^2 \quad.
  \label{eqn:osc_prob_hamiltonian}
@@ -134,8 +137,22 @@ with the squared mass differences
 \begin{equation}
  \dm{kj} \equiv m^2_k - m^2_j \quad.
 \end{equation}
-Using the unitarity of $\mathcal{U}_\mathrm{PMNS}$,
-(\ref{eqn:osc_prob_reduced}) can be rewritten as
+Here we note that obviously in the mass base the Hamiltonian can be replaced by
+an effective one containing the squared masses:
+\begin{equation}
+ \hat{H}^\mathrm{eff}
+ = \frac{1}{2E}\,\mathrm{diag}\left(m_1^2,\,m_2^2,\,m_3^2\right)
+ = \frac{m_1^2}{2E}\mathlarger{\mathlarger{\mathbbm{1}}} +
+   \frac{1}{2E}\,\mathrm{diag}\left(0,\,\dm{21},\,\dm{31}\right)
+ \label{eqn:vac_eff_hamiltonian}
+\end{equation}
+We can even ignore the first summand on the r.\,h.\,s.\ of the above equation
+since it will only introduce an unobservable global phase shift. This
+simplification will prove handy when discussing oscillations in matter in
+Sec.~\ref{sec:matter_osc}.
+
+Using the unitarity of $\mathcal{U}_\mathrm{PMNS}$, (\ref{eqn:osc_prob_reduced})
+can now be rewritten as
 \begin{eqnarray}
  P_{\alpha\to\beta} = \delta_{\alpha\beta}
                       &-& 2\sum_{k>j} \Re\left[ U^*_{\alpha k} U_{\beta k}
@@ -283,6 +300,101 @@ discussed in the following section.
 \subsection{Oscillations in Matter}
 \label{sec:matter_osc}
 
+\begin{figure}
+ \centering
+ \subfloat[\label{fig:coh_CC}]{
+  \begin{fmffile}{coh_CC}
+    \begin{fmfgraph*}(40,30) \fmfpen{thin}
+      \fmfstraight
+      \fmfleft{i00,i0,i2,i3,i41,i42,i5,i51,i6,i1}
+      \fmfright{o00,o0,o2,o3,o41,o42,o5,o51,o6,o1}
+      \fmf{fermion}{i0,v0,o0}
+      \fmflabel{$e^-$}{i0}
+      \fmflabel{$\nue$}{o0}
+      \fmf{fermion}{i1,v1,o1}
+      \fmflabel{$\nue$}{i1}
+      \fmflabel{$e^-$}{o1}
+      \fmf{dashes,lab=$W$,l.side=left,tension=1.}{v0,v1}
+    \end{fmfgraph*}
+  \end{fmffile}
+  \write18{mpost coh_CC}
+ }
+ \hspace{2cm}
+ \subfloat[\label{fig:coh_NC}]{
+  \begin{fmffile}{coh_NC}
+    \begin{fmfgraph*}(40,30) \fmfpen{thin}
+      \fmfstraight
+      \fmfleft{i00,i0,i2,i3,i41,i42,i5,i51,i6,i1}
+      \fmfright{o00,o0,o2,o3,o41,o42,o5,o51,o6,o1}
+      \fmf{fermion}{i0,v0,o0}
+      \fmflabel{$e^-,\,p,\,n$}{i0}
+      \fmflabel{$e^-,\,p,\,n$}{o0}
+      \fmf{fermion}{i1,v1,o1}
+      \fmflabel{$\nu_x$}{i1}
+      \fmflabel{$\nu_x$}{o1}
+      \fmf{dashes,lab=$Z^0$,l.side=left,tension=1.}{v0,v1}
+    \end{fmfgraph*}
+  \end{fmffile}
+  \write18{mpost coh_NC}
+ }
+ \caption{Feynman diagrams for the charged \protect\subref{fig:coh_CC} and
+  neutral \protect\subref{fig:coh_NC} current contributions to coherent forward
+  scattering in matter.}
+\label{fig:coherent_scattering}
+\end{figure}
+
+
+When neutrinos are passing through matter, they will undergo coherent forward
+scattering off the electrons and nucleons in their path. Since the matter
+distribution is continuous, this can be interpreted as a matter potential which
+the neutrinos are experiencing, leading to a change of their effective mass
+similar to photons passing through a transparent medium.
+
+Neutral current interactions, as shown in Fig.~\ref{fig:coh_NC}, are open to
+all neutrino flavours in a similar way. Here the contributions from electrons
+and protons cancel since their associated weak currents have opposite
+sign\footnote{Assuming that the matter is macroscopically neutral, hence
+electrons and protons have equal number densities.} and only the neutron
+potential remains:
+\begin{equation}
+ V_\mathrm{NC} = -\frac{1}{2}\sqrt{2}\,G_F\,N_n
+\end{equation}
+But since this potential affects all flavours and hence all mass eigenstates in
+the same way, it also changes all effective masses by the same amount, but
+leaves the mass splittings unaffected.
+Charged current scattering (Fig.~\ref{fig:coh_CC}) on the other hand is only
+possible for \nue as electrons are the only charged leptons present in ordinary
+matter. The CC matter potential can be expressed as
+\begin{equation}
+ V_\mathrm{CC} = \sqrt{2}\,G_F\,N_e \quad.
+\end{equation}
+
+This means that the eigenvalue equation (\ref{eqn:vac_hamiltonian}) has to be
+modified to include the matter potential. Since the potential acts on the
+flavour eigenstates, we first have to transfer the effective vacuum Hamiltonian
+(\ref{eqn:vac_eff_hamiltonian}) into the flavour base and then add the
+potential:
+\begin{equation}
+ \hat{H}_\mathrm{matter} = \mathcal{U}^\dagger \hat{H}_\mathrm{eff}\,\mathcal{U}
+                           + \mathrm{diag}\left(V_\mathrm{NC}+V_\mathrm{CC},\,
+                                            V_\mathrm{NC},\,V_\mathrm{NC}\right)
+\end{equation}
+We can now neglect constant contributions again which leaves us with the
+following effective Hamiltonian in matter:
+\begin{equation}
+ \hat{H}_\mathrm{matter}^\mathrm{eff} =
+   \frac{1}{2E}\mathcal{U}^\dagger
+     \mathrm{diag}\left(0,\,\dm{21},\,\dm{31}\right)\,\mathcal{U}
+   + \mathrm{diag}\left(V_\mathrm{CC},\,0,\,0\right)
+ \label{eqn:matter_eff_hamiltonian}
+\end{equation}
+
+
+\subsubsection{MSW Effect}
+\label{sec:MSW}
+
+\subsubsection{Parametric Resonances}
+\label{sec:ParamRes}
 
 \subsection{Oscillation Experiments}
 \label{sec:OscExp}
