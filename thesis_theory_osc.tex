@@ -28,8 +28,6 @@ follow \cite{GiuntiKim} here.
 \subsection{Vacuum Oscillations}
 \label{sec:VacOsc}
 
-% TODO: Find textbook as reference
-
 There are two bases of eigenstates to which a neutrino can be decomposed: the
 flavour and the mass base. The flavour eigenstates are \ket{\nue}, \ket{\numu},
 and \ket{\nutau}, which will be summarised as \ket{\nu_\alpha}. These are the
@@ -100,6 +98,8 @@ masses up to half the $Z^0$ mass, $m_\nu < m_{Z^0}/2 = 45.6$\,GeV.}. Such
 signals have been reported (e.\,g.\ \cite{MiniBooNE}), but the overall
 picture remains inconclusive \cite{PDG}.
 
+% TODO: Make Hamiltonian matrix formalism more clear
+
 If now a pure flavour eigenstate \ket{\nu_\alpha} is produced at an energy $E$,
 the probability to detect it as \ket{\nu_\beta} after propagating over a
 distance $L$ has to be calculated according to
@@ -128,6 +128,7 @@ With this, (\ref{eqn:osc_prob_hamiltonian}) reduces to
 \begin{equation}
 %  P_{\alpha\to\beta} = \left|\sum_i U^*_{\beta i} U_{\alpha i} \,
 %                       e^{-i m_i^2 L / 2E} \right|^2 \quad.
+%  FIXME: Should there be the absolute?
  P_{\alpha\to\beta} = \sum_{k,j} U^*_{\alpha k} U_{\beta k} U_{\alpha j}
                         U^*_{\beta j}
                         \exp\left( -i\frac{\dm{kj}L}{2E} \right)
@@ -383,15 +384,28 @@ We can now neglect constant contributions again which leaves us with the
 following effective Hamiltonian in matter:
 \begin{equation}
  \hat{H}_\mathrm{matter}^\mathrm{eff} =
-   \frac{1}{2E}\mathcal{U}^\dagger
+   \frac{1}{2E}\left[\mathcal{U}^\dagger
      \mathrm{diag}\left(0,\,\dm{21},\,\dm{31}\right)\,\mathcal{U}
-   + \mathrm{diag}\left(V_\mathrm{CC},\,0,\,0\right)
+   + \mathrm{diag}\left(A_\mathrm{CC},\,0,\,0\right)\right] \quad,
  \label{eqn:matter_eff_hamiltonian}
 \end{equation}
-
+where
+\begin{equation}
+ A_\mathrm{CC} \equiv 2E\, V_\mathrm{CC} = 2 \sqrt{2}\,E \,G_F\,N_e \quad.
+\end{equation}
 
 \subsubsection{MSW Effect}
 \label{sec:MSW}
+
+For simplicity, we will go back to the two flavour case again. Then 
+(\ref{eqn:matter_eff_hamiltonian}) reduces to
+\begin{equation}
+ \hat{H}_\mathrm{matter}^\mathrm{eff} =
+   \frac{1}{2E}\left[\mathcal{U}^\dagger    
+      \mathrm{diag}\left(0,\,\dm{}\right)\,\mathcal{U}
+   + \mathrm{diag}\left(A_\mathrm{CC},\,0\right)\right] \quad.
+\end{equation}
+
 
 \subsubsection{Parametric Resonances}
 \label{sec:ParamRes}
