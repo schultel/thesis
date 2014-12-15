@@ -233,9 +233,6 @@ neutrino energy spectrum and hence a distribution of oscillation lengths.
 Hence the fast oscillations will smear out on a distance $L \gg
 L^\mathrm{osc}$.}.
 
-% \subsubsection{Current Status of Neutrino Mixing Parameters}
-% \label{sec:MixingParams}
-
 \subsection{Neutrino Mass Hierarchy}
 \label{sec:NMH}
 
@@ -349,7 +346,8 @@ When neutrinos are passing through matter, they will undergo coherent forward
 scattering off the electrons and nucleons in their path. Since the matter
 distribution is continuous, this can be interpreted as a matter potential which
 the neutrinos are experiencing, leading to a change of their effective mass
-similar to photons passing through a transparent medium.
+similar to photons passing through a transparent medium. The implications of
+this scenario were first described by L.\ Wolfenstein in 1978 \cite{Wolfenstein}
 
 Neutral current interactions, as shown in Fig.~\ref{fig:coh_NC}, are open to
 all neutrino flavours in a similar way. Here the contributions from electrons
@@ -393,6 +391,13 @@ where
 \begin{equation}
  A_\mathrm{CC} \equiv 2E\, V_\mathrm{CC} = 2 \sqrt{2}\,E \,G_F\,N_e \quad.
 \end{equation}
+Here it is very important to note that for antineutrinos the matter potential
+has the opposite sign. In particular, \nuebar will feel a charged current
+potential of
+\begin{equation}
+ \bar{A}_\mathrm{CC} = - A_\mathrm{CC} \quad.
+\end{equation}
+
 
 \subsubsection{MSW Effect}
 \label{sec:MSW}
@@ -405,13 +410,76 @@ For simplicity, we will go back to the two flavour case again. Then
       \mathrm{diag}\left(0,\,\dm{}\right)\,\mathcal{U}
    + \mathrm{diag}\left(A_\mathrm{CC},\,0\right)\right] \quad.
 \end{equation}
+By diagonalising this matrix we can now find the effective mixing matrix and
+the mass splitting in matter:
+\begin{equation}
+ \mathcal{U}^\dagger_\mathrm{matter} \hat{H}_\mathrm{matter}^\mathrm{eff}
+  \mathcal{U}_\mathrm{matter} = \hat{H}_\mathrm{matter}^\mathrm{diag} \quad,
+\end{equation}
+where
+\begin{equation}
+ \hat{H}_\mathrm{matter}^\mathrm{diag} =
+   \mathrm{diag}\left(-\dm{\mathrm{M}},\,\dm{\mathrm{M}}\right)
+\end{equation}
+and
+\begin{equation}
+ \mathcal{U}_\mathrm{matter} = \begin{pmatrix}
+ \cos\thet{\mathrm{M}} & \sin\thet{\mathrm{M}} \\
+ -\sin\thet{\mathrm{M}} & \cos\thet{\mathrm{M}} 
+                               \end{pmatrix} \quad.
+\end{equation}
+The effective mass splitting is then given by
+\begin{equation}
+ \dm{\mathrm{M}} = \sqrt{\left(\dm{}\cos 2\thet{} - A_\mathrm{CC}\right)^2
+                         + \left(\dm{}\sin 2\thet{}\right)^2 } \quad,
+\end{equation}
+while
+\begin{equation}
+ \tan 2\thet{\mathrm{M}} = \frac{\tan 2\thet{}}{1 -
+    \frac{A_\mathrm{CC}}{\dm{}\cos 2\thet{}}}
+ \label{eqn:matter_angle}
+\end{equation}
+is the effective mixing angle in matter.
+
+In 1985, S.\ P.\ Mikheyev and A.\ Y.\ Smirnov discovered \cite{MS85, MS86} that
+for
+\begin{equation}
+ A_\mathrm{CC}^\mathrm{res} = \dm{} \cos 2 \thet{} \Leftrightarrow
+ N_e^\mathrm{res} = \frac{\dm{}\cos 2\thet{}}{2\sqrt{2}\,E\,G_F}
+\end{equation}
+a resonance exists where the effective mixing angle approaches $\pi/4$, meaning
+that the mixing amplitude $\sin^2 2\thet{}$ in (\ref{eqn:twoflavour_prob})
+becomes equal to one and a full transition from one flavour to another is
+possible. At the same time, the mass splitting becomes minimal.
+
+Another thing to note is that in (\ref{eqn:matter_angle}), both $A_\mathrm{CC}$
+and \dm{} can carry a negative sign. Thus one can infer the sign of \dm{} by
+observing the so-called MSW resonance\footnote{After Mikheyev, Smirnov, and
+Wolfenstein.} in either the neutrino or the antineutrino channel. This has been
+done by the SNO experiment, which measured the flux of solar \nue and the
+all-flavour flux of solar neutrinos independently from each other with high
+precision \cite{SNO}. Clear signs for a MSW resonance were detected for the
+solar \nue\footnote{No antineutrinos are produced in the Sun, cf.\
+Sec~\ref{sec:NuSources}} travelling through the high electron density of the
+inner Sun, hence one could conclude that the relevant mass splitting for
+the oscillation of solar neutrinos, \dm{21}, has a positive sign.
+
+In the planned PINGU experiment (for details, see Sec.~\ref{sec:PINGU}), a
+similar measurement it envisaged to determine the sign of the other mass
+splitting \dm{31}. Here the matter potential of the Earth will be used to
+observe a MSW resonance either in the atmospheric neutrino or antineutrino
+channel \cite{Akhmedov, LoI}. The details of this measurement will be discussed
+in Sec.~\ref{sec:PINGUosc}.
+
+% \subsubsection{Parametric Resonances}
+% \label{sec:ParamRes}
 
 
-\subsubsection{Parametric Resonances}
-\label{sec:ParamRes}
 
 \subsection{Oscillation Experiments}
 \label{sec:OscExp}
+
+
 
 \subsubsection{Solar Neutrinos}
 
@@ -420,4 +488,10 @@ For simplicity, we will go back to the two flavour case again. Then
 \subsubsection{Reactor Neutrinos}
 
 \subsubsection{Neutrino Beams}
+
+\subsubsection{Current Status of Neutrino Mixing Parameters}
+\label{sec:MixingParams}
+
+\subsection{Mass Hierarchy Signature in PINGU}
+\label{sec:PINGUosc}
 
