@@ -38,6 +38,7 @@ thesis11:
 	# makeglossaries $(THESIS)
 	pdflatex  $(EXTRACMD) $(THESIS)
 	pdflatex  $(EXTRACMD) $(THESIS)
+	cp 		  $(THESIS).pdf ~/Dropbox/Arbeit/
 
 cover:
 	pdflatex  $(EXTRACMD) cover_only
