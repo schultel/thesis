@@ -582,6 +582,75 @@ named Daya Bay II.} in Sec.~\ref{sec:JUNO}.
 \subsubsection{Current Status of Neutrino Mixing Parameters}
 \label{sec:MixingParams}
 
+Global fits to neutrino oscillation results from different experiments are
+available from various authors and usually constantly updated once new results
+are published. For this thesis, the best fit values and uncertainties from Fogli
+et al.\ released in 2012 \cite{Fogli2012} are used, which include the results
+on \thet{13} from Daya Bay and RENO that where published shortly before. There
+are more recent analyses available (e.\,g.\ \cite{Capozzi2013,
+GonzalezGarcia2014}), but the differences are small as no major results have
+come out in the meantime.
+% FIXME: Use GonzalezGarcia2014 for the calculation? Most recent and best
+% convention for mass splitting
+
+Since one of the neutrino mass splittings has a much smaller value than the
+others, the convention is to label the two mass eigenstates that are close to
+each other as $m_1$ and $m_2$, with $m_1 < m_2$ since the sign of the small
+splitting has been determined using solar neutrinos (cf.\ Sec.~\ref{sec:MSW}).
+The third eigenstate $m_3$ is then separated from the first two, either
+above---the ``normal'' mass hierarchy (NH)---or below in the ``inverted''
+hierarchy (IH). This is illustrated in Fig.~\ref{fig:NMH}.
+% TODO: Make own graphic or steal one? Michi?
+
+Since only two of the neutrino mass splittings are independent, Fogli et al.\
+choose to do their analysis in terms of one small and one large mass splitting:
+\begin{equation}
+ \delta m^2 \equiv m_2^2 - m_1^2 = \dm{21} > 0
+\end{equation}
+\begin{equation}
+ \dm{} \equiv m_3^2 - \left(m_2^2 + m_1^2\right)/2 = \frac{\dm{31}+\dm{32}}{2}
+   = \dm{31} + \dm{21}/2 \quad
+   \begin{cases}
+    \quad > 0 &\mbox{for NH} \\ \quad < 0 &\mbox{for IH}
+   \end{cases}
+\end{equation}
+The values and $1\sigma$ ranges given in \cite{Fogli2012} for $\delta m$,
+\dm{}, \sinsq{\thet{12}}, \sinsq{\thet{23}}. and \sinsq{\thet{13}} have to be
+converted to \dm{21} and \dm{31} and the values of the mixing angles in degrees
+in order to be processed by the oscillation code calculating the transition and
+survival probabilities. These values, which will be used as the \emph{fiducial}
+oscillation parameters, are listed in Tab.~\ref{tab:fiducial_osc}. The CP
+violating phase $\delta_\mathrm{CP}$ is set to zero.
+
+\begin{table}
+\caption{Fiducial values of the oscillation parameters, according to Fogli et
+al., used throughout this thesis.}
+\label{tab:fiducial_osc}
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Parameter & Best Fit & $1\sigma$ Error\\
+\midrule
+\dm{31} [$10^{-3}\si{eV}^2$] &
+\begin{tabular}[c]{@{}c@{}} 2.46 (NH) \\ -2.38 (IH)\end{tabular} & 0.08 \\
+\dm{21} [$10^{-5}\si{eV}^2$] & 7.54 & 0.24 \\
+\thet{12} [$^\circ$]         & 33.6 & 1.1 \\
+\thet{23} [$^\circ$]         & 38.6 & 1.3 \\
+\thet{13} [$^\circ$]         & 8.93 & 0.47 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+As one can see, the main unknown is the sign of \dm{31}, which will be assessed
+by PINGU. Another remaining question is the octant of \thet{23}, i.\,e.\
+whether its value is below or above \ang{45}. This unresolved as of now since
+most oscillation experiments---including PINGU---cannot measure the angle
+directly, but rather \sinsq{2\thet{23}}, which is symmetric about \ang{45}.
+Thus PINGU itself cannot determine the octant of \thet{23} either, however the
+significance of its hierarchy measurement is enhanced if $\thet{23} >
+\ang{45}$, as we will see in Sec.~\ref{sec:results_octant}.
+
 \subsection{Mass Hierarchy Signature in PINGU}
 \label{sec:PINGUosc}
 
