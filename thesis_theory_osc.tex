@@ -593,6 +593,14 @@ come out in the meantime.
 % FIXME: Use GonzalezGarcia2014 for the calculation? Most recent and best
 % convention for mass splitting
 
+\begin{figure}
+ \centering
+ \includegraphics[width=0.6\textwidth]{NMH}
+ \caption{Schematic depiction of the ordering of neutrino mass eigenstates in
+    both normal and inverted mass hierarchy. The definition of \dm{} and $\delta
+    m^2$ according to Fogli et al.\ \cite{Fogli2012} is indicated as well.}
+ \label{fig:NMH}
+\end{figure} 
 Since one of the neutrino mass splittings has a much smaller value than the
 others, the convention is to label the two mass eigenstates that are close to
 each other as $m_1$ and $m_2$, with $m_1 < m_2$ since the sign of the small
@@ -600,7 +608,6 @@ splitting has been determined using solar neutrinos (cf.\ Sec.~\ref{sec:MSW}).
 The third eigenstate $m_3$ is then separated from the first two, either
 above---the ``normal'' mass hierarchy (NH)---or below in the ``inverted''
 hierarchy (IH). This is illustrated in Fig.~\ref{fig:NMH}.
-% TODO: Make own graphic or steal one? Michi?
 
 Since only two of the neutrino mass splittings are independent, Fogli et al.\
 choose to do their analysis in terms of one small and one large mass splitting:
@@ -654,3 +661,122 @@ significance of its hierarchy measurement is enhanced if $\thet{23} >
 \subsection{Mass Hierarchy Signature in PINGU}
 \label{sec:PINGUosc}
 
+In the previous sections, we have discussed all ingredients needed to
+understand the measurement of the neutrino mass hierarchy PINGU is supposed to
+perform. These are
+\begin{itemize}
+ \item the atmospheric flux of \nue, \numu, and their antiparticles
+       (Sec.~\ref{sec:AtmNus});
+ \item their probabilities to convert to another flavour via neutrino
+       oscillations in matter, especially the occurrence of the MSW resonance
+       (Sec.~\ref{sec:matter_osc});
+ \item and the cross-sections and peculiarities for the interaction of different
+       neutrino flavours with the target material (Sec.~\ref{sec:NuDetection}).
+\end{itemize}
+
+Starting off with the atmospheric neutrino flux, we have a steeply falling
+power law spectrum with an index of $\gamma \approx -3.7$ in all four flavours.
+The normalisation for \numu is about twice the \nue normalisation, while
+neutrinos and antineutrinos of the same flavour have about the same flux. This
+flux has to be multiplied by the oscillation probabilities, which depend not
+only on the neutrinos' energy, but also on the zenith angle at which they 
+arrive, since this determines the distance travelled since their production in
+the Earth's atmosphere as well as the amount of matter traversed on their way
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.7\textwidth]{PREM}
+ \caption{The PREM Earth density profile \cite{PREM}.}
+ \label{fig:PREM}
+\end{figure}
+through the Earth.
+
+In Figs.~\ref{fig:nue_to_numu} and \ref{fig:numu_to_numu}, the oscillation
+probabilities for \nue to \numu and \numu to \numu are shown as examples. They
+have been calculated using the AtmoWeights package that was developed by the
+IceCube collaboration \cite{AtmoWeights} using the ``Preliminary Reference Earth
+Model'' (PREM) \cite{PREM} for the Earth's density profile, shown in
+Fig.~\ref{fig:PREM}. It is easily recognisable that the oscillation
+probabilities for $\nu_\alpha \to \nu_\beta$ are in principle equal to those for
+$\bar\nu_\alpha \to \bar\nu_\beta$, apart from the MSW resonance, easy to spot
+in the energy range from 2 to \SI{10}{\GeV} for zenith angles below
+$\coszen \approx -0.4$, that appears in neutrinos for the normal and in
+antineutrinos for the inverted mass hierarchy.
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.95\textwidth]{osc_nue_to_numu}
+ \caption{Oscillation probabilities for \nue to \numu (top) and \nuebar to
+          \numubar for both normal and inverted mass hierarchy.}
+ \label{fig:nue_to_numu}
+\end{figure}
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=0.95\textwidth]{osc_numu_to_numu}
+ \caption{Oscillation probabilities for \numu to \numu (top) and \numubar to
+          \numubar for both normal and inverted mass hierarchy.}
+ \label{fig:numu_to_numu}
+\end{figure}
+
+\enlargethispage{\baselineskip}
+But since the fluxes of neutrinos and antineutrinos of the same flavour are 
+essentially equal and PINGU cannot discriminate between them\footnote{The only
+method to do this would be to identify the electrical polarity of the lepton
+produced in CC interactions. However it is unrealistic to generate the required
+magnetic field in the antarctic glacier, where PINGU will be located (see
+Secs.~\ref{sec:ICDC} and \ref{sec:PINGU}).}, the question is how the different
+hierarchies can show up in the recorded data. Here the different cross-sections
+for neutrinos and antineutrinos come into effect. As one can see from
+Fig.~\ref{fig:NuXsec_GeV}, at the relevant energies just below \SI{10}{\GeV}
+the cross section for antineutrino interactions with an hadronic target
+material is about a factor of two lower than the one for neutrinos. Thus the
+MSW resonance will appear in the data in any case, but much more prominent if
+the hierarchy is normal, as in this case roughly \sfrac{2}{3} of the
+events---the neutrino-induced ones---are affected by it, while in the inverted
+hierarchy only the remaining third caused by antineutrinos is.
+
+So the quantities of interest are the sum of neutrino and antineutrino events
+for the different flavours and how the differ assuming normal and inverted mass
+hierarchy. To assess how significant the difference is in a given bin in the
+($E$, \coszen) plane, we define a bin-wise \delchi similar to \cite{Akhmedov} as
+\begin{equation}
+ \delchi = \frac{N_\mathrm{NH} - N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}} \quad,
+\end{equation}
+where $N_\mathrm{NH}$ and $N_\mathrm{IH}$ are the expected number of events in
+the normal and inverted hierarchy case, respectively. Plots of the event rates
+and their weighted difference \delchi are shown in
+Figs.~\ref{fig:true_akhmedov_nue} to \ref{fig:true_akhmedov_nutau}. In this
+calculation enter not the bare cross-sections, but rather the \emph{effective
+areas} for the different flavours, which also include the detection threshold
+and selection efficiency of the detector. This will be discussed in detail in
+Sec.~\ref{sec:sim_input}.
+
+Comparing the different flavours one notes that the largest overall scale of the
+\delchi values appears in the \numu channel, but the contiguous regions of
+either positive or negative \delchi are rather small and alternate rapidly.
+Since a realistic detector has a limited resolution in reconstructing individual
+events, it will be challenging to resolve these fine structures in the data. In
+the \nue channel the features are less pronounced, but more extended than for
+\numu, offering a more robust measurement.
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=\textwidth]{true_akhmedov_nue}
+ \caption{Expected \nue + \nuebar CC event rates in PINGU (arbitrary units) for
+    normal and inverted mass hierarchy and their weighted difference \delchi.}
+ \label{fig:true_akhmedov_nue}
+\end{figure}
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=\textwidth]{true_akhmedov_numu}
+ \caption{Same as Fig.~\ref{fig:true_akhmedov_nue}, but for \numu + \numubar
+    events}
+ \label{fig:true_akhmedov_numu}
+\end{figure}
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=\textwidth]{true_akhmedov_nutau}
+ \caption{Same as Fig.~\ref{fig:true_akhmedov_nue}, but for \nutau + \nutaubar
+    events}
+ \label{fig:true_akhmedov_nutau}
+\end{figure}
