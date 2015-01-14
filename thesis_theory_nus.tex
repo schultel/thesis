@@ -4,11 +4,13 @@
 %==============================================================================
 
 In this chapter, the theoretical background of this thesis will be discussed
-in detail. This covers both physics as well as the techniques used for data
-analysis. In the physics part, we will concentrate on neutrinos and their
-properties and interactions, with special emphasis on neutrino oscillations.
-The analysis part will describe the Fisher Information Matrix as a tool to
-efficiently characterise a multi-dimensional likelihood landscape.
+in detail.
+% This covers both physics as well as the techniques used for data analysis.
+% In the physics part, we
+We will concentrate on neutrinos and their properties and interactions, with
+special emphasis on neutrino oscillations.
+% The analysis part will describe the Fisher Information Matrix as a tool to
+% efficiently characterise a multi-dimensional likelihood landscape.
 
 %==============================================================================
 \section{Neutrinos in the Standard Model}
@@ -33,11 +35,12 @@ experiments.
 \label{fig:SMchart}
 \end{figure}
 
-The particles, listed in Fig.~\ref{fig:SMchart} can be divided in two classes:
+The particles, listed in Fig.~\ref{fig:SMchart}, can be divided in two classes:
 fermions with an intrinsic spin of 1/2 make up everything that is usually called
-``matter'', and exchange bosons with integer (1 in most cases) spin that convey
-the interactions and couple to the respective charge. Formally, the bosons are
-the generators of the gauge symmetry group of the particular interaction.
+``matter'', and exchange bosons with integer (one in most cases) spin that
+convey the interactions and couple to the respective charge. Formally, the
+bosons are the generators of the gauge symmetry group of the particular
+interaction.
 
 This means that the strong force, which obeys a \emph{SU(3)} symmetry, has eight
 generators that are represented by eight gluons $g$. The gluons couple to the
@@ -45,16 +48,16 @@ strong charge which is usually referred to as ``colour''. Since it has the
 largest coupling constant, the strong interaction is dominant whenever a
 colour charge is present. However colour is ``confined'', i.e. free particles
 must not have a net colour. This means that any coloured particles have to be
-bound inside a compound object at all times. Also, the range of the strong
+bound inside a compound object at all times. The range of the strong
 interaction is limited to about the size of a nucleus since the gluons are
 coloured themselves and hence self-coupling.
 
-About two orders of magnitude weaker is the electromagnetic interaction.
+The the electromagnetic interaction is about two orders of magnitude weaker.
 According to its \emph{U(1)} symmetry, it has only one exchange boson, the
 photon $\gamma$, coupling to the electrical charge. It is massless and
 electrically neutral, hence the electromagnetic interaction is not restricted
 in range. This and the fact that there is no confinement on the electrical
-charge mean that on macroscopic scales electromagnetic phenomena are dominant.
+charge mean that electromagnetic phenomena are dominant on macroscopic scales.
 
 At low energies, the effective coupling constant of the weak interaction is
 another three orders below the electromagnetic one. From its \emph{SU(2)}
@@ -63,7 +66,7 @@ about 90\,MeV limiting its range to the subatomic scale. However with increasing
 energy, the mass of the gauge bosons becomes more and more negligible and the
 effective coupling rises. Above the electroweak unification at about 100\,GeV,
 the weak and electromagnetic interactions can be described by one unified
-theory, whose existence is also hinted to by the fact that the weak gauge
+theory, whose existence is also hinted at by the fact that the weak gauge
 bosons are electrically charged.
 
 Their masses arise from another spontaneously
@@ -82,10 +85,10 @@ corresponding antiparticles). They can be divided again into two subclasses: the
 six quarks $u,\ d,\ c,\ s,\ t$, and $b$, which obey all forces and---being
 coloured---are confined, so that no free quarks can be found in nature. Bound
 quarks are making up baryons, like protons and neutrons, consisting of three
-quarks, and unstable mesons, which consist of a quark and an antiquark, like
-pions. Baryons and mesons, together called hadrons, are the only free particles
-participating in the strong interaction, since they contain coloured quarks,
-although not being coloured themselves.
+quarks, and unstable mesons like pions, kaons, and many others, which consist of
+a quark and an antiquark. Baryons and mesons, together called hadrons,
+are the only free particles participating in the strong interaction, since they
+contain coloured quarks, although not being coloured themselves.
 
 The second subclass are the leptons, the three charged leptons $e$, $\mu$, and
 $\tau$, as well as the corresponding (neutral) neutrinos \nue, \numu, and
@@ -116,18 +119,18 @@ neutrino oscillations had already been observed in the 1960's
 \cite{SuperKosc} gained much attention, this being the first detection of
 physics beyond the standard model.
 
-The term ``neutrino oscillations'' describes the phenomenon that neutrinos,
-when propagating over macroscopic distances, can change their flavour
-eigenstate on the way between production detection. The details of this effect
-will be described in Sec.~\ref{sec:osc}. However it can only occur when there
-are different mass eigenstates available for the neutrinos, meaning that only
-one of them---if any---can have mass zero, while the others must correspond to
-finite mass.
+The term ``neutrino oscillations'' describes the phenomenon that neutrinos 
+propagating over macroscopic distances can change their flavour eigenstate on
+the way between production and detection. The details of this effect will be
+described in Sec.~\ref{sec:osc}. However it can only occur when there are
+different mass eigenstates available for the neutrinos, meaning that only one of
+them---if any---can have mass zero, while the others must correspond to finite
+mass.
 
 Since their first observation, neutrino oscillations have been a field of
-intensive research. After establishing all oscillation channels, nowadays the
-precise measurement of the parameters that characterise the oscillation is in
-the focus. The planned PINGU experiment (see Sec.~\ref{sec:PINGU}), whose
+intensive research. After establishing all oscillation channels, nowadays
+focus is on the precise measurement of the parameters that characterise the
+oscillation. The planned PINGU experiment (see Sec.~\ref{sec:PINGU}), whose
 simulation is the main topic of this thesis, is aimed to reach unprecedented
 accuracy in measuring the parameters \thet{23} and \dm{31}.
 
@@ -226,10 +229,10 @@ unexpected features in the measured neutrino flux \cite{RENO_5MeV}.
 \subsubsection{Neutrino Beams}
 
 Another artificial source of neutrinos, but somewhat higher in energy
-(typically at a few GeV) are neutrino beams. Since the neutral neutrinos cannot
+(typically at a few GeV), are neutrino beams. Since the neutral neutrinos cannot
 be accelerated directly, usually a high-energy, high-intensity proton beam is
-aimed at a target in which it produces mesons, mostly pions and kaons, in whose
-subsequent decay neutrinos are produced \cite{NuBeams}:
+aimed at a target in which it produces mesons, mostly pions and kaons, which
+subsequently decay under the emission of neutrinos \cite{NuBeams}:
 \begin{eqnarray}
  \pi^+ & \to & \mu^+ + \numu \\
  \pi^- & \to & \mu^- + \numubar
@@ -239,7 +242,8 @@ Such beams are the source of neutrinos that can be controlled best in terms of
 energy and intensity, making them a preferred choice for precision experiments
 such as measurements of neutrino cross-sections. However they are very expensive
 to build and operate in contrast to natural sources or nuclear reactors, the
-latter usually being operated by commercial power suppliers.
+latter usually being operated by commercial power suppliers and thus provide
+the neutrino flux ``for free''.
 
 
 \subsubsection{Solar Neutrinos}
@@ -322,7 +326,7 @@ half-life of 0.77\,s \cite{Nuklidkarte}. Although their flux is very low, the
 very high Q-value of 14.1\,MeV of this decay makes the so-called $^8$B a
 favourable target for the search for solar neutrinos.
 
-The excited $^8_4\mathrm{Be}$ created in the decay
+The excited $^8_4\mathrm{Be^*}$ created in the decay
 \begin{equation}
  ^8_5\mathrm{B} \to\ ^8_4\mathrm{Be^*} + e^+ + \nue
 \end{equation}
@@ -332,9 +336,9 @@ will then further decay into two $\alpha$ particles immediately.
 \subsubsection{Atmospheric Neutrinos}
 \label{sec:AtmNus}
 
-Several orders of magnitude higher in energy are neutrinos that are created in
-the interaction of high-energy charged particles with atoms in the Earth's
-atmosphere. During the past decades, the spectrum of these particles, the 
+Neutrinos that are created in the interaction of high-energy charged particles
+with atoms in the Earth's atmosphere are several orders of magnitude higher in
+energy. During the past decades, the spectrum of those particles, the
 so-called cosmic radiation, has been measured in great detail over many orders
 of magnitude. Although it covers such a wide range in energy and flux, it shows
 almost no features and can be described by a simple power law with a spectral
@@ -345,8 +349,8 @@ energies \cite{CosmRad}.
 \begin{figure}
 \centering
   \subfloat[The all particle spectrum of the charged cosmic radiation. Figure
-    taken from \cite{CosmRaySpec}. \label{fig:CosmRaySpec}]
-    {\includegraphics[height=7cm]{CosmicRaySpectrum}}\qquad
+    taken from \cite{CosmRaySpecHillas}. \label{fig:CosmRaySpec}]
+    {\includegraphics[height=7cm]{CosmRayFluxHillas}}\qquad
   \subfloat[The atmospheric flux of electron and muon neutrinos.
     Predictions for the conventional flux are from \cite{Honda2007} (solid
     lines) and \cite{Bartol} (dashed), the band for the prompt flux is
@@ -381,24 +385,23 @@ are relatively short-lived\footnote{$\tau_\mu = 2.2 \times 10^{-6}$\,s,
 $\tau_K = 1.2 \times 10^{-8}$\,s, and $\tau_\pi = 2.6 \times 10^{-8}$\,s
 \cite{PDG}} and produce neutrinos in their decay:
 \begin{eqnarray}
- \pi^\pm &\to\ & \mu^\pm + \numu(\numubar) \\
+ \pi^\pm &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:pi_decay} \\
  K^\pm   &\to\ & \mu^\pm + \numu(\numubar) \\
  \mu^\pm &\to\ & e^\pm + \nue(\nuebar) + \numubar(\numu)
- \label{eqn:pi_decay}
 \end{eqnarray}
 As one can see from the above equations, these so-called conventional
-atmospheric neutrinos coming mostly from pion decay have a flavour ratio of
-$\overset{(-)}{\numu}:\overset{(-)}{\nue} = 2:1$.
+atmospheric neutrinos coming mostly from pion and kaon decays have a flavour
+ratio of $\overset{(-)}{\numu}:\overset{(-)}{\nue} = 2:1$.
 
 Their energy spectrum is linked to the primary spectrum of cosmic rays since the
 secondary pions and muons follow the primary energy distribution directly. Thus
 being highly relativistic, their lifetime is Lorentz boosted by a factor $\gamma
-\propto E$. This means that the higher the particle's energy, the higher
+\propto E$. So the higher the particle's energy, the higher is 
 its probability \emph{not} to decay into neutrinos in-flight but reach the
 Earth's surface and interact there, producing another shower of much less
-energetic particles. Hence the spectrum of conventional atmospheric neutrinos
-is suppressed roughly by a factor of $1/E$ with respect to the primary cosmic
-ray distribution.
+energetic particles. Therefore, the spectrum of conventional atmospheric
+neutrinos is suppressed roughly by a factor of $1/E$ with respect to the primary
+cosmic ray distribution.
 
 For a more precise calculation, details of high-energy proton interactions and
 the geomagnetic field have to be taken into account \cite{Honda2007, Bartol}. As
@@ -433,24 +436,25 @@ quite some detail over the recent decades \cite{CosmRaySpec}, hence an upper
 limit for the flux of astrophysical neutrinos can be derived that is 
 independent of any model assumptions about the production sites \cite{WB_bound}.
 
-The first actual astrophysical neutrino events have been recorded only recently 
-by the IceCube neutrino telescope \cite{HESE, HESE_3yr}, making them the 
-highest energy neutrinos ever observed. Although event statistics are still 
-low, the flux seems to be very close to the predicted upper bound, meaning that 
-the neutrino production efficiency is close to maximal. The spectral shape of 
-the flux is compatible with a power law with an index of --2 and an exponential 
-cut-off around a few PeV \cite{Lars_globalfit}.
+The first high energy astrophysical neutrino events have been recorded only
+recently by the IceCube neutrino telescope \cite{HESE, HESE_3yr}, making them
+the  highest energy neutrinos ever observed. Although event statistics are
+still low, the flux seems to be very close to the predicted upper bound, meaning
+that  the neutrino production efficiency is close to maximal. The spectral shape
+of the flux is compatible with a power law with an index of --2 and an
+exponential cut-off around a few PeV as well as a steeper
+power law with index --2.3 \cite{Lars_globalfit}.
 
 \subsection{Detection of Neutrinos}
 \label{sec:NuDetection}
 
 As already mentioned, neutrinos only interact with other particles in weak
-processes. This means that the total cross-sections are typically low. So high
-fluxes or large target volumes (or both) are needed to detect a seizable
+processes where the total cross-sections are typically very low. Thus high
+fluxes or large target volumes (or both) are needed to detect a sufficient
 number of neutrinos.
 
 And even if these requirements are fulfilled, in most cases the neutrino signal
-has to be recovered from below a background of dominant processes, whose rate
+has to be distinguished from a background of dominant processes, whose rate
 can be several orders of magnitude higher than the neutrino event rate.
 Depending on the targeted energy range, the most common background processes are
 inherent radioactivity of the surroundings and the detector itself at MeV
@@ -460,35 +464,13 @@ penetrate even strong shielding.
 \subsubsection{Neutrino cross-sections}
 \label{sec:Xsecs}
 
-\begin{figure}[t!]
- \centering
- \includegraphics[width=0.7\textwidth]{NuXsec_fullrange}
-\caption{Electroweak cross-section for $\nue e^- \to \nue e^-$ scattering
-  on free electrons as a function of neutrino energy. Various neutrino sources
-  are also shown at their respective energy scales. \cite{NuXsec_review}}
- \label{fig:nue_e_xsec}
-\end{figure} 
-
 The calculation and experimental testing of neutrino cross-sections has been a
 field of extensive research over the past decades. On the experimental side,
 the challenge is the smallness of the cross-sections. The key point on the
 theoretical side is the calculation of the matrix elements associated with the
 interaction of interest.
 
-As an introductory example, we will look at neutrinos scattering off a free
-lepton. Then the cross-section is \cite{NuXsec_review}
-\begin{equation}
- \frac{d\sigma}{dq^2} = \frac{1}{16\pi} \frac{|\mathcal{M}^2|}{(s-m_e^2)^2}\ ,
-\end{equation}
-with $s$ and $q^2$ being the centre-of-mass energy and the four-momentum
-transfer, respectively, assuming very small neutrino mass. In this case,
-calculating the matrix element $|\mathcal{M}^2|$ is rather straightforward,
-since only weak interactions between fundamental particles have to be
-considered. The scattering process itself is the sum of a charged-current
-($W^+$ exchange, CC) and a neutral current ($Z^0$ exchange, NC) contribution, as
-shown in Fig.~\ref{fig:nue_e_CC}.
-
-\begin{figure}[t!]
+\begin{figure}[b]
  \vspace{\baselineskip}
  \centering
  \begin{fmffile}{nue_e_CC}
@@ -527,7 +509,29 @@ shown in Fig.~\ref{fig:nue_e_CC}.
 \label{fig:nue_e_CC}
 \end{figure}
 
-After converting from momentum transfer to the energy fraction $y$ carried by 
+As an introductory example, we will look at neutrinos scattering off a free
+lepton. The cross-section is \cite{NuXsec_review}
+\begin{equation}
+ \frac{d\sigma}{dq^2} = \frac{1}{16\pi} \frac{|\mathcal{M}^2|}{(s-m_e^2)^2}\ ,
+\end{equation}
+with $s$ and $q^2$ being the centre-of-mass energy and the four-momentum
+transfer, respectively, assuming very small neutrino mass. In this case,
+calculating the matrix element $|\mathcal{M}^2|$ is rather straightforward,
+since only weak interactions between fundamental particles have to be
+considered. The scattering process itself is the sum of a charged-current
+($W^\pm$ exchange, CC) and a neutral current ($Z^0$ exchange, NC) contribution,
+as shown in Fig.~\ref{fig:nue_e_CC}.
+
+\begin{figure}[t!]
+ \centering
+ \includegraphics[width=0.7\textwidth]{NuXsec_fullrange}
+\caption{Electroweak cross-section for $\nue e^- \to \nue e^-$ scattering
+  on free electrons as a function of neutrino energy. Various neutrino sources
+  are also shown at their respective energy scales. \cite{NuXsec_review}}
+ \label{fig:nue_e_xsec}
+\end{figure} 
+
+After converting the momentum transfer to the energy fraction $y$ carried by
 the outgoing lepton, $\frac{dq^2}{dy} = 2m_e E_\nu$, the charged current
 cross-section for scattering off an electron is given by \cite{NuXsec_review}
 \begin{equation}
@@ -546,7 +550,7 @@ the total cross-section:
 \end{equation}
 In Fig.~\ref{fig:nue_e_xsec}, this corresponds to the regime above about
 $10^7$\,eV, well above the electron mass. The sharp peak at $\sim 10^{16}$\,eV
-is the so-called Glashow resonance, where the centre-of-mass energy is
+is the so-called Glashow resonance, at which the centre-of-mass energy is
 comparable to the $W$ boson mass, enabling resonant production of real $W^-$
 bosons and hence causing a strong enhancement of the cross-section.
 
@@ -556,12 +560,12 @@ When looking at other scattering processes, the principles of deriving the
 cross-section remain the same. However the kinematic part is subject to change,
 mostly due to different angular momentum states, and of course the matrix
 elements depend strongly on the respective target. For non-fundamental targets,
-form factors describing their internal charge distribution have to be taken
+form factors describing the internal charge distribution have to be taken
 into account as well.
 
 In general, the cross-section for hadronic interactions are much larger than the
 leptonic ones (e.\,g.\ neutrino-electron scatting as discussed above) due to the
-larger target masses. This means that for conventional target consisting of
+larger target masses. This means that for conventional targets consisting of
 atoms with a nucleus and an electron hull, a neutrino is much more likely to
 interact with the nuclei than with the shell electrons.
 
@@ -599,7 +603,7 @@ for the scattering:
  \item[Deep inelastic scattering:] Above about 10\,GeV, the scattering
     neutrino has sufficient energy to resolve the quark structure of the
     nucleons. Then it scatters on a quark constituent rather than the whole
-    nucleon. By this, the nucleon gets disrupted and an hadronic shower
+    nucleon. Thereby the nucleon gets disrupted and an hadronic shower
     consisting of a variety of mesons forms from its remains.
 \end{description}
 
@@ -635,12 +639,12 @@ inelastic scattering).
 \label{fig:nux_NC}
 \end{figure}
 
-From the detection point of view, this means that there are four classes of
-events. The first are neutral current interactions of any neutrino flavour, as
-shown in Fig.~\ref{fig:nux_NC}. In this case, we have in the final state the
-scattered neutrino $\nu'$ and a hadronic shower or cascade consisting
-of a variety of mesons, fermions, and photons developing from the fragments of
-the stricken nucleus.
+This means that four different classes of events can be observed. The first are
+neutral current interactions of any neutrino flavour, as shown in
+Fig.~\ref{fig:nux_NC}. In this case, the final state consists of the scattered
+neutrino $\nu'$ and a hadronic shower or cascade consisting of a variety of
+mesons, fermions, and photons developing from the fragments of the stricken
+nucleus.
 
 The details of the development of such a hadronic shower are not fully
 understood and have to be modelled in MonteCarlo based simulations. However,
@@ -649,7 +653,7 @@ the typical size is on the order of one meter or below.
 
 The outgoing neutrino on the other hand is virtually impossible to detect,
 meaning that the fraction of the total interaction energy that is carried by
-this neutrino remains invisible. In beam experiments, where the energy of the
+this neutrino remains invisible. In beam experiments, in which the energy of the
 incoming particles is known, this is commonly referred to as ``missing energy''.
 
 \begin{figure}
@@ -761,7 +765,8 @@ charged lepton now dominates the event signature:
   1$\,g/cm$^3$.
  \item[Muon:] In contrast to the much lighter electron, a muon of a few GeV is
   a so-called minimum ionising particle. This means it is in the minimum region
-  of the Bethe-Bloch formula for the energy loss of a charged particle:
+  of the Bethe-Bloch formula for the energy loss of a charged particle in
+  matter:
   \begin{equation}
    \left\langle -\frac{dE}{dx}\right\rangle = Kz^2\frac{Z}{A}\frac{1}{\beta^2}
       \left[ \frac{1}{2}\ln\frac{2m_ec^2\beta^2\gamma^2 W_\mathrm{max}}{I^2}
@@ -789,7 +794,7 @@ charged lepton now dominates the event signature:
 \end{description}
 
 In a large detector with detection units spaced widely on a scale of several 
-meters, as the PINGU neutrino telescope described in Sec.~\ref{sec:PINGU}, the 
+meters, like the PINGU neutrino telescope described in Sec.~\ref{sec:PINGU}, the
 four event classes discussed above can only be categorized into two channels: 
 tracks and cascades. 
 \begin{description}
@@ -824,15 +829,16 @@ low compared to focused, high-intensity artificial beams, there is no way
 around building a megaton scale detector when searching for atmospheric 
 neutrinos. Obviously, a ``conventional'' detector for subatomic 
 particles\footnote{made up from e.\,g.\ wire chambers, solid state 
-scintillators, ...} is not feasible at this dimensions.
+scintillators, ...} is not feasible at these dimensions.
 
 The common choice for measuring natural (i.\,e.\ low) neutrino fluxes above 
 MeV energies are water-based Cherenkov detectors. A large volume of water or 
 ice serves as both target and detector: The neutrinos interact with the protons 
-and neutrons in the water molecules, and afterwards the relativistic charged 
-particles emit light via the Cherenkov effect, which propagates in the 
-transparent medium and can finally be detected (usually using photomultiplier 
-tubes) to reconstruct the underlying neutrino event.
+and neutrons in the water molecules, creating relativistic charged particles as
+described in the previous section. Then the charged particles emit light via the
+Cherenkov effect, which propagates in the transparent medium and can finally be
+detected (usually using photomultiplier tubes) to reconstruct the underlying
+neutrino event.
 
 \begin{figure}
   \centering
@@ -883,7 +889,7 @@ This integral does not diverge as the refractive index drops below 1 in the
 ultraviolet region.
 
 Its contribution to the total energy dissipation of the particle\footnote{Which 
-is described by the Bethe-Bloch formula (\ref{eqn:bethe-bloch})} is marginal, 
+is described by the Bethe-Bloch formula (\ref{eqn:bethe-bloch}).} is marginal, 
 but from this the rate of photon production can be inferred. Expressed as an 
 energy spectrum, the number of photons generated per track length is
 \cite{PDG}
