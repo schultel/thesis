@@ -100,7 +100,7 @@ distance of 125\,m, while the remaining six are placed at additional positions
 near the centre of the array, forming a dense sub-array with a string spacing 
 of only 72\,m, lowering the threshold energy for neutrino detection from 
 $\approx 100$\,GeV to $\approx 20$\,GeV. A top view of the string layout is 
-shown in Fig.\ref{fig:string_layout}.
+shown in Fig.~\ref{fig:string_layout}.
 
 \begin{figure}[htp]
  \centering
@@ -110,12 +110,60 @@ planned PINGU (geometry V36) sub-arrays.}
  \label{fig:string_layout}
 \end{figure}
 
-
-\cite{I3Design,DCDesign}
+To the lowest 1000\,m of the main array strings, sixty DOMs each are attached, 
+evenly spaced with a distance of 17\,m. In DeepCore, the vertical DOM spacing 
+is only 7\,m below the dust layer found between 1950\,m and 2100\,m 
+depth\footnote{The dust layer can be recognised easily in 
+Fig.~\ref{fig:ice_scatt_abs} as the region of increased scattering and 
+absorption.}, with a veto cap of ten DOMs with 10\,m spacing per DeepCore 
+string above it \cite{I3Design,DCDesign}.
 
 
 \subsection{Digital Optical Modules}
 \label{sec:ICDOM}
+
+\begin{figure}[htp]
+ \centering
+ 
+ \caption{Comparing an IceCube/DeepCore DOM to the PDOM used in PINGU. Graphics 
+taken from \cite{LoI}.}
+ \label{fig:DOM}
+\end{figure}
+
+The 5160 Digital Optical Modules are the basic detection units of IceCube. They 
+are attached to the string and connected to the main string cable during 
+deployment and work autonomously except for the low voltage power supply. This 
+modular design has the convenience that if one DOM fails to work and cannot be 
+fixed as it is frozen in the deep ice, the others are not affected.
+
+As shown in Figure \ref{fig:DOM}, the DOM is housed by a borosilicate glass 
+sphere of 13\verb+"+ diameter and 0.5\verb+"+ thickness to withstand the 
+pressure arising from the refreezing water in the drill holes. This glass sphere 
+also contributes to the noise rate of about 540\,Hz per DOM as it contains 
+isotopes of the uranium and thorium decay chains. The content of natural 
+$^{40}\mathrm{K}$, that undergoes beta decay where the emitted $\beta$ particle
+generates Cherenkov light, has been reduced in the glass.
+
+The main component of the DOM is a 10\verb+"+ photomultiplier tube (Hamamatsu 
+R7081-02 \cite{PMTpaper,PMTdata}). In DeepCore, an improved version of this PMT 
+with a 35\,\% higher quantum efficiency was used \cite{DCDesign}. The PMT is 
+oriented downwards as the main focus of IceCube is on extraterrestrial neutrinos 
+from the northern hemisphere that have travelled through the Earth and hence 
+arrive at the South Pole from below. The coupling to the glass sphere is 
+provided by an optical gel which also provides protection and fixation to the 
+PMT, while a surrounding Mu-metal grid guarantees the shielding of external 
+magnetic fields.
+
+The upper half of the DOM is filled with an high voltage divider that locally 
+transforms the 96\,V voltage that is provided by the string main cable into the 
+high voltage of 1.3--1.5\,kV that is needed to fuse the PMT, thus making it 
+independent from possible voltage fluctuations of the pole station's power 
+supply. Around the HV divider, the circular flasher board and DOM mainboard are 
+mounted. The flasher board is populated with LEDs that can be used to produce a 
+standardised signal for calibration. On the mainboard the electronics are 
+located that are needed to read out the PMT signal and digitise the recorded 
+data in situ, after which they are sent to the surface.
+
 
 
 %==============================================================================
@@ -123,6 +171,38 @@ planned PINGU (geometry V36) sub-arrays.}
 \label{sec:PINGU}
 %==============================================================================
 
+PINGU, the Precision IceCube Next Generation Upgrade, is planned as a further 
+infill to the IceCube/DeepCore array, lowering the energy threshold to few GeV 
+\cite{LoI}. The current baseline geometry, V36, consists of forty additional 
+strings with 96? PINGU-DOMs (PDOMs, see below) each. In this layout, shown in 
+Fig.~\ref{fig:string_layout}, the string spacing is 22?\,m while the PDOMs are 
+located the lowest 300\,m of IceCube with a vertical distance of 3?\,m. In this 
+depth, the same as the main part of DeepCore, the ice has the best optical 
+properties.
+% TODO: check dimensions!
+
+This detector geometry has been optimised to yield a maximum sensitivity for 
+the neutrino mass hierarchy. It will be used for all studies described in 
+Chapter~\ref{sec:ana} unless explicitly stated otherwise.
+
+In terms of hardware and software infrastructure, many things can be adopted 
+from IceCube, redesigning parts where a potential for improvement or 
+simplification has been discovered. Especially in the PDOM, several components 
+like XXX that have shown not to be necessary in the DOM have been removed. 
+Other parts, like YYY, have been replaced by more recent versions. In 
+particular the PMTs will all be the high quantum efficiency models already 
+installed in DeepCore. Additional components, such as cameras to monitor the 
+freeze-in process, are in discussion.
+% TODO: plug in respective components
+
+Although the bulk of PDOMs are an improved version of the technology that has 
+proven to work reliably, prototypes of novel optical modules will be deployed 
+with PINGU as well. As those might be the baseline technology of future 
+neutrino telescopes, they have to be tested under realistic conditions before 
+they can be considered for large-scale use. Two options for these 
+next-generation optical modules are described in Sec.~\ref{sec:Gen2DOM}, 
+studies showing how they will impact the NMH determination are presented in 
+Sec.~\ref{sec:om_effects}.
 
 %==============================================================================
 \section{Event Selection}
@@ -139,10 +219,12 @@ planned PINGU (geometry V36) sub-arrays.}
 
 %==============================================================================
 \section{Next-Generation Optical Modules}
-\label{sec:EvtReco}
+\label{sec:Gen2DOM}
 %==============================================================================
 
 \subsection{Wavelength-shifting Optical Module (WOM)}
+\label{sec:WOM}
 
 
 \subsection{Multi-PMT Optical Module (mDOM)}
+\label{sec:mDOM}
