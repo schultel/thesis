@@ -104,7 +104,9 @@ shown in Fig.~\ref{fig:string_layout}.
 
 \begin{figure}[htp]
  \centering
+%  TODO: make own plot
 %  \includegraphics[width=\textwidth]{ic_dc_pingu_strings}
+ \includegraphics[width=0.7\textwidth]{pingu_V36_Zezel_40_s22_d3}
  \caption{Top view of the IceCube string layout, including the DeepCore and 
 planned PINGU (geometry V36) sub-arrays.}
  \label{fig:string_layout}
@@ -124,9 +126,9 @@ string above it \cite{I3Design,DCDesign}.
 
 \begin{figure}[htp]
  \centering
- 
+ \includegraphics[width=0.7\textwidth]{I3DOM_PDOM_cropped}
  \caption{Comparing an IceCube/DeepCore DOM to the PDOM used in PINGU. Graphics 
-taken from \cite{LoI}.}
+taken from \cite{PDOM_Aachen}.}
  \label{fig:DOM}
 \end{figure}
 
@@ -174,12 +176,11 @@ data in situ, after which they are sent to the surface.
 PINGU, the Precision IceCube Next Generation Upgrade, is planned as a further 
 infill to the IceCube/DeepCore array, lowering the energy threshold to few GeV 
 \cite{LoI}. The current baseline geometry, V36, consists of forty additional 
-strings with 96? PINGU-DOMs (PDOMs, see below) each. In this layout, shown in 
-Fig.~\ref{fig:string_layout}, the string spacing is 22?\,m while the PDOMs are 
-located the lowest 300\,m of IceCube with a vertical distance of 3?\,m. In this 
+strings with 96 PINGU-DOMs (PDOMs, see below) each. In this layout, shown in
+Fig.~\ref{fig:string_layout}, the string spacing is 22\,m while the PDOMs are
+located the lowest 300\,m of IceCube with a vertical distance of 3\,m. In this
 depth, the same as the main part of DeepCore, the ice has the best optical 
 properties.
-% TODO: check dimensions!
 
 This detector geometry has been optimised to yield a maximum sensitivity for 
 the neutrino mass hierarchy. It will be used for all studies described in 
@@ -187,13 +188,13 @@ Chapter~\ref{sec:ana} unless explicitly stated otherwise.
 
 In terms of hardware and software infrastructure, many things can be adopted 
 from IceCube, redesigning parts where a potential for improvement or 
-simplification has been discovered. Especially in the PDOM, several components 
-like XXX that have shown not to be necessary in the DOM have been removed. 
-Other parts, like YYY, have been replaced by more recent versions. In 
-particular the PMTs will all be the high quantum efficiency models already 
-installed in DeepCore. Additional components, such as cameras to monitor the 
-freeze-in process, are in discussion.
-% TODO: plug in respective components
+simplification has been discovered. Several components of the electronics part
+of the module, like the main board, the PMT base, and the high voltage supply,
+have been redesigned or replaced by more recent versions. In particular the PMTs
+will all be the high quantum efficiency models already installed in DeepCore.
+A delay board has become obsolete with the more recent signal digitisers and
+will not be part of the PINGU DOMs. Additional components, such as cameras to
+monitor the freeze-in process, are in discussion.
 
 Although the bulk of PDOMs are an improved version of the technology that has 
 proven to work reliably, prototypes of novel optical modules will be deployed 
@@ -207,15 +208,12 @@ Sec.~\ref{sec:om_effects}.
 Another thing to be improved upon in PINGU is the so-called ``hole ice''. In 
 IceCube it was observed that the refrozen ice directly around the strings that 
 had been molten during deployment contains lots of small air bubbles. These 
-enclosings 
-% TODO: Einschl\"usse?
-lead to a dramatically reduced scattering length 
-around the DOMs, significantly deteriorating the quality of event 
-reconstruction that strongly profits from a large number of direct (i.\,e.\ 
-unscattered) photons being recorded. In order to reduce the impact of the hole 
-ice, the molten water will be degassed as a part of the drilling process for 
-PINGU, thus reducing its air content and hence the number of air bubbles 
-remaining after refreezing.
+inclusions lead to a dramatically reduced scattering length around the DOMs,
+significantly deteriorating the quality of event reconstruction that strongly
+profits from a large number of direct (i.\,e.\ unscattered) photons being
+recorded. In order to reduce the impact of the hole ice, the molten water will
+be degassed as a part of the drilling process for PINGU, thus reducing its air
+content and hence the number of air bubbles remaining after refreezing.
 
 %==============================================================================
 \section{Event Selection}
