@@ -104,9 +104,8 @@ shown in Fig.~\ref{fig:string_layout}.
 
 \begin{figure}[htp]
  \centering
-%  TODO: make own plot
-%  \includegraphics[width=\textwidth]{ic_dc_pingu_strings}
- \includegraphics[width=0.7\textwidth]{pingu_V36_Zezel_40_s22_d3}
+ \includegraphics[width=\textwidth]{ic_dc_pingu_strings}
+%  \includegraphics[width=0.7\textwidth]{pingu_V36_Zezel_40_s22_d3}
  \caption{Top view of the IceCube string layout, including the DeepCore and 
 planned PINGU (geometry V36) sub-arrays.}
  \label{fig:string_layout}
@@ -233,9 +232,56 @@ content and hence the number of air bubbles remaining after refreezing.
 \label{sec:Gen2DOM}
 %==============================================================================
 
+Currently two different prototypes of optical modules are supposed to be
+deployed in PINGU. The first one, called mDOM (Sec.~\ref{sec:mDOM}), is an
+adaptation of the Km3NeT optical module \cite{Km3NeTmodule} whose shape has been
+changed from spherical to cylindrical in order to fit into the holes drilled for
+the PINGU strings. The other one, called WOM (Sec.~\ref{sec:WOM}), is a novel
+approach to enhance the photon collection efficiency by using passive
+components.
+
+Both types of modules will be described in more detail below. In
+Sec.~\ref{sec:om_effects}, the performance of a PINGU detector consisting fully
+of these next-generation modules will be investigated.
+
+\subsection{Multi-PMT Optical Module (mDOM)}
+\label{sec:mDOM}
+
+% \begin{figure}[htp]
+%  \centering
+%  \includegraphics[width=0.5\textwidth]{mDOM_cropped}
+%  \caption{The mDOM module concept. Graphics taken from \cite{mDOM_Geneva}.}
+%  \label{fig:mDOM}
+% \end{figure}
+
+\begin{figure}
+\centering
+  \subfloat[\label{fig:mDOM}]
+    {\includegraphics[height=7cm]{mDOM_cropped}}\qquad
+  \subfloat[\label{fig:WOM}]
+    {\includegraphics[height=7cm]{WOM}}
+  \caption{The \protect\subref{fig:mDOM} mDOM and \protect\subref{fig:WOM} WOM
+    module concepts. Graphics taken from \cite{mDOM_Geneva} and \cite{WOM_ICRC},
+    respectively.}
+\label{fig:Gen3modules}
+\end{figure}
+
+Comparing the mDOM, short for Multi-PMT Optical Module, to the standard PINGU
+DOMs, the main difference is that instead of one single large PMT, a total of
+41 small PMTs with 3\verb+"+ diameter will be used for photon detection, see
+Fig.~\ref{fig:mDOM}. The advantages from this layout are that the angular
+acceptance covers almost every direction, in contrast to the downwards-pointing
+single PMT that has no sensitivity for photons arriving from above.
+
+In addition, the use of more than one PMT per module allows for a very
+effective noise reduction. If one only counts module hits where at least two
+different PMTs on the same module have registered a photon within a very short
+coincidence time, the most important sources of module noise can be strongly
+suppressed: Both radioactive decays inside the PMT glass housing and random
+electronic noise are restricted to one PMT at a time and hence vetoed with
+close to 100\,\% efficiency.
+
 \subsection{Wavelength-shifting Optical Module (WOM)}
 \label{sec:WOM}
 
 
-\subsection{Multi-PMT Optical Module (mDOM)}
-\label{sec:mDOM}
