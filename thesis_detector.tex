@@ -215,24 +215,15 @@ be degassed as a part of the drilling process for PINGU, thus reducing its air
 content and hence the number of air bubbles remaining after refreezing.
 
 %==============================================================================
-\section{Event Selection}
-\label{sec:EvtSel}
-%==============================================================================
-
-\subsection{Step1}
-\label{sec:cuts_step1}
-
-
-\subsection{Step2}
-\label{sec:cuts_step2}
-
-
-%==============================================================================
 \section{Event Reconstruction}
 \label{sec:EvtReco}
 % TODO: maybe move this section to the end of the chapter? Or before the event
 % selection?
 %==============================================================================
+
+\subsection{CLast}
+\label{sec:reco_clast}
+% TODO: Describe Clast?
 
 \subsection{Monopod}
 \label{sec:reco_monopod}
@@ -240,6 +231,73 @@ content and hence the number of air bubbles remaining after refreezing.
 
 \subsection{MultiNest}
 \label{sec:reco_multinest}
+
+
+%==============================================================================
+\section{Event Selection}
+\label{sec:EvtSel}
+%==============================================================================
+
+Since in PINGU the expected rate of neutrino events is in the order of $1 -
+2$\,mHz, corresponding to about five neutrinos per hour, while background
+events, the vast majority caused by atmospheric muons, will be triggered at
+several kHz\footnote{In IceCube, the trigger rate is $\approx 3000$\,Hz.}, an
+efficient background rejection algorithm is essential. At the same time, one
+has to make sure that a large fraction of the neutrinos carrying the neutrino
+mass hierarchy signal pass the imposed cuts---since it is only a second-order
+effect event statistics are of great importance---and that the signal in the
+data is not destroyed or changed by the cuts.
+
+For the data samples used in this study, a two step selection has been applied.
+The rationale for this approach is the efficient use of computing resources.
+At least the first part of the data reduction has to be run directly at the
+South Pole due to the limited bandwidth for data transmission to the northern
+hemisphere. Hence the computing for this part has to be lightweight, as
+computing resources in Antarctica are scarce as well. After the easily
+identifiable background events have been removed, more involved
+reconstructions can be run on the remaining data, whose results will be used for
+a refined second event selection and eventually in the analysis of the final
+data sample.
+
+\subsection{Step 1}
+\label{sec:cuts_step1}
+
+The first set of cuts is based on the rather fast Monopod reconstruction and on
+the topology of the charge distribution in the detector itself. The cut
+variables have demonstrated their discrimination power in previous DeepCore
+analyses, where atmospheric neutrino oscillations have already been measured at
+higher energy \cite{DCosc}.
+
+\begin{description}
+ \item[$\mathbf{z_\mathrm{vertex} < -200}$\,m:] The very first cut requires the
+  reconstructed event vertex to be below --\,200\,m in IceCube coordinates,
+  which is XXX\,m above the topmost PINGU DOMs. Since atmospheric muons enter
+  the detector from above moving downwards, their vertices tend to be
+  reconstructed  at the highest possible location while the neutrinos that PINGU
+  is interested  in have travelled through the Earth and interact inside the
+  detector volume,  pointing upwards.
+
+\item[C2QR6\ $\mathbf{>0.5}$:] The next cut is the so-called ``C2QR6'' quantity
+  being  larger than 0.5. It is defined as the fraction of the total PMT charge
+  in the  event that has been accumulated within the first 600\,ns, while the
+  two very  first hits are ignored. Muons are usually travelling through the
+  detector on  an extended path and generate Cherenkov light evenly along it, so
+  that usually  only a small fraction of it is recorded during the first
+  600\,ns\footnote{During this time, a muon propagates $ct\approx180$\,m.}.
+  Neutrinos on the other hand deposit a large fraction of their energy in the
+  hadronic cascade that only lasts for few ns.
+
+\item[$\mathbf{z_\mathrm{travel} > -30}$\,m:] For the third cut, the mean spread
+  in $z$  of all hits is calculated relative to the mean depth of the first
+  quartile of  hits in the event. The cut is passed if this value is larger than
+  --\,30\,m,  meaning that the the topology of the event is not too strongly
+  pointing  downwards. Again this disfavours muons travelling through the
+  detector from  top to bottom while retaining neutrinos coming from below.
+\end{description}
+
+
+\subsection{Step 2}
+\label{sec:cuts_step2}
 
 
 %==============================================================================
