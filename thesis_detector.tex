@@ -183,7 +183,7 @@ has the best optical properties.
 
 \begin{figure}[htp]
  \centering
- \includegraphics[width=\textwidth]{ic_dc_pingu_sideview}
+ \includegraphics[width=0.8\textwidth]{ic_dc_pingu_sideview}
 %  \includegraphics[width=0.7\textwidth]{pingu_V36_Zezel_40_s22_d3}
  \caption{Side view of the IceCube string layout, including the DeepCore and
   planned PINGU (geometry V36) sub-arrays. The approximate position of the dust
@@ -269,6 +269,10 @@ reconstructions can be run on the remaining data, whose results will be used for
 a refined second event selection and eventually in the analysis of the final
 data sample.
 
+% \subsection{Trigger and Noise Cleaning}
+% \label{sec:cuts_trigger}
+% TODO: Write about it?
+
 \subsection{Step 1}
 \label{sec:cuts_step1}
 
@@ -281,7 +285,7 @@ higher energy \cite{DCosc}.
 \begin{description}
  \item[$\mathbf{z_\mathrm{vertex} < -200}$\,m:] The very first cut requires the
   reconstructed event vertex to be below --\,200\,m in IceCube coordinates,
-  which is XXX\,m above the topmost PINGU DOMs. Since atmospheric muons enter
+  which is 20\,m below the topmost PINGU DOMs. Since atmospheric muons enter
   the detector from above moving downwards, their vertices tend to be
   reconstructed  at the highest possible location while the neutrinos that PINGU
   is interested  in have travelled through the Earth and interact inside the
@@ -303,11 +307,66 @@ higher energy \cite{DCosc}.
   --\,30\,m,  meaning that the the topology of the event is not too strongly
   pointing  downwards. Again this disfavours muons travelling through the
   detector from  top to bottom while retaining neutrinos coming from below.
+
+\item[$\mathbf{t_\mathrm{90\,\%} < 2}$\,\textmu s:] This cut requires the
+time from  the start of the event after which 90\,\% of the total charge has
+been  accumulated to be less than 2\,\textmu s. Again the reasoning is that
+background  muons deposit their energy evenly on their rather long path through
+the  detector, while neutrinos are almost point-like sources in both location
+and  time.
+
+\item[$\mathbf{r_\mathrm{vertex} < 95}$\,m:] Looking at the secondary ``Timed
+  Monopod'' reconstruction, the final cut at the first level secures that the
+  event is contained in the detector volume not only vertically, but also
+  horizontally. This horizontal containment is considered to be fulfilled if
+  the reconstructed vertex is not farther than 95\,m from the detector centre
+  at ($50$\,m, $-35$\,m) in the $xy$ direction. The containment assures that
+  the event has the possibility to be successfully reconstructed by the
+  MultiNest algorithm, which has to be run prior to the second cut level.
 \end{description}
 
 
 \subsection{Step 2}
 \label{sec:cuts_step2}
+
+The intention of the second set of cuts is not so much to reject background
+events, which is the focus of the first cut level, but rather to select
+well-reconstructed events whose quality is sufficient for the final analysis.
+Therefore all the cuts in the second step are merely containment cuts, assuming
+any non-neutrino event fulfilling the strict containment has already been
+recognised and removed in the first step. The reference reconstruction for the
+following cuts is the MultiNest reconstruction (Sec.~\ref{sec:reco_multinest})
+that has been run on all events passing the first stage of cuts.
+
+\begin{description}
+ \item[$\mathbf{-500}$\,m $\mathbf{< z_\mathrm{vertex} < -180}$\,m:] The upper
+  bound of the vertical containment, as shown in
+  Fig.~\ref{fig:string_layout_side}, has been loosened with respect to the
+  $z_\mathrm{vertex} < -200$\,m cut in step one, where the stricter bound was
+  necessary due to the strong downgoing background contamination. The lower
+  boundary has been introduced since events originating from far below the
+  instrumented volume generally have poor reconstruction quality as only
+  photons that have travelled far through the ice and hence are subject to
+  multiple scattering contribute to the signal recorded in the detector.
+
+ \item[$\mathbf{r_\mathrm{vertex} < 85}$\,m:] The horizontal containment, shown
+  in Fig.~\ref{fig:string_layout}, has  been tightened by 10\,m compared to the
+  first step. Since the reconstructed  zenith angle of the neutrino is a key
+  variable in the mass hierarchy  analysis, one needs to make sure that this
+  quantity is reconstructed as accurately as possible. This can not be
+  guaranteed for events that are so  close to the edge of the detector that they
+  are recorded only partly.
+
+ \item[$\mathbf{\theta_\mathrm{zenith} \geq \pi/2}$ (optional):] For the mass
+  hierarchy analysis, neutrinos that have undergone oscillations in a matter
+  potential have to be selected. This means that only events that are
+  reconstructed as upgoing and hence have passed through the Earth will be
+  selected for the final data sample. However, the downgoing neutrino sample
+  can still be used as a control region, e.\,g.\ for the normalisation of the
+  atmospheric neutrino flux or to estimate the remaining background
+  contamination at the final cut level.
+\end{description}
+
 
 
 %==============================================================================
