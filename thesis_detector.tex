@@ -227,19 +227,138 @@ content and hence the number of air bubbles remaining after refreezing.
 %==============================================================================
 \section{Event Reconstruction}
 \label{sec:EvtReco}
-% TODO: maybe move this section to the end of the chapter? Or before the event
-% selection?
 %==============================================================================
+
+To identify the features in the distribution of neutrino events recorded by
+PINGU that are imprinted by the neutrino mass hierarchy, it is crucial to
+reconstruct the events as exactly as possible. Although the interesting neutrino
+properties are only its energy and the zenith angle of its arrival
+direction\footnote{Which determines the length of propagation since the
+creation in the Earth's atmosphere and the matter potential passed on the way.}
+as those are determining the oscillation probability, an actual neutrino
+interaction event in PINGU has far more properties that need to be
+reconstructed as well. These are:
+\begin{itemize}
+ \item The position of the interaction vertex in both space and time, giving
+  rise to four variables in total ($x,\,y,\,z,\,t$).
+ \item The energy of the hadronic cascade caused by the fragmented target
+  nucleus, $E_\mathrm{cscd}$.
+ \item The direction of the hadronic cascade, described by its zenith and
+  azimuth angles ($\theta,\,\phi$)
+ \item The energy $E_\mu$ of the outgoing muon (if present), which can be
+  replaced by its length $l$ that is easier to reconstruct, since muons can be
+  considered as minimum ionising particles (see Sec.~\ref{sec:NuDetection}).
+ \item The direction of the muon, represented by zenith and azimuth angles
+  ($\theta_\mu,\,\phi_\mu$) as well.
+\end{itemize}
+This amounts to a total of ten variables (seven if no muon is created in the
+interaction) whose values have to be found in the reconstruction process. The
+neutrino energy is then given by the sum of cascade and muon energy, and its
+direction has to be calculated from their momenta using the conservation of the
+total momentum. 
 
 \subsection{CLast}
 \label{sec:reco_clast}
-% TODO: Describe Clast?
+
+The start of the reconstruction chain is CLast \cite{CLast}, a first-guess
+algorithm for cascade, i.\,e.\ point-like events. With $vec{r}_i$ being the
+positions of the DOMs that have registered charges $a_i$ at times $t_i$ in the
+event, first the event vertex is determined a the centre of gravity (COG) of the
+hit DOMs:
+\begin{equation}
+ \vec{x} = \sum_i a_i \vec{r}_i
+\end{equation}
+
+Following that, the time $t$ of the vertex is calculated. For this, the residual
+time is defined as
+\begin{equation}
+ \tau_i(t) = t_i - \left( t + d_i/c_\mathrm{ice} \right) \quad,
+\end{equation}
+where $d_i = | \vec{x} - \vec{r}_i |$ and $c_\mathrm{ice} = c/n_\mathrm{ice}$ is
+the speed of light in ice. After that, a direct hit is defined as a DOM hit
+with $0 < \tau_i < t_w$, with a trigger window of $t_w = 200$\,ns. Now for each
+DOM, a test vertex time is chosen to be $t_i - d_i/c_\mathrm{ice}$ and the
+number of direct hits on all other DOMs is calculated. From all those test
+vertex times, the earliest one resulting in more than four direct hits on other
+DOMs is chosen as the vertex time $t$.
+
+After the vertex position has been established, the cascade direction is
+determined from the ``tensor of inertia'' of the hit pattern. In a reference
+frame centred at the COG, $\vec{r}_i' = \vec{r} - \vec{x}$, this is calculated
+analogue to the quantity in classical mechanics with the mass replaced by the
+DOM charge:
+\begin{equation}
+ I^{k,l} = \sum_i a_i \left(\delta^{kl} \vec{r}_i'^2 - r_i'^k r_i'^l\right)
+\end{equation}
+The cascade direction is then given by the eigenvector corresponding to the
+smallest eigenvalue of the tensor of inertia, which points along the strongest
+elongation of the hit pattern.
+
+Finally, a first estimate for the cascade energy is calculated using an
+empirical polynomial fit to the number of hit DOMs in the event,
+$N_\mathrm{Ch}$:
+\begin{equation}
+ \log_{10}\left(E_\mathrm{cscd} [\mathrm{GeV}]\right) =
+  -3.3 + x\,(\,9.2 + x\,(\,-9.7 + x\,(\,5.3 + x\,(\,-1.4 + x\cdot 0.134))))
+\end{equation}
+with $x = \log_{10}(N_\mathrm{Ch})$.
+
+\subsection{Photonics}
+\label{sec:reco_photonics}
 
 \subsection{Monopod}
 \label{sec:reco_monopod}
 
+The Monopod algorithm is an likelihood reconstruction for cascade-like events
+using detailed photon timing information. It is the single source case of the
+more general Millipede algorithm \cite{Millipede} that is used for high-energy
+track reconstruction, where it segments an extended track into a series of
+point-like energy depositions along the track.
 
-\subsection{MultiNest}
+Assuming a cascade-like energy deposition $E$ at the vertex position $\vec{x}$
+and time $t$, pointing into the direction $(\theta, \phi)$, the expected number
+of photons $B_j(\vec{r}_i, \vec{x}, t, \theta, \phi)$ per unit energy is
+retrieved from photonics for every DOM $i$ that registered photons in the event
+and for every time bin $j$. The total number of expected photons is then
+\begin{equation}
+ \mu_{ij} = B_j(\vec{r}_i, \vec{x}, t, \theta, \phi)\,E + \nu_j \quad,
+\end{equation}
+where $\nu_j$ is the expectation of noise hits.
+
+From this, a Poisson likelihood is constructed according to
+\begin{equation}
+ \mathcal{L} = \prod_i^\mathrm{\#\ hit\ DOMs} 
+   \quad \prod_{j}^\mathrm{\#\ time\ bins}
+   \frac{\mu_{ij}^{n_{ij}}}{\Gamma\left(n_{ij}+1\right)}\ e^{-\mu_{ij}} \quad,
+\end{equation}
+with $n_{ij}$ being the actual number of photons registered on DOM $i$ in the
+time bin $j$. A fitting routine can now search for the values of $(\vec{x}, t,
+\theta, \phi)$ that maximise $\mathcal{L}$, corresponding to the most
+probable values of the true cascade parameters.
+
+Those fitting routines search for the maximum value of
+$\mathcal{L}$\footnote{Usually, and computationally more conveniently, they
+search for the minimum of $-\log\mathcal{L}$.} in a multidimensional parameter
+space in an iterative process. In general, the procedure is to choose a test
+point in the parameter space, where the likelihood and its gradient vector are
+evaluated. After that, the test point is moved into the direction of the
+gradient by a distance depending on its magnitude. This procedure is repeated
+until the likelihood difference between two subsequent test points is below a
+predefined convergence value, indicating that the minimum has been found, or the
+maximum number of iterations has been reached.
+
+In PINGU, Monopod is run with four iterations using the output of CLast as
+seed, i.\,e.\ the first test point. Yet obviously it cannot fully describe
+all of the expected events since its assumption about the event topology does
+not contain the possibility of an outgoing muon track. But since muons at PINGU
+energies of few GeV have a range at the order of ten or twenty metres,
+comparable to the string spacing, and hence only slightly distort the point-like
+event topology. Thus Monopod still gives a reliable estimate of the vertex
+position and direction, sufficiently precise for the first loose vertex
+containment cut (Sec.~\ref{sec:cuts_step1}). Afterwards it is used as seed for
+the more elaborate HybridReco/MultiNest reconstruction.
+
+\subsection{HybridReco/MultiNest}
 \label{sec:reco_multinest}
 
 
@@ -276,20 +395,20 @@ data sample.
 \subsection{Step 1}
 \label{sec:cuts_step1}
 
-The first set of cuts is based on the rather fast Monopod reconstruction and on
-the topology of the charge distribution in the detector itself. The cut
-variables have demonstrated their discrimination power in previous DeepCore
-analyses, where atmospheric neutrino oscillations have already been measured at
-higher energy \cite{DCosc}.
+The first set of cuts is based on the rather fast CLast and Monopod
+reconstructions and on the topology of the charge distribution in the detector
+itself. The cut variables have demonstrated their discrimination power in
+previous DeepCore analyses, where atmospheric neutrino oscillations have already
+been measured at higher energy \cite{DCosc}.
 
 \begin{description}
- \item[$\mathbf{z_\mathrm{vertex} < -200}$\,m:] The very first cut requires the
-  reconstructed event vertex to be below --\,200\,m in IceCube coordinates,
-  which is 20\,m below the topmost PINGU DOMs. Since atmospheric muons enter
-  the detector from above moving downwards, their vertices tend to be
-  reconstructed  at the highest possible location while the neutrinos that PINGU
-  is interested  in have travelled through the Earth and interact inside the
-  detector volume,  pointing upwards.
+ \item[$\mathbf{z_\mathrm{CLast} < -200}$\,m:] The very first cut requires the
+  event vertex reconstructed by the CLast algorithm to be below --\,200\,m in
+  IceCube coordinates, which is 20\,m below the topmost PINGU DOMs. Since
+  atmospheric muons enter the detector from above moving downwards, their
+  vertices tend to be reconstructed  at the highest possible location while the
+  neutrinos that PINGU is interested  in have travelled through the Earth and
+  interact inside the detector volume,  pointing upwards.
 
 \item[C2QR6\ $\mathbf{>0.5}$:] The next cut is the so-called ``C2QR6'' quantity
   being  larger than 0.5. It is defined as the fraction of the total PMT charge
@@ -309,14 +428,14 @@ higher energy \cite{DCosc}.
   detector from  top to bottom while retaining neutrinos coming from below.
 
 \item[$\mathbf{t_\mathrm{90\,\%} < 2}$\,\textmu s:] This cut requires the
-time from  the start of the event after which 90\,\% of the total charge has
-been  accumulated to be less than 2\,\textmu s. Again the reasoning is that
-background  muons deposit their energy evenly on their rather long path through
-the  detector, while neutrinos are almost point-like sources in both location
-and  time.
+  time from  the start of the event after which 90\,\% of the total charge has
+  been  accumulated to be less than 2\,\textmu s. Again the reasoning is that
+  background muons deposit their energy evenly on their rather long path
+  through the  detector, while neutrinos are almost point-like sources in both
+  location and  time.
 
-\item[$\mathbf{r_\mathrm{vertex} < 95}$\,m:] Looking at the secondary ``Timed
-  Monopod'' reconstruction, the final cut at the first level secures that the
+\item[$\mathbf{r_\mathrm{Monopod} < 95}$\,m:] Looking at the secondary 
+  Monopod reconstruction, the final cut at the first level secures that the
   event is contained in the detector volume not only vertically, but also
   horizontally. This horizontal containment is considered to be fulfilled if
   the reconstructed vertex is not farther than 95\,m from the detector centre
@@ -367,7 +486,8 @@ that has been run on all events passing the first stage of cuts.
   contamination at the final cut level.
 \end{description}
 
-
+\subsection{Particle Flavour Identification}
+\label{sec:PID}
 
 %==============================================================================
 \section{Next-Generation Optical Modules}
