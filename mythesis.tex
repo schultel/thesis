@@ -59,7 +59,7 @@
   \usepackage[backend=bibtex8,hyperref=true,bibencoding=latin1,
     style=numeric-comp,sorting=none,block=ragged,firstinits=true]{biblatex}
 }{%
-  \usepackage[backend=biber, style=numeric-comp,
+  \usepackage[backend=biber, style=numeric-comp, 
     sorting=none,block=ragged,firstinits=true]{biblatex}
 }
 % Specify the bibliography files here and not at the end!
@@ -80,15 +80,18 @@
 % You can include the following lines if you want to shorten your
 % bibliography by not including url fields
 \AtEveryBibitem{
-  \ifentrytype{online}{}{
+  \ifentrytype{online}{ %if this type, do:
+  
+  }{ %else, do:
     \clearfield{url}
   }
+  \ifentrytype{article}{
+%     \clearfield{day}
+%     \clearfield{endday}
+%     \clearfield{month}
+  }{
+  }
 }
-% \AtEveryCitekey{
-%   \ifentrytype{online}{}{
-%     \clearfield{url}
-%   }
-% }
 %------------------------------------------------------------------------------
 % Feynman graphs!
 \usepackage{feynmp}

@@ -246,7 +246,7 @@ reconstructed as well. These are:
  \item The direction of the hadronic cascade, described by its zenith and
   azimuth angles ($\theta,\,\phi$)
  \item The energy $E_\mu$ of the outgoing muon (if present), which can be
-  replaced by its length $l$ that is easier to reconstruct, since muons can be
+  replaced by its length $l$ since muons can be
   considered as minimum ionising particles (see Sec.~\ref{sec:NuDetection}).
  \item The direction of the muon, represented by zenith and azimuth angles
   ($\theta_\mu,\,\phi_\mu$) as well.
@@ -295,8 +295,8 @@ smallest eigenvalue of the tensor of inertia, which points along the strongest
 elongation of the hit pattern.
 
 Finally, a first estimate for the cascade energy is calculated using an
-empirical polynomial fit to the number of hit DOMs in the event,
-$N_\mathrm{Ch}$:
+empirical polynomial fit \cite{Processing} to the number of hit DOMs in the
+event, $N_\mathrm{Ch}$:
 \begin{equation}
  \log_{10}\left(E_\mathrm{cscd} [\mathrm{GeV}]\right) =
   -3.3 + x\,(\,9.2 + x\,(\,-9.7 + x\,(\,5.3 + x\,(\,-1.4 + x\cdot 0.134))))
@@ -305,6 +305,33 @@ with $x = \log_{10}(N_\mathrm{Ch})$.
 
 \subsection{Photonics}
 \label{sec:reco_photonics}
+
+The Photonics software \cite{Photonics} is a tool widely used in IceCube to get
+a fast description of the propagation of Cherenkov photons in the ice. Its main
+functionality is to return the expected number of registered photons
+$B(\vec{r}, \vec{x}, t, \theta, \phi)$ for any combination of source
+$(\vec{x}, t, \theta, \phi)$ and sensor position $\vec{r}$.
+
+Since photon propagation needs extensive computing, $B$ cannot be directly
+simulated for each request. The number is retrieved from a table look-up
+instead. The respective tables have to be generated in advance by simulating a
+large number of sources in all possible depths---since the optical properties
+of the Antarctic ice sheet depend strongly on the vertical position, see
+Fig.~\ref{fig:ice_scatt_abs}---and all possible zenith angles, using data on the
+ice properties that have been retrieved from onboard LED flasher signals
+recorded by the IceCube DOMs \cite{Dima}. The resulting photon density
+distribution is then stored in six-dimensional tables, the relevant quantities
+being three spatial dimensions, the relative time between emission and
+detection, the emission angle at the source, and the angle of incidence on the
+detector since the DOMs have a zenith dependent detection efficiency, as clearly
+visible from their layout (Fig.~\ref{fig:DOM}).
+
+Finally these tables are fitted with multidimensional spline functions, which
+leads to more smooth results and significantly reduces the amount of data that
+has to be stored \cite{Dima}. This is an important issue, since one of those
+six-dimensional tables has to be loaded into the CPU memory for every source
+depth, orientation, and type (point-like and track-like, as these have
+different light output distributions).
 
 \subsection{Monopod}
 \label{sec:reco_monopod}
@@ -317,11 +344,13 @@ point-like energy depositions along the track.
 
 Assuming a cascade-like energy deposition $E$ at the vertex position $\vec{x}$
 and time $t$, pointing into the direction $(\theta, \phi)$, the expected number
-of photons $B_j(\vec{r}_i, \vec{x}, t, \theta, \phi)$ per unit energy is
-retrieved from photonics for every DOM $i$ that registered photons in the event
-and for every time bin $j$. The total number of expected photons is then
+of photons $B^\mathrm{cscd}_j(\vec{r}_i, \vec{x}, t, \theta, \phi)$ per unit
+energy is retrieved from Photonics (see Sec.~\ref{sec:reco_photonics}) for every
+DOM $i$ that registered photons in the event and for every time bin $j$. The
+total number of expected photons is then
 \begin{equation}
- \mu_{ij} = B_j(\vec{r}_i, \vec{x}, t, \theta, \phi)\,E + \nu_j \quad,
+ \mu_{ij} = B^\mathrm{cscd}_j(\vec{r}_i, \vec{x}, t, \theta, \phi)
+             \,E_\mathrm{cscd} + \nu_j  \quad, \label{eqn:cscd_hypo}
 \end{equation}
 where $\nu_j$ is the expectation of noise hits.
 
@@ -338,7 +367,8 @@ probable values of the true cascade parameters.
 
 Those fitting routines search for the maximum value of
 $\mathcal{L}$\footnote{Usually, and computationally more conveniently, they
-search for the minimum of $-\log\mathcal{L}$.} in a multidimensional parameter
+search for the minimum of $-\log\mathcal{L}$. Hence they are commonly called
+``minimisers''.} in a multidimensional parameter
 space in an iterative process. In general, the procedure is to choose a test
 point in the parameter space, where the likelihood and its gradient vector are
 evaluated. After that, the test point is moved into the direction of the
@@ -361,6 +391,49 @@ the more elaborate HybridReco/MultiNest reconstruction.
 \subsection{HybridReco/MultiNest}
 \label{sec:reco_multinest}
 
+The final, most accurate and involved reconstruction for PINGU events is called
+HybridReco/MultiNest, or just MultiNest. It consists of two different
+ingredients: the HybridReco event hypothesis and the MultiNest minimiser.
+
+\subsubsection{HybridReco}
+
+To conform to the actual event topology in PINGU, it is necessary to add the
+possibility of an outgoing muon of finite length to the pure cascade hypothesis
+that was used for the previous reconstructions. Since its starting point is
+fixed at the cascade vertex, the muon adds only three variable to the problem:
+its direction, again defined by two angles, and its length. However at PINGU
+energies the kinematic angle between the hadronic cascade and the outgoing
+lepton is only a few degrees \cite{NuScattAng}, far below the directional
+resolution of the reconstruction (see Sec.~\ref{sec:sim_input}), the directions
+of muon and cascade are assumed to be aligned to reduce complexity. Thus only
+the muon energy $E_\mu$, which is proportional to its length, is added to the
+set of parameters.
+
+This means that the expression for the expected number of photons on a certain
+DOM (\ref{eqn:cscd_hypo}) has to be extended by a term representing the muon
+track:
+\begin{equation}
+  \mu_{ij} = B^\mathrm{cscd}_j(\vec{r}_i, \vec{x}, t, \theta,\phi)
+              \,E_\mathrm{cscd}
+   + B^\mathrm{track}_j(\vec{r}_i, \vec{x}, t, \theta, \phi)\,E_\mu
+   + \nu_j \quad, \label{eqn:hybrid_hypo}
+\end{equation}
+Although only one variable is added with respect to the cascade reconstruction,
+it turns out that finding the maximum likelihood gets much more difficult than
+before. The reason for this is the fact that two different photon emission
+patterns, $B^\mathrm{cscd}$ for the hadronic cascade and $B^\mathrm{track}$ for
+the muon, have to be considered in the hypothesis where it is unclear whether a
+given photon originates from the cascade or the muon. Additionally the typical
+distances in PINGU are so small that photon scattering plays only a small role
+and most of the photons reach the DOMs on an undisturbed path, so-called
+``direct hits''.
+
+As an illustration, consider a photon that is detected close to the muon track
+in its direction of travel ...
+
+These direct hits cause discontinuities in the likelihood space ...
+
+\subsection{MultiNest}
 
 %==============================================================================
 \section{Event Selection}
@@ -377,13 +450,13 @@ mass hierarchy signal pass the imposed cuts---since it is only a second-order
 effect event statistics are of great importance---and that the signal in the
 data is not destroyed or changed by the cuts.
 
-For the data samples used in this study, a two step selection has been applied.
-The rationale for this approach is the efficient use of computing resources.
-At least the first part of the data reduction has to be run directly at the
-South Pole due to the limited bandwidth for data transmission to the northern
-hemisphere. Hence the computing for this part has to be lightweight, as
-computing resources in Antarctica are scarce as well. After the easily
-identifiable background events have been removed, more involved
+For the data samples used in this study, a two step selection has been applied
+\cite{Processing}. The rationale for this approach is the efficient use of
+computing resources. At least the first part of the data reduction has to be run
+directly at the South Pole due to the limited bandwidth for data transmission to
+the northern hemisphere. Hence the computing for this part has to be
+lightweight, as computing resources in Antarctica are scarce as well. After the
+easily identifiable background events have been removed, more involved
 reconstructions can be run on the remaining data, whose results will be used for
 a refined second event selection and eventually in the analysis of the final
 data sample.
