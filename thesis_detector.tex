@@ -426,14 +426,84 @@ the muon, have to be considered in the hypothesis where it is unclear whether a
 given photon originates from the cascade or the muon. Additionally the typical
 distances in PINGU are so small that photon scattering plays only a small role
 and most of the photons reach the DOMs on an undisturbed path, so-called
-``direct hits''.
+``direct hits'' or ``direct photons''.
 
 As an illustration, consider a photon that is detected close to the muon track
-in its direction of travel ...
+in its direction of travel. Since the muon moves with the speed of light in
+vacuum, but the photons only with the speed of light in ice, $c_\mathrm{ice} =
+c_\mathrm{vac}/n_\mathrm{ice}$, a direct photon from the muon would arrive
+earlier than one from the vertex, although it was emitted later. On the other
+hand, a photon whose arrival time is compatible with a direct hit from the
+vertex could also originate from the muon if it was scattered on the way and
+hence took a longer path to its detection. This leads to ambiguities in the
+photon distributions.
 
-These direct hits cause discontinuities in the likelihood space ...
+Even more importantly, the large number of direct hits causes strong
+discontinuities in the likelihood space, as it is very probable that a given
+photon arrives undisturbed at the earliest time allowed by causality, but
+forbidden to arrive even a short time earlier. These sharp edges are
+problematic for conventional minimisers as described in
+Sec.~\ref{sec:reco_monopod}, which tend to ``get stuck'' in local minima of the
+likelihood space during their iterations.
 
 \subsection{MultiNest}
+
+A robust way to handle such a challenging likelihood profile and reliably find
+its global maximum is offered by the MultiNest algorithm \cite{MultiNest1,
+MultiNest2}. Instead of starting with a seed point and trying to move it to
+the maximum along a path following the direction of the local gradient,
+MultiNest uses an ensemble of active points distributed over an active region
+in the parameter space to infer the shape of the likelihood and then tries to
+shrink this region down to the maximum.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=\textwidth]{MultiNest2}
+\caption{Cartoon illustrating the MultiNest sampling process. (a) -- (d) show
+  the shrinking sampling region with the iso-likelihood contours approximated
+  by ellipses. In (e) the sampling region has been separated into two  distinct
+  active regions. Figure taken from \cite{MultiNest1}.}
+\label{fig:MultiNest_process}
+\end{figure} 
+
+The algorithm starts off with evaluating the likelihood values at the initial
+ensemble of points in parameter space. From this, an elliptical iso-likelihood
+contour is estimated from the points with the lowest likelihoods, as shown in
+Fig.~\ref{fig:MultiNest_process}a. Then the contour is scaled down by a certain
+factor, Fig.~\ref{fig:MultiNest_process}b, and the points which are now outside
+the contour are replaced by new points distributed evenly within the smaller
+contour. This procedure is repeated until the likelihood values of all active
+points are inside a sufficiently small range, indicating that the maximum has
+been found, or the number of iterations has reached the allowed bound.
+
+A powerful feature of the MultiNest algorithm is that it can combine several
+overlapping ellipses into one iso-likelihood contour, and hence efficiently map
+out irregularly shaped maxima, and even identify sub-samples of active points
+belonging to different local maxima. If such sub-samples are detected, the
+active region is split into several distinct regions, as shown in
+Fig.~\ref{fig:MultiNest_process}e. Then the different regions are optimised in
+parallel, and if at some iteration it turns out that one of the local maxima is
+significantly lower than the others, the corresponding region gets removed
+again.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.8\textwidth]{MultiNest3}
+\caption{Example of MultiNest treating a likelihood landscape with two
+  distinct, sharp maxima (a). In (b), the starting ensemble of test points is
+  shown in red and the maximum likelihood points from the two isolated
+  sub-samples evolving during successive iterations of MultiNest in green and
+  blue, respectively. Figure taken from \cite{MultiNest1}.}
+\label{fig:MultiNest_result}
+\end{figure}
+
+Due to these possibilities, MultiNest is suited to find the maximum likelihood
+solution of the HybridReco hypothesis for events in PINGU, where sharp and
+irregularly shaped maxima commonly occur. Also the ambiguities described above
+can be handled reliably via the technique of disjoint samples following two
+possible solutions of the problem in parallel. An example showing MultiNest
+operating on an artificial likelihood landscape with sharp edges and two
+separated maxima is shown in Fig.~\ref{fig:MultiNest_result}.
 
 %==============================================================================
 \section{Event Selection}
@@ -560,7 +630,23 @@ that has been run on all events passing the first stage of cuts.
 \end{description}
 
 \subsection{Particle Flavour Identification}
-\label{sec:PID}
+\label{sec:cuts_PID}
+
+Since in PINGU the main oscillation channels are muon neutrinos converting into
+\nue or \nutau, which are all selected by the event selection strategy
+described above, it is necessary to reconstruct the flavours of the neutrino
+events in the final data sample. As shown in Sec.~\ref{sec:NuDetection},
+however, PINGU can only distinguish between track-like events corresponding to
+\numu CC interactions with a muon in the final state and cascade-like events,
+made up from of \nue and \nutau CC events and NC events of all flavours,
+which lack the outgoing muon and consist of a cascade only, and possibly
+missing energy in form of an outgoing neutrino.
+
+To make this discrimination as efficient as possible, a boosted decision tree
+\cite{BDT} has been set up to generate a single cut variable from the
+combination of six input variables, all carrying information on the topology of
+the underlying event \cite{PID_BDT}. These variables are:
+
 
 %==============================================================================
 \section{Next-Generation Optical Modules}
