@@ -645,7 +645,44 @@ missing energy in form of an outgoing neutrino.
 To make this discrimination as efficient as possible, a boosted decision tree
 \cite{BDT} has been set up to generate a single cut variable from the
 combination of six input variables, all carrying information on the topology of
-the underlying event \cite{PID_BDT}. These variables are:
+the underlying event \cite{PID_BDT}. Three of these variables based on the
+distribution of the reduced arrival times with respect to the reconstructed
+vertex ($\vec{x},\,t$),
+\begin{equation}
+ t_i^\mathrm{red} = t_i - t - |\vec{r}_i - \vec{x}|/c \quad,
+\end{equation}
+of the DOM hits in the event while the remaining three refer to the result of
+the MultiNest reconstruction:
+\begin{description}
+ \item[Early hit charge:] The number of DOM hits in the time window
+  [$-200,\,-6$]\,ns (i.\,e.\ before) relative to the reconstructed vertex time.
+  Track-like events tend to have a larger number of these early hits since the
+  muon travelling through the detector and hence emitting light over a longer
+  time causes a bias towards late vertex times. Then direct hits from the
+  cascade can be registered prior to the reconstructed interaction vertex
+  (cf.~Sec.~\ref{sec:reco_multinest}).
+ \item[Very late hit charge:] The number of DOM hits in the time window
+  [$200,\,20000$]\,ns relative to the reconstructed vertex time. Track-like
+  events tend to have a larger number of very late hits as well, as the total
+  light deposition is spread out over a longer time span due to the muon.
+ \item[Time to accumulate 10\,\% of the total charge:] In cascade-like events,
+  light deposition happens at a more or less singular point in space and time,
+  such that the first 10\,\% of the integrated PMT charge are accumulated 
+  faster than in spread-out track events.
+ \item[Reconstructed muon length:] The propagation length of the
+  muon reconstructed by MultiNest before it has deposited all its energy and
+  decays. Obviously, this value should be larger for true track events while
+  cascades should ideally contain a muon of zero length.
+ \item[Muon fractional energy:] The fraction of the total reconstructed energy
+  that is accounted to the muon, $\frac{E_\mu}{E_\mu+E_\mathrm{cscd}}$. Similar
+  to the above, this is a measure how prominent the muon features are in the
+  event and is close to zero for cascades.
+ \item[Best vs. cascade-only likelihood:] For the best fit parameters found by
+  MultiNest, the likelihood of the cascade-only hypothesis is evaluated by
+  setting the muon energy to zero and scaling up the cascade energy accordingly.
+  The larger the difference to the actual value of the best-fit likelihood
+  including a muon, the more probable that a muon is contained in the event.
+\end{description}
 
 
 %==============================================================================
