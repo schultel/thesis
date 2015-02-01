@@ -7,7 +7,7 @@ The Standard Model of Particle Physics, as described in the previous section,
 has been one of the most successful theories in the history of physics. It is,
 however, not fundamental in the sense that it can explain all physical
 phenomena alone. Its shortcomings are e.\,g.\ the missing inclusion of the
-fourth fundamental force, gravity, and an explanation of the fundamental
+fourth fundamental force, gravity, and a lack of explanation for the fundamental
 asymmetry between bosons and fermions.
 There are theoretical extensions to the Standard Model addressing these
 questions, such as ``Grand Unified Theories'', supersymmetry, and many others 
@@ -52,7 +52,7 @@ corresponding Hamiltonian
 \subsubsection{General Case}
 
 Changes between the two bases are carried out via the so-called PMNS
-matrix\footnote{After Bruno Pontecorvo, Ziro Maki, Masami Nagakawa, and Shoichi
+matrix\footnote{After Bruno Pontecorvo, Ziro Maki, Masami Nakagawa, and Shoichi
 Sakata.} $\mathcal{U}_\mathrm{PMNS}$ that can be parametrised using three Euler
 angles \thet{ij}, also called mixing angles, and one complex phase angle
 $\delta$ that is related to possible CP violation:
@@ -85,13 +85,13 @@ Here, $s_{ij}$ and $c_{ij}$ are shorthands for $\sin\thet{ij}$ and
 $\cos\thet{ij}$, respectively. Transformations between flavour and mass base
 are then given by
 \begin{eqnarray}
- \ket{\nu_\alpha} = \sum_i U^*_{\alpha k}\, \ket{\nu_k}\quad, \\
+ \ket{\nu_\alpha} = \sum_k U^*_{\alpha k}\, \ket{\nu_k}\quad, \\
  \ket{\nu_k} = \sum_\alpha U_{\alpha k}\, \ket{\nu_\alpha}\quad.
 \end{eqnarray}
 
 To ensure lepton number conservation, unitarity of $\mathcal{U}_\mathrm{PMNS}$
 has to be required. Any deviation from this can be interpreted as a hint for
-additional neutrino flavours that don't participate in the weak
+additional neutrino flavours that do not participate in the weak
 interaction\footnote{Measurements of the $Z^0$ decay width have shown that only
 three weakly interacting neutrino flavours exist \cite{Zwidth}---at least at
 masses up to half the $Z^0$ mass, $m_\nu < m_{Z^0}/2 = 45.6$\,GeV.}. Such
@@ -113,22 +113,19 @@ distance $L$ has to be calculated according to
 In the mass base, the propagation of the neutrinos can be described as plain
 waves,
 \begin{equation}
- \Ket{\nu_i(t)} = \exp\left(-i(E_i t - \vec{p}_i\cdot \vec{x})\right)\,
-  \Ket{\nu_i(0)} \quad,
+ \Ket{\nu_k(t)} = \exp\left(-i(E_k t - \vec{p}_k\cdot \vec{x})\right)\,
+  \Ket{\nu_k(0)} \quad,
 \end{equation}
-and assuming relativistic neutrinos ($m_i \ll E_i \Rightarrow v \approx c$) one
+and assuming relativistic neutrinos ($m_k \ll E_k \Rightarrow v \approx c$) one
 can approximate in natural units\footnote{$\hbar = c = 1$}
 \begin{eqnarray}
- E_i =       \sqrt{ \vec{p}_i^2 - m_i^2 }
-     \approx p_i + \frac{m_i^2}{2p_i} \quad, \\
- E_i t - \vec{p}_i\cdot \vec{x} = \left(p_i + \frac{m_i^2}{2p_i}\right) L
-                                  - p_i L \approx \frac{m_i^2}{2E} L
+ E_k =       \sqrt{ \vec{p}_k^2 - m_k^2 }
+     \approx p_k + \frac{m_k^2}{2p_k} \quad, \\
+ E_k t - \vec{p}_k\cdot \vec{x} = \left(p_k + \frac{m_k^2}{2p_k}\right) L
+                                  - p_k L \approx \frac{m_k^2}{2E} L
 \end{eqnarray}
 With this, (\ref{eqn:osc_prob_hamiltonian}) reduces to
 \begin{equation}
-%  P_{\alpha\to\beta} = \left|\sum_i U^*_{\beta i} U_{\alpha i} \,
-%                       e^{-i m_i^2 L / 2E} \right|^2 \quad.
-%  FIXME: Should there be the absolute?
  P_{\alpha\to\beta} = \sum_{k,j} U^*_{\alpha k} U_{\beta k} U_{\alpha j}
                         U^*_{\beta j}
                         \exp\left( -i\frac{\dm{kj}L}{2E} \right)
@@ -170,10 +167,10 @@ Obviously, this oscillation probability collapses to $P_{\alpha\to\beta} =
 flavour conversion means that the $m_i$ are different from each other and in
 particular different from zero (at least two of them), contradicting the
 standard model prediction of vanishing neutrino masses. Additionally, the
-second oscillatory term only contributes if there actually is CP violation in
+second oscillatory term only contributes if there is CP violation in
 the neutrino sector---otherwise the mixing matrix (\ref{eqn:PMNS}) is real.
 
-For antineutrinos, the oscillation probability is derived fully analogue, only
+For antineutrinos, the oscillation probability is derived analogously, only
 with $\mathcal{U}_\mathrm{PMNS}$ being replaced by its complex conjugate. Hence
 differing vacuum oscillation probabilities for neutrinos and antineutrinos are
 a proof of CP violation.
@@ -199,14 +196,13 @@ The expression for the transition probability simplifies to
 \begin{equation}
  P_{\alpha\to\beta} = \sin^2 2\vartheta \sin^2\left( \frac{\dm{}L}{4E} \right)
                     = \sin^2 2\vartheta\sin^2\left(\pi\frac{L}{L^\mathrm{osc}}
-                       \right)\quad,
+                       \right) \qquad (\alpha \neq \beta) \quad,
  \label{eqn:twoflavour_prob}
 \end{equation}
 introducing the oscillation length
 \begin{equation}
  L^\mathrm{osc} \equiv \frac{4\pi\,E}{\dm{}}
-  \approx 2.47 \frac{E\,[\si{\GeV}]}{\dm{}\,[\si{\eVsq}]} \si{\km} \qquad
-  (\alpha \neq \beta) \quad.
+  \approx 2.47 \frac{E\,[\si{\GeV}]}{\dm{}\,[\si{\eVsq}]} \si{\km}  \quad.
 \end{equation}
 
 From (\ref{eqn:twoflavour_prob}), the two different groups of parameters in
@@ -216,10 +212,10 @@ The mixing angles define the amplitude of the oscillation, with $\vartheta
 \approx \ang{45}$ giving rise to so-called ``maximum mixing'' where a full
 transition from one flavour to another is possible. The mass splittings
 determine the frequency at a given neutrino energy, expressed through the
-oscillation length at which the first oscillation minimum appears.
+oscillation length at which the first full oscillation cycle is completed.
 
 So from an experimental point of view, placing a detector at a distance $L =
-L^\mathrm{osc}$ from the neutrino source is preferential, since here the
+L^\mathrm{osc}/2$ from the neutrino source is preferential, since here the
 oscillation effects are strongest. If $L \ll L^\mathrm{osc}$, the flavour
 transition has not yet happened while at $L \gg L^\mathrm{osc}$ only the
 average transition probability
@@ -233,36 +229,15 @@ neutrino energy spectrum and hence a distribution of oscillation lengths.
 Hence the fast oscillations will smear out on a distance $L \gg
 L^\mathrm{osc}$.}.
 
-\subsection{Neutrino Mass Hierarchy}
+\subsection{Absolute Neutrino Masses and Mass Hierarchy}
 \label{sec:NMH}
 
-Although the existence of neutrino masses is essential for neutrino 
-oscillations, the relevant parameters are not the three mass eigenstates 
-themselves, but their squared differences \dm{kj}. So they are not three, but 
-only two independent parameters since obviously
-\begin{equation}
- \dm{31} = \dm{32} + \dm{21} \quad.
- \label{eqn:mass_diff_link}
-\end{equation}
-On the other hand, apart from CP violating effects, which have not yet been 
-observed, all oscillatory terms above are proportional to either $\cos$ or 
-$\sin^2$ and hence insensitive to the sign of their argument.
+Since the existence of neutrino oscillations has unambiguously shown that 
+neutrinos have non-zero masses, the question is what the absolute values of 
+these masses are. Although this question seems to be very simple, it turns out 
+to be experimentally very challenging.
 
-Thus in vacuum oscillations, only information on the distances of the mass 
-eigenstates can be collected, but neither on the absolute masses or their 
-relative ordering. In other words, studying oscillations one can measure the 
-difference between e.\,g.\ the (squared) mass eigenstates $m_1$ and $m_2$, but 
-not their actual values and not even whether $m_2$ is larger or smaller than 
-$m_1$. This could be resolved, however, if one would measure all three mass
-splittings separately and then used (\ref{eqn:mass_diff_link}) to separate the
-ordering. Unfortunately, it turns out \cite{Fogli, GonzalezGarcia} that
-\begin{equation}
- \dm{32} \simeq \dm{31} \gg \dm{21} \quad,
-\end{equation}
-such that with current experiments' precision it is impossible to disentangle
-\dm{32} and \dm{31}. So what can be done to fix the neutrino mass eigenstates?
-
-To establish absolute neutrino masses one has to consider other effects, such 
+To establish absolute neutrino masses one has to consider effects such 
 as distortions at the upper end of the energy spectrum of nuclear $\beta$ 
 decays (as described in Sec.~\ref{sec:BetaDecay}). Here the decay of tritium is 
 promising due to its small decay energy. In fact, currently the most stringent 
@@ -275,7 +250,7 @@ limit of
  m_{\nuebar} \lesssim \SI{2.1}{\eV}
 \end{equation}
 is expected to be improved by one order of magnitude in the KATRIN experiment 
-that also targets the tritium decay spectrum \cite{KATRIN}.
+that targets the tritium decay spectrum as well \cite{KATRIN}.
 
 However these experiments can only directly measure the superposition of mass
 eigenstates that corresponds to the \nue or \nuebar flavour eigenstate. A direct
@@ -284,16 +259,58 @@ difficult since they cannot be created in a controllable source like a nuclear
 decay. The only not completely unrealistic options here would be time-of-flight
 measurements with an extremely long baseline\footnote{E.\,g.\ astrophysical
 neutrinos that can be associated with a transient event such as a supernova or a
-gamma-ray burst.}. Thus oscillations are needed to establish the relative
-positions of the mass eigenstates. But, as already mentioned, the ordering or
-\emph{hierarchy} of the masses cannot be resolved in oscillations as they were
-presented above.
+gamma-ray burst.}. 
 
-Yet there is a possibility to access the neutrino mass hierarchy in oscillation
+So the most promising overall approach is to fix the neutrino mass scale at one 
+point by measuring the \nue mass directly and then derive the other mass 
+eigenstates via the mass differences that are accessible in neutrino 
+oscillations. On the other hand, apart from CP violating effects, which have not 
+yet been observed, all oscillatory terms above are proportional to either $\cos$ 
+or $\sin^2$ and hence insensitive to the sign of their argument.
+Thus, in vacuum oscillations, only information on the distances of the mass 
+eigenstates can be collected, but not on their relative ordering or 
+\emph{hierarchy}. 
+
+% In other words, studying oscillations one can measure the difference between 
+% e.\,g.\ the (squared) mass eigenstates $m_1$ and $m_2$, but not their actual 
+% values and not even whether $m_2$ is larger or smaller than $m_1$---the ordering 
+% or \emph{hierarchy} of the masses.
+
+This could be resolved, however, if one would measure all three mass
+splittings separately and then use that obviously
+% (\ref{eqn:mass_diff_link}) 
+\begin{equation}
+ \dm{31} = \dm{32} + \dm{21} \quad.
+ \label{eqn:mass_diff_link}
+\end{equation}
+to derive the ordering. Unfortunately, it turns out \cite{Fogli, 
+GonzalezGarcia} that
+\begin{equation}
+ \dm{32} \simeq \dm{31} \gg \dm{21} \quad,
+\end{equation}
+such that with current experiments' precision it is impossible to disentangle
+\dm{32} and \dm{31}. So what can be done to learn about the ordering of the 
+neutrino mass eigenstates?
+
+There is a possibility to access the neutrino mass hierarchy in oscillation
 experiments, if the neutrinos in question pass through a sufficient amount of
 matter along their path. In this case, additional resonances appear that depend
 on the sign of the mass splittings. These so-called matter effects will be
 discussed in the following section.
+
+
+% Although the existence of neutrino masses is essential for neutrino 
+% oscillations, the relevant parameters are not the three mass eigenstates 
+% themselves, but their squared differences \dm{kj}. So they are not three, but 
+% only two independent parameters since obviously
+% 
+% 
+% 
+% Thus oscillations are needed to establish the relative
+% positions of the mass eigenstates. But, as already mentioned,  cannot be 
+% resolved in oscillations as they were
+% presented above.
+
 
 \subsection{Oscillations in Matter}
 \label{sec:matter_osc}
@@ -341,7 +358,6 @@ discussed in the following section.
 \label{fig:coherent_scattering}
 \end{figure}
 
-
 When neutrinos are passing through matter, they will undergo coherent forward
 scattering off the electrons and nucleons in their path. Since the matter
 distribution is continuous, this can be interpreted as a matter potential which
@@ -350,7 +366,7 @@ similar to photons passing through a transparent medium. The implications of
 this scenario were first described by L.\ Wolfenstein in 1978 \cite{Wolfenstein}
 
 Neutral current interactions, as shown in Fig.~\ref{fig:coh_NC}, are open to
-all neutrino flavours in a similar way. Here the contributions from electrons
+all neutrino flavours in a similar way. Here, the contributions from electrons
 and protons cancel since their associated weak currents have opposite
 sign\footnote{Assuming that the matter is macroscopically neutral, hence
 electrons and protons have equal number densities.} and only the neutron
@@ -452,10 +468,20 @@ that the mixing amplitude $\sin^2 2\thet{}$ in (\ref{eqn:twoflavour_prob})
 becomes equal to one and a full transition from one flavour to another is
 possible. At the same time, the mass splitting becomes minimal.
 
-Another thing to note is that in (\ref{eqn:matter_angle}), both $A_\mathrm{CC}$
+Another thing to note is that in (\ref{eqn:matter_angle}), both $A_\mathrm{CC}$ 
+(by being replaced by $\bar{A}_\mathrm{CC}$ for antineutrinos)
 and \dm{} can carry a negative sign. Thus one can infer the sign of \dm{} by
 observing the so-called MSW resonance\footnote{After Mikheyev, Smirnov, and
-Wolfenstein.} in either the neutrino or the antineutrino channel. This has been
+Wolfenstein.} in either the neutrino or the antineutrino channel:
+
+If, e.\,g., the hierarchy is normal---meaning that \dm{} is positive---for 
+antineutrinos, where the matter potential $\bar{A}_\mathrm{CC}$ is always 
+negative, the denominator of (\ref{eqn:matter_angle}) will always be larger 
+than one and no resonance can occur. For neutrinos on the other hand, 
+$A_\mathrm{CC}$ is positive and can cause a MSW resonance if it has the 
+appropriate value.
+
+This measurement has been
 done by the SNO experiment, which measured the flux of solar \nue and the
 all-flavour flux of solar neutrinos independently from each other with high
 precision \cite{SNOosc}. Clear signs for a MSW resonance were detected for the
@@ -465,7 +491,7 @@ inner Sun, hence one could conclude that the relevant mass splitting for
 the oscillation of solar neutrinos, \dm{21}, has a positive sign.
 
 In the planned PINGU experiment (for details, see Sec.~\ref{sec:PINGU}), a
-similar measurement it envisaged to determine the sign of the other mass
+similar measurement is envisaged to determine the sign of the other mass
 splitting \dm{31}, which will be referred to as ``Neutrino Mass Hierarchy'' in
 the following. Here the matter potential of the Earth will be used to
 observe a MSW resonance either in the atmospheric neutrino or antineutrino
