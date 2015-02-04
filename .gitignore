@@ -15,6 +15,7 @@
 # *.pdf
 mythesis.pdf
 outline.pdf
+*thesis*.pdf
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

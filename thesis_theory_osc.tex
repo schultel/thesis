@@ -540,7 +540,7 @@ by the Super-Kamiokande collaboration in 1998 \cite{SuperKosc}. This detection
 was facilitated by a large value of the relevant mixing angle \thet{23}, which
 is close to the maximum mixing value of $\pi/4$. Over the course of the last
 years, more data have been added to this analysis, improving its precision on 
-the measured parameters \thet{23} and $\dm{atm}=(\dm{31}+\dm{32})/2$.
+the measured parameters \thet{23} and $\dm{}=(\dm{31}+\dm{32})/2$.
 
 Additionally, a similar measurement has been done with the IceCube DeepCore
 neutrino telescope at energies of several tens of GeV \cite{DCosc}. Reaching a
@@ -624,7 +624,7 @@ been released in the meantime.
 
 \begin{figure}
  \centering
- \includegraphics[width=0.6\textwidth]{NMH}
+ \includegraphics[width=0.5\textwidth]{NMH}
  \caption{Schematic depiction of the ordering of neutrino mass eigenstates in
     both normal and inverted mass hierarchy. The definition of \dm{} and $\delta
     m^2$ according to Fogli et al.\ \cite{Fogli2012} is indicated as well.}
@@ -665,7 +665,7 @@ al., used throughout this thesis.}
 \begin{center}
 \begin{tabular}{lcc}
 \toprule
-Parameter & Best Fit & $1\sigma$ Error\\
+Parameter & Best Fit & $1\sigma$ Range\\
 \midrule
 \dm{31} [$10^{-3}\si{eV}^2$] &
 \begin{tabular}[c]{@{}c@{}} 2.46 (NH) \\ -2.38 (IH)\end{tabular} & 0.08 \\
@@ -704,13 +704,14 @@ perform. These are
 \end{itemize}
 
 Starting off with the atmospheric neutrino flux, we have a steeply falling
-power law spectrum with an index of $\gamma \approx -3.7$ in all four flavours.
+power law spectrum with an index of $\gamma \approx -3.7$ in all flavours.
 The normalisation for \numu is about twice the \nue normalisation, while
 neutrinos and antineutrinos of the same flavour have about the same flux. This
 flux has to be multiplied by the oscillation probabilities, which depend not
-only on the neutrinos' energy, but also on the zenith angle at which they 
+only on the neutrinos' energies, but also on the zenith angle at which they 
 arrive, since this determines the distance travelled since their production in
 the Earth's atmosphere as well as the amount of matter traversed on their way
+through the Earth.
 
 \begin{figure}
  \centering
@@ -718,7 +719,6 @@ the Earth's atmosphere as well as the amount of matter traversed on their way
  \caption{The PREM Earth density profile \cite{PREM}.}
  \label{fig:PREM}
 \end{figure}
-through the Earth.
 
 In Figs.~\ref{fig:nue_to_numu} and \ref{fig:numu_to_numu}, the oscillation
 probabilities for \nue to \numu and \numu to \numu are shown as examples. They
@@ -730,44 +730,47 @@ probabilities for $\nu_\alpha \to \nu_\beta$ are in principle equal to those for
 $\bar\nu_\alpha \to \bar\nu_\beta$, apart from the MSW resonance, easy to spot
 in the energy range from 2 to \SI{10}{\GeV} for zenith angles below
 $\coszen \approx -0.4$, that appears in neutrinos for the normal and in
-antineutrinos for the inverted mass hierarchy.
+antineutrinos for the inverted mass hierarchy (see Sec.~\ref{sec:matter_osc}).
 
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.95\textwidth]{osc_nue_to_numu}
- \caption{Oscillation probabilities for \nue to \numu (top) and \nuebar to
-          \numubar for both normal and inverted mass hierarchy.}
+ \caption{Oscillation probabilities for $\nue \to \numu$ (top) and $\nuebar \to
+          \numubar$ (bottom) for normal and inverted hierarchy.}
  \label{fig:nue_to_numu}
 \end{figure}
 \begin{figure}[p]
  \centering
  \includegraphics[width=0.95\textwidth]{osc_numu_to_numu}
- \caption{Oscillation probabilities for \numu to \numu (top) and \numubar to
-          \numubar for both normal and inverted mass hierarchy.}
+ \caption{Oscillation probabilities for $\numu \to \numu$ (top) and $\numubar 
+          \to \numubar$ (bottom) for normal and inverted hierarchy.}
  \label{fig:numu_to_numu}
 \end{figure}
 
 \enlargethispage{\baselineskip}
 But since the fluxes of neutrinos and antineutrinos of the same flavour are 
 essentially equal and PINGU cannot discriminate between them\footnote{The only
-method to do this would be to identify the electrical polarity of the lepton
+method to do this would be to identify the sign of the electrical charge of 
+the lepton
 produced in CC interactions. However it is unrealistic to generate the required
 magnetic field in the antarctic glacier, where PINGU will be located (see
 Secs.~\ref{sec:ICDC} and \ref{sec:PINGU}).}, the question is how the different
 hierarchies can show up in the recorded data. Here the different cross-sections
 for neutrinos and antineutrinos come into effect. As one can see from
 Fig.~\ref{fig:NuXsec_GeV}, at the relevant energies just below \SI{10}{\GeV}
-the cross section for antineutrino interactions with an hadronic target
-material is about a factor of two lower than the one for neutrinos. Thus the
+the cross section for antineutrino interactions with a hadronic target
+material is about a factor of two lower than the one for neutrinos. Thus, the
 MSW resonance will appear in the data in any case, but much more prominent if
 the hierarchy is normal, as in this case roughly \sfrac{2}{3} of the
 events---the neutrino-induced ones---are affected by it, while in the inverted
-hierarchy only the remaining third caused by antineutrinos is.
+hierarchy case only the remaining third caused by antineutrinos is.
 
 So the quantities of interest are the sum of neutrino and antineutrino events
-for the different flavours and how the differ assuming normal and inverted mass
+for the different flavours at the energy and \coszen range where the MSW 
+resonance is expected and how they differ assuming normal and inverted mass
 hierarchy. To assess how significant the difference is in a given bin in the
-($E$, \coszen) plane, we define a bin-wise \delchi similar to \cite{Akhmedov} as
+($E$, \coszen) plane, we define a bin-wise \delchi similar to \cite{Akhmedov} 
+as
 \begin{equation}
  \delchi = \frac{N_\mathrm{NH} - N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}} \quad,
 \end{equation}
@@ -775,17 +778,19 @@ where $N_\mathrm{NH}$ and $N_\mathrm{IH}$ are the expected number of events in
 the normal and inverted hierarchy case, respectively. Plots of the event rates
 and their weighted difference \delchi are shown in
 Figs.~\ref{fig:true_akhmedov_nue} to \ref{fig:true_akhmedov_nutau}. In this
-calculation enter not the bare cross-sections, but rather the \emph{effective
-areas} for the different flavours, which also include the detection threshold
+calculation not the bare cross-sections, but rather the \emph{effective
+areas} for the different flavours enter, which also include the detection 
+threshold
 and selection efficiency of the detector. This will be discussed in detail in
 Sec.~\ref{sec:sim_input}.
 
-Comparing the different flavours one notes that the largest overall scale of the
+Comparing the different flavours, one notes that the largest overall scale of 
+the
 \delchi values appears in the \numu channel, but the contiguous regions of
 either positive or negative \delchi are rather small and alternate rapidly.
 Since a realistic detector has a limited resolution in reconstructing individual
 events, it will be challenging to resolve these fine structures in the data. In
-the \nue channel the features are less pronounced, but more extended than for
+the \nue channel, the features are less pronounced, but more extended than for
 \numu, offering a more robust measurement.
 
 \begin{figure}[p]
