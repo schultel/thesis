@@ -103,5 +103,6 @@ sympy-plots-for-*.tex/
 # My not-ready-for-thesis figures, to avoid too many outdated versions
 figs/analysis_workbench/*
 figs/scripts/*
+papers/*
 # Can do the conversion on the fly
 *-eps-converted-to.pdf
