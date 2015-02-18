@@ -1,24 +1,14 @@
 %==============================================================================
-\chapter{Theory}
-\label{sec:theory}
-%==============================================================================
-
-In this chapter, the theoretical background of this thesis will be discussed
-in detail.
-% This covers both physics as well as the techniques used for data analysis.
-% In the physics part, we
-We will concentrate on neutrinos and their properties and interactions, with
-special emphasis on neutrino oscillations.
-% The analysis part will describe the Fisher Information Matrix as a tool to
-% efficiently characterise a multi-dimensional likelihood landscape.
-
-%==============================================================================
-\section{Neutrinos in the Standard Model}
+\chapter{Neutrinos in the Standard Model}
 \label{sec:nus}
 %==============================================================================
 
+In this chapter, the theoretical background of this thesis will be discussed
+in detail. We will concentrate on neutrinos and their properties and
+interactions here, while neutrino oscillations will be described in the
+following chapter.
 
-\subsection{Standard Model in a Nutshell}
+\section{Standard Model in a Nutshell}
 \label{sec:NusInSM}
 
 In the Standard Model of Particle Physics, or just Standard Model, the current
@@ -135,7 +125,7 @@ simulation is the main topic of this thesis, is aimed to reach unprecedented
 accuracy in measuring the parameters \thet{23} and \dm{31}.
 
 
-\subsection{Neutrino Sources}
+\section{Neutrino Sources}
 \label{sec:NuSources}
 
 As discussed above, neutrinos do not participate in the strong and
@@ -144,7 +134,7 @@ or detected. On the other hand, neutrinos are produced in nearly every weak
 interaction, making them a very common particle that can stem from a variety of
 different sources in very different energy ranges.
 
-\subsubsection{Natural Radioactivity}
+\subsection{Natural Radioactivity}
 \label{sec:BetaDecay}
 On Earth, the most common source is the $\beta$ decay of natural radionuclides.
 Depending on the type of the decay ($\beta^+$ or $\beta^-$), an electron
@@ -206,7 +196,7 @@ charged lepton and a neutrino.
 % TODO: say something about 0n2b decay?
 
 
-\subsubsection{Nuclear Reactors}
+\subsection{Nuclear Reactors}
 
 In nuclear reactors, the controlled fission of heavy elements is used for the
 generation of electrical power. The intermediate products of these nuclear
@@ -226,7 +216,7 @@ available, there might still be components unaccounted for, resulting in
 unexpected features in the measured neutrino flux \cite{RENO_5MeV}.
 
 
-\subsubsection{Neutrino Beams}
+\subsection{Neutrino Beams}
 
 Another artificial source of neutrinos, but somewhat higher in energy
 (typically at a few GeV), are neutrino beams. Since the neutral neutrinos cannot
@@ -246,7 +236,7 @@ latter usually being operated by commercial power suppliers and thus provide
 the neutrino flux ``for free''.
 
 
-\subsubsection{Solar Neutrinos}
+\subsection{Solar Neutrinos}
 \label{sec:SolarNus}
 
 In terms of total flux, the strongest source of neutrinos on Earth is the Sun.
@@ -333,7 +323,7 @@ The excited $^8_4\mathrm{Be^*}$ created in the decay
 will then further decay into two $\alpha$ particles immediately.
 
 
-\subsubsection{Atmospheric Neutrinos}
+\subsection{Atmospheric Neutrinos}
 \label{sec:AtmNus}
 
 Neutrinos that are created in the interaction of high-energy charged particles
@@ -416,10 +406,10 @@ their relativistic boost, their energy spectrum is the same as the primary one
 and thus harder than the conventional component, but with a much smaller
 normalisation.
 
-% \subsubsection{Supernova Neutrinos}
+% \subsection{Supernova Neutrinos}
 % TODO: mention them?
 
-\subsubsection{Astrophysical Neutrinos}
+\subsection{Astrophysical Neutrinos}
 
 The highest energy neutrinos are the so-called astrophysical ones. They are  
 assumed to be produced at similar sites as the cosmic radiation, i.\,e.\ in 
@@ -445,7 +435,7 @@ of the flux is compatible with a power law with an index of --2 and an
 exponential cut-off around a few PeV as well as a steeper
 power law with index --2.3 \cite{Lars_globalfit}.
 
-\subsection{Detection of Neutrinos}
+\section{Detection of Neutrinos}
 \label{sec:NuDetection}
 
 As already mentioned, neutrinos only interact with other particles in weak
@@ -461,7 +451,7 @@ inherent radioactivity of the surroundings and the detector itself at MeV
 energies, and muons created in cosmic ray induced air showers which can
 penetrate even strong shielding.
 
-\subsubsection{Neutrino cross-sections}
+\subsection{Neutrino cross-sections}
 \label{sec:Xsecs}
 
 The calculation and experimental testing of neutrino cross-sections has been a
@@ -569,7 +559,8 @@ larger target masses. This means that for conventional targets consisting of
 atoms with a nucleus and an electron hull, a neutrino is much more likely to
 interact with the nuclei than with the shell electrons.
 
-\subsubsection{Neutrino interactions with hadrons at the GeV scale}
+\subsection{Neutrino interactions with hadrons at the GeV scale}
+\label{sec:XsecsGeV}
 
 \begin{figure}
 \centering
@@ -821,7 +812,7 @@ tracks and cascades.
 \end{description}
 
 
-\subsubsection{Cherenkov Effect}
+\subsection{Cherenkov Effect}
 \label{sec:Cherenkov}
 
 As discussed above, high fluxes and/or large target volumes are required for 
