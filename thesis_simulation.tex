@@ -3,12 +3,97 @@
 \label{sec:sim}
 %==============================================================================
 
+As this thesis is about estimating the performance of the PINGU detector before
+it is actually built, the estimate has to be based on simulations. In the
+chapter on hand, the simulations used to generate the results reported in the
+following chapter will be described in detail.
+
+The chapter, as the simulation process, is divided into two sections.
+Sec.~\ref{sec:sim_MCchain} will discuss the existing and well-established
+IceCube Monte Carlo (MC) chain, which has been adopted for PINGU simulations.
+Here, individual neutrino events are generated and their output of Cherenkov
+photons is modelled. After propagating the photons through the ice, the
+resulting hit pattern is processed through the standard reconstruction and event
+selection specified in Secs.~\ref{sec:EvtReco} and \ref{sec:EvtSel},
+respectively. The outcome of this event-by-event MC, \ie the effective
+areas, reconstruction resolutions, and particle identification efficiencies for
+all neutrino flavours, are then used as input for the second part of the
+detector simulation.
+
+The Parametric PINGU Analysis, \papa in short, was written specifically for the
+rapid analysis of PINGU's neutrino mass hierarchy sensitivity including a
+variety of systematic parameters. Since propagating these through the full
+MC chain would be way too time-consuming, an effective detector
+simulation was implemented that, instead of operating on individual events,
+generates the expected event distributions directly, based on the detector
+performance retrieved from the MC data. \papa will be described in
+detail in Sec.~\ref{sec:papa}.
 
 %==============================================================================
 \section{The IceCube/PINGU Simulation Chain}
 \label{sec:sim_MCchain}
 %==============================================================================
 
+\subsection{Event Generation}
+\label{sec:MC_genie}
+
+The first step in the MC chain is to model the interaction of an incoming
+neutrino with a target nucleus and the resulting final state, the so-called
+event generation. In the dedicated PINGU MC, this is carried out using the
+GENIE (Generates Events for Neutrino Interaction Experiments) \cite{GENIE}
+software package. This is already the first modification of the standard
+IceCube MC chain, where NuGen \cite{NuGen}, an IceCube-specific neutrino
+generator, is the default. Yet NuGen is laid out for high-energy neutrino
+events where only deep inelastic scattering has to be considered as an
+interaction process. In PINGU, however, the low GeV energy range is carrying the
+interesting oscillation signal, and here the complex interplay between
+quasi-elastic and deep-inelastic scattering as well as resonant processes have
+to be taken into account (see Sec.~\ref{sec:Xsecs}). Since GENIE puts much
+effort into modelling especially this energy range with great care and
+validating it against experimental results, it is the natural choice for
+generating PINGU events.
+
+GENIE starts off with an isotropic flux of neutrinos of a given flavour
+following a user-defined power-law distribution in energy (usually $\propto
+E^{-1}$ or $E^{-2}$ for PINGU MC \cite{PINGU_MC}) on the surface of a
+cylindrical generation volume well encompassing the full IceCube detector. Any
+generated neutrino passing through the interaction volume, which is fully inside
+the generation volume but still contains the detector as a whole, is forced to
+interact inside this volume. The interaction type is chosen randomly from the
+ones that are allowed and the event is assigned a weight $\mathcal{W}_i$
+proportional to the particular interaction probability, taking into account the
+generated energy spectrum. This weighting strategy makes it possible to
+re-weight the generated events to any desired incoming flux $\Phi(E, \theta)$
+later on. Then the actual weight is simply given by
+\begin{equation}
+ w_i = \frac{\Phi(E_i, \theta_i)\,\mathcal{W}_i}{N_\mathrm{evts}} \quad,
+ \label{eqn:reweight}
+\end{equation}
+where $N_\mathrm{evts}$ is the total number of simulated events.
+
+After the interaction mechanism has been determined, the interaction itself is
+modelled in detail and all involved particles, from the initial neutrino and
+nucleus over possible intermediate states to the final (meta-)stable particles
+like pions or muons, are stored inside an \texttt{I3MCTree} object for further
+processing. The reference to a tree comes from the fact that this object has
+the structure of a multiply nested list, where every particle is the root of a
+sub-tree (or branch) holding the particles created in its decay. The particles
+are characterised by their identities, positions, four-momenta, and state (such
+as 'initial', 'intermediate', or 'final'). 
+Additional GENIE-specific information such as the number of generated events,
+$N_\mathrm{evts}$, the size of the interaction volume, and others, are kept as
+an \texttt{I3MCWeightDict} object.
+
+\subsection{Particle Propagation}
+\label{sec:MC_clsim}
+
+The \texttt{I3MCTree} generated by GENIE is handed off to the mmc module
+\cite{mmc}, which propagates the final state particles in the tree as well as
+possible secondaries created in their decay further through the ice until they
+have deposited all their energy. 
+
+\subsection{Detector Response}
+\label{sec:MC_detector}
 
 %==============================================================================
 \section{The PaPA Code}
