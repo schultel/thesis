@@ -186,10 +186,95 @@ Secs.~\ref{sec:EvtReco} and \ref{sec:EvtSel}.
 \subsection{Idea}
 \label{sec:sim_idea}
 
+As already discussed, the primary science goal of PINGU is the determination of 
+the neutrino mass hierarchy, imprinted on the oscillation probability pattern 
+of the atmospheric electron and muon neutrinos travelling through the Earth's 
+matter potential (cf.~Sec.~\ref{sec:PINGUosc}). Observing this small effect 
+requires a precise high-level analysis and a detailed knowledge of the detector 
+performance. 
+
+The observable in the mass hierarchy analysis is the distribution of arriving 
+neutrinos in the ($E$, \coszen) plane. The shape of this distribution is 
+determined not only by the mass hierarchy, but also by the true values of the 
+other neutrino mixing parameters and the reconstruction efficiency and 
+precision of the detector. All those---and especially their 
+uncertainties---have to be taken into account when one wants to estimate the 
+significance with which PINGU can determine the mass hierarchy.
+
+The standard procedure to account for systematic uncertainties in IceCube is a 
+brute force approach, where the parameters in question get increased and 
+decreased by an amount corresponding to the estimated uncertainty. Then the 
+simulation is re-run for each setting and the sensitivity re-evaluated. For the 
+mass hierarchy measurement with PINGU, however, this strategy is not 
+applicable. The reason for this is that in IceCube analyses usually only search 
+for the existence of events passing a certain set of selection criteria---it is 
+a detection experiment, where systematics in general have a much less severe 
+impact compared to the search for a pattern in a large amount of data. Here, 
+correlations between the systematics have to be taken into account as well, 
+while in IceCube they can be considered independent. Additionally, the number 
+of relevant systematic parameters is much higher for PINGU, since in IceCube 
+oscillations usually do not have to be taken into account due to the much 
+higher energy scale, and the detector itself is much better understood as it is 
+already operating and hence could be studied and modelled in great detail.
+
+Thus re-running the whole simulation chain for all of these parameters---we 
+will go into detail about them in Sec.~\ref{sec:systematics}---is not feasible 
+in a reasonable amount of time, especially since a comparatively large number 
+of MC events is needed to make a reliable estimate of the sensitivity. The MC 
+sample has to exceed the expected number of recorded by roughly a factor of 
+ten. In case of insufficient MC events, statistical fluctuations will exceed 
+the strength of the imprinted mass hierarchy pattern and bias the calculated 
+significance towards high values, as we will see in 
+Sec.~\ref{sec:results_mcstats}.
+
+The basic idea how to overcome this fundamental problem is to move away from an 
+event-by-event Monte Carlo simulation and simulate the event histograms in 
+($E,\,\coszen$) directly, based on parametrisations of the relevant detector 
+quantities that are extracted from MC data. This is much faster than filling 
+the histograms with individual events and has the benefit of quasi-infinite 
+statistics since the parametrisations will in general be smooth functions, 
+resulting in inherently smooth distributions. This strategy has been 
+implemented in form of the \papa code, which will be described in detail in the 
+following section.
+
+A certain amount of MC events is needed still to produce the parametrisations 
+that are the input to \papa, however it has been found that about 20000 events 
+per neutrino flavour are sufficient to get stable fit results. This is at least
+a factor of ten less than the number of events required to reach a stable 
+result in Sec.~\ref{sec:results_mcstats}. Also, the MC does not need to be 
+re-run for the different settings of the systematic parameters, as they are 
+tuned within \papa.
 
 \subsection{Implementation}
 \label{sec:papa_code}
 
+The \papa source code is available in the IceCube subversion repository 
+\cite{papa_code}, with a detailed manual and version history maintained at the 
+IceCube wiki pages \cite{papa_wiki}. It is written entirely in the python 
+programming language \cite{python} and relies heavily on the \texttt{numpy} and 
+\texttt{scipy} packages for numerical and scientific computing \cite{numpy, 
+scipy}, with graphical output functionality based on the \texttt{matplotlib} 
+library \cite{matplotlib}.
+
+\begin{figure}
+\centering
+ \includegraphics[width=\textwidth]{PaPA_flowchart}
+ \caption{Flow chart of the PaPA simulation chain}
+\label{fig:papa_flowchart}
+\end{figure}
+
+\papa employs a staged processing procedure following the logical ordering and 
+emulating the effects of the multiple physics processes that are involved in 
+the actual measurement, as illustrated in Fig.~\ref{fig:papa_flowchart}. The 
+code itself is split into two main parts that are run separately. The first 
+part is the \texttt{PhysicsSimulation}, responsible only for the calculation of 
+neutrino oscillation probabilities. This is by far the most time-consuming part 
+as the Schr\"odinger equation for the oscillation in a varying matter 
+potential (see Sec.~\ref{sec:matter_osc}) has to be solved numerically. But 
+since the oscillations are independent from the specific settings of the PINGU 
+detector, they can be calculated in advance and then be used multiple times 
+when running the second part of \papa---the \texttt{DetectorSimulation}---for 
+various detector settings.
 
 \subsection{Systematic Parameters}
 \label{sec:systematics}
