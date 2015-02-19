@@ -165,6 +165,15 @@ standardised signal for calibration. On the mainboard the electronics are
 located that are needed to read out the PMT signal and digitise the recorded 
 data in situ, after which they are sent to the surface.
 
+The digitisation is done with two two-channel analogue transient waveform
+digitisers (ATWDs) and one fast analogue-to-digital converter (fADC) operated
+in parallel. The ATWDs read out the PMT waveforms with three different gain
+factors (one channel is reserved for internal calibration) for maximum dynamic
+range at a sampling rate of 300\,MHz with 10 bit resolution each, resulting in
+a total readout window of 422.4\,ns with 128 samples. In order to enhance this
+readout time to a total of 6.4\,\textmu s, the fADC has a sampling rate of only
+40\,MHz with 256 samples at 10 bit resolution to also record late photon hits.
+
 
 
 %==============================================================================
@@ -201,6 +210,10 @@ simplification has been discovered. Several components of the electronics part
 of the module, like the main board, the PMT base, and the high voltage supply,
 have been redesigned or replaced by more recent versions. In particular the PMTs
 will all be the high quantum efficiency models already installed in DeepCore.
+Also the rather complicated digitisation unit with three components operating
+in parallel (cf.~Sec.~\ref{sec:ICDOM}) will be replaced by only one ADC with
+high dynamic range that can be read out continuously \cite{PDOM_Aachen}---a
+component that was not yet available at the construction of IceCube.
 A delay board has become obsolete with the more recent signal digitisers and
 will not be part of the PINGU DOMs. Additional components, such as cameras to
 monitor the freeze-in process, are in discussion.
@@ -257,19 +270,86 @@ neutrino energy is then given by the sum of cascade and muon energy, and its
 direction has to be calculated from their momenta using the conservation of the
 total momentum. 
 
+\subsection{Triggering}
+\label{sec:reco_trigger}
 
-% \subsection{Low-Level Reconstruction}
-% \label{sec:reco_lowlevel}
-% TODO: write about wave calibration/triggering?
+Before an event can be reconstructed, it has to trigger the detector to read out
+the signals of the optical modules. In the simulations that are the basis for
+this thesis, the preliminary PINGU trigger is a so-called SMT3, standing for
+triple simple multiplicity trigger, however this is likely to change in the
+actual implementation of PINGU \cite{Trigger}.
+
+This SMT3 trigger requires at least three DOMs registering a hard local
+coincidence within a time window of 2.5\,\textmu s. A hard local coincidence
+means that two DOMs on the same string that a not more than two vertical
+positions apart have launched within 1\,\textmu s. For the PINGU trigger, all
+PINGU DOMs plus the DeepCore DOMs and the ones one the neighbouring IceCube
+strings are taken into account.
+
+If now an event satisfies the PINGU trigger, the full detector including
+IceCube and DeepCore is read out. This is necessary for background suppression,
+since dim atmospheric muons might trigger only PINGU, which has a lower
+threshold than IceCube\footnote{In IceCube, the standard trigger is SMT8 with a
+much larger DOM spacing.}, but still cause single sub-threshold hits in IceCube
+due to which it can be recognised and vetoed.
+
+
+\subsection{Feature Extraction}
+\label{sec:reco_feature}
+
+After the DOMs have been read out, so-called feature extraction takes place. In
+this process, the raw digitised PMT waveforms that are the DOM output are
+deconvolved into a time series of single photon hits. As the digitisation unit
+for PINGU is not fully developed yet, the simulation falls back to the current
+IceCube technology, where this decomposition is done by the Wavedeform module
+\cite{Wavedeform} using the Lawson-Hanson least squares algorithm
+\cite{LawsonHanson}.
+
+The result is a so-called pulse series in time of photon hits on DOMs, which
+then can be processed by the actual event reconstruction algorithms.
+
+\subsection{Noise Cleaning}
+\label{sec:reco_noise}
+
+The pulse map returned by Wavedeform still contains noise hits caused by
+electronic thermal noise or radioactive decays inside the DOM that hold no
+information on the neutrino event, but might confuse the reconstructions. Yet
+the majority of these hits can be removed by noise cleaning algorithms. In
+PINGU, two different cleanings are are applied consecutively: first a seeded
+radius-time (SRT) cleaning, followed by a time-window (TW) cleaning.
+
+\begin{figure}
+\centering
+  \subfloat{\includegraphics[width=0.333\textwidth]{SRT_start}}
+  \subfloat{\includegraphics[width=0.333\textwidth]{SRT_mid}}
+  \subfloat{\includegraphics[width=0.333\textwidth]{SRT_stop}}
+  \caption{Illustration of the seeded RT cleaning algorithm (see text). Figure
+    taken from \cite{SRT}.}
+\label{fig:SRTcleaning}
+\end{figure}
+
+\begin{description}
+ \item[SRT cleaning:] Starting from the cluster of HLC hits that caused the
+  event to trigger (see Sec.~\ref{sec:reco_trigger}), the \emph{seed}, the
+  remaining hits are searched for ones that fall within a radius $r$ and time
+  window $t$ \wrt one of the already selected. If such a hit is found, it is
+  added to the cluster and the procedure is repeated. In PINGU, the boundaries
+  are $r=100$\,m and $t=200$\,ns, the same values commonly used in DeepCore.
+  An illustration of the algorithm is shown in Fig.~\ref{fig:SRTcleaning}.
+ \item[TW cleaning:] A time window of 6\,\textmu s width is moved over the pulse
+  series, searching for the position containing the largest amount of charge.
+  Based on this position, all hits outside the window are discarded.
+\end{description}
+
 
 \subsection{CLast}
 \label{sec:reco_clast}
 
-The start of the reconstruction chain is CLast \cite{CLast}, a first-guess
-algorithm for cascade, i.\,e.\ point-like events. With $vec{r}_i$ being the
-positions of the DOMs that have registered charges $a_i$ at times $t_i$ in the
-event, first the event vertex is determined a the centre of gravity (COG) of the
-hit DOMs:
+The start of the actual reconstruction chain is CLast \cite{CLast}, a
+first-guess algorithm for cascade, i.\,e.\ point-like events. With $vec{r}_i$
+being the positions of the DOMs that have registered charges $a_i$ at times
+$t_i$ in the event, first the event vertex is determined a the centre of gravity
+(COG) of the hit DOMs:
 \begin{equation}
  \vec{x} = \sum_i a_i \vec{r}_i
 \end{equation}

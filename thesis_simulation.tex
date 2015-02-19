@@ -172,12 +172,11 @@ a discriminator threshold and local coincidence logic are applied, deciding
 whether a waveform gets digitised based on its strength and coincidence with a
 hit on a neighbouring DOM. These steps will be removed in the actual PDOM since
 advances in technology allow a continuous readout of the PMT waveform by a
-single analog-to-digital converter instead of the multiple parallel analog
-transient waveform digitisers \cite{PDOM_Aachen}. Finally, electronic noise in
-the digitisers and uncertainties in the time calibration are added and a
-digitised representation of the waveform is created, which can then be injected
-in the actual reconstruction chain described in Secs.~\ref{sec:EvtReco} and
-\ref{sec:EvtSel}.
+single ADC instead of the multiple parallel ATWDs \cite{PDOM_Aachen}. Finally,
+electronic noise in the digitisers and uncertainties in the time calibration are
+added and a digitised representation of the waveform is created, which can then
+be injected in the actual reconstruction chain described in
+Secs.~\ref{sec:EvtReco} and \ref{sec:EvtSel}.
 
 %==============================================================================
 \section{The PaPA Code}
