@@ -276,5 +276,397 @@ detector, they can be calculated in advance and then be used multiple times
 when running the second part of \papa---the \texttt{DetectorSimulation}---for 
 various detector settings.
 
+
+\subsubsection{\texttt{PhysicsSimulation}}
+
+In the physics simulation the neutrino oscillation probabilities in
+the full three-flavour mode including matter effects are calculated, using
+either NuCraft \cite{NuCraft} or AtmoWeights \cite{AtmoWeights} and assuming
+the Preliminary Reference Earth Model (PREM) \cite{PREM} for the Earth's density
+profile. The difference
+between the two codes is that NuCraft is more versatile in the sense that it
+can include the oscillation into sterile neutrino flavours, model the
+generation heights of the neutrinos in the Earth's atmosphere in more detail,
+and handle a varying electron density in the Earth while in AtmoWeights this
+value is fixed to 0.5 electrons per nucleon. On the other hand, AtmoWeights is
+much faster. After checking consistency of the two codes to the sub-per mill
+level given the same input, AtmoWeights has been selected for the baseline
+analysis due to its higher speed, since the additional options provided by
+NuCraft are not essential for the study of the neutrino mass hierarchy.
+
+The oscillation probabilities are calculated for $\nu_e$, $\bar\nu_e$, $\nu_\mu$
+and $\bar\nu_\mu$ injection, such that twelve histograms of oscillation
+probabilities are obtained:
+\begin{itemize}
+ \item $P(\nu_\alpha \to \nu_e/\bar\nu_e)$
+ \item $P(\nu_\alpha \to \nu_\mu/\bar\nu_\mu)$
+ \item $P(\nu_\alpha \to \nu_\tau/\bar\nu_\tau)$
+\end{itemize}
+with $\nu_\alpha \in \left[\nu_e,\bar\nu_e,\nu_\mu,\bar\nu_\mu\right]$.
+
+% The relevant parameters for this step in the simulation chain are the physical
+% ones, i.\,e.\ the mixing angles, mass splittings, hierarchy, and for
+% implementation reasons also the energy scale (see below).
+
+To properly sample the fast oscillations at low energies, \papa can be set up
+to oversample by given factors in energy and zenith. This means that every
+point at which the oscillation probabilities are calculated is replaced by a
+number of evenly spaced points in the vicinity, and the resulting probabilities
+are averaged over. If no oversampling is applied, the values at the bin
+centres will be used.
+% For our calculations, we used oversampling factors of eight in energy and two in
+% zenith.
+
+This part is the most time-consuming of the whole simulation as here all the
+differential equations for neutrino propagation need to be solved numerically.
+Using AtmoWeights, a full set of three oscillation parameters plus the energy
+scale for four primaries at 15 test points each typically takes several hours
+on a single CPU while with NuCraft this goes up to a few days. Fortunately, the
+settings for the oscillations do not change when the detector changes, meaning
+that the oscillation probabilities only have to be calculated once and then can
+be re-used for all different detector settings.
+
+
+\subsubsection{\texttt{DetectorSimulation}}
+
+In the detector simulation, the pure oscillation probabilities calculated in the
+physics simulation are converted into an actual detector response, taking into
+account all detector related parameters. It consists of three major steps, as
+depicted by the flow chart in Fig.~\ref{fig:papa_flowchart}. At each step, a set
+of histograms in ($E$,\,\coszen) will be produced according to the
+different signatures that have to be considered at the respective stage. Event
+histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
+
+
+\paragraph{Truth Histograms}
+
+The first step is to calculate the true rates of events triggering the
+detector. Therefore, we generate spline fits to the azimuth-averaged
+atmospheric neutrino flux tables by Honda et al.\ \cite{Honda,
+HondaSP}\footnote{Flux tables for the South Pole magnetic field
+have been provided by \cite{HondaSP}} and retrieve the fluxes for
+$\nu_e/\bar\nu_e$ and $\nu_\mu/\bar\nu_\mu$. These fluxes are multiplied by the
+oscillation probabilities $P(\nu_\alpha \to \nu_\beta)$ calculated in the
+physics simulation to obtain the flux for each neutrino flavour at the
+detector.
+
+To obtain event rates, the neutrino fluxes are multiplied by the effective
+areas of PINGU for $\nu_e/\bar\nu_e$, $\nu_\mu/\bar\nu_\mu$ and
+$\nu_\tau/\bar\nu_\tau$ CC interactions as well as $\nu_X/\bar\nu_X$ NC after
+background rejection cuts (cf.\ Sec.~\ref{sec:EvtSel}). The effective area, a
+function of neutrino energy and zenith direction, is defined as the collection
+area an ideal detector identifying every neutrino passing through it would need
+to have in order to achieve the same event rate as PINGU. For a given
+interaction channel, \nue/\numu/\nutau CC or \nux NC and equivalently for
+antineutrinos, it can be calculated according to
+\begin{equation}
+ A_\mathrm{eff}(\mathrm{channel}) = \sum_\mathrm{target} N_\mathrm{target}
+   \sigma_{\mathrm{target},\,\mathrm{channel}} \epsilon_\mathrm{channel} \quad,
+\end{equation}
+summing over the possible targets, protons and neutrons. Here,
+$N_\mathrm{target}$ stands for the total number of the respective targets
+inside the detector volume, $\sigma_{\mathrm{target},\,\mathrm{channel}}$ is
+the interaction cross section in the given channel, and
+$\epsilon_\mathrm{channel}$ is the efficiency with which interactions occurring
+inside the detector actually pass the triggering, reconstruction, and event
+selection process. Although the selection efficiency is usually on the order of
+90\,\% \cite{cutsV5}, the effective area is much smaller than the geometrical
+size of the detector as the interaction cross sections for neutrinos are
+extremely small (see Sec.~\ref{sec:Xsecs}) and hence most neutrinos pass the
+detector without any interaction.
+
+Finally, the histograms for neutrinos and anti-neutrinos in the same
+interaction channels are added since PINGU will not be able to distinguish
+between them. Also in terms of reconstruction quality and flavour
+identification there is no difference between neutrinos and anti-neutrinos.
+
+
+
+\paragraph{Reconstructed Histograms}
+
+In the next step, event reconstruction is inflicted on the histograms that up
+to now contain true neutrino energies and directions. This is done by smearing
+the true histograms with a kernel\footnote{A \emph{smearing kernel} can be
+interpreted as a binned point spread function.} whose shape depends on the true
+energy and zenith angle of the event, i.\,e.\ the position in the histogram.
+There are two different ways how these kernels can be handed over to \papa:
+
+\begin{enumerate}[(a)]
+ \item Parametrised point spread functions.\\ These have to be fitted from MC
+  data and generally take the form of a double Gaussian for both energy and
+  $\cos\vartheta$ to properly account for the tails:
+  \begin{equation}
+   \mathrm{PSF} = f\cdot \exp\left(-\frac{(x-\mu_1)^2}{\sigma_1^2}\right)
+                  + (1-f)\cdot \exp\left(-\frac{(x-\mu_2)^2}{\sigma_2^2}\right)
+   \label{eqn:reco_param}
+  \end{equation}
+  The five parameters (two mean values $\mu$, two widths $\sigma$, and the
+  relative normalisation $f$) are supplied to the code as a function of true
+  neutrino energy.\\
+  Here it can happen that events are ``leaking'' out of the histograms. At
+  the edges of the energy range this effect can be neglected since the event
+  rates are small anyways (due to low flux/small effective area). In the
+  directional dimension, losing events at the horizon is accepted since
+  misreconstructed events will be also be lost in the real experiment due to
+  cutting the analysis at the horizon. Events that would be lost at the zenith
+  are reflected back into the histogram, as events migrating ``over the
+  zenith'' will flip the sign of their azimuth angle (which is irrelevant) and
+  move back to larger values of the zenith angle.
+ \item Tabulated point spread functions.\\ If the MC statistics is sufficient,
+  i.\,e.\ in the order of $10^6$ events per flavour, the resolutions can be
+  retrieved directly from the MC data. This means creating a 4D histogram of
+  true vs.\ reconstructed ($E$, $\cos\vartheta$), which is nothing else than
+  the individual smearing kernel for each bin in true ($E$, $\cos\vartheta$).
+  \end{enumerate}
+We use option (b) for this study.
+However, when doing this one has to make sure that the MC statistics is in fact
+sufficient. As shown in Appendix~\ref{sec:MCreduction}, using too sparsely
+sampled reconstruction tables results in a bias towards overestimating the
+sensitivity to neutrino mass hierarchy.
+The effect arises from correlated reconstructed directions in both the normal
+and inverted hierarchy if the same MC events are used for both templates.
+One can of course use independent datasets for both, yet with no gain in
+required amount of MC statistics.
+From Fig.~\ref{fig:NMH_vs_MCstat} we estimate that at the statistics available
+for this study the remaining bias is smaller than 1.6\,\%.
+
+The input for the reconstruction resolutions, whether supplied as
+parametrisations or tables, is obtained from the
+\textsf{MultiNest}\footnote{Developed by J.\,P.\ A.\,M.\ de Andr\'{e},
+M.\ Dunkman, and F.\ Huang (Penn State)} reconstruction algorithm. This 8D
+hybrid likelihood minimization fits for the hadronic interaction vertex plus an
+outgoing muon. Median resolutions in energy and zenith angle are shown in
+Fig.~\ref{fig:MultiNest}.
+
+%TODO: still ignore those parameters? We can do that if we use the reco tables
+% Two more systematic parameters can enter at this stage, if parametrized point
+% spread functions are used for event reconstruction:
+% \begin{description}
+%  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
+%   fact that the parametrisations of the energy reconstruction might under- or
+%   overestimate the actual resolution. This is implemented by simply scaling
+% the
+%   widths in (\ref{eqn:reco_param}) by this factor:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta E}\cdot\sigma_i
+%   \end{equation}
+%   Note that for simplicity the scaling is the same for both of the Gaussians.
+%  \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
+%   is modelled in the same way as the energy reconstruction scaling:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
+%   \end{equation}
+% \end{description}
+% TODO: consider this
+% For the tabulated reconstruction approach, this effect also represents the
+% uncertainty on the reconstruction resolutions obtained from MC simulations,
+% e.g.
+% due to inaccurate modelling of the ice parameters.
+% -> Für die Tabellen gibts die Parameter nicht!
+% While we generally do not expect to have systematic effects in the directional
+% reconstruction to provide this simple scaling, we find that the impact of this
+% parameters is comparatively low.
+% -> Leider ist der Impact sogar ziemlich groß...
+
+\subsubsection{Analysis Histograms}
+\label{sec:simchain_ana}
+% \begin{figure}
+%  \centering
+%  \includegraphics[width=0.7\textwidth]{figures/PID_all.pdf}
+%  \caption{Track identification probability as function of energy in all four
+%   interaction channels. The straight lines show fits to the data.}
+%  \label{fig:PID}
+% \end{figure}
+
+% \begin{figure}
+%  \centering
+%  $\begin{array}{cc}
+%    \mathrm{Tracks} &
+%    \mathrm{Cascades}\\
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/1_un_oscillated_trck.pdf} &
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/1_un_oscillated_cscd.pdf}\\
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/2_oscillated_trck.pdf} &
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/2_oscillated_cscd.pdf}\\
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/3_reconstructed_trck.pdf} &
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/3_reconstructed_cscd.pdf}\\
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/4_classified_trck.pdf} &
+%    \includegraphics[width=0.5\columnwidth]
+%      {figures/simulation_steps/4_classified_cscd.pdf}
+%   \end{array}$
+%  \caption{Event counts in one year of PINGU livetime at the different
+%   simulation stages, assuming normal mass hierarchy.}
+%  \label{fig:SimSteps}
+% \end{figure}
+
+Up to now, the histograms are still divided into the four ``effective flavour''
+channels, $\nu_e$, $\nu_\mu$, $\nu_\tau$ CC and $\nu_X$ NC, each including
+anti-neutrinos. The final step in the detector simulation is to apply the
+flavour identification (FID). However, current tools for flavour ID can only
+distinguish events with an outgoing muon signature (only present in $\nu_\mu$ CC
+interactions) which are classified as tracks from other events (cascades).
+
+A Boosted Decision Tree has been trained\footnote{Developed by J.\,P.\ A.\,M.\
+de Andr\'{e} and J.\ Groh (Penn State)} to identify track-like signatures. Its
+performance is shown in Fig.~\ref{fig:PID}. Analytic functions are fitted to the
+data and fed to \papa, which then uses those functions to put a corresponding
+fraction of each of the effective flavour channels into the track analysis
+channel, while all other events are assigned to the cascade channel\footnote{For
+now, flavour ID is a binary decision, i.\,e.\ everything that is not classified
+as a track ends up in the cascade channel. \papa\ however has the option to also
+supply a dedicated cascade selection, in which case one would end up with three
+analysis channels: tracks, cascades, and unidentified.}.
+
+After this final stage, all key features of a real experiment (triggering,
+event selection, reconstruction, and flavour identification) have been taken
+into account, and the analysis histograms are our best estimate of the outcome
+of an actual PINGU physics run.
+
+Two more systematic parameters enter at the flavour identification stage:
+\begin{description}
+ \item[The FID scaling $\mathbf{s_\mathrm{FID}}$] simply scales the probability
+  to detect a track signature up or down, accounting for the possibility to
+  mis-estimate the overall effectivity of the flavour ID algorithm.
+ \item[The FID offset $\mathbf{\Delta_\mathrm{FID}}$] shifts the whole flavour
+  ID function in energy to open the possibility that FID might become effective
+  at higher or lower energies than fitted from MonteCarlo data.
+\end{description}
+The actual FID function will hence be
+\begin{equation}
+ P_\mathrm{ID}'(E) = s_\mathrm{FID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{FID})
+   \quad.
+\end{equation}
+
+
+
+
 \subsection{Systematic Parameters}
 \label{sec:systematics}
+
+The main benefit of the fast simulation is that it makes the inclusion of
+the many systematic parameters feasible, which are needed to correctly evaluate
+the mass hierarchy significance. The parameters that were considered in this
+thesis can be divided into two groups. First the \emph{physics} parameters,
+\ie the neutrino oscillation parameters: three mixing angles, two mass
+splittings, the CP violating phase and of course the sign of the NMH. The best
+fit values and priors for the mixing angles and mass splittings as listed in
+Tab.~\ref{tab:fiducial_osc} are taken from \cite{Fogli}, where we have assumed
+inverted NMH as fiducial value. The CP violating phase $\delta_\mathrm{CP}$ is
+set to a fiducial value of zero.
+
+After having checked that their impact is negligible, the so-called solar mixing
+parameters \dm{21} and \thet{12} as well as the CP phase will not be left free
+to vary any more in order to save computation time.
+
+The mass hierarchy needs special treatment since it is a binary quantity,
+however the Fisher matrix formalism (see Sec.~\ref{sec:fisher}), which will be
+used to quickly evaluate the simulation outcome, can only treat continuous
+parameters. Thus the NMH
+needs to be converted into a continuous variable. This is achieved by
+calculating the oscillation probabilities assuming normal and inverted NMH. We
+then introduce a hierarchy parameter $0\leq h\leq1$ that allows for a continuous
+transition between normal (NH) and inverted (IH) hierarchy:
+\begin{equation}
+ P(h) = h P_\mathrm{NH} + (1-h) P_\mathrm{IH}\quad,
+ \label{eqn:hierarchy_parameter}
+\end{equation}
+where $P_\mathrm{NH}$ and $P_\mathrm{IH}$ are the oscillation probabilities for
+a given value of ($E,\,\coszen$) for normal and inverted mass hierarchy,
+respectively, while all other oscillation parameters are kept at there fiducial
+values.
+The rationale is that while in theory any value of $h$ other than $0$ or $1$ is
+unphysical, in practice this definition allows to assess the deviation from the
+physical points, as long as these are close to the fiducial values ($1$ in our
+case). It is such a measure of the hierarchy \textit{likeness}, similar to a
+likelihood\footnote{It can also be interpreted as a measure of the orthogonal
+distance of the hyperplanes in parameter spaces defined by normal and inverted
+hierarchy}.
+
+After propagating the oscillation probabilities through the detector simulation
+
+If no other parameters are present, this description is,, mathematically
+equivalent to a bin-wise $\Delta\chi^2$ sum as defined by Akhmedov et al.\
+\cite{Akhmedov}:
+\begin{equation}
+ \Delta\chi^2 = \frac{N_\mathrm{NH}-N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}}
+\end{equation}
+with the significance
+\begin{equation}
+ \mathcal{S}_{\chi^2} = \sqrt{\sum_\mathrm{bins} \left(\Delta\chi^2\right)^2}
+ = \sqrt{\sum_\mathrm{bins}
+     \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}} }\quad.
+\end{equation}
+In this case, rom the Fisher Matrix we get the identical significance of
+\begin{equation}
+ \mathcal{S}_\mathrm{Fisher} = \frac{1}{\sigma_h} = \frac{1}{\sqrt{\sigma_h^2}}
+ = \frac{1}{\sqrt{(\mathcal{F})^{-1}_{hh}}}
+ = \sqrt{\mathcal{F}_{hh}}
+\end{equation}
+with
+\begin{equation}
+ \mathcal{F}_{hh} = \sum_\mathrm{bins} \frac{1}{\sigma_b^2}
+   \frac{\partial N}{\partial h} \frac{\partial N}{\partial h}
+  = \sum_\mathrm{bins} \frac{1}{N_\mathrm{NH}}(N_\mathrm{NH}-N_\mathrm{IH})^2
+  \quad.
+\end{equation}
+
+
+
+The second set of parameters are the ones related to the detector, i.\,e.\ the
+nuisance parameters. They include parametrisations of reconstruction errors,
+uncertainty on the energy scale or effective detector mass, etc.  A list of all
+oscillation parameters with their fiducial values and possible priors is shown
+in Tab.~\ref{tab:params}. A detailed description of the detector parameters
+will follow in Sec.\ref{sec:detector}.
+
+
+
+The systematic uncertainties on the detector response enter at this stage:
+\begin{description}
+ \item[The energy scale $\mathbf{s_E}$] describes a potential scaling error
+  between true and reconstructed neutrino energy. Such a mis-scaling, i.\,e.\
+  an under- or overestimation of the neutrino energy can be the result of a
+  wrong value for e.\,g.\ PMT efficiency, absorption in bulk or hole ice etc.
+  We implement it in a way that the true values of the energy bins that are fed
+  to NuCraft are scaled w.\,r.\,t.\ the energy bins in the analysis according to
+  \begin{equation}
+   E_\mathrm{true} = s_E\cdot E_\mathrm{ana}\quad.
+  \end{equation}
+
+% Diese Scale müssten wir eigentlich auch in den nächsten Schritten
+% berücksichtigen, oder? Machen wir das?
+%
+% -> NEIN
+% Aber müssten wir das wirklich? Wenn wir die ganzen Auflösungen, PID etc
+% mitschieben, sind wir doch am Ende wieder da, wo wir angefangen haben, oder?
+
+ \item[The effective area scale $\mathbf{s_{A_\mathrm{eff}}}$] opens the
+  possibility that the effective area scales differently with energy than
+  assumed in Fig.~\ref{fig:aeffs}. It will also partially compensate for a
+  potential error in the spectral index of the atmospheric flux, since it
+  effectively alters the total number of events per energy bin as a function of
+  energy. A constant scaling of the effective area (or the flux normalisation)
+  is not taken into account, since it would only change the total number of
+  events and therefore the livetime needed to reach a given significance, but is
+  not correlated with any other parameters.
+
+ \item[The relative effective area normalisations] for neutrinos
+  and anti-neutrinos, $n_{A_\mathrm{eff},\nu}$ and $n_{A_\mathrm{eff},\bar\nu}$,
+  account for a possible error in the (anti-)neutrino-nucleon cross-sections,
+  which effectively alters the effective areas\footnote{Inflicting this
+  re-normalisation on the atmospheric fluxes instead of the effective areas
+  would have the same effect. Since the effects are completely degenerate, we do
+  not treat the flux normalisation as a parameter.}. In total, the effective
+  areas are then given by
+  \begin{equation}
+   A_\mathrm{eff,\,true} = A_\mathrm{eff}
+                           \cdot\left(1+s_{A_\mathrm{eff}}\cdot E\right)
+                           \cdot n_{A_\mathrm{eff},\nu/\bar\nu}\quad.
+  \end{equation}
+\end{description}
