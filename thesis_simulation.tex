@@ -220,11 +220,10 @@ already operating and hence could be studied and modelled in great detail.
 Thus re-running the whole simulation chain for all of these parameters---we 
 will go into detail about them in Sec.~\ref{sec:systematics}---is not feasible 
 in a reasonable amount of time, especially since a comparatively large number 
-of MC events is needed to make a reliable estimate of the sensitivity. The MC 
-sample has to exceed the expected number of recorded by roughly a factor of 
-ten. In case of insufficient MC events, statistical fluctuations will exceed 
-the strength of the imprinted mass hierarchy pattern and bias the calculated 
-significance towards high values, as we will see in 
+of MC events---in the order of $10^6$---is needed to make a reliable estimate of
+the sensitivity. In case of insufficient MC events, statistical fluctuations
+will exceed the strength of the imprinted mass hierarchy pattern and bias the
+calculated significance towards high values, as we will see in 
 Sec.~\ref{sec:results_mcstats}.
 
 The basic idea how to overcome this fundamental problem is to move away from an 
@@ -343,25 +342,28 @@ histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
 The first step is to calculate the true rates of events triggering the
 detector. Therefore, we generate spline fits to the azimuth-averaged
 atmospheric neutrino flux tables by Honda et al.\ \cite{Honda,
-HondaSP}\footnote{Flux tables for the South Pole magnetic field
-have been provided by \cite{HondaSP}} and retrieve the fluxes for
+HondaSP} and retrieve the fluxes for
 $\nu_e/\bar\nu_e$ and $\nu_\mu/\bar\nu_\mu$. These fluxes are multiplied by the
 oscillation probabilities $P(\nu_\alpha \to \nu_\beta)$ calculated in the
 physics simulation to obtain the flux for each neutrino flavour at the
-detector.
+detector:
+\begin{equation}
+ \Phi_{\beta,\,\mathrm{det}} =
+   \sum_\alpha \Phi_{\alpha,\,\mathrm{atm}}\ P(\nu_\alpha\to\nu_\beta)
+\end{equation}
 
-To obtain event rates, the neutrino fluxes are multiplied by the effective
-areas of PINGU for $\nu_e/\bar\nu_e$, $\nu_\mu/\bar\nu_\mu$ and
-$\nu_\tau/\bar\nu_\tau$ CC interactions as well as $\nu_X/\bar\nu_X$ NC after
+To obtain event rates, the neutrino fluxes are then multiplied by the effective
+areas of PINGU for $\nue/\nuebar$, $\numu/\numubar$ and $\nutau/\nutaubar$ CC
+interactions as well as $\nu_X/\bar\nu_X$ NC---the four different interaction
+channels---after
 background rejection cuts (cf.\ Sec.~\ref{sec:EvtSel}). The effective area, a
 function of neutrino energy and zenith direction, is defined as the collection
 area an ideal detector identifying every neutrino passing through it would need
 to have in order to achieve the same event rate as PINGU. For a given
-interaction channel, \nue/\numu/\nutau CC or \nux NC and equivalently for
-antineutrinos, it can be calculated according to
+interaction channel, it can be calculated according to
 \begin{equation}
- A_\mathrm{eff}(\mathrm{channel}) = \sum_\mathrm{target} N_\mathrm{target}
-   \sigma_{\mathrm{target},\,\mathrm{channel}} \epsilon_\mathrm{channel} \quad,
+ A_\mathrm{eff}(\mathrm{channel}) = \sum_\mathrm{target} N_\mathrm{target}\ 
+   \sigma_{\mathrm{target},\,\mathrm{channel}}\ \epsilon_\mathrm{channel} \quad,
 \end{equation}
 summing over the possible targets, protons and neutrons. Here,
 $N_\mathrm{target}$ stands for the total number of the respective targets
@@ -375,12 +377,27 @@ size of the detector as the interaction cross sections for neutrinos are
 extremely small (see Sec.~\ref{sec:Xsecs}) and hence most neutrinos pass the
 detector without any interaction.
 
+The number of expected events per lifetime $t$ in a given channel can thus be
+calculated by
+\begin{eqnarray}
+ N_\mathrm{\nu_\alpha\ \mathrm{CC}} &=&
+   A_\mathrm{eff}(\nu_\alpha\ \mathrm{CC})\ \Phi_{\alpha,\,\mathrm{det}}\ t \\
+ N_\mathrm{\nu_X\ \mathrm{NC}} &=&
+   A_\mathrm{eff}(\nu_X\ \mathrm{NC}) \sum_\alpha \Phi_{\alpha,\,\mathrm{det}}\
+t
+\end{eqnarray}
+for the three charged and one neutral current channels, respectively.
 Finally, the histograms for neutrinos and anti-neutrinos in the same
 interaction channels are added since PINGU will not be able to distinguish
 between them. Also in terms of reconstruction quality and flavour
-identification there is no difference between neutrinos and anti-neutrinos.
+identification (see below) there is no difference between neutrinos and
+anti-neutrinos. 
 
-
+Since both the fluxes and the effective areas are functions of $E$ and \coszen,
+the result of this simulation step are four 2D histograms, one each for the
+four channels $\nue+\nuebar$ CC, $\numu+\numubar$ CC, $\nutau+\nutaubar$ CC, and
+$\nu_X+\bar\nu_X$ NC, examples of which are shown in the second row of
+Fig.~\ref{fig:SimSteps}.
 
 \paragraph{Reconstructed Histograms}
 
@@ -407,7 +424,7 @@ There are two different ways how these kernels can be handed over to \papa:
   the edges of the energy range this effect can be neglected since the event
   rates are small anyways (due to low flux/small effective area). In the
   directional dimension, losing events at the horizon is accepted since
-  misreconstructed events will be also be lost in the real experiment due to
+  mis-reconstructed events will be also be lost in the real experiment due to
   cutting the analysis at the horizon. Events that would be lost at the zenith
   are reflected back into the histogram, as events migrating ``over the
   zenith'' will flip the sign of their azimuth angle (which is irrelevant) and
@@ -415,68 +432,24 @@ There are two different ways how these kernels can be handed over to \papa:
  \item Tabulated point spread functions.\\ If the MC statistics is sufficient,
   i.\,e.\ in the order of $10^6$ events per flavour, the resolutions can be
   retrieved directly from the MC data. This means creating a 4D histogram of
-  true vs.\ reconstructed ($E$, $\cos\vartheta$), which is nothing else than
-  the individual smearing kernel for each bin in true ($E$, $\cos\vartheta$).
+  true vs.\ reconstructed ($E$, \coszen), which is nothing else than
+  the individual smearing kernel for each bin in true ($E$, \coszen).
   \end{enumerate}
-We use option (b) for this study.
-However, when doing this one has to make sure that the MC statistics is in fact
-sufficient. As shown in Appendix~\ref{sec:MCreduction}, using too sparsely
-sampled reconstruction tables results in a bias towards overestimating the
-sensitivity to neutrino mass hierarchy.
-The effect arises from correlated reconstructed directions in both the normal
-and inverted hierarchy if the same MC events are used for both templates.
-One can of course use independent datasets for both, yet with no gain in
-required amount of MC statistics.
-From Fig.~\ref{fig:NMH_vs_MCstat} we estimate that at the statistics available
-for this study the remaining bias is smaller than 1.6\,\%.
+Option (a) will be used primarily in this study, since for the PINGU geometry
+V36 that will be the baseline for all analyses, the amount of MC events is
+insufficient for option (b). Also, the parametrised reconstruction resolutions
+make it possible to investigate the effects of an improved resolution within a
+well-defined metric in Sec.~\ref{sec:wom_effect}.
+For the earlier PINGU geometry V15, however, enough MC statistics exists to
+follow option (b) for the event reconstruction stage.
+Sec.~\ref{sec:results_mcstats} will report on this and also demonstrate the
+effect that an insufficient MC sample has on the calculated NMH sensitivity.
 
-The input for the reconstruction resolutions, whether supplied as
-parametrisations or tables, is obtained from the
-\textsf{MultiNest}\footnote{Developed by J.\,P.\ A.\,M.\ de Andr\'{e},
-M.\ Dunkman, and F.\ Huang (Penn State)} reconstruction algorithm. This 8D
-hybrid likelihood minimization fits for the hadronic interaction vertex plus an
-outgoing muon. Median resolutions in energy and zenith angle are shown in
-Fig.~\ref{fig:MultiNest}.
+Example histograms after the reconstruction stage---still in the four
+interaction channels already present after the previous stage---are shown in
+the third row of Fig.~\ref{fig:SimSteps}.
 
-%TODO: still ignore those parameters? We can do that if we use the reco tables
-% Two more systematic parameters can enter at this stage, if parametrized point
-% spread functions are used for event reconstruction:
-% \begin{description}
-%  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
-%   fact that the parametrisations of the energy reconstruction might under- or
-%   overestimate the actual resolution. This is implemented by simply scaling
-% the
-%   widths in (\ref{eqn:reco_param}) by this factor:
-%   \begin{equation}
-%    \sigma_i' = s_{\Delta E}\cdot\sigma_i
-%   \end{equation}
-%   Note that for simplicity the scaling is the same for both of the Gaussians.
-%  \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
-%   is modelled in the same way as the energy reconstruction scaling:
-%   \begin{equation}
-%    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
-%   \end{equation}
-% \end{description}
-% TODO: consider this
-% For the tabulated reconstruction approach, this effect also represents the
-% uncertainty on the reconstruction resolutions obtained from MC simulations,
-% e.g.
-% due to inaccurate modelling of the ice parameters.
-% -> Für die Tabellen gibts die Parameter nicht!
-% While we generally do not expect to have systematic effects in the directional
-% reconstruction to provide this simple scaling, we find that the impact of this
-% parameters is comparatively low.
-% -> Leider ist der Impact sogar ziemlich groß...
-
-\subsubsection{Analysis Histograms}
-\label{sec:simchain_ana}
-% \begin{figure}
-%  \centering
-%  \includegraphics[width=0.7\textwidth]{figures/PID_all.pdf}
-%  \caption{Track identification probability as function of energy in all four
-%   interaction channels. The straight lines show fits to the data.}
-%  \label{fig:PID}
-% \end{figure}
+\paragraph{Analysis Histograms}
 
 % \begin{figure}
 %  \centering
@@ -508,42 +481,30 @@ Fig.~\ref{fig:MultiNest}.
 Up to now, the histograms are still divided into the four ``effective flavour''
 channels, $\nu_e$, $\nu_\mu$, $\nu_\tau$ CC and $\nu_X$ NC, each including
 anti-neutrinos. The final step in the detector simulation is to apply the
-flavour identification (FID). However, current tools for flavour ID can only
-distinguish events with an outgoing muon signature (only present in $\nu_\mu$ CC
-interactions) which are classified as tracks from other events (cascades).
+particle flavour identification (PID). However, current tools for particle ID
+can only distinguish events with an outgoing muon signature (only present in
+$\nu_\mu$ CC interactions), which are classified as tracks, from other events
+(cascades), as already detailed above (cf.\ Sec.~\ref{sec:cuts_PID}).
 
-A Boosted Decision Tree has been trained\footnote{Developed by J.\,P.\ A.\,M.\
-de Andr\'{e} and J.\ Groh (Penn State)} to identify track-like signatures. Its
-performance is shown in Fig.~\ref{fig:PID}. Analytic functions are fitted to the
-data and fed to \papa, which then uses those functions to put a corresponding
-fraction of each of the effective flavour channels into the track analysis
-channel, while all other events are assigned to the cascade channel\footnote{For
-now, flavour ID is a binary decision, i.\,e.\ everything that is not classified
-as a track ends up in the cascade channel. \papa\ however has the option to also
-supply a dedicated cascade selection, in which case one would end up with three
-analysis channels: tracks, cascades, and unidentified.}.
+So for every interaction channel, two analytic functions of the neutrino
+energy have to be supplied to \papa, giving the probabilities of identifying a
+neutrino of that channel and energy as either track or cascade. If those two
+probabilities add up to less than one, the remaining events are assigned to an
+``unidentified'' channel that can be used for the analysis as well.
+
+For the baseline settings (Sec.~\ref{sim_input}), the PID is a binary decision,
+meaning that there are no unidentified events. In
+Sec.~\ref{sec:results_includeunkn}, the effects of an event selection producing
+cascade and track samples of higher purity plus an unidentified set of events
+will be discussed.
 
 After this final stage, all key features of a real experiment (triggering,
 event selection, reconstruction, and flavour identification) have been taken
 into account, and the analysis histograms are our best estimate of the outcome
-of an actual PINGU physics run.
-
-Two more systematic parameters enter at the flavour identification stage:
-\begin{description}
- \item[The FID scaling $\mathbf{s_\mathrm{FID}}$] simply scales the probability
-  to detect a track signature up or down, accounting for the possibility to
-  mis-estimate the overall effectivity of the flavour ID algorithm.
- \item[The FID offset $\mathbf{\Delta_\mathrm{FID}}$] shifts the whole flavour
-  ID function in energy to open the possibility that FID might become effective
-  at higher or lower energies than fitted from MonteCarlo data.
-\end{description}
-The actual FID function will hence be
-\begin{equation}
- P_\mathrm{ID}'(E) = s_\mathrm{FID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{FID})
-   \quad.
-\end{equation}
-
-
+of an actual PINGU physics run. Example histograms after this final step, also
+referred to as analysis histograms, are shown in the bottom row of
+Fig.~\ref{fig:SimSteps} and will also be used throughout Sec.\ref{sec:ana} to
+illustrate the various effects studied.
 
 
 \subsection{Systematic Parameters}
@@ -670,3 +631,40 @@ The systematic uncertainties on the detector response enter at this stage:
                            \cdot n_{A_\mathrm{eff},\nu/\bar\nu}\quad.
   \end{equation}
 \end{description}
+
+
+%TODO: still ignore those parameters? We can do that if we use the reco tables
+% Two more systematic parameters can enter at this stage, if parametrised point
+% spread functions are used for event reconstruction:
+% \begin{description}
+%  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
+%   fact that the parametrisations of the energy reconstruction might under- or
+%   overestimate the actual resolution. This is implemented by simply scaling
+% the
+%   widths in (\ref{eqn:reco_param}) by this factor:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta E}\cdot\sigma_i
+%   \end{equation}
+%   Note that for simplicity the scaling is the same for both of the Gaussians.
+%  \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
+%   is modelled in the same way as the energy reconstruction scaling:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
+%   \end{equation}
+% \end{description}
+
+Two more systematic parameters enter at the flavour identification stage:
+\begin{description}
+ \item[The FID scaling $\mathbf{s_\mathrm{FID}}$] simply scales the probability
+  to detect a track signature up or down, accounting for the possibility to
+  mis-estimate the overall effectivity of the flavour ID algorithm.
+ \item[The FID offset $\mathbf{\Delta_\mathrm{FID}}$] shifts the whole flavour
+  ID function in energy to open the possibility that FID might become effective
+  at higher or lower energies than fitted from MonteCarlo data.
+\end{description}
+The actual FID function will hence be
+\begin{equation}
+ P_\mathrm{ID}'(E) = s_\mathrm{FID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{FID})
+   \quad.
+\end{equation}
+
