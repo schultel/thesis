@@ -13,3 +13,31 @@
 
 
 \subsection{Prerequisites}
+
+
+\subsection{The Hierarchy Parameter}
+\label{sec:fisher_hierarchy}
+
+\begin{equation}
+ \Delta\chi^2 = \frac{N_\mathrm{NH}-N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}}
+\end{equation}
+with the significance
+\begin{equation}
+ \mathcal{S}_{\chi^2} = \sqrt{\sum_\mathrm{bins} \left(\Delta\chi^2\right)^2}
+ = \sqrt{\sum_\mathrm{bins}
+     \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}} }\quad.
+\end{equation}
+In this case, from the Fisher Matrix we get the identical significance of
+\begin{equation}
+ \mathcal{S}_\mathrm{Fisher} = \frac{1}{\sigma_h} = \frac{1}{\sqrt{\sigma_h^2}}
+ = \frac{1}{\sqrt{(\mathcal{F})^{-1}_{hh}}}
+ = \sqrt{\mathcal{F}_{hh}}
+\end{equation}
+with
+\begin{equation}
+ \mathcal{F}_{hh} = \sum_\mathrm{bins} \frac{1}{\sigma_b^2}
+   \frac{\partial N}{\partial h} \frac{\partial N}{\partial h}
+  = \sum_\mathrm{bins} \frac{1}{N_\mathrm{NH}}(N_\mathrm{NH}-N_\mathrm{IH})^2
+  \quad.
+\end{equation}
+

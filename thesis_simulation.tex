@@ -179,7 +179,7 @@ be injected in the actual reconstruction chain described in
 Secs.~\ref{sec:EvtReco} and \ref{sec:EvtSel}.
 
 %==============================================================================
-\section{The PaPA Code}
+\section{The \papa Code}
 \label{sec:papa}
 %==============================================================================
 
@@ -517,96 +517,79 @@ thesis can be divided into two groups. First the \emph{physics} parameters,
 \ie the neutrino oscillation parameters: three mixing angles, two mass
 splittings, the CP violating phase and of course the sign of the NMH. The best
 fit values and priors for the mixing angles and mass splittings as listed in
-Tab.~\ref{tab:fiducial_osc} are taken from \cite{Fogli}, where we have assumed
+Tab.~\ref{tab:fiducial_osc} are taken from \cite{Fogli}, assuming
 inverted NMH as fiducial value. The CP violating phase $\delta_\mathrm{CP}$ is
 set to a fiducial value of zero.
-
 After having checked that their impact is negligible, the so-called solar mixing
 parameters \dm{21} and \thet{12} as well as the CP phase will not be left free
 to vary any more in order to save computation time.
 
 The mass hierarchy needs special treatment since it is a binary quantity,
-however the Fisher matrix formalism (see Sec.~\ref{sec:fisher}), which will be
+yet the Fisher matrix formalism (see Sec.~\ref{sec:fisher}), which will be
 used to quickly evaluate the simulation outcome, can only treat continuous
 parameters. Thus the NMH
 needs to be converted into a continuous variable. This is achieved by
-calculating the oscillation probabilities assuming normal and inverted NMH. We
+calculating the oscillation probabilities assuming normal and inverted NMH once 
+each and propagating both through the full \texttt{DetectorSimulation} chain 
+as described in the previous section. We
 then introduce a hierarchy parameter $0\leq h\leq1$ that allows for a continuous
 transition between normal (NH) and inverted (IH) hierarchy:
 \begin{equation}
- P(h) = h P_\mathrm{NH} + (1-h) P_\mathrm{IH}\quad,
+ N(h) = h N_\mathrm{NH} + (1-h) N_\mathrm{IH}\quad,
  \label{eqn:hierarchy_parameter}
 \end{equation}
-where $P_\mathrm{NH}$ and $P_\mathrm{IH}$ are the oscillation probabilities for
-a given value of ($E,\,\coszen$) for normal and inverted mass hierarchy,
-respectively, while all other oscillation parameters are kept at there fiducial
-values.
+where $N_\mathrm{NH}$ and $N_\mathrm{IH}$ are the expected number of events in
+a given ($E,\,\coszen$) bin of the analysis histograms for normal and inverted 
+mass hierarchy, respectively. All other oscillation parameters are kept at 
+their fiducial values.
+
 The rationale is that while in theory any value of $h$ other than $0$ or $1$ is
 unphysical, in practice this definition allows to assess the deviation from the
-physical points, as long as these are close to the fiducial values ($1$ in our
-case). It is such a measure of the hierarchy \textit{likeness}, similar to a
+physical points, as long as these are close to the fiducial values. It is such a 
+measure of the hierarchy \textit{likeness}, similar to a
 likelihood\footnote{It can also be interpreted as a measure of the orthogonal
 distance of the hyperplanes in parameter spaces defined by normal and inverted
 hierarchy}.
+If no other parameters are present, this description is mathematically
+equivalent to a bin-wise $\Delta\chi^2$ sum as defined in \cite{Akhmedov}, as 
+shown in Sec.~\ref{sec:fisher_hierarchy}.
 
-After propagating the oscillation probabilities through the detector simulation
+The second set of parameters are the ones related to the detector, \ie the
+nuisance parameters. Most of them scale properties of the detector up or down, 
+reflecting uncertainties in the knowledge of the detector performance. In 
+several cases, however, they can be interpreted as theoretical uncertainties 
+on, \eg, the neutrino cross sections or atmospheric flux tables. The systematic 
+parameters belonging to this class are, ordered according to their entering of 
+the simulation chain:
 
-If no other parameters are present, this description is,, mathematically
-equivalent to a bin-wise $\Delta\chi^2$ sum as defined by Akhmedov et al.\
-\cite{Akhmedov}:
-\begin{equation}
- \Delta\chi^2 = \frac{N_\mathrm{NH}-N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}}
-\end{equation}
-with the significance
-\begin{equation}
- \mathcal{S}_{\chi^2} = \sqrt{\sum_\mathrm{bins} \left(\Delta\chi^2\right)^2}
- = \sqrt{\sum_\mathrm{bins}
-     \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}} }\quad.
-\end{equation}
-In this case, rom the Fisher Matrix we get the identical significance of
-\begin{equation}
- \mathcal{S}_\mathrm{Fisher} = \frac{1}{\sigma_h} = \frac{1}{\sqrt{\sigma_h^2}}
- = \frac{1}{\sqrt{(\mathcal{F})^{-1}_{hh}}}
- = \sqrt{\mathcal{F}_{hh}}
-\end{equation}
-with
-\begin{equation}
- \mathcal{F}_{hh} = \sum_\mathrm{bins} \frac{1}{\sigma_b^2}
-   \frac{\partial N}{\partial h} \frac{\partial N}{\partial h}
-  = \sum_\mathrm{bins} \frac{1}{N_\mathrm{NH}}(N_\mathrm{NH}-N_\mathrm{IH})^2
-  \quad.
-\end{equation}
-
-
-
-The second set of parameters are the ones related to the detector, i.\,e.\ the
-nuisance parameters. They include parametrisations of reconstruction errors,
-uncertainty on the energy scale or effective detector mass, etc.  A list of all
-oscillation parameters with their fiducial values and possible priors is shown
-in Tab.~\ref{tab:params}. A detailed description of the detector parameters
-will follow in Sec.\ref{sec:detector}.
-
-
-
-The systematic uncertainties on the detector response enter at this stage:
 \begin{description}
  \item[The energy scale $\mathbf{s_E}$] describes a potential scaling error
-  between true and reconstructed neutrino energy. Such a mis-scaling, i.\,e.\
+  between true and reconstructed neutrino energy. Such a mis-scaling, \ie
   an under- or overestimation of the neutrino energy can be the result of a
-  wrong value for e.\,g.\ PMT efficiency, absorption in bulk or hole ice etc.
-  We implement it in a way that the true values of the energy bins that are fed
-  to NuCraft are scaled w.\,r.\,t.\ the energy bins in the analysis according to
+  wrong value for \eg PMT efficiency, absorption effects in the ice model etc.\ 
+  that are used to reconstruct the neutrino events.
+  It is implemented in a way that the true values of the energy bins that are 
+  fed to the oscillation code are scaled \wrt the energy bins in the analysis 
+  according to
   \begin{equation}
    E_\mathrm{true} = s_E\cdot E_\mathrm{ana}\quad.
   \end{equation}
-
-% Diese Scale müssten wir eigentlich auch in den nächsten Schritten
-% berücksichtigen, oder? Machen wir das?
-%
-% -> NEIN
-% Aber müssten wir das wirklich? Wenn wir die ganzen Auflösungen, PID etc
-% mitschieben, sind wir doch am Ende wieder da, wo wir angefangen haben, oder?
-
+  So the energy bins in the actual histograms remain unchanged, but the 
+  oscillation minima and maxima do not appear at the expected energies. This 
+  mimics the the effect of a wrong energy scale in an actual analysis, since 
+  one would of course assume the energy scale to be correct. Note that in 
+  \papa, the energy scale does affect neither the atmospheric flux, whose 
+  calculations for the South Pole are usually validated with existing IceCube 
+  data that would likely have the same energy mis-scaling as PINGU, nor the 
+  effective areas, since their main feature, the energy threshold for 
+  detecting a neutrino interaction, would scale in parallel with the energy bin 
+  edges. Other accompanying effects, such as the overall normalisation of the 
+  effective area, are absorbed in different systematic parameters. \\
+  Although the energy scale is a detector-related parameter, it has to enter at 
+  the \texttt{PhysicsSimulation} stage already as the rescaled energy bins have 
+  to be passed on to the calculation of the oscillation probabilities. Thus it 
+  is the very first detector parameter in the simulation chain to be accounted 
+  for.
  \item[The effective area scale $\mathbf{s_{A_\mathrm{eff}}}$] opens the
   possibility that the effective area scales differently with energy than
   assumed in Fig.~\ref{fig:aeffs}. It will also partially compensate for a
