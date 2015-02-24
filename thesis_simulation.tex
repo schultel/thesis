@@ -350,6 +350,7 @@ detector:
 \begin{equation}
  \Phi_{\beta,\,\mathrm{det}} =
    \sum_\alpha \Phi_{\alpha,\,\mathrm{atm}}\ P(\nu_\alpha\to\nu_\beta)
+ \label{eqn:detetor_flux}
 \end{equation}
 
 To obtain event rates, the neutrino fluxes are then multiplied by the effective
@@ -362,7 +363,7 @@ area an ideal detector identifying every neutrino passing through it would need
 to have in order to achieve the same event rate as PINGU. For a given
 interaction channel, it can be calculated according to
 \begin{equation}
- A_\mathrm{eff}(\mathrm{channel}) = \sum_\mathrm{target} N_\mathrm{target}\ 
+ \aeff(\mathrm{channel}) = \sum_\mathrm{target} N_\mathrm{target}\ 
    \sigma_{\mathrm{target},\,\mathrm{channel}}\ \epsilon_\mathrm{channel} \quad,
 \end{equation}
 summing over the possible targets, protons and neutrons. Here,
@@ -381,10 +382,11 @@ The number of expected events per lifetime $t$ in a given channel can thus be
 calculated by
 \begin{eqnarray}
  N_\mathrm{\nu_\alpha\ \mathrm{CC}} &=&
-   A_\mathrm{eff}(\nu_\alpha\ \mathrm{CC})\ \Phi_{\alpha,\,\mathrm{det}}\ t \\
- N_\mathrm{\nu_X\ \mathrm{NC}} &=&
-   A_\mathrm{eff}(\nu_X\ \mathrm{NC}) \sum_\alpha \Phi_{\alpha,\,\mathrm{det}}\
-t
+   \aeff(\nu_\alpha\ \mathrm{CC})\ \Phi_{\alpha,\,\mathrm{det}}\ t 
+   \label{eqn:evtrate_CC} \\
+ N_\mathrm{\nux\ \mathrm{NC}} &=&
+   \aeff(\nux\ \mathrm{NC}) \sum_\alpha \Phi_{\alpha,\,\mathrm{det}}\ t
+   \label{eqn:evtrate_NC} \\
 \end{eqnarray}
 for the three charged and one neutral current channels, respectively.
 Finally, the histograms for neutrinos and anti-neutrinos in the same
@@ -396,7 +398,7 @@ anti-neutrinos.
 Since both the fluxes and the effective areas are functions of $E$ and \coszen,
 the result of this simulation step are four 2D histograms, one each for the
 four channels $\nue+\nuebar$ CC, $\numu+\numubar$ CC, $\nutau+\nutaubar$ CC, and
-$\nu_X+\bar\nu_X$ NC, examples of which are shown in the second row of
+$\nux+\nuxbar$ NC, examples of which are shown in the second row of
 Fig.~\ref{fig:SimSteps}.
 
 \paragraph{Reconstructed Histograms}
@@ -479,7 +481,7 @@ the third row of Fig.~\ref{fig:SimSteps}.
 % \end{figure}
 
 Up to now, the histograms are still divided into the four ``effective flavour''
-channels, $\nu_e$, $\nu_\mu$, $\nu_\tau$ CC and $\nu_X$ NC, each including
+channels, \nue, \numu, \nutau CC and \nux NC, each including
 anti-neutrinos. The final step in the detector simulation is to apply the
 particle flavour identification (PID). However, current tools for particle ID
 can only distinguish events with an outgoing muon signature (only present in
@@ -545,8 +547,8 @@ their fiducial values.
 
 The rationale is that while in theory any value of $h$ other than $0$ or $1$ is
 unphysical, in practice this definition allows to assess the deviation from the
-physical points, as long as these are close to the fiducial values. It is such a 
-measure of the hierarchy \textit{likeness}, similar to a
+physical points, as long as these are close to the fiducial values. It is such 
+a measure of the hierarchy \textit{likeness}, similar to a
 likelihood\footnote{It can also be interpreted as a measure of the orthogonal
 distance of the hyperplanes in parameter spaces defined by normal and inverted
 hierarchy}.
@@ -586,40 +588,66 @@ the simulation chain:
   edges. Other accompanying effects, such as the overall normalisation of the 
   effective area, are absorbed in different systematic parameters. \\
   Although the energy scale is a detector-related parameter, it has to enter at 
-  the \texttt{PhysicsSimulation} stage already as the rescaled energy bins have 
-  to be passed on to the calculation of the oscillation probabilities. Thus it 
-  is the very first detector parameter in the simulation chain to be accounted 
-  for.
- \item[The effective area scale $\mathbf{s_{A_\mathrm{eff}}}$] opens the
-  possibility that the effective area scales differently with energy than
-  assumed in Fig.~\ref{fig:aeffs}. It will also partially compensate for a
+  the \texttt{PhysicsSim\-ul\-ation} stage already as the rescaled energy bins 
+  have to be passed on to the calculation of the oscillation probabilities. 
+  Thus it is the very first detector parameter in the simulation chain to be 
+  accounted for.
+ \item[The relative flux normalisation 
+  $\mathbf{r_{\mathrm{flux},\,\nue-\numu}}$]
+%  TODO: actually implement it this way!
+  represents the uncertainty on the relative contributions of \nue and \nuebar 
+  vs.\ \numu and \numubar to the total flux of atmospheric neutrinos, which is 
+  approximately 1:2. It is inflicted on the un-oscillated atmospheric neutrino 
+  fluxes (cf. (\ref{eqn:detetor_flux})) such that
+  \begin{equation}
+   \Phi_{\alpha,\,\mathrm{atm}}' = \Phi_{\alpha,\,\mathrm{atm}} \cdot 
+      (1\pm r_{\mathrm{flux},\,\nue-\numu}) \quad,
+  \end{equation}
+  with positive sign for $\alpha=\nue$ or \nuebar and negative sign for 
+  $\alpha=\numu$ or \numubar.
+ \item[The effective area scale $\mathbf{s_{\aeff}}$] opens the
+  possibility that the effective areas for all interaction channels scale
+  differently with energy than assumed in the generation of the MC from where 
+  they are extracted. It will also partially compensate for a 
   potential error in the spectral index of the atmospheric flux, since it
   effectively alters the total number of events per energy bin as a function of
-  energy. A constant scaling of the effective area (or the flux normalisation)
-  is not taken into account, since it would only change the total number of
-  events and therefore the livetime needed to reach a given significance, but is
-  not correlated with any other parameters.
-
- \item[The relative effective area normalisations] for neutrinos
-  and anti-neutrinos, $n_{A_\mathrm{eff},\nu}$ and $n_{A_\mathrm{eff},\bar\nu}$,
-  account for a possible error in the (anti-)neutrino-nucleon cross-sections,
-  which effectively alters the effective areas\footnote{Inflicting this
-  re-normalisation on the atmospheric fluxes instead of the effective areas
-  would have the same effect. Since the effects are completely degenerate, we do
-  not treat the flux normalisation as a parameter.}. In total, the effective
-  areas are then given by
+  energy according to
   \begin{equation}
-   A_\mathrm{eff,\,true} = A_\mathrm{eff}
-                           \cdot\left(1+s_{A_\mathrm{eff}}\cdot E\right)
-                           \cdot n_{A_\mathrm{eff},\nu/\bar\nu}\quad.
+   \aeff' = \aeff\cdot\left(1+s_{\aeff}\cdot E\right)\quad.
   \end{equation}
-\end{description}
-
-
+ \item[The relative effective area normalisation 
+  $\mathbf{r_{\aeff,\,\nu-\bar\nu}}$] for neutrinos and anti-neutrinos accounts 
+  for a possible error in the relative normalisation of the neutrino-nucleon 
+  cross sections for neutrinos vs.\ antineutrinos, which effectively alters the 
+  effective areas\footnote{Inflicting this re-normalisation on the atmospheric 
+  fluxes instead of the effective areas would have the same effect. Since the 
+  effects are completely degenerate and uncertainties on the relative cross 
+  sections larger than on the relative fluxes, we do  not treat the flux 
+  normalisation as a parameter.}. The effective areas are then given by
+  \begin{equation}
+   \aeff' = \aeff \cdot (1\pm r_{\aeff,\,\nu-\bar\nu}) \quad,
+  \end{equation}
+  with the positive sign for neutrinos and the negative sign for antineutrinos. 
+  Since the relative strength of neutrino and antineutrino interactions 
+  governs the size of the NMH signal that can be observed with PINGU (see 
+  Sec.~\ref{sec:PINGUosc}), this parameter is of particular importance.
+ \item[The overall effective area normalisation $\mathbf{n_{\aeff}}$] 
+  scales the effective areas for all channels independent of energy:
+  \begin{equation}
+   \aeff' = \aeff\cdot n_{\aeff}
+  \end{equation}
+  Since it just evenly increases the total number of events in all channels and 
+  hence is fully degenerate with the detector lifetime, it is not that 
+  interesting by itself. However it is needed in combination with the relative 
+  scalings mentioned above to effectively allow for the separate scaling of one 
+  single channel.\\
+  Obviously all three parameters related to the effective area enter the 
+  calculation at the same time during the calculation of the true event rates, 
+  represented by (\ref{eqn:evtrate_CC}) and (\ref{eqn:evtrate_NC}), \ie after 
+  the oscillation probabilities have been applied.
 %TODO: still ignore those parameters? We can do that if we use the reco tables
 % Two more systematic parameters can enter at this stage, if parametrised point
 % spread functions are used for event reconstruction:
-% \begin{description}
 %  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
 %   fact that the parametrisations of the energy reconstruction might under- or
 %   overestimate the actual resolution. This is implemented by simply scaling
@@ -634,20 +662,16 @@ the simulation chain:
 %   \begin{equation}
 %    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
 %   \end{equation}
-% \end{description}
-
-Two more systematic parameters enter at the flavour identification stage:
-\begin{description}
- \item[The FID scaling $\mathbf{s_\mathrm{FID}}$] simply scales the probability
+ \item[The PID scaling $\mathbf{s_\mathrm{PID}}$] simply scales the probability
   to detect a track signature up or down, accounting for the possibility to
   mis-estimate the overall effectivity of the flavour ID algorithm.
- \item[The FID offset $\mathbf{\Delta_\mathrm{FID}}$] shifts the whole flavour
+ \item[The PID offset $\mathbf{\Delta_\mathrm{PID}}$] shifts the whole flavour
   ID function in energy to open the possibility that FID might become effective
   at higher or lower energies than fitted from MonteCarlo data.
+  The actual PID function will hence be
+  \begin{equation}
+    P_\mathrm{ID}'(E) = s_\mathrm{PID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{PID})
+      \quad.
+  \end{equation}
 \end{description}
-The actual FID function will hence be
-\begin{equation}
- P_\mathrm{ID}'(E) = s_\mathrm{FID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{FID})
-   \quad.
-\end{equation}
 
