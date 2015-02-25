@@ -386,7 +386,7 @@ calculated by
    \label{eqn:evtrate_CC} \\
  N_\mathrm{\nux\ \mathrm{NC}} &=&
    \aeff(\nux\ \mathrm{NC}) \sum_\alpha \Phi_{\alpha,\,\mathrm{det}}\ t
-   \label{eqn:evtrate_NC} \\
+   \label{eqn:evtrate_NC} 
 \end{eqnarray}
 for the three charged and one neutral current channels, respectively.
 Finally, the histograms for neutrinos and anti-neutrinos in the same
@@ -494,8 +494,8 @@ neutrino of that channel and energy as either track or cascade. If those two
 probabilities add up to less than one, the remaining events are assigned to an
 ``unidentified'' channel that can be used for the analysis as well.
 
-For the baseline settings (Sec.~\ref{sim_input}), the PID is a binary decision,
-meaning that there are no unidentified events. In
+For the baseline settings (Sec.~\ref{sec:sim_input}), the PID is a binary
+decision, meaning that there are no unidentified events. In
 Sec.~\ref{sec:results_includeunkn}, the effects of an event selection producing
 cascade and track samples of higher purity plus an unidentified set of events
 will be discussed.
@@ -645,30 +645,37 @@ the simulation chain:
   calculation at the same time during the calculation of the true event rates, 
   represented by (\ref{eqn:evtrate_CC}) and (\ref{eqn:evtrate_NC}), \ie after 
   the oscillation probabilities have been applied.
-%TODO: still ignore those parameters? We can do that if we use the reco tables
+% TODO: still ignore those parameters? We can do that if we use the reco tables
 % Two more systematic parameters can enter at this stage, if parametrised point
 % spread functions are used for event reconstruction:
-%  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
-%   fact that the parametrisations of the energy reconstruction might under- or
-%   overestimate the actual resolution. This is implemented by simply scaling
-% the
-%   widths in (\ref{eqn:reco_param}) by this factor:
-%   \begin{equation}
-%    \sigma_i' = s_{\Delta E}\cdot\sigma_i
-%   \end{equation}
-%   Note that for simplicity the scaling is the same for both of the Gaussians.
-%  \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
-%   is modelled in the same way as the energy reconstruction scaling:
-%   \begin{equation}
-%    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
-%   \end{equation}
- \item[The PID scaling $\mathbf{s_\mathrm{PID}}$] simply scales the probability
-  to detect a track signature up or down, accounting for the possibility to
-  mis-estimate the overall effectivity of the flavour ID algorithm.
- \item[The PID offset $\mathbf{\Delta_\mathrm{PID}}$] shifts the whole flavour
-  ID function in energy to open the possibility that FID might become effective
-  at higher or lower energies than fitted from MonteCarlo data.
-  The actual PID function will hence be
+ \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
+  fact that the parametrisations of the energy reconstruction might under- or
+  overestimate the actual resolution. This is implemented by simply scaling
+  the widths in (\ref{eqn:reco_param}) by this factor:
+  \begin{equation}
+   \sigma_i' = s_{\Delta E}\cdot\sigma_i
+  \end{equation}
+  Note that for simplicity the scaling is the same for both of the Gaussians.
+ \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
+  is modelled in the same way as the energy reconstruction scaling:
+  \begin{equation}
+   \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
+  \end{equation}
+  The two reconstruction scaling parameters are applied when smearing the truth
+  histograms in order to get the reconstructed ones. However they can only be
+  included in the analysis when using parametrised smearing kernels, as for the
+  kernels generated directly from MC no analytic description exists.
+ \item[The PID scaling $\mathbf{s_\mathrm{PID}}$] scales the probabilities 
+  to detect a track or a cascade signature up or down, accounting for the
+  possibility to mis-estimate the overall effectiveness of the particle ID
+  algorithm.
+ \item[The PID offset $\mathbf{\Delta_\mathrm{PID}}$] shifts the whole particle
+  ID function in energy to open the possibility that PID might become
+  effective\footnote{In particular for the correct identification of \numu CC
+  events as track-like, the PID function has a step-like shape, with a steep
+  increase of the selection efficiency between 5 and 10\,GeV, cf.\
+  Sec.~\ref{sec:sim_input}.} at higher or lower energies than fitted from
+  Monte Carlo data. The actual PID function will hence be
   \begin{equation}
     P_\mathrm{ID}'(E) = s_\mathrm{PID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{PID})
       \quad.
