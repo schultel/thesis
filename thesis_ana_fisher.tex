@@ -76,14 +76,16 @@ matrix of the experiment is obtained by inverting the Fisher matrix. Then the
 full errors of the parameters $\sigma_i^{\rm full}$ and their correlations can
 be read from the covariance matrix $\mathcal{S}$:
 \begin{equation}
- \sigma_i^\mathrm{full} = \sqrt{\mathcal{S}_{ii}}
-                        = \sqrt{(\mathcal{F}^{-1})_{ii}} \label{eqn:sigma_full}
+ \sigma_i = \sigma_i^\mathrm{full} = \sqrt{\mathcal{S}_{ii}}
+                        = \sqrt{\left(\mathcal{F}^{-1}\right)_{ii}}
+ \label{eqn:sigma_full}
 \end{equation}
 Also the purely statistical error of a given parameter $\sigma_i^\mathrm{stat}$
 (\ie the error that is obtained assuming all other parameters are fixed) can be
 calculated from the corresponding diagonal element of the Fisher matrix:
 \begin{equation}
- \sigma_i^\mathrm{stat} = \sqrt{(\mathcal{F}_{ii})^{-1}} \label{eqn:sigma_stat}
+ \sigma_i^\mathrm{stat} = \sqrt{\left(\mathcal{F}_{ii}\right)^{-1}}
+\label{eqn:sigma_stat}
 \end{equation}
 
 External constraints on parameters, so-called \emph{priors}, can easily be
@@ -102,18 +104,59 @@ full error into the purely statistical part (\ref{eqn:sigma_stat}) and the
 contribution arising from the uncertainties of the other parameters, denoted as
 \emph{systematic} error $\sigma_i^\mathrm{syst}$ below:
 \begin{equation}
- \sigma^\mathrm{syst}_i = \sqrt{(\sigma^\mathrm{full}_i)^2 -
-(\sigma^\mathrm{stat}_i)^2}\quad,
+ \sigma^\mathrm{syst}_i =
+         \sqrt{\sigma_i^2 - \left(\sigma^\mathrm{stat}_i\right)^2}\quad,
  \label{eqn:syst_error}
 \end{equation}
-where $\sigma^\mathrm{full}_i$ is calculated without any possible priors on
+where $\sigma_i$ is calculated without any possible priors on
 parameter $i$. The correlation coefficient between two parameters $i$ and $j$
 can be calculated as:
 \begin{equation}
- c_{ij} =
-\frac{(\mathcal{F}^{-1})_{ij}}{\sigma_i^\mathrm{full}\sigma_j^\mathrm{full}}
+ c_{ij}
+   = \frac{\left(\mathcal{F}^{-1}\right)_{ij}}{\sigma_i \sigma_j}
+   = \frac{\sigma_{ij}}{\sigma_i \sigma_j}
  \label{eqn:corr_coeff}
 \end{equation}
+With this, the error ellipse in the $(p_i,p_j)$ plane can be calculated as
+well. Its semi-major and semi-minor axes $a$ and $b$ are given by the
+eigenvalues of the $2\times 2$ sub-matrix of the covariance matrix corresponding
+to the two parameters,
+\begin{equation}
+ \mathcal{S}^{(i,j)} =
+ \begin{pmatrix}
+  \,\sigma_i^2 & \sigma_{ij}\, \\
+  \,\sigma_{ij} & \sigma_j^2\,
+ \end{pmatrix} \quad,
+ \label{eqn:cov_submatrix}
+\end{equation}
+which are equal to \cite{Fisher_ellipse}
+\begin{eqnarray}
+ a^2 &=& \frac{\sigma_i^2 + \sigma_j^2}{2} +
+         \sqrt{\frac{\left(\sigma_i^2+\sigma_j^2\right)^2}{4}+\sigma_{ij}^2} \\
+ b^2 &=& \frac{\sigma_i^2 + \sigma_j^2}{2} -
+         \sqrt{\frac{\left(\sigma_i^2+\sigma_j^2\right)^2}{4} + \sigma_{ij}^2} 
+\end{eqnarray}
+for $\sigma_i > \sigma_j$. Otherwise, the roles of semi-major and semi-minor
+axis have to be exchanged. These values have to be scaled by a factor $\alpha$
+reflecting the confidence level the ellipse is supposed to represent, \eg
+$\mathrm{CL} = 68\,\%$ for a $1\sigma$ ellipse. It can be determined after
+\begin{equation}
+ \alpha = \sqrt{\mathrm{PPF}_{\chi^2,\,2}(\mathrm{CL})} \quad,
+\end{equation}
+where $\mathrm{PPF}_{\chi^2,\,2}$ is the \emph{percent point function}---the
+inverse of the cumulative distribution function---of the $\chi^2$ distribution
+for two degrees of freedom.
+The rotation of the ellipse corresponds to the angle $\phi$ between the $p_i$
+axis and the eigenvector of the reduced covariance matrix
+(\ref{eqn:cov_submatrix}):
+\begin{equation}
+ \tan 2\phi = \frac{2\sigma_{ij}}{\sigma_i^2 - \sigma_j^2}
+ \label{eqn:ell_angle}
+\end{equation}
+Since the parameters $p_i$ and $p_j$ do not necessarily have the same
+dimension, all values in the equations above have to taken as dimensionless,
+\ie in units of actual size on a plot. For this reason, (\ref{eqn:ell_angle})
+has to be divided by the aspect ratio of the plot before taking the arc tangent.
 
 Another important property of the Fisher matrix is its additivity. As one can
 see from (\ref{eqn:fisher_def}), where the total Fisher matrix is given by 
@@ -131,6 +174,7 @@ the combination of the two experiments is then simply given by the inverse of
 the added Fisher matrices.
 
 \subsection{Prerequisites}
+
 
 
 \subsection{The Hierarchy Parameter}
