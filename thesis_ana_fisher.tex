@@ -3,14 +3,132 @@
 \label{sec:ana}
 %==============================================================================
 
+Now that the tools and theoretical foundations needed for the simulation of an
+PINGU physics run have been presented and described, we can move on to the
+actual calculation of PINGU's physics capabilities, in particular its
+sensitivity for the neutrino mass hierarchy. This will be done using the Fisher
+information matrix, a tool to quickly evaluate the covariance matrix of an
+experiment where a large number of systematic uncertainties has to be taken
+into account, which will be introduced in Sec.~\ref{sec:fisher}.
+
+Thereafter, the simulation input that was used for the generation of the
+results is documented (Sec.~\ref{sec:sim_input}) before finally the results
+themselves can be presented and discussed in Sec.~\ref{sec:results_baseline}.
+Looking even more into the future, in Sec.~\ref{sec:om_effects} we will estimate
+the possible benefits of instrumenting PINGU with the next generation optical
+modules described in Sec.~\ref{sec:Gen2DOM}. Finally, we will make use of the
+Fisher matrix's ability to easily combine the results of different experiments
+measuring the same physical effect to evaluate the benefits gained from the
+joint analysis of PINGU and other neutrino oscillation experiments, in
+particular JUNO \cite{JUNO} (Sec.~\ref{sec:comb}).
+
 
 %==============================================================================
 \section{Fisher Information Matrix}
 \label{sec:fisher}
 %==============================================================================
 
+The Fisher information matrix, or just Fisher matrix in the following, provides
+a way to estimate the full covariance matrix of an experiment and therefore the
+accuracy of its intended measurement in advance. It has been widely used,
+especially in cosmology \cite{Fisher_first}, but also in neutrino
+astrophysics \cite{MarekDiffuse}. For a detailed discussion see \eg
+\cite{Fisher_first, DETF, DETF2}.
+
+The experiment that is to be modelled is characterised by two sets of variables:
+\begin{description}
+ \item[Observables] are the variables $f_n$ that will actually be measured by
+  the experiment. In the case of PINGU, these are the expected event counts 
+  binned in energy and zenith angle. Since the partial derivatives of the
+  observables \wrt the parameters enter the calculation of the Fisher matrix,
+  their dependence on the parameters has to be known either analytically or (as
+  in our case) from simulations, such that these derivatives can be determined
+  in an analytical or numerical way.
+ \item[Parameters] are the variables $p_i$ that will be extracted from the
+  measurement (\ie from the observables). These are the physical parameters
+  which are the actual target of the experiment as well as nuisance parameters
+  required to account for systematic uncertainties.
+\end{description}
+Then the Fisher matrix is defined as:
+\begin{equation}
+ \mathcal{F}_{ij} = \sum_n \frac{1}{\sigma_n^2} \frac{\partial f_n}{\partial
+p_i} \frac{\partial f_n}
+ {\partial p_j}\bigg|_\mathrm{fid.\,model}
+ \label{eqn:fisher_def}
+\end{equation}
+Here the $\sigma_n$ denote the errors on the measurement of the observables.
+Since in this analysis, these are the expected numbers of events in the bins $n$
+of the analysis histograms (cf.\ Sec.~\ref{sec:papa_code}), $f_n = N_n$, we
+can apply Poissonian statistics where the errors are simply given by the square
+root of the number of events:
+\begin{equation}
+ \sigma_n = \sqrt{f_n} = \sqrt{N_n}
+\end{equation}
+The derivatives in (\ref{eqn:fisher_def}) are evaluated at the set of ''true''
+values of $p_i$ that are used as an input for the simulation. This set of
+parameters $p_i$ is called the \emph{fiducial model} and is chosen with the best
+existing knowledge.
+
 \subsection{Properties}
 
+Once the Fisher matrix has been constructed, the covariance
+matrix of the experiment is obtained by inverting the Fisher matrix. Then the
+full errors of the parameters $\sigma_i^{\rm full}$ and their correlations can
+be read from the covariance matrix $\mathcal{S}$:
+\begin{equation}
+ \sigma_i^\mathrm{full} = \sqrt{\mathcal{S}_{ii}}
+                        = \sqrt{(\mathcal{F}^{-1})_{ii}} \label{eqn:sigma_full}
+\end{equation}
+Also the purely statistical error of a given parameter $\sigma_i^\mathrm{stat}$
+(\ie the error that is obtained assuming all other parameters are fixed) can be
+calculated from the corresponding diagonal element of the Fisher matrix:
+\begin{equation}
+ \sigma_i^\mathrm{stat} = \sqrt{(\mathcal{F}_{ii})^{-1}} \label{eqn:sigma_stat}
+\end{equation}
+
+External constraints on parameters, so-called \emph{priors}, can easily be
+incorporated as well. If parameter $i$ has an prior $\sigma_i^\mathrm{ext}$, it
+can simply be added to the corresponding diagonal element of the Fisher matrix:
+\begin{equation}
+ \mathcal{F}_{ii}^\mathrm{prior} = \mathcal{F}_{ii} +
+     \left(\frac{1}{\sigma_i^\mathrm{ext}}\right)^2
+\end{equation}
+To fix one parameter completely, the corresponding row and column are removed
+from the Fisher matrix before inversion.
+
+The Fisher matrix allows not only to read off the full uncertainty of any
+parameter and all its correlations with other parameters, but also decompose the
+full error into the purely statistical part (\ref{eqn:sigma_stat}) and the
+contribution arising from the uncertainties of the other parameters, denoted as
+\emph{systematic} error $\sigma_i^\mathrm{syst}$ below:
+\begin{equation}
+ \sigma^\mathrm{syst}_i = \sqrt{(\sigma^\mathrm{full}_i)^2 -
+(\sigma^\mathrm{stat}_i)^2}\quad,
+ \label{eqn:syst_error}
+\end{equation}
+where $\sigma^\mathrm{full}_i$ is calculated without any possible priors on
+parameter $i$. The correlation coefficient between two parameters $i$ and $j$
+can be calculated as:
+\begin{equation}
+ c_{ij} =
+\frac{(\mathcal{F}^{-1})_{ij}}{\sigma_i^\mathrm{full}\sigma_j^\mathrm{full}}
+ \label{eqn:corr_coeff}
+\end{equation}
+
+Another important property of the Fisher matrix is its additivity. As one can
+see from (\ref{eqn:fisher_def}), where the total Fisher matrix is given by 
+summing the contributions from all observables, one can always add a new
+measurement to the ones already accounted for just by adding the respective
+Fisher matrices. If there are parameters that only appear in one of the
+measurements---\eg the relative atmospheric neutrino flux scale
+$r_{\mathrm{flux},\,\nue-\numu}$ that has to be considered in PINGU, but not in
+JUNO as the latter relies on reactor neutrinos---the matrix of the experiment
+not yet having said parameter is expanded by a corresponding row and column
+filled with zeroes: As the measurement does not depend on the new parameter, the
+uncertainty on its value as extracted from the measurement
+(\ref{eqn:sigma_stat}) is $1/\sqrt{0} = \infty$. The full covariance matrix of
+the combination of the two experiments is then simply given by the inverse of
+the added Fisher matrices.
 
 \subsection{Prerequisites}
 
