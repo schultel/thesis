@@ -213,32 +213,93 @@ equivalent:
 \end{enumerate}
 Since we do not need to explicitly construct the likelihood $\mathcal{L}$
 introduced in (\ref{eqn:fisher_llh}), we will only check for condition (a) to
-be fulfilled. This validation can be found in App.~\ref{sec:app_fisher_valid}.
+be fulfilled. This validation can be found in App.~\ref{app:fisher_valid}.
 
 \subsection{The Hierarchy Parameter}
 \label{sec:fisher_hierarchy}
 
+The Fisher matrix can only handle continuous parameters $p_i$, as the
+derivatives of the observables \wrt these parameters enter in
+(\ref{eqn:fisher_def}). For this reason the hierarchy parameter $h$ was
+introduced in (\ref{eqn:hierarchy_parameter}), making the intrinsically
+binary\footnote{By construction it can only be either normal or inverted.}
+neutrino mass hierarchy continuous. However it still needs to be demonstrated
+that this definition leads to a result that can be interpreted in a meaningful
+way.
+
+In \cite{Akhmedov}, a metric is defined that allows to evaluate the sensitivity
+of an atmospheric neutrino experiment to the mass hierarchy in terms of
+standard \delchisq statistics. For every bin of the final analysis histograms in
+($E,\coszen$), a \delchi is defined as
 \begin{equation}
- \Delta\chi^2 = \frac{N_\mathrm{NH}-N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}}
+ \delchi = \frac{N_\mathrm{NH}-N_\mathrm{IH}}{\sqrt{N_\mathrm{NH}}} \quad.
 \end{equation}
-with the significance
+The expected significance of the experiment's mass hierarchy measurement is
+then given by
 \begin{equation}
- \mathcal{S}_{\chi^2} = \sqrt{\sum_\mathrm{bins} \left(\Delta\chi^2\right)^2}
+ \mathcal{S}_{\chi^2} = \sqrt{\sum_\mathrm{bins} \delchisq}
  = \sqrt{\sum_\mathrm{bins}
      \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}} }\quad.
 \end{equation}
-In this case, from the Fisher Matrix we get the identical significance of
+With the definition of $h$ according to (\ref{eqn:hierarchy_parameter}), from
+the Fisher Matrix we get the statistical error on $h$,
 \begin{equation}
- \mathcal{S}_\mathrm{Fisher} = \frac{1}{\sigma_h} = \frac{1}{\sqrt{\sigma_h^2}}
- = \frac{1}{\sqrt{(\mathcal{F})^{-1}_{hh}}}
- = \sqrt{\mathcal{F}_{hh}}
+ \sigma_h^\mathrm{stat} = \sqrt{\left(\mathcal{F}_{hh}\right)^{-1}} \quad,
 \end{equation}
 with
 \begin{equation}
  \mathcal{F}_{hh} = \sum_\mathrm{bins} \frac{1}{\sigma_b^2}
-   \frac{\partial N}{\partial h} \frac{\partial N}{\partial h}
+   \frac{\partial N_b}{\partial h} \frac{\partial N_b}{\partial h}
   = \sum_\mathrm{bins} \frac{1}{N_\mathrm{NH}}(N_\mathrm{NH}-N_\mathrm{IH})^2
   \quad.
 \end{equation}
+As the pure normal and pure inverted hierarchy case correspond to $h=1$ and
+$h=0$, respectively, \ie the two cases that have to be distinguished differ by
+$1$, the statistical significance (without including any systematic parameters)
+retrieved from the Fisher matrix is
+\begin{equation}
+ \mathcal{S}_\mathrm{Fisher} = \frac{1}{\sigma_h^\mathrm{stat}} 
+ = \sqrt{\mathcal{F}_{hh}}
+ = \sqrt{\sum_\mathrm{bins}
+     \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}}}
+ = \mathcal{S}_{\chi^2} \quad.
+\end{equation}
+Thus the significances calculated according to \delchisq statistics, where by
+construction no systematic parameters are included, and from the Fisher matrix
+with explicitly excluding systematics are, in fact, identical.
 
 \subsection{Constructing the Fisher Matrix with \papa}
+
+To construct the Fisher matrix for PINGU primarily means to derive the partial
+derivatives entering (\ref{eqn:fisher_def}), \ie the derivatives of the
+expected number of events \wrt to all systematic parameters $p_i$ introduced in
+Sec.~\ref{sec:systematics} for each bin in the final analysis histograms. In
+order to this, for every parameter a set of test points\footnote{Typically
+$\approx 10$ different values.} in the vicinity of its fiducial value and \papa
+is run for this test point while all other parameters are kept at their fiducial
+values.
+
+Then for every bin $b$ in the analysis histograms, the expected bin count $N_b$
+is fitted as a function of $p_i$ with a parabola, \ie
+\begin{equation}
+ N_b^\mathrm{fit}(p_i) = c_0 + c_1\cdot p_i + c_2\cdot p_i^2 \quad.
+\end{equation}
+The sought-after derivative is then simply given by
+\begin{equation}
+ \frac{\partial N_b^\mathrm{fit}}{\partial p_i} = c_1 + 2 c_2 p_i 
+\end{equation}
+with $p_i$ at the fiducial value. As this procedure is repeated for ever
+parameter and every bin, it produces all ingredients needed to finally
+construct the Fisher matrix.
+
+Here another advantage of the Fisher matrix formalism becomes obvious: since
+all systematic parameters are treated independently from each other, adding a
+new parameter results only in a small relative increase in computing time.
+The parameter space is sampled only along one-dimensional paths aligned with
+the parameter axes, thus adding an extra dimension only means adding one path
+to the sampling. Hence the time needed to get a result scales only linearly
+with the number of parameters taken into account while for algorithms sampling
+the full parameter space the scaling is exponential. Using a more graphic
+explanation, the Fisher matrix infers the shape of the likelihood landscape by
+retrieving a cross-section in each coordinate direction and then ``rotates''
+them assuming a parabolic shape.
