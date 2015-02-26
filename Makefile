@@ -3,7 +3,7 @@
 # Can also run feynmf/feynmp/tikz on files in a directory
 #
 THESIS = mythesis
-# EXTRACMD = --shell-escape
+EXTRACMD = -interaction=nonstopmode -synctex=1
 FEYNDIR = ../feynmf
 FEYNFILES = $(wildcard $(FEYNDIR)/*.tex)
 TIKZDIR = ../tikz

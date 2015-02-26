@@ -144,8 +144,8 @@ $\mathrm{CL} = 68\,\%$ for a $1\sigma$ ellipse. It can be determined after
  \alpha = \sqrt{\mathrm{PPF}_{\chi^2,\,2}(\mathrm{CL})} \quad,
 \end{equation}
 where $\mathrm{PPF}_{\chi^2,\,2}$ is the \emph{percent point function}---the
-inverse of the cumulative distribution function---of the $\chi^2$ distribution
-for two degrees of freedom.
+inverse of the cumulative distribution function---for the $\chi^2$ distribution
+with two degrees of freedom.
 The rotation of the ellipse corresponds to the angle $\phi$ between the $p_i$
 axis and the eigenvector of the reduced covariance matrix
 (\ref{eqn:cov_submatrix}):
@@ -175,7 +175,45 @@ the added Fisher matrices.
 
 \subsection{Prerequisites}
 
-
+As the simplicity of the Fisher matrix formalism suggests, it is not
+universally applicable, but an approximation that is only valid under certain
+circumstances. The basic requirement that has to be met is that the fiducial
+model, in which the Fisher matrix is constructed, already gives a good
+description of the actual ``truth''. There are several criteria to judge
+whether this requirement is in fact fulfilled, which turn out to all be
+equivalent:
+\begin{enumerate}[(a)]
+ \item In parameter space, the fiducial and true points have to be close
+  enough, such that the dependence of the observables on the parameters,
+  $f_n(p_i)$, can be approximated by linear functions. I.\,e.\ the partial
+  derivatives $\frac{\partial f_n}{\partial p_i}$ entering in
+  (\ref{eqn:fisher_def}) are the same at both points. If this was not the case,
+  the experiment's ``response'' to the parameters would be different at the two
+  points and hence the fiducial point was not appropriate to make predictions
+  about the actual truth.
+ \item When constructing the likelihood landscape over the parameter space, such
+  that
+  \begin{equation}
+   \frac{\partial^2\mathcal{L}}{\partial p_i^2}
+     = \sum_n \frac{\partial f_n}{\partial p_i}
+   \label{eqn:fisher_llh}
+  \end{equation}
+  with a minimum of $\mathcal{L}$ at the true point, at the fiducial point the
+  shape of $\mathcal{L}$ can still be approximated by a parabola with the apex
+  at the true point. This ensures that the error ellipses, which are nothing
+  else than iso-likelihood contours, are in fact elliptical.
+ \item The test statistics of the experiment is Gaussian. This means that the
+  likelihood values of an ensemble of pseudo-experiments follow a Gaussian
+  distribution, no matter whether they are thrown at the fiducial or at the true
+  point. \emph{Throwing a pseudo-experiment} means in this case that
+  a possible ``real'' experimental outcome is simulated by generating a 2D
+  histogram of events filled with random numbers following a Poisson
+  distribution with the means taken from the expected event numbers generated
+  with \papa.
+\end{enumerate}
+Since we do not need to explicitly construct the likelihood $\mathcal{L}$
+introduced in (\ref{eqn:fisher_llh}), we will only check for condition (a) to
+be fulfilled. This validation can be found in App.~\ref{sec:app_fisher_valid}.
 
 \subsection{The Hierarchy Parameter}
 \label{sec:fisher_hierarchy}
@@ -203,3 +241,4 @@ with
   \quad.
 \end{equation}
 
+\subsection{Constructing the Fisher Matrix with \papa}
