@@ -1,0 +1,66 @@
+{
+  "NC": {
+    "coszen": {
+      "fraction": "lambda E: 0.6*n.ones_like(E)",
+      "loc1": "lambda E: -0.0*E + 0.0",
+      "loc2": "lambda E: -0.0*n.ones_like(E)",
+      "width1": "lambda E: 0.189 * n.exp(-E / 14.9) + 0.0581",
+      "width2": "lambda E: 0.236 * n.exp(-E / 9.73) + 0.308"
+    },
+    "e": {
+      "fraction": "lambda E: n.min([0.374 - 0.026*E, n.ones_like(E)], axis=0)",
+      "loc1": "lambda E: -0.905*E + 1.45",
+      "loc2": "lambda E: -0.686*E + 1.68",
+      "width1": "lambda E: 0.0316*E + 0.688",
+      "width2": "lambda E: 0.170*E + 0.650"
+    }
+  },
+  "nue": {
+    "coszen": {
+      "fraction": "lambda E: 0.8*n.ones_like(E)",
+      "loc1": "lambda E: 0.05*n.ones_like(E)",
+      "loc2": "lambda E: -0.00240*E + 0.0509",
+      "width1": "lambda E: 0.121 * n.exp(-E / 5.57) + 0.0414",
+      "width2": "lambda E: 0.308 * n.exp(-E / 6.63) + 0.127"
+    },
+    "e": {
+      "fraction": "lambda E: n.max([0.4 - 0.034*E, n.zeros_like(E)], axis=0)",
+      "loc1": "lambda E: -0.0*E - 0.0",
+      "loc2": "lambda E: 0.0*E + 1.5",
+      "width1": "lambda E: 0.240*E + 0.187",
+      "width2": "lambda E: 0.0*E + 1.5"
+    }
+  },
+  "numu": {
+    "coszen": {
+      "fraction": "lambda E: 0.8*n.ones_like(E)",
+      "loc1": "lambda E: n.zeros_like(E)",
+      "loc2": "lambda E: -0.00331*E + 0.0641",
+      "width1": "lambda E: 0.135 * n.exp(-E / 8.99) + 0.00369",
+      "width2": "lambda E: 0.335 * n.exp(-E / 6.32) + 0.097"
+    },
+    "e": {
+      "fraction": "lambda E: n.min([0.1 + 0.05*E, 0.6*n.ones_like(E)], axis=0)",
+      "loc1": "lambda E: -0.0732*E - 0.125",
+      "loc2": "lambda E: n.max([1.15 - 0.208*E, -2.*n.ones_like(E)], axis=0)",
+      "width1": "lambda E: 0.0842*E + 0.467 + 0.3",
+      "width2": "lambda E: 0.185*E + 1.01"
+    }
+  },
+  "nutau": {
+    "coszen": {
+      "fraction": "lambda E: 0.6*n.ones_like(E)",
+      "loc1": "lambda E: n.zeros_like(E)",
+      "loc2": "lambda E: n.zeros_like(E)",
+      "width1": "lambda E: n.max([0.151 - 0.00369*E, 0.6*n.ones_like(E)], axis=0)",
+      "width2": "lambda E: 0.326 * n.exp(-E / 16.3) + 0.157"
+    },
+    "e": {
+      "fraction": "lambda E: 0.0*n.ones_like(E)",
+      "loc1": "lambda E: -0.457*E - 0.216",
+      "loc2": "lambda E: -0.0*E + 0.0",
+      "width1": "lambda E: 0.282*E - 0.0287",
+      "width2": "lambda E: 0.0*E + 1."
+    }
+  }
+}
