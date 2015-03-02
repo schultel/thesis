@@ -67,29 +67,36 @@ zenith dependence is shown in Fig.~\ref{fig:aeffs}.
 \subsection{Reconstruction Resolutions}
 \label{sec:input_reco}
 
-As already mentioned, the event reconstruction for the baseline model will be
-simulated by 
+The event reconstruction for the baseline model will be simulated by smearing
+the 2D event histograms with kernels represented by the sum of two Gaussian
+distributions (cf.~Sec.~\ref{sec:papa_code}). The five parameters needed to
+describe these Gaussians, see (\ref{eqn:reco_param}), are given as functions of
+the neutrino energy. To get the energy dependence of these five parameters, a
+two-stage fitting procedure is applied. 
 
+In the first stage, all events of a given interaction channel are divided into
+subsets according to their true neutrino energy, where each subset covers an
+energy range of 2\,GeV. For each of the subsets up to an energy of
+20\,GeV\footnote{At higher energies, the event statistics are too low for the
+fit to converge.}, the difference between true and reconstructed energy is
+histogrammed and fitted with the aforementioned kernel function. This results in
+values for the five parameters of (\ref{eqn:reco_param}) as a function of
+energy. These are fitted again, now as (piecewise) linear functions of the true
+neutrino energy.
 
-% \begin{figure}
-%  \centering
-%  \includegraphics[width=0.495\linewidth]{figures/MultiNest_EnergyResolution.pdf}
-%  \includegraphics[width=0.495\linewidth]{figures/MultiNest_ZenithResolution.pdf}
-%  \caption{Median resolutions of the \textsf{MultiNest} algorithm for
-%   $\nu_e/\bar\nu_e$ and $\nu_\mu/\bar\nu_\mu$ CC events.
-%   \emph{Left:} Relative energy resolution.
-%   \emph{Right:} Zenith angle resolution}
-%  \label{fig:MultiNest}
-% \end{figure}
+After repeating the procedure for the resolution in \coszen, the fit function
+definitions are stored in a dictionary that serves as input to \papa. This
+dictionary can be found in App.~\ref{app:reco_params}. For the actual fits to
+the resolutions, an example is shown in Fig.~\ref{fig:reco_example}.
 
-
-The input for the reconstruction resolutions, whether supplied as
-parametrisations or tables, is obtained from the
-\textsf{MultiNest}\footnote{Developed by J.\,P.\ A.\,M.\ de Andr\'{e},
-M.\ Dunkman, and F.\ Huang (Penn State)} reconstruction algorithm. This 8D
-hybrid likelihood minimization fits for the hadronic interaction vertex plus an
-outgoing muon. Median resolutions in energy and zenith angle are shown in
-Fig.~\ref{fig:MultiNest}.
+Although the fits are only anchored to data up to 20\,GeV, they are extrapolated
+to higher energies. This approach is valid as events beyond 20\,GeV are so far
+above PINGU's energy threshold that new features in the description of the
+reconstruction resolutions are not to be expected. In addition, the mass
+hierarchy signature is located at energies below 10\,GeV (see
+Figs.~\ref{fig:true_akhmedov_nue} -- \ref{fig:true_akhmedov_nutau}), such that
+inaccuracies in the resolution parametrisations above 20\,GeV do not influence
+the calculation of the mass hierarchy sensitivity.
 
 \subsection{Particle Flavour Identification}
 \label{sec:input_pid}
