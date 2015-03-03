@@ -3,6 +3,44 @@
 \label{sec:results_baseline}
 %==============================================================================
 
+\begin{table}[htpb]
+ \caption{Uncertainties on all systematic parameters for the baseline
+  detector model with three years of lifetime, ranked according to their impact
+  on the mass hierarchy parameter $h$.}
+ \label{tab:baseline_results}
+ \begin{center}
+  \small{\input{figs/fishers/baseline.tex}}
+ \end{center}
+\end{table}
+
+Using the settings described in the previous section, the Fisher matrix for
+PINGU can now be constructed with \papa. The full, statistical, and systematic
+errors are for all parameters are listed in Tab.~\ref{tab:baseline_results} for
+a nominal PINGU lifetime of three years. The parameters are ordered after their
+\emph{impact} on the mass hierarchy parameter $h$, which is defined as the
+square of their correlation coefficient $c_{ih}$ (\ref{eqn:corr_coeff}) with
+$h$. Note that for the baseline settings, the systematic parameter
+$s_\mathrm{PID}$ has been excluded as it is fully degenerate with $n_{\aeff}$:
+since the PID decision is binary, no channel of unidentified events exists and
+hence both parameters just evenly increase the overall number of events,
+effectively.
+
+From the first line of Tab.~\ref{tab:baseline_results}, one can read off the
+expected significance of PINGU's mass hierarchy measurement by inverting the
+full error (see Sec.~\ref{sec:fisher_hierarchy}). This gives an expected
+significance of 2.9\,$\sigma$ after three years. Looking at the statistical
+error alone, this value increases to 4.3\,$\sigma$, emphasising the important
+role systematic parameters are playing in the determination of the mass
+hierarchy.
+
+Treating the track and cascade channels separately, the expected significances
+are 1.9\,$\sigma$ with and 3.0\,$\sigma$ without systematics for the cascade
+and 1.3\,$\sigma$ (3.1\,$\sigma$) for the track channel,
+respectively\footnote{The full error listings corresponding to
+Tab.~\ref{tab:baseline_results} can be found in
+App.~\ref{app:fisher_baseline}}. Although the purely statistical significances
+are comparable, when taking systematics into account the significance for the
+cascades remains much higher than the track significance. 
 
 
 \subsection{Impact of the Octant of \thet{23}}

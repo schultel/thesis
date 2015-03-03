@@ -639,23 +639,23 @@ the simulation chain:
 % TODO: still ignore those parameters? We can do that if we use the reco tables
 % Two more systematic parameters can enter at this stage, if parametrised point
 % spread functions are used for event reconstruction:
- \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
-  fact that the parametrisations of the energy reconstruction might under- or
-  overestimate the actual resolution. This is implemented by simply scaling
-  the widths in (\ref{eqn:reco_param}) by this factor:
-  \begin{equation}
-   \sigma_i' = s_{\Delta E}\cdot\sigma_i
-  \end{equation}
-  Note that for simplicity the scaling is the same for both of the Gaussians.
- \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
-  is modelled in the same way as the energy reconstruction scaling:
-  \begin{equation}
-   \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
-  \end{equation}
-  The two reconstruction scaling parameters are applied when smearing the truth
-  histograms in order to get the reconstructed ones. However they can only be
-  included in the analysis when using parametrised smearing kernels, as for the
-  kernels generated directly from MC no analytic description exists.
+%  \item[The energy reconstruction scaling $\mathbf{s_{\Delta E}}$] reflects the
+%   fact that the parametrisations of the energy reconstruction might under- or
+%   overestimate the actual resolution. This is implemented by simply scaling
+%   the widths in (\ref{eqn:reco_param}) by this factor:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta E}\cdot\sigma_i
+%   \end{equation}
+%   Note that for simplicity the scaling is the same for both of the Gaussians.
+%  \item[The zenith reconstruction scaling $\mathbf{s_{\Delta\cos\vartheta}}$]
+%   is modelled in the same way as the energy reconstruction scaling:
+%   \begin{equation}
+%    \sigma_i' = s_{\Delta\cos\vartheta}\cdot\sigma_i
+%   \end{equation}
+%   The two reconstruction scaling parameters are applied when smearing the truth
+%   histograms in order to get the reconstructed ones. However they can only be
+%   included in the analysis when using parametrised smearing kernels, as for the
+%   kernels generated directly from MC no analytic description exists.
  \item[The PID scaling $\mathbf{s_\mathrm{PID}}$] scales the probabilities 
   to detect a track or a cascade signature up or down, accounting for the
   possibility to mis-estimate the overall effectiveness of the particle ID
