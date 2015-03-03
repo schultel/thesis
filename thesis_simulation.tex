@@ -434,8 +434,8 @@ There are two different ways how these kernels can be handed over to \papa:
   data and generally take the form of a double Gaussian for both energy and
   $\cos\vartheta$ to properly account for the tails:
   \begin{equation}
-   \mathrm{PSF} = f\cdot \exp\left(-\frac{(x-\mu_1)^2}{\sigma_1^2}\right)
-                  + (1-f)\cdot \exp\left(-\frac{(x-\mu_2)^2}{\sigma_2^2}\right)
+   \mathrm{PSF} = (1-f)\cdot \exp\left(-\frac{(x-\mu_1)^2}{\sigma_1^2}\right)
+                  + f\cdot \exp\left(-\frac{(x-\mu_2)^2}{\sigma_2^2}\right)
    \label{eqn:reco_param}
   \end{equation}
   The five parameters (two mean values $\mu$, two widths $\sigma$, and the

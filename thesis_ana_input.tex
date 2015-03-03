@@ -67,6 +67,28 @@ zenith dependence is shown in Fig.~\ref{fig:aeffs}.
 \subsection{Reconstruction Resolutions}
 \label{sec:input_reco}
 
+\begin{figure}[p]
+ \centering
+ $\begin{array}{cc}
+   \mathrm{Energy\ Resolution} &
+   \mathrm{\coszen\ Resolution}\\
+   \includegraphics[width=0.5\columnwidth]{e_reco_nue_2GeV} &
+   \includegraphics[width=0.5\columnwidth]{cz_reco_nue_2GeV}\\
+   \includegraphics[width=0.5\columnwidth]{e_reco_numu_6GeV} &
+   \includegraphics[width=0.5\columnwidth]{cz_reco_numu_6GeV}\\
+   \includegraphics[width=0.5\columnwidth]{e_reco_nutau_10GeV} &
+   \includegraphics[width=0.5\columnwidth]{cz_reco_nutau_10GeV}\\
+   \includegraphics[width=0.5\columnwidth]{e_reco_NC_14GeV} &
+   \includegraphics[width=0.5\columnwidth]{cz_reco_NC_14GeV}
+  \end{array}$
+ \caption{Examples for the parametrisations of the energy (left) and \coszen
+   (right) reconstruction resolutions for (from top to bottom) \nue, \numu, and
+   \nutau CC and \nux NC events.
+%    Note the bias towards low reconstructed energies for \nutau and NC.
+   }
+ \label{fig:reco_example}
+\end{figure}
+
 The event reconstruction for the baseline model will be simulated by smearing
 the 2D event histograms with kernels represented by the sum of two Gaussian
 distributions (cf.~Sec.~\ref{sec:papa_code}). The five parameters needed to
@@ -87,7 +109,11 @@ neutrino energy.
 After repeating the procedure for the resolution in \coszen, the fit function
 definitions are stored in a dictionary that serves as input to \papa. This
 dictionary can be found in App.~\ref{app:reco_params}. For the actual fits to
-the resolutions, an example is shown in Fig.~\ref{fig:reco_example}.
+the resolutions, examples are shown in Fig.~\ref{fig:reco_example}. In the
+\nutau CC and \nux NC interaction channels, the reconstructed energies are
+biased towards too low values. This is a result of the neutrinos in the
+respective final states which is not detected and hence carries away
+``missing energy'' (cf.~Sec.~\ref{sec:XsecsGeV}).
 
 Although the fits are only anchored to data up to 20\,GeV, they are extrapolated
 to higher energies. This approach is valid as events beyond 20\,GeV are so far
