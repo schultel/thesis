@@ -33,6 +33,27 @@ error alone, this value increases to 4.3\,$\sigma$, emphasising the important
 role systematic parameters are playing in the determination of the mass
 hierarchy.
 
+\begin{figure}[bhtp]
+ \centering
+ \includegraphics[width=\linewidth]{akhmedov_baseline}
+ \caption{\delchi distribution in the track (left) and cascade (right) channels 
+for the baseline settings.}
+ \label{fig:akhmedov_baseline}
+\end{figure}
+
+\begin{figure}[thp]
+ \centering
+  \subfloat[\label{fig:sigma_vs_time}]
+   {\includegraphics[width=0.495\linewidth]{sigma_vs_time_default}}
+  \subfloat[\label{fig:covmat_baseline}] 
+   {\includegraphics[width=0.495\linewidth]{CovMat_PINGU}}
+ \caption{\protect\subref{fig:sigma_vs_time} Evolution of PINGU's expected mass 
+          hierarchy significance with time and 
+          \protect\subref{fig:covmat_baseline} Full correlation matrix for PINGU
+          for the baseline settings.}
+ \label{fig:time_covmat}
+\end{figure}
+
 Treating the track and cascade channels separately, the expected significances
 are 1.9\,$\sigma$ with and 3.0\,$\sigma$ without systematics for the cascade
 and 1.3\,$\sigma$ (3.1\,$\sigma$) for the track channel,
@@ -41,15 +62,30 @@ Tab.~\ref{tab:baseline_results} can be found in
 App.~\ref{app:fisher_baseline}}. Although the purely statistical significances
 are comparable, when taking systematics into account the significance for the
 cascades remains much higher than the track significance. 
+The reason for this becomes obvious when looking at the \delchi distributions 
+for both channels in Fig.~\ref{fig:akhmedov_baseline}. In the track channel, 
+there are three distinct regions driving the expected significance. These 
+regions are separated only by small margins and have alternating sign, while in 
+the cascade channel most of the significance comes from one contiguous region. 
+Together with the fact that the cascade channel has roughly three times higher 
+event statistics than the track channel---62,000 vs.\ 22,000 neutrino events 
+per year---this makes the cascade channel much more robust against the impact 
+of systematic parameters.
 
-\begin{figure}[htp]
- \centering
- \includegraphics[width=\linewidth]{akhmedov_baseline}
- \caption{\delchi distribution in the track (left) and cascade (right) channels 
-for the baseline settings}
- \label{fig:akhmedov_baseline}
-\end{figure}
-
+In Fig.~\ref{fig:sigma_vs_time}, the significances for the individual channels 
+and for their combination are shown as a function of time. The purely 
+statistical significance is plotted as well, exhibiting a scaling with the 
+square root of the lifetime as one would expect for a counting experiment where 
+the relative error is proportional to $1/\sqrt{N}$. The actual significances 
+including systematics increase much slower with time as a part of the 
+accumulating statistics has to be ``spent'' in order to better constrain the 
+systematic parameters. However the combined analysis of the two channels still 
+gives a much higher sensitivity than simply adding the two individual channels 
+in quadrature as one would do for two completely unrelated measurements of the 
+same quantity. E.\,g.\ for a lifetime of three years as above, the quadratic 
+sum of the track and cascade significances is $\sqrt{(1.3\,\sigma)^2 + 
+(1.9\,\sigma)^2} \approx 2.3\,\sigma$, considerably lower than the 
+2.9\,$\sigma$ for the combined analysis.
 
 \subsection{Impact of the Octant of \thet{23}}
 \label{sec:results_octant}
