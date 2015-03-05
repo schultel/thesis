@@ -103,6 +103,14 @@ emphasises the fact that the determination of the neutrino mass hierarchy is a
 very delicate measurement relying on a small effect, and that the inclusion of 
 so many systematic parameters is indeed necessary to get a robust result.
 
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{dm31_vs_escale_prior}
+ \caption{PINGU constraint on \dm{31} as a function of the prior on the energy
+          scale. No prior knowledge about \dm{31} is assumed.}
+ \label{fig:dm31_vs_escale_prior}
+\end{figure}
+
 Furthermore, two combinations of parameters stick out due to their very strong 
 correlation. The first one is the relative normalisation of the effective areas 
 for \nux and \nuxbar, $r_{\aeff,\,\nu-\bar\nu}$, and the overall normalisation 
@@ -127,17 +135,63 @@ compensated by increasing the energy scale accordingly.
 This means that if PINGU is supposed to make a precise measurement of \dm{31}, 
 the energy scale has to be known very accurately. As the energy of a neutrino 
 event is determined primarily from the number of detected photons\footnote{The 
-Cherenkov light output is proportional to the deposited energy.} ...
-% TODO: plot of energy scale prior vs deltam31 precision
+Cherenkov light output is directly proportional to the deposited energy.}, this
+means that the photon detection efficiency of the optical modules has to be
+well calibrated. This behaviour is illustrated in
+Fig.~\ref{fig:dm31_vs_escale_prior}, where PINGU's self-contained constraint on
+the value of \dm{31} is plotted against the prior put on $s_E$. To improve on
+the current limits, the energy scale has to be known with an accuracy of at
+least 3\,\%.
+
+\subsection{Measuring the Atmospheric Mixing Parameters}
+\label{sec:results_atmosperic}
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.85\linewidth]{AtmoParamsBaseline}
+ \caption{PINGU constraint on \dm{31} and $\sin^2\thet{23}$ for the baseline
+          settings. No prior knowledge about the two parameters is assumed.
+          The latest constraints from the IceCube/DeepCore \cite{DCosc}, MINOS
+          \cite{MINOSparams}, T2K \cite{T2Kparams}, and SuperKamiokande
+          \cite{SuperKparams} are shown for reference.}
+ \label{fig:AtmoParamsBaseline}
+\end{figure}
+
+To determine the neutrino mass hierarchy, PINGU makes a precision measurement
+of the oscillations of atmospheric neutrinos. In fact, with more than 80,000
+events recorded per year it will collect the largest sample of atmospheric
+neutrinos so far. After DeepCore has been established as a serious contributor
+to the global effort of characterising neutrino oscillations, PINGU will go
+even further into that direction and provide tight constraints on the values of
+\dm{31} and \thet{23}.
+
+These constraints are shown in Fig.~\ref{fig:AtmoParamsBaseline}, along with
+the most recent confidence regions of current oscillation experiments. For
+PINGU, no priors have been put on \dm{31} or \thet{23}, meaning that the
+displayed confidence ellipse comes from PINGU data alone and does not profit
+from external knowledge.
+
+The most obvious feature of PINGU's confidence ellipse is its orientation,
+which is different from the other experiments: While it cannot constrain
+\dm{31} any better than current experiments, the value of \thet{23} will be
+much more precise than any measurement available today. The reason for this is
+that the value of \dm{31} is extracted from the position of the oscillation
+minimum in energy, which needs a precise calibration of the energy scale as we
+have seen above. This is much easier to achieve in experiments on a neutrino
+beam like MINOS or T2K where the beam energy is well-known. \thet{23} on the
+other hand is determined from the relative depth of the oscillation minimum as
+one can see from equation (\ref{eqn:twoflavour_prob}). Here PINGU profits from
+its wide energy range including control regions without oscillations and the
+large event statistics, such that especially the overall detector
+efficiency\footnote{Represented by $n_\aeff$ in \papa.}, which usually is
+difficult to constrain in beam experiments, only has minor impact.
 
 \subsection{Impact of the Octant of \thet{23}}
 \label{sec:results_octant}
 
-\subsection{Measuring the atmospheric mixing parameters}
-\label{sec:results_atmosperic}
+\subsection{High-Purity Event Classification}
+\label{sec:results_includeunkn}
 
 \subsection{The Missing Monte Carlo Effect}
 \label{sec:results_mcstats}
 
-\subsection{High-Purity Event Classification}
-\label{sec:results_includeunkn}
