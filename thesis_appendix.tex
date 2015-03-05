@@ -126,7 +126,7 @@ text string that can be interpreted as a python function by python's
 for the numpy library \cite{numpy} used for most of the numerical operations in
 \papa.
 
-\section{Baseline Settings}
+\section*{\refstepcounter{section}\thesection\quad Baseline Settings}
 
 \VerbatimInput{figs/reco_param/reco_default.json}
 
@@ -138,7 +138,7 @@ for the numpy library \cite{numpy} used for most of the numerical operations in
 \chapter{PID Functions}
 \label{app:pid}
 
-\section{Baseline Settings}
+\section*{\refstepcounter{section}\thesection\quad Baseline Settings}
 
 The particle identification is a binary decision, thus only the track
 identification probabilities $P_{\mathrm{channel} \to \mathrm{track}}$ are
@@ -156,6 +156,10 @@ listed:
 The cascade identification probabilities are given by $P_{\mathrm{channel} \to
 \mathrm{cascade}} = 1 - P_{\mathrm{channel} \to \mathrm{track}}$.
 
+% \section*{High-Purity Event Classification}
+% \label{app:PID_threechannel}
+\section*{\refstepcounter{section}\label{app:PID_threechannel}\thesection\quad 
+High-Purity Event Classification}
 
 \chapter{Full Error Listings}
 \label{app:fisher_output}
@@ -166,7 +170,7 @@ not been included in the main text for the sake of better readability. For a
 description how to read the tables, refer to the explanations given for
 Tab.~\ref{tab:baseline_results} in Sec.~\ref{sec:results_baseline}.
 
-\section{Baseline Settings}
+\section*{\refstepcounter{section}\thesection\quad Baseline Settings}
 \label{app:fisher_baseline}
 
 \begin{table}[htpb]

@@ -192,6 +192,53 @@ difficult to constrain in beam experiments, only has minor impact.
 \subsection{High-Purity Event Classification}
 \label{sec:results_includeunkn}
 
+\begin{figure}[thp]
+% TODO: maybe move to appendix?
+ \centering
+%  \includegraphics[width=0.5\linewidth]{PID_V15_trck}
+%  \includegraphics[width=0.5\linewidth]{PID_V15_cscd}
+ \caption{Classification efficiencies for the high-purity track (left) and 
+          cascade (right) selections for PINGU V15, similar to 
+          Fig.~\ref{fig:PID}.}
+ \label{fig:PID_threechannel}
+\end{figure}
+
+Thus far, we have considered the particle identification as a binary decision, 
+classifying each event as either track-like or cascade-like, based on a BDT 
+score (cf.\ Sec.~\ref{sec:cuts_PID}). Yet \papa offers the option to have 
+separate event selections for tracks and cascades, such that \eg the cascade 
+channel is populated only by events that actually ``look like cascades'' rather 
+than events that just ``do not look like tracks''. To make sure that a given 
+event does not end up in both samples, the decision should be based on the same 
+BDT, but now with two cut values. Then the scores below the lower cut would 
+then \eg correspond to cascades while the ones above the higher cut would be 
+classified as tracks. All events with scores between the two cut values would 
+end up in the ``unidentified'' sample.
+
+\begin{figure}[thp]
+ \centering
+%  \includegraphics[width=0.5\linewidth]{sigma_vs_t_PIDV15_twochannel}
+%  \includegraphics[width=0.5\linewidth]{sigma_vs_t_PIDV15_threechannel}
+ \caption{Individual and combined mass hierarchy sensitivity for the 
+   baseline model with V15 particle identification with two (left) and three 
+   (right) channels.}
+ \label{fig:sigma_vs_t_threechannel}
+\end{figure}
+
+Such an event selection does only exist for an anterior geometry version of 
+PINGU, V15, that was used for intense systematic and reconstruction studies 
+before optimising the geometry for maximal sensitivity to the mass hierarchy. 
+The identification efficiencies are plotted in Fig.~\ref{fig:PID_threechannel}, 
+with the corresponding function definitions listed in 
+App.~\ref{app:PID_threechannel}. Note that the track identification efficiency 
+is much better than for the baseline geometry V36, shown in Fig.~\ref{fig:PID}, 
+since due to an error in the simulation configuration all Monte Carlo for V15 
+was produced without generating noise hits on the PINGU optical modules, 
+resulting in very clear event signatures.
+
+The resulting significances are shown as a function of time in 
+Fig.~\ref{fig:sigma_vs_t_threechannel}
+
 \subsection{The Missing Monte Carlo Effect}
 \label{sec:results_mcstats}
 
