@@ -1,6 +1,65 @@
 \chapter{Applicability of the Fisher Matrix}
 \label{app:fisher_valid}
 
+As established in Sec.~\ref{sec:fisher_prereq}, one requirement for the Fisher
+Matrix to be valid is that the observables (\ie the bin counts for PINGU) are
+described by linear functions of the parameters, hence the partial derivatives
+entering (\ref{eqn:fisher_def}) can be considered to be constant within the
+considered range. To quantify the non-linearity, one can define the quantity
+\begin{equation}
+ \Upsilon_n(p_i) = \left(N_n(p_{i,\,\mathrm{fid}} + \sigma_{p_i}) -
+                          N_n(p_{i,\,\mathrm{fid}}) +
+                     \frac{\partial N_n}{\partial p_i}\sigma_{p_i}\right)
+                       \bigg/ N_n(p_{i,\,\mathrm{fid}}) \quad,
+ \label{eqn:non-lin}
+\end{equation}
+describing the relative contribution of the non-linear terms to the variation
+of the event count $N_b$ in bin $b$ as a function of the parameter $p_i$ over
+its uncertainty range $p_{i,\,\mathrm{fid}} \pm \sigma_{p_i}$.
+
+As one can see from Figs.~\ref{fig:nonlinearities1} and
+\ref{fig:nonlinearities2}, for the simple scaling parameters like the mass
+hierarchy $h$ or the overall normalisation $n_\aeff$ non-linearities are on the
+order of the machine precision. But also for the physics parameters they are
+typically smaller than $10^{-3}$, hence the requirement of linearity is well
+fulfilled.
+
+For means of illustration, the actual dependence of all bin entries on the
+systematic parameters is shown as well. By eye, deviations from linearity can
+only be recognised for \dm{31} and the energy scale. Since both shift the
+sinusoidal oscillation pattern in energy non-linearities have to be expected,
+however they only occur on a scale conceivably larger than the actual
+uncertainty range.
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=\linewidth]{hierarchy}
+ \includegraphics[width=\linewidth]{deltam31}
+ \includegraphics[width=\linewidth]{theta23}
+ \includegraphics[width=\linewidth]{theta13}
+ \includegraphics[width=\linewidth]{energy_scale}
+ \caption{\emph{Left:} Relative values of all bin entries in the analysis
+  histograms as functions of the systematic parameters. The the entries at the 
+  fiducial parameter values are set to one. The vertical lines indicate the full
+  error range as listed in Tab.~\ref{tab:baseline_results}. \\
+  \emph{Right:} Histograms of the non-linearities $\Upsilon$ of the bin counts
+  as functions of different systematic parameters (see equation
+  (\ref{eqn:non-lin})).}
+ \label{fig:nonlinearities1}
+\end{figure}
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[width=\linewidth]{a_eff_scale_flat}
+ \includegraphics[width=\linewidth]{nu_rel_xsec_scale}
+ \includegraphics[width=\linewidth]{nue_numu_flux_scale}
+ \includegraphics[width=\linewidth]{a_eff_scale}
+ \includegraphics[width=\linewidth]{PID_offset}
+ \caption{Same as Fig.~\ref{fig:nonlinearities1} for the remaining parameters.}
+ \label{fig:nonlinearities2}
+\end{figure}
+
+
 \chapter{Oscillation Probabilities}
 \label{app:oscillation}
 
