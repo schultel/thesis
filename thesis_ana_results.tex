@@ -196,7 +196,7 @@ difficult to constrain in beam experiments, only has minor impact.
   \subfloat[\label{fig:th_mat_vs_th23}]
   {\includegraphics[width=0.495\linewidth]{th_mat_vs_th23}}
  \caption{PINGU three-year sensitivity to the neutrino mass hierarchy (a)
-          and effect mixing angle in matter for $A_\mathrm{CC}/\dm{} = -0.5$
+          and effective mixing angle in matter for $A_\mathrm{CC}/\dm{} = -0.5$
           (b) as a function of the fiducial value of \thet{23}.}
  \label{fig:scan_th23}
 \end{figure}
@@ -227,10 +227,51 @@ As it turns out, the sensitivity increases considerably as \thet{23} takes
 larger values and even exceeds 5\,$\sigma$ in the second octant, \ie at values
 above $45^\circ$. This increase in sensitivity comes exclusively from the
 cascade channel, which already points to its origin: the oscillation of \numu
-to \nue.
+to \nue, which is mainly defined by this mixing angle. However the neutrinos
+propagate through the Earth, so this angle has to be replaced by the
+corresponding effective mixing angle in matter (\ref{eqn:matter_angle}), which
+is further from maximal mixing than the vacuum value.
+
+The relation between matter and vacuum value of \thet{23} is shown
+qualitatively in Fig.~\ref{fig:th_mat_vs_th23}. The choice of
+$A_\mathrm{CC}/\dm{} = -0.5$ is arbitrary, however the negative sign is
+important since $A_\mathrm{CC}$ is smaller than 0 as it caused by electrons
+with negative charge. So due to the effective reduction of \thet{23} in matter,
+the amplitude of the oscillation, proportional to $\sinsq{2\thet{\mathrm{M}}}$,
+keeps growing even beyond $\thet{23}=45^\circ$, where for oscillations in
+vacuum the amplitude would decrease again.
+Consequently, increasing the overall scale of $\numu\to\nue$ oscillations
+results in an increased absolute difference between the cascade event histograms
+for normal and inverted mass hierarchy and hence a better sensitivity for the
+hierarchy determination.
+
+A beneficial side effect of the effective reduction of \thet{23} in matter is
+that it causes the relation of the parameter, \thet{23}, and the observable,
+the oscillation probability proportional to $\sinsq{2\thet{\mathrm{M}}}$, to be
+in the linear regime, as shown in Fig.~\ref{fig:th_mat_vs_th23} as well. This
+makes the evaluation in the Fisher matrix formalism well justified (cf.\
+Sec.~\ref{sec:fisher_prereq}), whereas for vacuum oscillations the oscillation
+probability $\sinsq{2\thet{23}}$ becomes an increasingly non-linear function
+close to the maximal mixing value of \thet{23}.
+
+\subsection{Fiducial Value of the Mass Hierarchy}
+\label{sec:results_NHtrue}
+% TODO: do?
 
 \subsection{High-Purity Event Classification}
 \label{sec:results_includeunkn}
+
+\begin{figure}[thp]
+ \centering
+ \subfloat[\label{fig:sigma_vs_t_twochannel}]
+  {\includegraphics[width=0.495\linewidth]{sigma_vs_t_PIDV15_twochannel}}
+ \subfloat[\label{fig:sigma_vs_t_threechannel}]
+  {\includegraphics[width=0.495\linewidth]{sigma_vs_t_PIDV15_threechannel}}
+ \caption{Individual and combined mass hierarchy sensitivity for the
+   baseline model with V15 particle identification with two (a) and three
+   (b) channels.}
+ \label{fig:sigma_vs_t_HQPID}
+\end{figure}
 
 Thus far, we have considered the particle identification as a binary decision, 
 classifying each event as either track-like or cascade-like, based on a BDT 
@@ -244,18 +285,6 @@ then \eg correspond to cascades while the ones above the higher cut would be
 classified as tracks. All events with scores between the two cut values would 
 end up in the ``unidentified'' sample.
 
-\begin{figure}[thp]
- \centering
- \subfloat[\label{fig:sigma_vs_t_twochannel}]
-  {\includegraphics[width=0.495\linewidth]{sigma_vs_t_PIDV15_twochannel}}
- \subfloat[\label{fig:sigma_vs_t_threechannel}]
-  {\includegraphics[width=0.495\linewidth]{sigma_vs_t_PIDV15_threechannel}}
- \caption{Individual and combined mass hierarchy sensitivity for the 
-   baseline model with V15 particle identification with two (a) and three
-   (b) channels.}
- \label{fig:sigma_vs_t_HQPID}
-\end{figure}
-
 Such an event selection does only exist for an anterior geometry version of 
 PINGU, V15, that was used for intense systematic and reconstruction studies 
 before optimising the geometry for maximal sensitivity to the mass hierarchy. 
@@ -268,7 +297,47 @@ was produced without generating noise hits on the PINGU optical modules,
 resulting in very clear event signatures.
 
 The resulting significances are shown as a function of time in 
-Fig.~\ref{fig:sigma_vs_t_HQPID}
+Fig.~\ref{fig:sigma_vs_t_HQPID}. As expected from the improved track
+identification \wrt the baseline settings, already the two-channel significance
+(Fig.~\ref{fig:sigma_vs_t_twochannel}) is enhanced compared to the baseline.
+When opening the third channel of unidentified events
+(Fig.~\ref{fig:sigma_vs_t_threechannel}), the cascade channel loses sensitivity
+due to the reduced statistics and is now at approximately the same level as the
+track channel, which remains unchanged. The unidentified events alone yield a
+significance on the scale of tracks and cascades individually as well, yet they
+suffer slightly stronger from systematic effects\footnote{This is apparent from
+the fact that the curves for tracks and unidentified events lie on top of each
+other for lifetimes below one year, but the track significance keeps to increase
+stronger as more statistics gets accumulated.}. The full error listings are
+tabulated in App.~\ref{app:fisher_threechannel}.
+
+This behaviour is expected as the event selection for tracks stays the same as
+in the two-channel settings while the cascade sample gets split into two
+subsamples. Comparing the two corresponding error listings,
+Tabs.~\ref{tab:fisher_PID_cscd_nontracks} for the case of all ``non-track''
+events being combined into one channel as in the baseline model and
+\ref{tab:fisher_PID_cscd_twochan} for having separate cascade and unidentified
+channels and combining the respective Fisher matrices, the statistical error on
+the mass hierarchy parameter $h$ is slightly higher when the cascade channel is
+split due to larger relative statistical errors. The systematic uncertainty on
+$h$ on the other hand is reduced for the separate analysis, leading to the
+expected overall increase in sensitivity. Yet this increase is rather moderate,
+indicating that there is not much gain to be expected from moving further into
+this direction\footnote{As an extreme, one could imagine to open a third axis
+on the event histogram by introducing a Bj\"{o}rken-y-like variable, \eg the
+ratio of cascade and track energy reconstructed by HybridReco/MultiNest.}.
+
+For the remaining remaining parameters one can see that \eg the impact of the
+relative flux scaling $r_{\Phi,\,\nue-\numu}$ is reduced for the separated
+analysis, driven by the high-purity cascade sample that has only a small
+contamination of \numu events. Additionally, now the parameter $s_\mathrm{PID}$,
+scaling the overall cascade and track identification efficiencies, comes into
+play for the three-channel analysis, as it is no longer degenerate with the
+overall normalisation $n_\aeff$ (at least for the unidentified channel), yet it
+has no noticeable impact on the expected mass hierarchy significance.
+
+
+
 
 \subsection{The Missing Monte Carlo Effect}
 \label{sec:results_mcstats}

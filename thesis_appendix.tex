@@ -225,7 +225,15 @@ Tab.~\ref{tab:baseline_results} in Sec.~\ref{sec:results_baseline}.
 \section*{\refstepcounter{section}\thesection\quad Baseline Settings}
 \label{app:fisher_baseline}
 
-\begin{table}[htpb]
+\begin{table}[h!]
+ \caption{Same as Tab.~\ref{tab:baseline_results}, but for the track channel
+  only}
+ \begin{center}
+  \small{\input{figs/fishers/baseline_trck.tex}}
+ \end{center}
+\end{table}
+
+\begin{table}[h!]
  \caption{Same as Tab.~\ref{tab:baseline_results}, but for the cascade channel
   only}
  \begin{center}
@@ -233,10 +241,60 @@ Tab.~\ref{tab:baseline_results} in Sec.~\ref{sec:results_baseline}.
  \end{center}
 \end{table}
 
-\begin{table}[htpb]
- \caption{Same as Tab.~\ref{tab:baseline_results}, but for the track channel
-  only}
+\clearpage
+\section*{\refstepcounter{section}\thesection\quad High-Purity Event
+Classification}
+\label{app:fisher_threechannel}
+
+\begin{table}[h!]
+ \caption{Full error listings for the high-purity track channel, see
+Sec.~\ref{sec:results_includeunkn}.}
  \begin{center}
-  \small{\input{figs/fishers/baseline_trck.tex}}
+  \small{\input{figs/fishers/threechannel_PID_trck.tex}}
+ \end{center}
+\end{table}
+
+\begin{table}[h!]
+ \caption{Full error listings for the standard cascade channel (\ie cascades
+are all events not identified as tracks), see
+Sec.~\ref{sec:results_includeunkn}.}
+ \label{tab:fisher_PID_cscd_nontracks}
+ \begin{center}
+  \small{\input{figs/fishers/twochannel_PID_cscd.tex}}
+ \end{center}
+\end{table}
+
+% \begin{table}[h!]
+%  \caption{Full error listings for the high-purity track channel, see
+% Sec.~\ref{sec:results_includeunkn}.}
+%  \begin{center}
+%   \small{\input{figs/fishers/twochannel_PID_trck.tex}}
+%  \end{center}
+% \end{table}
+
+
+\begin{table}[h!]
+ \caption{Full error listings for the high-purity cascade channel, see
+Sec.~\ref{sec:results_includeunkn}.}
+ \begin{center}
+  \smaller{\input{figs/fishers/threechannel_PID_cscd.tex}}
+ \end{center}
+\end{table}
+
+\begin{table}[h!]
+ \caption{Full error listings for the sample of unidentified events, see
+Sec.~\ref{sec:results_includeunkn}.}
+ \begin{center}
+  \smaller{\input{figs/fishers/threechannel_PID_unkn.tex}}
+ \end{center}
+\end{table}
+
+\enlargethispage{2cm}
+\begin{table}[h!]
+ \caption{Full error listings for the high-purity cascade channel combined with
+the unidentified sample after Fisher matrix evaluation.}
+ \label{tab:fisher_PID_cscd_twochan}
+ \begin{center}
+  \smaller{\input{figs/fishers/threechannel_PID_cscd_plus_unkn.tex}}
  \end{center}
 \end{table}
