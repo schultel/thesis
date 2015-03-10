@@ -337,8 +337,74 @@ overall normalisation $n_\aeff$ (at least for the unidentified channel), yet it
 has no noticeable impact on the expected mass hierarchy significance.
 
 
-
-
 \subsection{The Missing Monte Carlo Effect}
 \label{sec:results_mcstats}
+
+In Sec.~\ref{sec:sim_idea} it was pointed out that the ``conventional''
+approach to evaluate PINGU's sensitivity to the neutrino mass hierarchy, \ie to
+propagate the full Monte Carlo detector simulation through the analysis, is not
+only computationally challenging, but introduces a bias towards too high
+significances if the amount of available MC statistics is insufficient. This
+effect can be demonstrated using an event reconstruction based on the earlier
+PINGU geometry V15.
+
+For this geometry, enough MC events have been generated and
+processed\footnote{For the most important channels, \nue and \numu,
+$\approx 270,000$ and $\approx 340,000$ events are available, respectively. In
+addition, $\approx 40,000$ \nutau and $\approx 80,000$ \nux NC events could be
+used for this study.} to use them for the reconstruction in PaPA directly. This
+is done by creating the reconstruction kernels by histogramming the MC events
+as described in Sec.~\ref{sec:papa_code}, \ie we now use option (b) for
+calculating the reconstructed histograms. This is repeated multiple times, 
+reducing the fraction of the total number of events that is actually filled into
+the kernels from 100\,\% to 1\,\%. Additionally, a reconstruction
+parametrisation is fitted to the data, which is given in
+App.~\ref{app:reco_V15}.
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{sigma_vs_MCstat}
+ \caption{PINGU's sensitivity to the neutrino mass hierarchy with
+  reconstruction from MC data for geometry V15. The result for a reconstruction
+  parametrisation from the same data is shown for reference.}
+ \label{fig:sigma_vs_MCstat}
+\end{figure}
+
+In Fig.~\ref{fig:sigma_vs_MCstat}, the resulting mass hierarchy significances
+for three years of PINGU lifetime are shown as a function of the fraction of MC
+data used for the reconstruction. Only for the full amount of statistics a
+relatively stable result is achieved, which is also consistent with the
+parametrised reconstruction.
+
+\begin{figure}[p]
+ \centering
+   Tracks \hspace{5cm} Cascades\\
+   \includegraphics[width=\columnwidth]{Akhmedov_param_V15}
+   \includegraphics[width=\columnwidth]{Akhmedov_factor_1} 
+   \includegraphics[width=\columnwidth]{Akhmedov_factor_100}
+ \caption{\delchi distribution in the track (left) and cascade (right) channels
+   for (top to bottom) the reconstruction parametrisation based on geometry V15
+   and the reconstruction directly from 100\,\% and 1\,\% of the Monte Carlo
+   events available for V15.}
+ \label{fig:akhmedov_MCstats}
+\end{figure}
+
+The reason for this behaviour can be found when inspecting the \delchi
+distributions for the different settings, shown in
+Fig.~\ref{fig:akhmedov_MCstats}. When using the full sample of MC events
+(middle panel), the pattern generated with the parametrised reconstruction is
+reproduced quite accurately, reflected in the resulting significance values
+being in agreement. For the extreme case of populating the reconstruction
+kernels with only 1\,\% of the available events, the pattern imprinted by the
+mass hierarchy difference has almost completely vanished and is replaced by
+random fluctuations.
+
+However the scale of the \delchi values is much higher in the histograms for
+very low MC statistics, as one can see from the range of the colour scale,
+which is linked to the highest individual bin value. Thus there are few
+individual bins that get weighted up dramatically by statistical fluctuations
+and hence artificially enhance the inherent significance of the whole
+histogram.
+
+% That the bias introduced by these statistical fluctuations is 
 
