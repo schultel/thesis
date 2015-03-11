@@ -401,10 +401,31 @@ random fluctuations.
 
 However the scale of the \delchi values is much higher in the histograms for
 very low MC statistics, as one can see from the range of the colour scale,
-which is linked to the highest individual bin value. Thus there are few
-individual bins that get weighted up dramatically by statistical fluctuations
-and hence artificially enhance the inherent significance of the whole
-histogram.
+which is linked to the highest individual bin value. 
+The reason for this is that if the kernel tables are underpopulated, the 
+reconstruction resolution effectively gets enhanced: When the statistics is 
+sufficient, the hierarchy sensitivity of a single bin in the histogram of true 
+energy and zenith angle is smeared out into the surrounding bins. If, in the 
+extreme, only one MC event falls into this bin, its sensitivity is not smeared 
+out, but only moved to a single other bin in the reconstructed histogram (the 
+one where the single event is reconstructed in). The full sensitivity from 
+the true histogram being retained at one point now increases the total 
+significance as it is given by quadratically summing all individual 
+bins.
+% \footnote{As an illustration imagine a histogram with only two bins, where 
+% the signal one is looking for is two events appearing in bin 1, however the 
+% event reconstruction just randomly puts the appearing events into bin 1 or 2. 
+% If the reconstruction is modelled properly, one would end up with one event in 
+% each bin and a significance $\mathcal{S}=\sqrt{\sum 
+% \left(n_i/\sqrt{n_i}\right)^2}=\sqrt{(1/\sqrt{1})^2 + 
+% (1/\sqrt{1})^2}=\sqrt{2}$. If the two events are just moved to a random bin 
+% together, the significance is $\mathcal{S}=\sqrt{0^2 + 
+% (2/\sqrt{2})^2}=\sqrt{2}$} .
+
+% Thus there are few
+% individual bins that get weighted up dramatically by statistical fluctuations
+% and hence artificially enhance the inherent significance of the whole
+% histogram.
 
 % That the bias introduced by these statistical fluctuations is 
 
