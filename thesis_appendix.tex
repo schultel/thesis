@@ -222,8 +222,8 @@ not been included in the main text for the sake of better readability. For a
 description how to read the tables, refer to the explanations given for
 Tab.~\ref{tab:baseline_results} in Sec.~\ref{sec:results_baseline}.
 
-\section*{\refstepcounter{section}\thesection\quad Baseline Settings}
-\label{app:fisher_baseline}
+\section*{\refstepcounter{section}\label{app:fisher_baseline}\thesection\quad
+Baseline Settings}
 
 \begin{table}[h!]
  \caption{Same as Tab.~\ref{tab:baseline_results}, but for the track channel
@@ -242,9 +242,8 @@ Tab.~\ref{tab:baseline_results} in Sec.~\ref{sec:results_baseline}.
 \end{table}
 
 \clearpage
-\section*{\refstepcounter{section}\thesection\quad High-Purity Event
-Classification}
-\label{app:fisher_threechannel}
+\section*{\refstepcounter{section}\label{app:fisher_threechannel}
+\thesection\quad High-Purity Event Classification}
 
 \begin{table}[h!]
  \caption{Full error listings for the high-purity track channel, see
@@ -296,5 +295,35 @@ the unidentified sample after Fisher matrix evaluation.}
  \label{tab:fisher_PID_cscd_twochan}
  \begin{center}
   \smaller{\input{figs/fishers/threechannel_PID_cscd_plus_unkn.tex}}
+ \end{center}
+\end{table}
+
+\clearpage
+\section*{\refstepcounter{section}\label{app:fisher_mDOM}
+\thesection\quad PINGU equipped with mDOMs}
+
+\begin{table}[h!]
+ \caption{Full error listings for PINGU assuming reconstruction and particle
+          identification as in geometry V15, \ie no module noise.}
+ \label{tab:mDOM_comb}
+ \begin{center}
+  \smaller{\input{figs/fishers/mDOM.tex}}
+ \end{center}
+\end{table}
+
+\begin{table}[h!]
+ \caption{Same as Tab.~\ref{tab:mDOM_comb}, but for the track channel
+  only}
+ \begin{center}
+  \smaller{\input{figs/fishers/mDOM_trck.tex}}
+ \end{center}
+\end{table}
+
+\enlargethispage{2cm}
+\begin{table}[h!]
+ \caption{Same as Tab.~\ref{tab:mDOM_comb}, but for the cascade channel
+  only}
+ \begin{center}
+  \smaller{\input{figs/fishers/mDOM_cscd.tex}}
  \end{center}
 \end{table}
