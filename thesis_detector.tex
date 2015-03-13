@@ -37,7 +37,8 @@ constraints that have to be addressed as well:
 \begin{description}
  \item[Size:] Depending on the energy range one is interested in, the size of
   the detector has to be adjusted accordingly. Since the atmospheric flux
-  decreases rapidly with increasing energy, one needs larger detectors to study
+  decreases rapidly with increasing energy while the size of the expected
+  event signatures extend, one needs larger detector volumes  to study
   higher fluxes. Roughly from the GeV scale upwards, the required dimensions are
   so big (several hundred metres) that artificial structures like the
   underground caverns of Kamiokande and Super-Kamiokande \cite{SuperKosc} are
@@ -48,16 +49,19 @@ constraints that have to be addressed as well:
   has an advantage over fluid water as it has very low absorption down to
   wavelengths of 300\,nm and below \cite{IceProps}, while the fluid starts to
   absorb significantly below 400\,nm \cite{WaterAbs}.
- \item[Purity:] Usually the experiments try to reconstruct the neutrino events
+ \item[Purity:] The goal of all experiments is to reconstruct the neutrino
+  events
   as accurately as possible. Therefore it is desirable to record a large number
-  of unscattered photons and hence a very clear environment\footnote{There might
+  of unscattered photons and hence a very clear environment. There might
   be, however, situations where scattering is desired, e.\,g.\ when only the
-  neutrino energy is of interest, then strong scattering keeps the photons
+  neutrino energy is of interest: then strong scattering keeps the photons
   inside the detector for a longer time and hence increases the total number
-  of detected photons, thereby improving the energy resolution}.
+  of detected photons, thereby improving the energy resolution. Absorption on
+  the other hand is always a downside since it reduces the total number of
+  photons and hence the information available for event reconstruction.
  \item[Shielding:] In high energy neutrino experiments, muons from atmospheric
   showers created by cosmic radiation (cf.\ Sec.~\ref{sec:AtmNus}) are a
-  background process whose rate is several orders of magnitude higher than the
+  background whose rate is several orders of magnitude higher than the
   neutrino signal. In order to suppress those muons, detectors have to be
   placed deep underground so that there is a shielding with several hundred
   meters thickness, comparable to the range of $\mathcal{O}
@@ -67,7 +71,8 @@ constraints that have to be addressed as well:
 Choosing an environment optimising all these factors, the IceCube neutrino 
 observatory has been constructed in the deep glacial ice at the geographical 
 South Pole in Antarctica. The Antarctic glacier with its thickness of $\approx 
-2500$\,m is a pristine environment of substantial size. In contrast to natural 
+2500$\,m is a pristine environment of substantial size. In contrast to other
+natural 
 resources like lakes or the deep sea, it inherently provides a solid holding 
 structure for the instrumentation, is free of lifeforms that might disturb or 
 even destroy the detector, and has a much lower content of radioactive $^{40}$K 
@@ -101,11 +106,12 @@ see Sec.~\ref{sec:ICDOM}), have been installed during IceCube's deployment phase
 from 2005 until December 18, 2010. A hot water drill was used to melt holes of 
 60\,cm diameter into the ice, reaching down to 2450\,m, shortly above the 
 underlying bedrock. Then the strings were lowered into the holes still filled 
-with water which then refroze and firmly encloses the strings.
+with water which then refroze and now firmly encloses the strings.
 
 Eighty of those strings form the hexagonal main array with an inter-string 
 distance of 125\,m, while the remaining six are placed at additional positions 
-near the centre of the array, forming a dense sub-array with a string spacing 
+near the centre of the array, forming a dense sub-array called DeepCore with a
+string spacing 
 of only 72\,m, lowering the threshold energy for neutrino detection from 
 $\approx 100$\,GeV to $\approx 20$\,GeV. A top view of the string layout is 
 shown in Fig.~\ref{fig:string_layout}.
@@ -139,7 +145,7 @@ fixed as it is frozen in the deep ice, the others are not affected.
 As shown in Figure \ref{fig:DOM}, the DOM is housed by a borosilicate glass 
 sphere of 13\verb+"+ diameter and 0.5\verb+"+ thickness to withstand the 
 pressure arising from the refreezing water in the drill holes. This glass sphere 
-also contributes to the noise rate of about 540\,Hz per DOM as it contains 
+ contributes to the noise rate of about 540\,Hz per DOM as it contains
 isotopes of the uranium and thorium decay chains. The content of natural 
 $^{40}\mathrm{K}$, that undergoes beta decay where the emitted $\beta$ particle
 generates Cherenkov light, has been reduced in the glass.
@@ -164,7 +170,7 @@ standardised signal for calibration. On the mainboard the electronics are
 located that are needed to read out the PMT signal and digitise the recorded 
 data in situ, after which they are sent to the surface.
 
-The digitisation is done with two two-channel analogue transient waveform
+The digitisation is done with two di-channel analogue transient waveform
 digitisers (ATWDs) and one fast analogue-to-digital converter (fADC) operated
 in parallel. The ATWDs read out the PMT waveforms with three different gain
 factors (one channel is reserved for internal calibration) for maximum dynamic
@@ -227,7 +233,11 @@ Sec.~\ref{sec:om_effects}.
 
 Another thing to be improved upon in PINGU is the so-called ``hole ice''. In 
 IceCube it was observed that the refrozen ice directly around the strings that 
-had been molten during deployment contains lots of small air bubbles. These 
+had been molten during deployment contains lots of small air
+bubbles\footnote{The bulk glacial ice contains air as well, which has been
+integrated into the crystal structure of the ice. However this hydratisation
+needs thousands of years under high pressure, such that the air bubbles in the
+hole ice had not enough time to dissolve yet.}. These
 inclusions lead to a dramatically reduced scattering length around the DOMs,
 significantly deteriorating the quality of event reconstruction that strongly
 profits from a large number of direct (i.\,e.\ unscattered) photons being
@@ -240,8 +250,12 @@ content and hence the number of air bubbles remaining after refreezing.
 \label{sec:EvtReco}
 %==============================================================================
 
-To identify the features in the distribution of neutrino events recorded by
-PINGU that are imprinted by the neutrino mass hierarchy, it is crucial to
+As we have seen in Sec.~\ref{sec:PINGUosc}, the neutrino mass hierarchy
+imprints fine features onto the the distribution of neutrino events recorded by
+PINGU. To resolve this pattern,
+% To identify the features in the distribution of neutrino events recorded by
+% PINGU that are imprinted by the neutrino mass hierarchy,
+it is crucial to
 reconstruct the events as exactly as possible. Although the interesting neutrino
 properties are only its energy and the zenith angle of its arrival
 direction\footnote{Which determines the length of propagation since the
@@ -258,14 +272,14 @@ reconstructed as well. These are:
   azimuth angles ($\theta,\,\phi$)
  \item The energy $E_\mu$ of the outgoing muon (if present), which can be
   replaced by its length $l$ since muons can be
-  considered as minimum ionising particles (see Sec.~\ref{sec:NuDetection}).
+  considered as minimum ionising particles (see Sec.~\ref{sec:XsecsGeV}).
  \item The direction of the muon, represented by zenith and azimuth angles
   ($\theta_\mu,\,\phi_\mu$) as well.
 \end{itemize}
 This amounts to a total of ten variables (seven if no muon is created in the
 interaction) whose values have to be found in the reconstruction process. The
 neutrino energy is then given by the sum of cascade and muon energy, and its
-direction has to be calculated from their momenta using the conservation of the
+direction has to be calculated from their momenta using conservation of the
 total momentum. 
 
 \subsection{Triggering}
@@ -280,9 +294,9 @@ actual implementation of PINGU \cite{Trigger}.
 This SMT3 trigger requires at least three DOMs registering a hard local
 coincidence within a time window of 2.5\,\textmu s. A hard local coincidence
 means that two DOMs on the same string that a not more than two vertical
-positions apart have launched within 1\,\textmu s. For the PINGU trigger, all
-PINGU DOMs plus the DeepCore DOMs and the ones one the neighbouring IceCube
-strings are taken into account.
+positions (\ie 6\,m) apart have launched within 1\,\textmu s. For the PINGU
+trigger, all PINGU DOMs plus the DeepCore DOMs and the ones one the neighbouring
+IceCube strings are taken into account.
 
 If now an event satisfies the PINGU trigger, the full detector including
 IceCube and DeepCore is read out. This is necessary for background suppression,
@@ -344,7 +358,7 @@ radius-time (SRT) cleaning, followed by a time-window (TW) cleaning.
 \label{sec:reco_clast}
 
 The start of the actual reconstruction chain is CLast \cite{CLast}, a
-first-guess algorithm for cascade, i.\,e.\ point-like events. With $vec{r}_i$
+first-guess algorithm for cascade, i.\,e.\ point-like events. With $\vec{r}_i$
 being the positions of the DOMs that have registered charges $a_i$ at times
 $t_i$ in the event, first the event vertex is determined a the centre of gravity
 (COG) of the hit DOMs:
@@ -465,8 +479,8 @@ seed, i.\,e.\ the first test point. Yet obviously it cannot fully describe
 all of the expected events since its assumption about the event topology does
 not contain the possibility of an outgoing muon track. But since muons at PINGU
 energies of few GeV have a range at the order of ten or twenty metres,
-comparable to the string spacing, and hence only slightly distort the point-like
-event topology. Thus Monopod still gives a reliable estimate of the vertex
+comparable to the string spacing, they distort the point-like event topology
+only slightly. Thus Monopod still gives a reliable estimate of the vertex
 position and direction, sufficiently precise for the first loose vertex
 containment cut (Sec.~\ref{sec:cuts_step1}).
 % Afterwards it is used as seed for the more elaborate HybridReco/MultiNest
@@ -488,7 +502,8 @@ fixed at the cascade vertex, the muon adds only three variable to the problem:
 its direction, again defined by two angles, and its length. However at PINGU
 energies the kinematic angle between the hadronic cascade and the outgoing
 lepton is only a few degrees \cite{NuScattAng}, far below the directional
-resolution of the reconstruction (see Sec.~\ref{sec:sim_input}), the directions
+resolution of the reconstruction (see Sec.~\ref{sec:sim_input}), thus the
+directions
 of muon and cascade are assumed to be aligned to reduce complexity. Thus only
 the muon energy $E_\mu$, which is proportional to its length, is added to the
 set of parameters.
