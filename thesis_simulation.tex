@@ -293,14 +293,9 @@ emulating the effects of the multiple physics processes that are involved in
 the actual measurement, as illustrated in Fig.~\ref{fig:papa_flowchart}. The 
 code itself is split into two main parts that are run separately. The first 
 part is the \texttt{PhysicsSimulation}, responsible only for the calculation of 
-neutrino oscillation probabilities. This is by far the most time-consuming part 
-as the Schr\"odinger equation for the oscillation in a varying matter 
-potential (see Sec.~\ref{sec:matter_osc}) has to be solved numerically.
-However, 
-since the oscillations are independent from the specific settings of the PINGU 
-detector, they can be calculated in advance and then be used multiple times 
-when running the second part of \papa---the \texttt{DetectorSimulation}---for 
-various detector settings.
+neutrino oscillation probabilities. In the second part of \papa---the 
+\texttt{DetectorSimulation}---the actual event histograms as observed in PINGU 
+are calculated from the oscillation probabilities and detector settings.
 
 
 \subsubsection{\texttt{PhysicsSimulation}}
@@ -346,8 +341,11 @@ centres are used.
 % For our calculations, we used oversampling factors of eight in energy and two in
 % zenith.
 
-The calculation of the oscillation probabilities is the most time-consuming of
-the whole simulation as here all the
+As mentioned above, the calculation of the oscillation probabilities is the 
+most time-consuming part of the simulation as here the Schr\"odinger equations 
+for full three-flavour oscillations in a varying matter 
+potential (see Sec.~\ref{sec:matter_osc}) have to be solved numerically.
+
 differential equations for neutrino propagation need to be solved numerically.
 Using AtmoWeights, a full set of three oscillation parameters plus the energy
 scale for four primaries at 15 test points each typically takes several hours
@@ -359,7 +357,7 @@ can then be re-used for different detector settings.
 
 \subsubsection{\texttt{DetectorSimulation}}
 
-In the detector simulation, the pure oscillation probabilities calculated in the
+In the detector simulation the pure oscillation probabilities calculated in the
 physics simulation are converted into an actual detector response, taking into
 account all detector related parameters. It consists of three major steps, as
 depicted by the flow chart in Fig.~\ref{fig:papa_flowchart}. At each step, a set
@@ -381,9 +379,10 @@ histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
    \includegraphics[width=0.5\columnwidth]{4_classified_trck} &
    \includegraphics[width=0.5\columnwidth]{4_classified_cscd}
   \end{array}$
- \caption{Event counts in one year of PINGU livetime at the different
-  simulation stages, assuming normal mass hierarchy. For details, refer to the
-  text.}
+ \caption{Event counts in one year of PINGU lifetime at the different
+  simulation stages, assuming normal mass hierarchy. From top to bottom: 
+  Truth Histograms without and with oscillations, Reconstructed and Analysis 
+  Histograms. For details, refer to the text.}
  \label{fig:SimSteps}
 \end{figure}
 
@@ -404,9 +403,9 @@ detector:
 \end{equation}
 
 To obtain event rates, the neutrino fluxes are then multiplied by the effective
-areas of PINGU for $\nue/\nuebar$, $\numu/\numubar$ and $\nutau/\nutaubar$ CC
-interactions as well as $\nu_X/\bar\nu_X$ NC---the four different interaction
-channels---after
+areas of PINGU for 
+$\nue/\nuebar$, $\numu/\numubar$ and $\nutau/\nutaubar$ CC interactions as well 
+as $\nu_X/\bar\nu_X$ NC---the four different interaction channels---after
 background rejection cuts (cf.\ Sec.~\ref{sec:EvtSel}). The effective area, a
 function of neutrino energy and zenith direction, is defined as the collection
 area an ideal detector identifying every neutrino passing through it would need
@@ -420,21 +419,22 @@ summing over the possible targets, protons and neutrons. Here,
 $N_\mathrm{target}$ stands for the total number of the respective targets
 inside the detector volume, $\sigma_{\mathrm{target},\,\mathrm{channel}}$ is
 the interaction cross section in the given channel, and
-$\epsilon_\mathrm{channel}$ is the efficiency with which interactions occurring
+$\epsilon_\mathrm{channel}$ is the efficiency which interactions occurring
 inside the detector actually pass the triggering, reconstruction, and event
-selection process. Although the selection efficiency is usually on the order of
+selection process with. Although the selection efficiency is usually of the 
+order of
 90\,\% \cite{cutsV5}, the effective area is much smaller than the geometrical
 size of the detector as the interaction cross sections for neutrinos are
-extremely small (see Sec.~\ref{sec:Xsecs}) and hence most neutrinos pass the
+extremely small (see Sec.~\ref{sec:Xsecs}). Hence, most neutrinos pass the
 detector without any interaction.
 
-The number of expected events per lifetime $t$ in a given channel can thus be
+The number of expected events per lifetime $t$ in a given channel can, thus, be
 calculated by
 \begin{eqnarray}
  N_\mathrm{\nu_\alpha\ \mathrm{CC}} &=&
    \aeff(\nu_\alpha\ \mathrm{CC})\ \Phi_{\alpha,\,\mathrm{det}}\ t 
    \label{eqn:evtrate_CC} \\
- N_\mathrm{\nux\ \mathrm{NC}} &=&
+ N_{\nux\ \mathrm{NC}} &=&
    \aeff(\nux\ \mathrm{NC}) \sum_\alpha \Phi_{\alpha,\,\mathrm{det}}\ t
    \label{eqn:evtrate_NC} 
 \end{eqnarray}
