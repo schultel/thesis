@@ -504,10 +504,14 @@ energies the kinematic angle between the hadronic cascade and the outgoing
 lepton is only a few degrees \cite{NuScattAng}, far below the directional
 resolution of the reconstruction (see Sec.~\ref{sec:sim_input}), thus the
 directions
-of muon and cascade are assumed to be aligned to reduce complexity. Thus only
-the muon energy $E_\mu$, which is proportional to its length, is added to the
-set of parameters.
+of muon and cascade are assumed to be aligned to reduce complexity. In addition,
+this alignment will cause the reconstructed direction to be a weighted average
+of the cascade and track direction, which is likely to be closer to the true
+neutrino direction---which is the relevant quantity---than the two separate
+directions.
 
+Hence, only the muon energy $E_\mu$, which is proportional to its length, is
+added to the set of parameters.
 This means that the expression for the expected number of photons on a certain
 DOM (\ref{eqn:cscd_hypo}) has to be extended by a term representing the muon
 track:
@@ -520,7 +524,16 @@ track:
 Although only one variable is added with respect to the cascade reconstruction,
 it turns out that finding the maximum likelihood gets much more difficult than
 before. The reason for this is the fact that two different photon emission
-patterns, $B^\mathrm{cscd}$ for the hadronic cascade and $B^\mathrm{track}$ for
+patterns, $B^\mathrm{cscd}$ for the hadronic cascade\footnote{The value of
+$B^\mathrm{cscd}$ returned by Photonics always assumes a fully electromagnetic
+cascade, however the event signatures in PINGU always have a hadronic cascade
+that is overlaid with an electromagnetic one in \nue/\nuebar and
+\nutau/\nutaubar CC events. In HybridReco, the reconstructed energy is
+corrected to correspond to a fully hadronic cascade. Since hadronic cascades
+contain more neutral particles and hence have less light output per energy,
+this leads to a slight overestimation of the neutrino energy in \nue/\nuebar CC
+events. In \nutau/\nutaubar CC events, this effect is overcompensated by the
+energy carried away by the outgoing neutrino.} and $B^\mathrm{track}$ for
 the muon, have to be considered in the hypothesis where it is unclear whether a
 given photon originates from the cascade or the muon. Additionally the typical
 distances in PINGU are so small that photon scattering plays only a small role
@@ -547,14 +560,6 @@ likelihood space during their iterations.
 
 \subsubsection{MultiNest}
 
-A robust way to handle such a challenging likelihood profile and reliably find
-its global maximum is offered by the MultiNest algorithm \cite{MultiNest1,
-MultiNest2}. Instead of starting with a seed point and trying to move it to
-the maximum along a path following the direction of the local gradient,
-MultiNest uses an ensemble of active points distributed over an active region
-in the parameter space to infer the shape of the likelihood and then tries to
-shrink this region down to the maximum.
-
 \begin{figure}[ht]
  \centering
  \includegraphics[width=\textwidth]{MultiNest2}
@@ -563,7 +568,15 @@ shrink this region down to the maximum.
   by ellipses. In (e) the sampling region has been separated into two  distinct
   active regions. Figure taken from \cite{MultiNest1}.}
 \label{fig:MultiNest_process}
-\end{figure} 
+\end{figure}
+
+A robust way to handle such a challenging likelihood profile and reliably find
+its global maximum is offered by the MultiNest algorithm \cite{MultiNest1,
+MultiNest2}. Instead of starting with a seed point and trying to move it to
+the maximum along a path following the direction of the local gradient,
+MultiNest uses an ensemble of active points distributed over an active region
+in the parameter space to infer the shape of the likelihood and then tries to
+shrink this region down to the maximum.
 
 The algorithm starts off with evaluating the likelihood values at the initial
 ensemble of points in parameter space. From this, an elliptical iso-likelihood

@@ -370,19 +370,21 @@ histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
  $\begin{array}{cc}
    \mathrm{Tracks} &
    \mathrm{Cascades}\\
-   \includegraphics[width=0.5\columnwidth]{1_un_oscillated_trck} &
-   \includegraphics[width=0.5\columnwidth]{1_un_oscillated_cscd}\\
-   \includegraphics[width=0.5\columnwidth]{2_oscillated_trck} &
-   \includegraphics[width=0.5\columnwidth]{2_oscillated_cscd}\\
-   \includegraphics[width=0.5\columnwidth]{3_reconstructed_trck} &
-   \includegraphics[width=0.5\columnwidth]{3_reconstructed_cscd}\\
-   \includegraphics[width=0.5\columnwidth]{4_classified_trck} &
-   \includegraphics[width=0.5\columnwidth]{4_classified_cscd}
+   \includegraphics[width=0.48\columnwidth]{1_un_oscillated_trck} &
+   \includegraphics[width=0.48\columnwidth]{1_un_oscillated_cscd}\\
+   \includegraphics[width=0.48\columnwidth]{2_oscillated_trck} &
+   \includegraphics[width=0.48\columnwidth]{2_oscillated_cscd}\\
+   \includegraphics[width=0.48\columnwidth]{3_reconstructed_trck} &
+   \includegraphics[width=0.48\columnwidth]{3_reconstructed_cscd}\\
+   \includegraphics[width=0.48\columnwidth]{4_classified_trck} &
+   \includegraphics[width=0.48\columnwidth]{4_classified_cscd}
   \end{array}$
  \caption{Event counts in one year of PINGU lifetime at the different
   simulation stages, assuming normal mass hierarchy. From top to bottom: 
   Truth Histograms without and with oscillations, Reconstructed and Analysis 
-  Histograms. For details, refer to the text.}
+  Histograms. The variables are true neutrino energy and direction for the
+  upper two rows of histograms and reconstructed energy and direction for the
+  bottom ones. For details, refer to the text.}
  \label{fig:SimSteps}
 \end{figure}
 
@@ -453,8 +455,9 @@ Fig.~\ref{fig:SimSteps}.
 
 \paragraph{Reconstructed Histograms}
 
-In the next step, event reconstruction is inflicted on the histograms that up
-to now contain true neutrino energies and directions. This is done by smearing
+In the next step, event reconstruction is applied to the histograms that up
+to now contain \emph{true} neutrino energies and directions. This is done by
+smearing
 the true histograms with a kernel\footnote{A \emph{smearing kernel} can be
 interpreted as a binned point spread function.} whose shape depends on the true
 energy and zenith angle of the event, i.\,e.\ the position in the histogram.
@@ -482,24 +485,31 @@ There are two different ways how these kernels can be handed over to \papa:
   zenith'' will flip the sign of their azimuth angle (which is irrelevant) and
   move back to larger values of the zenith angle.
  \item Tabulated point spread functions.\\ If the MC statistics is sufficient,
-  i.\,e.\ in the order of $10^6$ events per flavour, the resolutions can be
+  \ie in the order of $10^6$ events per flavour, the resolutions can be
   retrieved directly from the MC data. This means creating a 4D histogram of
-  true vs.\ reconstructed ($E$, \coszen), which is nothing else than
+  true vs.\ reconstructed ($E$, \coszen), which is equivalent to
   the individual smearing kernel for each bin in true ($E$, \coszen).
   \end{enumerate}
-Option (a) will be used primarily in this study, since for the PINGU geometry
-V36 that will be the baseline for all analyses, the amount of MC events is
+Option (a) is used primarily in this study, since for the PINGU geometry
+V36 that is the baseline for all analyses, the amount of MC events is
 insufficient for option (b). Also, the parametrised reconstruction resolutions
 make it possible to investigate the effects of an improved resolution within a
 well-defined metric in Sec.~\ref{sec:wom_effect}.
-For the earlier PINGU geometry V15, however, enough MC statistics exists to
+For the earlier PINGU geometry V15, however, enough MC events exists to
 follow option (b) for the event reconstruction stage.
-Sec.~\ref{sec:results_mcstats} will report on this and also demonstrate the
-effect that an insufficient MC sample has on the calculated NMH sensitivity.
+This is reported on in Sec.~\ref{sec:results_mcstats}, where also the effect
+that an insufficient MC sample has on the calculated NMH sensitivity is
+demonstrated.
 
 Example histograms after the reconstruction stage---still in the four
 interaction channels already present after the previous stage---are shown in
-the third row of Fig.~\ref{fig:SimSteps}.
+the third row of Fig.~\ref{fig:SimSteps}. However one has to keep in mind that
+now the variables have changed from \emph{true} to \emph{reconstructed}
+neutrino energies and directions. The reconstructed neutrino energy is given by
+the sum of the deposited energies of the cascade and track as fitted by
+HybridReco/MultiNest. The reconstructed direction comes from the same
+algorithm, where track and cascade are assumed to be aligned (cf.\
+Sec.~\ref{sec:reco_multinest}).
 
 \paragraph{Analysis Histograms}
 
@@ -509,7 +519,7 @@ anti-neutrinos. The final step in the detector simulation is to apply the
 particle flavour identification (PID). However, current tools for particle ID
 can only distinguish events with an outgoing muon signature (only present in
 $\nu_\mu$ CC interactions), which are classified as tracks, from other events
-(cascades), as already detailed above (cf.\ Sec.~\ref{sec:cuts_PID}).
+(cascades), as already described above (cf.\ Sec.~\ref{sec:cuts_PID}).
 
 So for every interaction channel, two analytic functions of the neutrino
 energy have to be supplied to \papa, giving the probabilities of identifying a
@@ -535,10 +545,12 @@ to illustrate the various effects studied.
 \subsection{Systematic Parameters}
 \label{sec:systematics}
 
-The main benefit of the fast simulation is that it makes the inclusion of
+The main benefit of the fast simulation that \papa provides is that it makes the
+inclusion of
 the many systematic parameters feasible, which are needed to correctly evaluate
 the mass hierarchy significance. The parameters that were considered in this
-thesis can be divided into two groups. First the \emph{physics} parameters,
+thesis can be divided into two groups. The first one contains the \emph{physics}
+parameters,
 \ie the neutrino oscillation parameters: three mixing angles, two mass
 splittings, the CP violating phase and of course the sign of the NMH. The best
 fit values and priors for the mixing angles and mass splittings as listed in
@@ -548,6 +560,7 @@ set to a fiducial value of zero.
 After having checked that their impact is negligible, the so-called solar mixing
 parameters \dm{21} and \thet{12} as well as the CP phase will not be left free
 to vary any more in order to save computation time.
+% TODO: show that explicitly?
 
 The mass hierarchy needs special treatment since it is a binary quantity,
 yet the Fisher matrix formalism (see Sec.~\ref{sec:fisher}), which will be
@@ -556,9 +569,9 @@ parameters. Thus the NMH
 needs to be converted into a continuous variable. This is achieved by
 calculating the oscillation probabilities assuming normal and inverted NMH once 
 each and propagating both through the full \texttt{DetectorSimulation} chain 
-as described in the previous section. We
-then introduce a hierarchy parameter $0\leq h\leq1$ that allows for a continuous
-transition between normal (NH) and inverted (IH) hierarchy:
+as described in the previous section. Then a hierarchy parameter $0\leq h\leq1$
+is introduced that allows for a continuous transition between normal (NH) and
+inverted (IH) hierarchy:
 \begin{equation}
  N(h) = h N_\mathrm{NH} + (1-h) N_\mathrm{IH}\quad,
  \label{eqn:hierarchy_parameter}
@@ -577,18 +590,19 @@ distance of the hyperplanes in parameter spaces defined by normal and inverted
 hierarchy}.
 If no other parameters are present, this description is mathematically
 equivalent to a bin-wise $\Delta\chi^2$ sum as defined in \cite{Akhmedov}, as 
-shown in Sec.~\ref{sec:fisher_hierarchy}.
+it is shown in Sec.~\ref{sec:fisher_hierarchy}.
 
-The second set of parameters are the ones related to the detector, \ie the
+The second set of parameters are related to the detector, \ie the
 nuisance parameters. Most of them scale properties of the detector up or down, 
 reflecting uncertainties in the knowledge of the detector performance. In 
 several cases, however, they can be interpreted as theoretical uncertainties 
-on, \eg, the neutrino cross sections or atmospheric flux tables. The systematic 
-parameters belonging to this class are, ordered according to their entering of 
-the simulation chain:
+on, e.\,g., the neutrino cross sections or atmospheric flux tables. The
+systematic parameters belonging to this class are, ordered according to their
+entry point into the simulation chain:
 
 \begin{description}
  \item[The energy scale $\mathbf{s_E}$] describes a potential scaling error
+  in the assumed relation 
   between true and reconstructed neutrino energy. Such a mis-scaling, \ie
   an under- or overestimation of the neutrino energy can be the result of a
   wrong value for \eg PMT efficiency, absorption effects in the ice model etc.\ 
@@ -601,11 +615,12 @@ the simulation chain:
   \end{equation}
   So the energy bins in the actual histograms remain unchanged, but the 
   oscillation minima and maxima do not appear at the expected energies. This 
-  mimics the the effect of a wrong energy scale in an actual analysis, since 
+  mimics the effect of a wrong energy scale in an actual analysis, since
   one would of course assume the energy scale to be correct. Note that in 
-  \papa, the energy scale does affect neither the atmospheric flux, whose 
-  calculations for the South Pole are usually validated with existing IceCube 
-  data that would likely have the same energy mis-scaling as PINGU, nor the 
+  \papa, the energy scale does affect neither the atmospheric flux calculations
+  for the South Pole, as they are usually validated with existing IceCube
+  data that would likely have the same energy mis-scaling as PINGU. Nor does it 
+  change the
   effective areas, since their main feature, the energy threshold for 
   detecting a neutrino interaction, would scale in parallel with the energy bin 
   edges. Other accompanying effects, such as the overall normalisation of the 
@@ -613,13 +628,13 @@ the simulation chain:
   Although the energy scale is a detector-related parameter, it has to enter at 
   the \texttt{PhysicsSim\-ul\-ation} stage already as the rescaled energy bins 
   have to be passed on to the calculation of the oscillation probabilities. 
-  Thus it is the very first detector parameter in the simulation chain to be 
+  Thus, it is the very first detector parameter in the simulation chain to be 
   accounted for.
  \item[The relative flux normalisation 
   $\mathbf{r_{\Phi,\,\nue-\numu}}$]
   represents the uncertainty on the relative contributions of \nue and \nuebar 
   vs.\ \numu and \numubar to the total flux of atmospheric neutrinos, which is 
-  approximately 1:2. It is inflicted on the un-oscillated atmospheric neutrino 
+  approximately 1:2. It is applied to the un-oscillated atmospheric neutrino
   fluxes (cf. (\ref{eqn:detetor_flux})) such that
   \begin{equation}
    \Phi_{\alpha,\,\mathrm{atm}}' = \Phi_{\alpha,\,\mathrm{atm}} \cdot 
@@ -630,7 +645,7 @@ the simulation chain:
  \item[The effective area scale $\mathbf{s_{\aeff}}$] opens the
   possibility that the effective areas for all interaction channels scale
   differently with energy than assumed in the generation of the MC from where 
-  they are extracted. It will also partially compensate for a 
+  they are extracted. It also partially compensates for a
   potential error in the spectral index of the atmospheric flux, since it
   effectively alters the total number of events per energy bin as a function of
   energy according to
@@ -644,8 +659,8 @@ the simulation chain:
   effective areas\footnote{Inflicting this re-normalisation on the atmospheric 
   fluxes instead of the effective areas would have the same effect. Since the 
   effects are completely degenerate and uncertainties on the relative cross 
-  sections larger than on the relative fluxes, we do  not treat the flux 
-  normalisation as a parameter.}. The effective areas are then given by
+  sections are larger than on the relative fluxes, the flux normalisation is
+  not treated as a parameter.}. The effective areas are then given by
   \begin{equation}
    \aeff' = \aeff \cdot (1\pm r_{\aeff,\,\nu-\bar\nu}) \quad,
   \end{equation}
@@ -654,16 +669,16 @@ the simulation chain:
   governs the size of the NMH signal that can be observed with PINGU (see 
   Sec.~\ref{sec:PINGUosc}), this parameter is of particular importance.
  \item[The overall effective area normalisation $\mathbf{n_{\aeff}}$] 
-  scales the effective areas for all channels independent of energy:
+  scales the effective areas for all channels independently of energy:
   \begin{equation}
    \aeff' = \aeff\cdot n_{\aeff}
   \end{equation}
-  Since it just evenly increases the total number of events in all channels and 
-  hence is fully degenerate with the detector lifetime, it is not that 
-  interesting by itself. However it is needed in combination with the relative 
-  scalings mentioned above to effectively allow for the separate scaling of one 
+  Since it just evenly increases the total number of events in all channels
+  and, hence, is fully degenerate with the detector lifetime, it is not that
+  interesting by itself. However, it is needed in combination with the relative 
+  scalings mentioned above to effectively allow for separate scaling of one
   single channel.\\
-  Obviously all three parameters related to the effective area enter the 
+  Obviously, all three parameters related to the effective area enter the 
   calculation at the same time during the calculation of the true event rates, 
   represented by (\ref{eqn:evtrate_CC}) and (\ref{eqn:evtrate_NC}), \ie after 
   the oscillation probabilities have been applied.
@@ -696,8 +711,8 @@ the simulation chain:
   effective\footnote{In particular for the correct identification of \numu CC
   events as track-like, the PID function has a step-like shape, with a steep
   increase of the selection efficiency between 5 and 10\,GeV, cf.\
-  Sec.~\ref{sec:sim_input}.} at higher or lower energies than fitted from
-  Monte Carlo data. The actual PID function will hence be
+  Sec.~\ref{sec:sim_input}.} at higher or lower energies than expected from
+  Monte Carlo data. The actual PID function is then
   \begin{equation}
     P_\mathrm{ID}'(E) = s_\mathrm{PID}\cdot P_\mathrm{ID}(E-\Delta_\mathrm{PID})
       \quad.
