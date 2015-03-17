@@ -256,7 +256,52 @@ close to the maximal mixing value of \thet{23}.
 
 \subsection{Fiducial Value of the Mass Hierarchy}
 \label{sec:results_NHtrue}
-% TODO: do?
+
+Thus far, the \emph{true} neutrino mass hierarchy was assumed to be inverted.
+This means that the fiducial value for the mass hierarchy used as an input to
+\papa was normal. This may sound paradoxical at first, yet it corresponds to
+the actual analysis that will be done in PINGU:
+
+In order to ``detect'' \eg an inverted hierarchy, the normal hierarchy has to be
+excluded. This means to compare the data that have been measured, represented by
+the histograms resulting from the best fit IH oscillations and the fiducial
+detector settings, to all possible realisations of the NH scenario. These are
+simulated by varying all systematic parameters around the best fit NH model,
+which is what happens when the fiducial value of the hierarchy parameter in
+\papa corresponds to the NH case.
+
+Now it is of course important to know how the assumed true mass hierarchy
+affects the significance of the mass hierarchy determination. If it would drop
+considerably when assuming a normal ordering, PINGU could not claim to provide
+a definite measurement of the mass hierarchy since the inverted hierarchy case
+could never be excluded.
+
+Calculating the significance for a true normal mass hierarchy, \ie choosing the
+IH value of \dm{31} from Tab.~\ref{tab:fiducial_osc} as fiducial value in
+\papa, the expected three-year significance for the baseline detector model is
+3.1\,$\sigma$. This moderate increase by 0.2\,$\sigma$ \wrt the IH case
+originates predominantly in the cascade channel, whose individual significance
+increases from 1.9\,$\sigma$ to 2.2\,$\sigma$. The full error listings
+are shown in App.~\ref{app:fisher_nhtrue}. The purely statistical significances
+do not change \wrt to the IH true case as they only depend on the difference
+between both models.
+
+The reason for the increased significance in the cascade channel is that the
+most significant feature in the analysis histograms is the region of negative
+\delchi values in the cascade channel (Fig.~\ref{fig:akhmedov_baseline} right)
+at energies between 5 and 10\,GeV and $\coszen < -0.6$. According to the
+definition of \delchi (\ref{eqn:def_delchi}), in this region more events are
+expected for true IH than for true NH, $N_\mathrm{IH} > N_\mathrm{NH}$. Since
+the absolute difference between $N_\mathrm{IH}$ and $N_\mathrm{NH}$ is the same
+regardless of which hierarchy is true, the relative difference to the IH
+expectation is larger if NH is true than vice versa.
+
+So assuming true inverted hierarchy as well as \thet{23} in the first octant,
+\ie being smaller than $45^\circ$, is in fact a conservative choice. As shown
+in this and the previous section, PINGU's expected sensitivity to the neutrino
+mass hierarchy is higher if the mass hierarchy is in truth normal and
+especially for larger values of \thet{23}. Consequently, those settings will be
+used as well for the various scenarios studied in the following sections.
 
 \subsection{High-Purity Event Classification}
 \label{sec:results_includeunkn}
