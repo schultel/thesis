@@ -14,4 +14,55 @@ in great detail, leaving only two parameters to be determined.
 
 One of these parameters is the so-called neutrino mass hierarchy. It refers to
 the sign of another parameter, one of the two independent mass splittings,
-whose absolute value has already been measured.
+whose absolute value has already been measured. The fact that the absolutes of
+parameters can be determined precisely without learning about its sign is one
+of the peculiarities of the neutrino oscillation formalism, where central
+parameters enter quadratically in most cases.
+
+A chance to access the neutrino mass hierarchy is to study the differences in
+the oscillation probabilities of neutrinos and antineutrinos at low GeV
+energies that are created in the Earth's atmosphere and propagate through its
+interior. The proposed Precision IceCube Next Generation Upgrade (PINGU) will be
+a facility apt to observe the small modulations on top of the flux of
+atmospheric neutrinos with the required precision.
+
+As its name suggests, PINGU is planned as an upgrade to the existing IceCube
+neutrino telescope at the geographic South Pole in Antarctica. IceCube has been
+constructed to discover extra-terrestrial neutrinos at TeV to PeV energies.
+Neutrino oscillation patterns in the atmospheric flux at medium GeV energies,
+however, have already been observed as well using its DeepCore extension. PINGU
+is now intended to further lower the energy threshold down to a regime where
+signatures of the neutrino mass hierarchy appear. This also provides an
+opportunity to measure the absolute values of the relevant oscillation
+parameters with high precision.
+
+In this thesis, the development of an effective detector simulation for PINGU,
+named \papa for ``Parametrised PINGU Analysis'', is described. The outcome of
+this simulation is analysed using the Fisher Matrix formalism, a tool that is
+well established in cosmology, but novel to be applied to a particle physics
+experiment. In a linear approximation, it allows for a fast construction of the
+full covariance matrix of the experiment including a large number of systematic
+uncertainties.
+
+After checking that the prerequisites for the Fisher Matrix are in fact
+fulfilled, PINGU's expected sensitivity to the mass hierarchy is evaluated,
+showing its dependence on controlling the relevant systematics. The expected
+precision in measuring the accessible oscillation parameters is calculated as
+well. Following this, the effect of changing various simulation input
+parameters is studied in terms of the resulting sensitivity to the neutrino
+mass hierarchy.
+
+Finally, \papa is modified to simulate the outcome of JUNO, a nuclear reactor
+based neutrino experiment targeted at the determination of the neutrino mass
+hierarchy as well, yet exploiting a very different physical effect. JUNO's
+sensitivity to the mass hierarchy will be calculated, where a Fourier
+transformation of the observed signal is needed in order to justify the
+application of the Fisher Matrix. Afterwards, the standalone results of PINGU
+and JUNO can be combined easily as in the Fisher Matrix formalism this
+corresponds to a mere matrix addition and inversion. Then the benefits from
+marginalising over common systematics can be investigated.
+
+The thesis concludes with a summary of the results found using \papa and
+analysing its outcome in terms of the Fisher Matrix. An outlook is given on the
+future of \papa and its integration into a wider software framework for PINGU
+detector simulations.
