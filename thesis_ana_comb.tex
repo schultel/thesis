@@ -3,7 +3,6 @@
 \label{sec:JUNO}
 %==============================================================================
 
-
 \subsection{The JUNO Experiment}
 \label{sec:JUNO_exp}
 
@@ -16,7 +15,8 @@
  \label{fig:JUNO_osc_probs}
 \end{figure}
 
-As already briefly discussed in Sec.~\ref{sec:ReacNuOsc}, JUNO\footnote{Short
+\noindent As already briefly discussed in Sec.~\ref{sec:ReacNuOsc}, 
+JUNO\footnote{Short
 for Jiangmen Underground Neutrino Observatory.} is a neutrino experiment under
 construction in China's Guangdong Province. With its sensitive region at low MeV
 energies, it is able to detect supernova and geoneutrinos, yet its main target
@@ -136,6 +136,57 @@ nuclear power plants used as neutrino sources have several reactor cores that
 are up to 500\,m apart from each other. This introduces an uncertainty of 1\,\%
 on the baseline $L$, which is equivalent to an additional uncertainty of 1\,\%
 in the energy reconstruction as the relevant quantity is $L/E$.
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{JUNO_signal}
+ \caption{Expected event spectrum in JUNO including all detector effects.}
+ \label{fig:JUNO_signal}
+\end{figure}
+
+Finally, in JUNO there is no discrimination between cascade-like and track-like 
+events as only \nuebar-induced inverse beta decays are expected. Hence, all 
+events are classified as cascades and the track channel is not considered for 
+the analysis. The resulting observed event distribution for the normal and 
+inverted hierarchy case as well as for oscillations with $\dm{31} = 0$ is shown 
+in Fig.~\ref{fig:JUNO_signal}.
+\enlargethispage{\baselineskip}
+
+\subsection{Results for JUNO}
+\label{sec:JUNO_res}
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=\linewidth]{deltam31_FFT}
+ \caption{Linearisation of the detector response to \dm{31} via Fourier 
+  transformation. For details, refer to the text.}
+ \label{fig:JUNO_FFT}
+\end{figure}
+
+\noindent In contrast to PINGU, the analysis histograms for JUNO as shown in 
+Fig.~\ref{fig:JUNO_signal} cannot be used for the Fisher matrix analysis 
+directly. The reason for this are the rapid oscillations of the event count as 
+a function of energy that are the signal to be observed. This means that for a 
+given bin in energy, the expected number of events is usually not a linear 
+function of the systematic parameters. 
+% This is true especially for \dm{31}, as 
+% visible in the left panel of Fig.~\ref{fig:JUNO_FFT}. 
+% Here, the expected signal 
+% for $\dm{31}=0$ (black line in Fig.~\ref{fig:JUNO_signal}) has been subtracted 
+% to show the features more clearly.
+
+In order to apply the Fisher matrix formalism, JUNO's response to the 
+systematic parameters has to be linearised. As the signal itself is 
+oscillatory, the natural choice is to apply a Fourier transformation before 
+analysis. To assure an input signal that smoothly fades out to zero at the 
+edges of the considered energy interval, the expected signal for $\dm{31}=0$ 
+(black line in Fig.~\ref{fig:JUNO_signal}) is subtracted from the actual event 
+rates and an exponential cut-off at low energies applied to the result. 
+
+This quantity is shown in the left panel of Fig.~\ref{fig:JUNO_FFT}, the 
+non-linearity of the individual bin counts as a function of \dm{31} can clearly 
+be seen. It is then fed to the implementation of the fast Fourier transform 
+(FFT) algorithm \cite{FFT} provided by the \texttt{numpy} package.
 
 \subsection{Joint Analysis of JUNO and PINGU}
 \label{sec:JUNO_comb}
