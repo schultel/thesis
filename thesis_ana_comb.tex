@@ -152,8 +152,8 @@ inverted hierarchy case as well as for oscillations with $\dm{31} = 0$ is shown
 in Fig.~\ref{fig:JUNO_signal}.
 \enlargethispage{\baselineskip}
 
-\subsection{Results for JUNO}
-\label{sec:JUNO_res}
+\subsection{Preparing the JUNO Signal for Fisher Matrix Analysis}
+\label{sec:JUNO_FFT}
 
 \begin{figure}[thp]
  \centering
@@ -187,6 +187,66 @@ This quantity is shown in the left panel of Fig.~\ref{fig:JUNO_FFT}, the
 non-linearity of the individual bin counts as a function of \dm{31} can clearly 
 be seen. It is then fed to the implementation of the fast Fourier transform 
 (FFT) algorithm \cite{FFT} provided by the \texttt{numpy} package.
+
+As the input spectrum is real, only positive frequencies have to be considered
+in the FFT result. In addition, frequencies below 1/MeV are ignored as they are
+subject to large fluctuations. Thus the output of the FFT is a complex
+frequency spectrum in the range from 1/MeV to 8/MeV, given as its real and
+imaginary part. As the FFT is a linear transform, the error on both is given by
+\begin{equation}
+ \mathrm{FFT}(\Sigma) = \mathcal{F} \Sigma \mathcal{F}^H \quad,
+ \label{eqn:FFTerror}
+\end{equation}
+where $\mathcal{F}$ is the Fourier matrix, \ie the Fourier transform of the
+$n$-dimensional unit matrix where $n$ is the number of bins in the input
+series, and $\mathcal{F}^H$ its conjugate transpose. $\Sigma$ is the
+covariance matrix of the input data, see \eg \cite{FFT_Error1}.
+
+In this case, the input data are independent bin counts $N_i$ with statistical
+errors $\sigma_i = \sqrt{N_i}$, hence $\Sigma$ is diagonal:
+\begin{equation}
+ \Sigma = \mathrm{diag}(\vec{\sigma})
+ = \mathrm{diag}(\sigma^2_1,\,\sigma^2_2,\,\dots,\,\sigma^2_n)
+ = \mathrm{diag}(N_1,\,N_2,\,\dots,\,N_n)
+\end{equation}
+Propagating these properties through (\ref{eqn:FFTerror}) one finds that the
+error on both the real and the imaginary part of the FFT output is constant and
+proportional to the square root of the total number of bin
+entries\footnote{The full error on any observable, \ie entry in the FFT output
+spectrum, is given by the square root of the corresponding diagonal element of
+the covariance matrix, cf.\ (\ref{eqn:sigma_full}).}:
+\begin{equation}
+ \Re[\mathrm{FFT}(\Sigma)] = \Im[\mathrm{FFT}(\Sigma)]
+ = \mathlarger{\mathlarger{\mathbbm{1}}} \sum_{i=1}^n \sigma^2_i
+ = \mathlarger{\mathlarger{\mathbbm{1}}} \sum_{i=1}^n N_i
+ = \mathlarger{\mathlarger{\mathbbm{1}}} N_\mathrm{tot} 
+\end{equation}
+
+Yet for the analysis of the JUNO oscillation signal, amplitude and phase of the
+complex spectrum are better suited than its real and imaginary part. These
+quantities are calculated according to
+\begin{eqnarray}
+ A &=& \sqrt{\Re^2 + \Im^2} \\
+ \phi &=& \arctan(\Im/\Re) + 2\pi k
+\end{eqnarray}
+with $k \in \mathbbm{N}$ assuring that $\phi$ increases monotonically with
+increasing frequency, removing discontinuities. Their errors are then given by
+\begin{eqnarray}
+ \Delta A &=& \sqrt{(\Delta\Re)^2 + (\Delta\Im)^2} = \sqrt{2 N_\mathrm{tot}}\\
+ \Delta \phi &=& \Delta A / A \quad .
+\end{eqnarray}
+
+These are shown in the middle and right panel of Fig.~\ref{fig:JUNO_FFT},
+where one can see that the amplitude of the spectrum is virtually independent
+from \dm{31} while the phase is approximately proportional to its
+value\footnote{Note that all phases are shown relative to the phase spectrum
+for $\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$ to show the behaviour more
+clearly.}.
+
+
+\subsection{Results for JUNO}
+\label{sec:JUNO_res}
+
 
 \subsection{Joint Analysis of JUNO and PINGU}
 \label{sec:JUNO_comb}
