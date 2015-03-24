@@ -232,21 +232,103 @@ quantities are calculated according to
 with $k \in \mathbbm{N}$ assuring that $\phi$ increases monotonically with
 increasing frequency, removing discontinuities. Their errors are then given by
 \begin{eqnarray}
- \Delta A &=& \sqrt{(\Delta\Re)^2 + (\Delta\Im)^2} = \sqrt{2 N_\mathrm{tot}}\\
+ \Delta A &=& \sqrt{\left(\frac{\Re}{A}\Delta\Re\right)^2
+              + \left(\frac{\Im}{A}\Delta\Im\right)^2} =
+              \sqrt{N_\mathrm{tot}}\\
  \Delta \phi &=& \Delta A / A \quad .
 \end{eqnarray}
 
-These are shown in the middle and right panel of Fig.~\ref{fig:JUNO_FFT},
-where one can see that the amplitude of the spectrum is virtually independent
+The FFT result in the amplitude-phase base is shown in the middle and right
+panel of Fig.~\ref{fig:JUNO_FFT}.
+One can see that the amplitude of the spectrum is virtually independent
 from \dm{31} while the phase is approximately proportional to its
 value\footnote{Note that all phases are shown relative to the phase spectrum
 for $\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$ to show the behaviour more
-clearly.}.
-
+clearly.}. The shaded region marks the error range for the spectra for
+$\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$, for the other spectra the errors
+are very similar.
 
 \subsection{Results for JUNO}
 \label{sec:JUNO_res}
 
+\begin{table}[htpb]
+ \caption{Uncertainties on all systematic parameters expected for JUNO with
+  $10^5$ detected events, ranked according to their impact on the mass
+  hierarchy parameter $h$.}
+ \label{tab:JUNO_results}
+ \begin{center}
+  \small{\input{figs/fishers/JUNO.tex}}
+ \end{center}
+\end{table}
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{CovMat_JUNO}
+ \caption{Covariance matrix for JUNO, without external constraints on the
+  oscillation parameters.}
+ \label{fig:CovMat_JUNO}
+\end{figure}
+
+\noindent
+Now that an observable has been constructed which is sufficiently linear as a
+function of the parameters that JUNO will measure, the Fisher Matrix can be
+applied.
+
+The full error listing is given in Tab.~\ref{tab:JUNO_results}, where one can
+read off a NMH sensitivity of $3.0\,\sigma$ for an event sample of
+$N_\mathrm{tot} = 10^5$. Yet in contrast to the PINGU analysis, no priors have
+been put on any of the oscillation parameters as the resulting significance is
+to be compared to the one quoted by the JUNO collaboration themselves. In
+\cite{JUNO2}, for a ``reactor-only analysis'', \ie no without external
+knowledge, a confidence level of $\delchi^2 \approx 11$ is reported,
+corresponding to a significance of $\mathcal{S} = \sqrt{\delchi^2} \approx
+3.3\,\sigma$. This does not match up perfectly with the figure retrieved from
+the modified \papa simulation, however the agreement is fairly good given that
+the two calculations are completely independent in simulation and analysis
+method, and in addition \papa was intended for a very different experiment.
+
+Another claim from \cite{JUNO2} is that the NMH significance can be increased
+to $\delchi^2 \approx 19\ \hat{=}\ \mathcal{S} \approx 4.4\,\sigma$ when using
+a prior measurement of \dm{\mu\mu} with 1\,\% precision. This parameter can be
+measured in \numu disappearance experiments, usually with a neutrino beam from
+an accelerator travelling over a baseline of $\mathcal{O}$(100\,km). But since
+\dm{\mu\mu} is a rather complex combination of all mixing parameters
+\cite{Deltam_ee_mumu}, it is not possible to put the corresponding prior in the
+base of mixing parameters chosen in this thesis.
+
+One can, however, include priors on all mixing parameters according to a
+current global fit \cite{Fogli} as it was done in the analysis for PINGU
+(cf.\ Sec~\ref{sec:input_osc}). This increases the significance retrieved from
+the Fisher Matrix to 4.6\,$\sigma$, a gain of 1.6\,$\sigma$ \wrt the value
+without any priors. The full errors are listed in Tab.~\ref{tab:JUNO_priors}. In
+JUNO's own analysis, only 1.1\,$\sigma$ are added by the inclusion of external
+constraints, however there only one prior is put on an composite parameter,
+which is a weaker statement than putting individual priors on four underlying
+parameters.
+
+The strongest impact on JUNO's expected sensitivity to the neutrino mass
+hierarchy has the uncertainty of the mixing angle \thet{13}, as one can read
+off from Tab.~\ref{tab:JUNO_results} and the covariance matrix, shown in
+Fig.~\ref{fig:CovMat_JUNO}. Including the current knowledge of this parameter
+alone enhances the significance to 4.4\,$\sigma$.
+
+Next in size is the impact of \dm{31} on the mass hierarchy. For this parameter,
+however, including the current knowledge as a prior does not significantly
+improve the NMH measurement. The reason is that the current uncertainty on
+\dm{31} is $8 \cdot 10^{-5}\,\mathrm{eV}^2$ \cite{Fogli}, while JUNO will
+already provide a constraint of $1.7 \cdot 10^{-5}\,\mathrm{eV}^2$ by itself
+(see Tab.~\ref{tab:JUNO_results}), \ie there is no other experiment that can
+make a more precise measurement of \dm{31} than JUNO.
+
+This sub-percent precision on the value of \dm{31} is stated by \cite{JUNO2},
+too. A similar precision is claimed for \sinsq{\thet{12}} and \dm{21}. Looking
+at Tab.~\ref{tab:JUNO_results}, that value can be reproduced for
+\sinsq{\thet{12}}\footnote{} while for \dm{21} the relative uncertainty from
+the Fisher matrix is on the order of 10\,\%. Yet in the given reference it
+remains unclear whether the stated uncertainties include the prior on
+\dm{\mu\mu}. After adding priors on all oscillation parameters but \dm{21}, the
+Fisher matrix lists a precision of $\approx 3\,\%$ (see
+Tab.~\ref{tab:JUNO_no_prior_dm21}).
 
 \subsection{Joint Analysis of JUNO and PINGU}
 \label{sec:JUNO_comb}
