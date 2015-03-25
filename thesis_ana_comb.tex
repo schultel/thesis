@@ -322,13 +322,26 @@ make a more precise measurement of \dm{31} than JUNO.
 
 This sub-percent precision on the value of \dm{31} is stated by \cite{JUNO2},
 too. A similar precision is claimed for \sinsq{\thet{12}} and \dm{21}. Looking
-at Tab.~\ref{tab:JUNO_results}, that value can be reproduced for
-\sinsq{\thet{12}}\footnote{} while for \dm{21} the relative uncertainty from
-the Fisher matrix is on the order of 10\,\%. Yet in the given reference it
+at Tab.~\ref{tab:JUNO_results}, however, the relative uncertainties from
+the Fisher matrix are on the order of 10\,\%\footnote{For the relative error
+on \sinsq{\thet{12}}, the errors listed in Tabs.~\ref{tab:JUNO_results} and
+\ref{tab:JUNO_priors} for \thet{12} in degrees have to be converted:
+$\sinsq{\thet{12}} \approx 0.306$ and
+$\sigma^\mathrm{full}_{\sinsq{\thet{12}}}
+= \frac{\partial \sinsq{\thet{12}}} {\partial \thet{12}}
+  \sigma^\mathrm{full}_\thet{12}
+= \sin(2\thet{12})\,\sigma^\mathrm{full}_\thet{12}$ with
+$\sigma^\mathrm{full}_\thet{12}$ in radians.}. Yet in the given reference it
 remains unclear whether the stated uncertainties include the prior on
-\dm{\mu\mu}. After adding priors on all oscillation parameters but \dm{21}, the
-Fisher matrix lists a precision of $\approx 3\,\%$ (see
-Tab.~\ref{tab:JUNO_no_prior_dm21}).
+\dm{\mu\mu}. After adding priors on all oscillation parameters, the
+Fisher matrix lists a precision of $\approx 3\,\%$ for both parameters (see
+Tab.~\ref{tab:JUNO_priors}).
 
 \subsection{Joint Analysis of JUNO and PINGU}
 \label{sec:JUNO_comb}
+
+Finally, the results of PINGU and JUNO can be combined by adding the respective
+Fisher matrices. To start off on common grounds, only the oscillation
+parameters will be considered as systematics without any prior knowledge. This
+severely decreases PINGU's NMH significance to only 1.5\,$\sigma$ after three
+years of lifetime as it is strongly correlated with \thet{13}.
