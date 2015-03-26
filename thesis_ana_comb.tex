@@ -334,8 +334,8 @@ $\sigma^\mathrm{full}_{\sinsq{\thet{12}}}
 $\sigma^\mathrm{full}_\thet{12}$ in radians.}. Yet in the given reference it
 remains unclear whether the stated uncertainties include the prior on
 \dm{\mu\mu}. After adding priors on all oscillation parameters, the
-Fisher matrix lists a precision of $\approx 3\,\%$ for both parameters (see
-Tab.~\ref{tab:JUNO_priors}).
+Fisher matrix still lists a precision of $\approx 3\,\%$ for both parameters
+(see Tab.~\ref{tab:JUNO_priors}). 
 
 \subsection{Joint Analysis of JUNO and PINGU}
 \label{sec:JUNO_comb}
@@ -344,4 +344,54 @@ Finally, the results of PINGU and JUNO can be combined by adding the respective
 Fisher matrices. To start off on common grounds, only the oscillation
 parameters will be considered as systematics without any prior knowledge. This
 severely decreases PINGU's NMH significance to only 1.5\,$\sigma$ after three
-years of lifetime as it is strongly correlated with \thet{13}.
+years of lifetime as it is strongly correlated with \thet{13}, see
+Tab.~\ref{tab:PINGU_physonly}. Here a fundamental difference in the approaches
+taken by PINGU and JUNO becomes evident: JUNO is able to determine the mass
+hierarchy with appreciable significance all by itself, while in PINGU at least
+the value of \thet{13} has to be retrieved from an independent experiment, \eg
+Daya Bay \cite{DayaBay}. JUNO on the other hand still has a NMH significance of
+3.5\,$\sigma$ considering only physics systematics without priors
+(Tab.~\ref{tab:JUNO_physonly}).
+
+\begin{table}[h!]
+ \caption{Error listings for the combination of PINGU and JUNO, including only
+  oscillation parameters without any priors.}
+ \label{tab:combined_physonly}
+ \begin{center}
+  \smaller{\input{figs/fishers/combined_physonly.tex}}
+ \end{center}
+\end{table}
+
+If now the Fisher matrices of PINGU and JUNO are added, the combined
+sensitivity to the NMH increases to 4.3\,$\sigma$, much larger than the square
+sum of the individual sensitivities, which is 3.8\,$\sigma$. This is mainly due
+to the good constraint on \thet{13} from JUNO being passed on to PINGU and
+hence enhancing its NMH sensitivity. JUNO on the other hand can not profit much
+from PINGU since the only parameter that it can measure with greater precision
+than JUNO is \thet{23}, which does not affect JUNO at all.
+
+A second outcome of the joint analysis is that JUNO's extremely precise
+measurement of \dm{31} can be used to shrink down PINGU's error ellipse in
+(\dm{31},\,\sinsq{\thet{23}}) parameter space, which was shown above in
+Fig.~\ref{fig:AtmoParamsBaseline}. Fig.~\ref{fig:AtmoParamsWithJUNO} is an
+update of the former including the expected result of JUNO. The combined
+ellipse of PINGU and JUNO demonstrates the enormous improvement in the
+knowledge about these two parameters that is to be expected over the course of
+the next five to ten years---the time needed for the two experiments to be
+constructed and take their nominal amount of data.
+
+Since \dm{31} and \thet{23} are virtually uncorrelated in PINGU---as one can
+recognise from the semi-major axes of PINGU's error ellipse that are
+almost aligned to the coordinate axes---JUNO's strict constraint on \dm{31}
+does not affect PINGU's precision on \thet{23}. Still the uncertainties on both
+parameters will be reduced by almost one order of magnitude \wrt the current
+precision.
+
+\begin{figure}[thp]
+ \centering
+ \includegraphics[width=0.85\linewidth]{AtmoParamsWithJUNO}
+ \caption{Same as Fig.~\ref{fig:AtmoParamsBaseline}, adding JUNO's
+  expected constraint on \dm{31} and the combined error ellipse of PINGU and
+  JUNO.}
+ \label{fig:AtmoParamsWithJUNO}
+\end{figure}
