@@ -3,3 +3,37 @@
 \label{sec:conclusion}
 %==============================================================================
 
+In this thesis, the development of \papa, a standalone simulation for the
+planned PINGU atmospheric neutrino experiment, has been described. With \papa,
+the expected event histograms in ($E$,\,\coszen) can be generated directly from
+inputs like the atmospheric flux, effective areas, oscillation probabilities
+and a parametrisation of the detector resolution, taking into account a variety
+of systematic parameters, cf.\ Sec.~\ref{sec:papa}. Since most of the inputs are
+extracted from Monte Carlo data in advance, the time-consuming event-by-event
+simulation can be avoided in \papa, making it well suited to explore PINGU's
+multi-dimensional parameter space in short time and robust even in case of
+rather low Monte Carlo statistics.
+
+Using the results of \papa, PINGU's capability to measure the oscillation
+parameters \thet{23} and \dm{31} and especially to determine the neutrino mass
+hierarchy, \ie the sign of \dm{31}, was assessed with the Fisher matrix
+technique. This analysis method, whose application to a particle physics
+experiment is novel, is especially suited for problems with a large number of
+parameters and essentially linear detector response to these parameters.
+
+After checking that the requirements for applying the Fisher matrix are met
+(Sec.~\ref{sec:fisher_prereq}), PINGU's performance was evaluated for its
+current baseline geometry V36 with the most up-to-date estimates of
+reconstruction resolution. In Sec.~\ref{sec:results_baseline} it was shown
+that for a nominal lifetime of three years, PINGU is expected to determine the
+neutrino mass hierarchy with a confidence level of 2.9\,$\sigma$, with the major
+contribution coming from the analysis of cascade-like events\footnote{All events
+that are not caused by a \numu or \numubar CC interaction, \ie without an
+outgoing muon.}. In addition, PINGU will provide precision measurements of the
+oscillation parameters \dm{31} and \thet{23}, and in particular resolve the
+octant of \thet{23}. The latter is possible as PINGU observes neutrino
+oscillations in matter, where the symmetry between the two octants is broken.
+This also means that the asymmetry between the normal and inverted mass
+hierarchy cases grows with an increasing value of \thet{23}, such that the
+expected significance of the mass hierarchy measurement can reach 5\,$\sigma$
+and more if the true value of \thet{23} is in the second octant.
