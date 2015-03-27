@@ -391,10 +391,10 @@ histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
 \paragraph{Truth Histograms}
 
 The first step is to calculate the true rates of events triggering the
-detector. Therefore, we generate spline fits to the azimuth-averaged
+detector. Therefore, spline fits are generated for the azimuth-averaged
 atmospheric neutrino flux tables by Honda et al.\ \cite{Honda,
-HondaSP} and retrieve the fluxes for
-$\nu_e/\bar\nu_e$ and $\nu_\mu/\bar\nu_\mu$. These fluxes are multiplied by the
+HondaSP}, from which then the fluxes for $\nu_e/\bar\nu_e$ and
+$\nu_\mu/\bar\nu_\mu$ can be retrieved. These fluxes are multiplied by the
 oscillation probabilities $P(\nu_\alpha \to \nu_\beta)$ calculated in the
 physics simulation to obtain the flux for each neutrino flavour at the
 detector:
@@ -535,7 +535,7 @@ will be discussed.
 
 After this final stage, all key features of a real experiment (triggering,
 event selection, reconstruction, and flavour identification) have been taken
-into account, and the analysis histograms are our best estimate of the outcome
+into account, and the analysis histograms are the best estimate of the outcome
 of an actual PINGU physics run. Example histograms after this final step, also
 referred to as analysis histograms, are shown in the bottom row of
 Fig.~\ref{fig:SimSteps} and will also be used throughout Chapter \ref{sec:ana}

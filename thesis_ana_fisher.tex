@@ -4,7 +4,7 @@
 %==============================================================================
 
 Now that the tools and theoretical foundations needed for the simulation of an
-PINGU physics run have been presented and described, we can move on to the
+PINGU physics run have been presented and described, the next step is the
 actual calculation of PINGU's physics capabilities, in particular its
 sensitivity for the neutrino mass hierarchy. This will be done using the Fisher
 information matrix, a tool to quickly evaluate the covariance matrix of an
@@ -14,9 +14,10 @@ into account, which will be introduced in Sec.~\ref{sec:fisher}.
 Thereafter, the simulation input that was used for the generation of the
 results is documented (Sec.~\ref{sec:sim_input}) before finally the results
 themselves can be presented and discussed in Sec.~\ref{sec:results_baseline}.
-Looking even more into the future, in Sec.~\ref{sec:om_effects} we will estimate
+Looking even more into the future, in Sec.~\ref{sec:om_effects} 
 the possible benefits of instrumenting PINGU with the next generation optical
-modules described in Sec.~\ref{sec:Gen2DOM}. Finally, we will make use of the
+modules described in Sec.~\ref{sec:Gen2DOM} will be estimated. Finally, one can
+make use of the
 Fisher matrix's ability to easily combine the results of different experiments
 measuring the same physical effect to evaluate the benefits gained from the
 joint analysis of PINGU and other neutrino oscillation experiments, in
@@ -42,8 +43,8 @@ The experiment that is to be modelled is characterised by two sets of variables:
   binned in energy and zenith angle. Since the partial derivatives of the
   observables \wrt the parameters enter the calculation of the Fisher matrix,
   their dependence on the parameters has to be known either analytically or (as
-  in our case) from simulations, such that these derivatives can be determined
-  in an analytical or numerical way.
+  in this analysis) from simulations, such that these derivatives can be
+  determined in an analytical or numerical way.
  \item[Parameters] are the variables $p_i$ that will be extracted from the
   measurement (\ie from the observables). These are the physical parameters
   which are the actual target of the experiment as well as nuisance parameters
@@ -58,7 +59,7 @@ p_i} \frac{\partial f_n}
 \end{equation}
 Here the $\sigma_n$ denote the errors on the measurement of the observables.
 Since in this analysis, these are the expected numbers of events in the bins $n$
-of the analysis histograms (cf.\ Sec.~\ref{sec:papa_code}), $f_n = N_n$, we
+of the analysis histograms (cf.\ Sec.~\ref{sec:papa_code}), $f_n = N_n$, one
 can apply Poissonian statistics where the errors are simply given by the square
 root of the number of events:
 \begin{equation}
@@ -212,8 +213,8 @@ equivalent:
   distribution with the means taken from the expected event numbers generated
   with \papa.
 \end{enumerate}
-Since we do not need to explicitly construct the likelihood $\mathcal{L}$
-introduced in (\ref{eqn:fisher_llh}), we will only check for condition (a) to
+Since the likelihood $\mathcal{L}$ introduced in (\ref{eqn:fisher_llh}) does
+not need to be constructed explicitly, only condition (a) will be checked to
 be fulfilled. This validation can be found in App.~\ref{app:fisher_valid}.
 
 \subsection{The Hierarchy Parameter}
@@ -244,7 +245,7 @@ then given by
      \frac{(N_\mathrm{NH}-N_\mathrm{IH})^2}{N_\mathrm{NH}} }\quad.
 \end{equation}
 With the definition of $h$ according to (\ref{eqn:hierarchy_parameter}), from
-the Fisher Matrix we get the statistical error on $h$,
+the Fisher Matrix the statistical error on $h$ can be retrieved:
 \begin{equation}
  \sigma_h^\mathrm{stat} = \sqrt{\left(\mathcal{F}_{hh}\right)^{-1}} \quad,
 \end{equation}
