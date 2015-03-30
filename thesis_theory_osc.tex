@@ -407,6 +407,7 @@ following effective Hamiltonian in matter:
 where
 \begin{equation}
  A_\mathrm{CC} \equiv 2E\, V_\mathrm{CC} = 2 \sqrt{2}\,E \,G_F\,N_e \quad.
+ \label{eqn:mat_pot}
 \end{equation}
 Here it is very important to note that for antineutrinos the matter potential
 has the opposite sign. In particular, \nuebar will feel a charged current
@@ -450,6 +451,7 @@ The effective mass splitting is then given by
 \begin{equation}
  \dm{\mathrm{M}} = \sqrt{\left(\dm{}\cos 2\thet{} - A_\mathrm{CC}\right)^2
                          + \left(\dm{}\sin 2\thet{}\right)^2 } \quad,
+ \label{eqn:matter_massdiff}
 \end{equation}
 while
 \begin{equation}
@@ -500,10 +502,50 @@ observe a MSW resonance either in the atmospheric neutrino or antineutrino
 channel \cite{Akhmedov, LoI}. The details of this measurement will be discussed
 in Sec.~\ref{sec:PINGUosc}.
 
-\subsection{Parametric Resonances}
+\subsection{Parametric Enhancement}
 \label{sec:ParamRes}
 
+\begin{figure}[th]
+ \centering
+ \includegraphics[width=0.7\textwidth]{PREM}
+ \caption{The PREM Earth density profile \cite{PREM}.}
+ \label{fig:PREM}
+\end{figure}
 
+Another feature of neutrino oscillations in matter are parametric enhancements. 
+In contrast to MSW resonances, they depend on the shape of the matter potential 
+rather than its actual value.
+
+As shown in Fig.~\ref{fig:PREM}, the density profile and hence the matter 
+potential of the Earth is characterised by to major regions: the core in the 
+centre, with a radius of $\approx 3500$\,km, surrounded by the 
+mantle\footnote{The Earth crust has a thickness of only a few tens of km and 
+can thus be neglected.}. Within these regions, the density is rather constant 
+at $\approx 11$\,g/cm$^3$ and $\approx 5$\,g/cm$^3$, respectively, while at the 
+transition between the regions the density changes by almost a factor of two 
+quasi instantaneously. 
+
+Thus for atmospheric neutrinos crossing the Earth, the matter potential can be 
+approximated by a so-called ``castle-wall'' profile with good precision: First 
+the neutrinos will experience a constant potential $A_\mathrm{CC}^m$ for a 
+distance $l_m$ while passing through the mantle, with $A_\mathrm{CC}^m$ given 
+by (\ref{eqn:mat_pot}) inserting the mean electron density in the mantle. 
+Thereafter, they traverse the core, represented by another constant potential 
+$A_\mathrm{CC}^c$ with a width of $l_c$, followed by a second crossing of the 
+mantle that is symmetric to the first one.
+
+\begin{figure}[th]
+ \centering
+ \includegraphics[width=0.5\textwidth]{ParamRes}
+ \caption{\nue disappearance probability (qualitatively) as a function of the 
+  distance $t$ (measured in units of the Earth's diameter) along the neutrino 
+  trajectory. Figure adopted from \cite{ParamRes2}.}
+ \label{fig:ParamRes}
+\end{figure}
+
+The principal resonance occurs if both $l_m$ and $l_c$ are close to half the
+oscillation length (\ref{eqn:osc_length}) for the effective mass splittings 
+(\ref{eqn:matter_massdiff}) in the respective regions \cite{ParamRes}. 
 
 \section{Oscillation Experiments}
 \label{sec:OscExp}
@@ -715,13 +757,6 @@ only on the neutrinos' energies, but also on the zenith angle at which they
 arrive, since this determines the distance travelled since their production in
 the Earth's atmosphere as well as the amount of matter traversed on their way
 through the Earth.
-
-\begin{figure}[th]
- \centering
- \includegraphics[width=0.7\textwidth]{PREM}
- \caption{The PREM Earth density profile \cite{PREM}.}
- \label{fig:PREM}
-\end{figure}
 
 In Figs.~\ref{fig:nue_to_numu} and \ref{fig:numu_to_numu}, the oscillation
 probabilities for \nue to \numu and \numu to \numu are shown as examples. They
