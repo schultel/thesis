@@ -24,8 +24,8 @@ As one can see from Figs.~\ref{fig:nonlinearities1} and
 \ref{fig:nonlinearities2}, for the simple scaling parameters like the mass
 hierarchy $h$ or the overall normalisation $n_\aeff$ non-linearities are on the
 order of the machine precision. But also for the physics parameters they are
-typically smaller than $10^{-3}$, hence the requirement of linearity is well
-fulfilled.
+typically smaller than $10^{-3}$, hence the requirement of linearity (condition
+(a) in Sec.~\ref{sec:fisher_prereq}) is well fulfilled.
 
 For means of illustration, the actual dependence of all bin entries on the
 systematic parameters is shown as well. By eye, deviations from linearity can
@@ -62,21 +62,25 @@ uncertainty range.
  \label{fig:nonlinearities2}
 \end{figure}
 
-\clearpage
+% \clearpage
 \section*{\refstepcounter{section}\thesection\enskip Comparison to a 
 Log-Likelihood Ratio Method}
 \label{app:LLR}
 
 On the other hand, the test statistics of the experimental outcome is required
-to be Gaussian. To demonstrate that this is in fact fulfilled, templates of the
-expected bin counts for one year of lifetime have been created on a full 2D grid
-in \dm{31} and \thet{23} for both normal and inverted hierarchy. One of the
-templates was chosen as ``truth'' to draw Poissonian pseudo experiments from.
-For each of the pseudo experiments $X$, the Log-Likelihood Ratio between normal
-and inverted hierarchy was calculated according to
+to be Gaussian (condition (c) in Sec.~\ref{sec:fisher_prereq}). To demonstrate
+that this is in fact fulfilled, templates of the expected bin counts for one
+year of lifetime\footnote{This study has been done using the detector
+parametrisation for the outdated geometry V15. However, here the goal is to
+verify the method as such, thus the exact description of the detector is not
+relevant as long as it is not completely unrealistic.} have been created on a
+full 2D grid in \dm{31} and \thet{23} for both normal and inverted hierarchy.
+One of the templates was chosen as ``truth'' to draw Poissonian pseudo
+experiments from. For each of the pseudo experiments $X$, the Log-Likelihood
+Ratio between normal and inverted hierarchy was calculated according to
 \begin{equation}
  \mathrm{LLR} =
-  -\log\frac{\mathcal{L}(X\,|\,\mathrm{IH})}{\mathcal{L}(X\,|\,\mathrm{NH})}
+-\log_{10}\frac{\mathcal{L}(X\,|\,\mathrm{IH})}{\mathcal{L}(X\,|\,\mathrm{NH})}
  \quad .
  \label{eqn:LLR}
 \end{equation}
@@ -100,20 +104,36 @@ the LLR distributions: Taking the median LLR value for NH (dashed vertical line
 in Fig.~\ref{fig:test_statistic}) and integrating over the IH distribution from
 this value upwards (hatched area) results in a one-sided p-value of 2.7\,\%,
 corresponding to a significance of 1.922\,$\sigma$. Evaluating the Fisher
-Matrix on the same data, with only $\Delta m^2_{31}$ and $\vartheta_{23}$ as
-systematic parameters and without any priors, gives a consistent significance
-of 1.923\,$\sigma$.
+Matrix on the same data (see below), with only $\Delta m^2_{31}$ and
+$\vartheta_{23}$ as systematic parameters and without any priors, gives a
+consistent significance of 1.923\,$\sigma$.
 
 \begin{figure}[hbtp]
  \centering
- \includegraphics[width=0.7\linewidth]{LLR_distribution}
- \caption{Test statistic for PINGU with 10000 pseudo experiments thrown
-          for each NH and IH as assumed truth. A Gaussian fit to the NH
+ \subfloat[\label{fig:test_statistic}]
+  {\includegraphics[width=0.495\linewidth]{LLR_distribution}}
+ \subfloat[\label{fig:LLH_landscape}]
+  {\includegraphics[width=0.495\linewidth]{LLHvals_IH}}
+ \caption{(a)\enskip Test statistic for PINGU with $10^4$ pseudo experiments
+          thrown for each NH and IH as assumed truth. A Gaussian fit to the NH
           distribution and its median value are indicated by the solid and
-          dashed lines, respectively.}
- \label{fig:test_statistic}
+          dashed lines, respectively. \\
+          (b)\enskip Grid scan of the log-likelihood landscape for \dm{31} (IH)
+          and \thet{23}, overlaid with the 68\,\% CL ellipse calculated with the
+          Fisher Matrix from the highlighted row and column. The star marks the
+          injected truth.}
+ \label{fig:LLR_plots}
 \end{figure}
 
+When looking at the likelihood landscape itself (Fig.~\ref{fig:LLH_landscape}),
+the shape of the minimum in the (\dm{31}, \thet{23}) plane is approximately
+elliptical, so condition (b) in Sec.~\ref{sec:fisher_prereq} is fulfilled as
+well. From the slices through the parameter space corresponding to the injected
+true values of \dm{31} and \thet{23}, highlighted in the figure, and the
+corresponding best fit point for inverted hierarchy, a Fisher matrix can be
+constructed. The 1\,$\sigma$ error ellipse retrieved from this matrix aligns
+well with the true shape of the likelihood landscape, hence the Fisher matrix
+gives a precise description of the problem.
 
 \chapter{Oscillation Probabilities}
 \label{app:oscillation}
