@@ -496,7 +496,8 @@ the oscillation of solar neutrinos, \dm{21}, has a positive sign.
 
 In the planned PINGU experiment (for details, see Sec.~\ref{sec:PINGU}), a
 similar measurement is envisaged to determine the sign of the other mass
-splitting \dm{31}, which will be referred to as ``Neutrino Mass Hierarchy'' in
+splitting \dm{31}, which will be referred to as ``Neutrino Mass Hierarchy''
+(NMH) in
 the following. Here the matter potential of the Earth will be used to
 observe a MSW resonance either in the atmospheric neutrino or antineutrino
 channel \cite{Akhmedov, LoI}. The details of this measurement will be discussed
@@ -553,14 +554,32 @@ fits. The effect in general, however, is the same for more up-to-date values.}
 The principal resonance occurs if both $l_m$ and $l_c$ are close to half the
 oscillation length (\ref{eqn:osc_length}) for the effective mass splittings 
 (\ref{eqn:matter_massdiff}) in the respective regions \cite{ParamRes,
-ParamRes2}. This can be achieved by choosing an appropriate zenith angle at
-which the neutrinos pass through the Earth. Then the transition probability is
-close to its maximum when the neutrinos cross the border between mantle and
-core, as shown in Fig.~\ref{fig:ParamRes}.
-% At this point, the matter potential changes, thus the neutrino state has to be
-% projected into the flavour base in which interactions have to be evaluated.
-At this point, the ...
-% TODO: finish!
+ParamRes2}:
+\begin{equation}
+ \frac{l_m}{L^\mathrm{osc}_m} = \frac{l_c}{L^\mathrm{osc}_c} = \frac{1}{2}
+\end{equation}
+This can be achieved by choosing an appropriate zenith angle at
+which the neutrinos pass through the Earth.
+
+Although the actual calculation of the oscillation probability is rather
+involved \cite{ParamRes2}, the principal effect can be understood qualitatively:
+The transition probability is close to its maximum when the neutrinos cross the
+border between mantle and core, as shown in Fig.~\ref{fig:ParamRes}.
+At this point, the matter potential changes, thus the neutrino state has to be
+projected into the flavour base in which interactions have to be evaluated.
+This re-sets the effective propagation length the neutrinos have travelled to
+zero, such that the oscillation probability does not decrease after reaching
+its maximum in the first region. Instead, the oscillation is ``restarted'' and
+the oscillation probability in the second region is added to the one at the
+transition between the regions. The same happens at the second region
+transition, back from the core to the mantle, hence the final oscillation
+probability after passing through the Earth is vastly enhanced \wrt the
+non-resonance case.
+
+These parametric enhancements depend on the neutrino mass hierarchy in the same
+way as the MSW resonance, so they will also contribute to the NMH signature to
+observe with PINGU, yet on a smaller scale than said resonance as it will be
+shown in Sec.~\ref{sec:PINGUosc}.
 
 \section{Oscillation Experiments}
 \label{sec:OscExp}
@@ -700,16 +719,14 @@ hierarchy (IH). This is illustrated in Fig.~\ref{fig:NMH}.
 
 Since only two of the neutrino mass splittings are independent, Fogli et al.\
 choose to do their analysis in terms of one small and one large mass splitting:
-\begin{equation}
- \delta m^2 \equiv m_2^2 - m_1^2 = \dm{21} > 0
-\end{equation}
-\begin{equation}
- \dm{} \equiv m_3^2 - \left(m_2^2 + m_1^2\right)/2 = \frac{\dm{31}+\dm{32}}{2}
+\begin{eqnarray}
+ \delta m^2 &\equiv& m_2^2 - m_1^2 = \dm{21} > 0 \\
+ \dm{} &\equiv& m_3^2 - \left(m_2^2 + m_1^2\right)/2 = \frac{\dm{31}+\dm{32}}{2}
    = \dm{31} - \dm{21}/2 \quad
    \begin{cases}
     \quad > 0 &\mbox{for NH} \\ \quad < 0 &\mbox{for IH}
    \end{cases}
-\end{equation}
+\end{eqnarray}
 The values and $1\sigma$ ranges given in \cite{Fogli2012} for $\delta m^2$,
 \dm{}, \sinsq{\thet{12}}, \sinsq{\thet{23}}. and \sinsq{\thet{13}} have to be
 converted to \dm{21} and \dm{31} and the values of the mixing angles in degrees
@@ -718,7 +735,7 @@ survival probabilities. These values, which will be used as the \emph{fiducial}
 oscillation parameters, are listed in Tab.~\ref{tab:fiducial_osc}. The CP
 violating phase $\delta_\mathrm{CP}$ is set to zero.
 
-\begin{table}
+\begin{table}[bht]
 \caption{Fiducial values of the oscillation parameters, according to Fogli et
 al., used throughout this thesis.}
 \label{tab:fiducial_osc}
@@ -746,6 +763,7 @@ directly, but rather \sinsq{2\thet{23}}, which is symmetric about \ang{45}.
 Yet PINGU has good sensitivity to the octant of \thet{23}, and in addition the
 significance of its hierarchy measurement is enhanced if $\thet{23} >
 \ang{45}$, as one will see in Sec.~\ref{sec:results_octant}.
+\enlargethispage{\baselineskip}
 
 \section{Mass Hierarchy Signature in PINGU}
 \label{sec:PINGUosc}
