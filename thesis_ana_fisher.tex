@@ -213,9 +213,16 @@ equivalent:
   distribution with the means taken from the expected event numbers generated
   with \papa.
 \end{enumerate}
-Since the likelihood $\mathcal{L}$ introduced in (\ref{eqn:fisher_llh}) does
-not need to be constructed explicitly, only condition (a) will be checked to
-be fulfilled. This validation can be found in App.~\ref{app:fisher_valid}.
+% Since the likelihood $\mathcal{L}$ introduced in (\ref{eqn:fisher_llh}) does
+% not need to be constructed explicitly, only condition (a) will be checked to
+% be fulfilled. This validation can be found in App.~\ref{app:fisher_valid}.
+That these conditions are, in fact, fulfilled for the baseline settings of
+PINGU is demonstrated in App.~\ref{app:fisher_valid}. As for conditions (b)
+and (c) this would require a likelihood evaluation of the full parameter
+space\footnote{This is not possible within reasonable computing time, which is
+why the Fisher Matrix approach has been chosen in the first place.}, here the
+validation is restricted to a case with only two systematic parameters, \dm{31}
+and \thet{23}.
 
 \subsection{The Hierarchy Parameter}
 \label{sec:fisher_hierarchy}

@@ -62,10 +62,57 @@ uncertainty range.
  \label{fig:nonlinearities2}
 \end{figure}
 
+\clearpage
 \section*{\refstepcounter{section}\thesection\enskip Comparison to a 
 Log-Likelihood Ratio Method}
 \label{app:LLR}
 
+On the other hand, the test statistics of the experimental outcome is required
+to be Gaussian. To demonstrate that this is in fact fulfilled, templates of the
+expected bin counts for one year of lifetime have been created on a full 2D grid
+in \dm{31} and \thet{23} for both normal and inverted hierarchy. One of the
+templates was chosen as ``truth'' to draw Poissonian pseudo experiments from.
+For each of the pseudo experiments $X$, the Log-Likelihood Ratio between normal
+and inverted hierarchy was calculated according to
+\begin{equation}
+ \mathrm{LLR} =
+  -\log\frac{\mathcal{L}(X\,|\,\mathrm{IH})}{\mathcal{L}(X\,|\,\mathrm{NH})}
+ \quad .
+ \label{eqn:LLR}
+\end{equation}
+Here, $\mathcal{L}(X\,|\,\mathrm{IH})$ is the maximum Poissonian likelihood for
+comparing the pseudo experiment $X = (n_1,\,n_2,\,\dots)$ to all templates $T
+= (\mu_1,\,\mu_2,\,\dots)$ generated for the normal mass hierarchy:
+\begin{equation}
+ \mathcal{L}(X\,|\,\mathrm{IH}) = \max_{T\,\in\,\mathrm{IH}}
+     \prod_{i\,\in\,\mathrm{bins}} \frac{\mu_i^{n_i}}{n_i !} e^{-\mu_i}
+\end{equation}
+$\mathcal{L}(X\,|\,\mathrm{NH})$ is calculated equivalently for the normal
+hierarchy.
+
+As shown in Fig.~\ref{fig:test_statistic},
+% and independently in \cite{Blennow},
+the test statistics is well described by a Gaussian distribution for both
+hierarchies.
+
+Additionally, a median significance of the NMH measurement can be derived from
+the LLR distributions: Taking the median LLR value for NH (dashed vertical line
+in Fig.~\ref{fig:test_statistic}) and integrating over the IH distribution from
+this value upwards (hatched area) results in a one-sided p-value of 2.7\,\%,
+corresponding to a significance of 1.922\,$\sigma$. Evaluating the Fisher
+Matrix on the same data, with only $\Delta m^2_{31}$ and $\vartheta_{23}$ as
+systematic parameters and without any priors, gives a consistent significance
+of 1.923\,$\sigma$.
+
+\begin{figure}[hbtp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{LLR_distribution}
+ \caption{Test statistic for PINGU with 10000 pseudo experiments thrown
+          for each NH and IH as assumed truth. A Gaussian fit to the NH
+          distribution and its median value are indicated by the solid and
+          dashed lines, respectively.}
+ \label{fig:test_statistic}
+\end{figure}
 
 
 \chapter{Oscillation Probabilities}
