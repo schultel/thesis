@@ -827,9 +827,9 @@ of these next-generation modules will be investigated.
 \begin{figure}
 \centering
   \subfloat[\label{fig:mDOM}]
-    {\includegraphics[height=7cm]{mDOM_cropped}}\qquad
+    {\includegraphics[height=6cm]{mDOM_cropped}}\qquad
   \subfloat[\label{fig:WOM}]
-    {\includegraphics[height=7cm]{WOM}}
+    {\includegraphics[height=6cm]{WOM}}
   \caption{The \protect\subref{fig:mDOM} mDOM and \protect\subref{fig:WOM} WOM
     module concepts. Graphics taken from \cite{mDOM_Geneva} and \cite{WOM_ICRC},
     respectively.}
@@ -870,6 +870,12 @@ of these next-generation modules will be investigated.
 % statistics, while in the former the larger sensitive area gets eaten up by the
 % fact that only multiple photon hits on the same module are counted.
 
+A description of the wavelength-shifting optical module including estimates of
+its photon detection capabilities has already been published as a conference
+contribution \cite{WOM_ICRC}, with the author of this thesis as main author.
+Thus this section will closely follow said publication, with updated plots and
+figures reflecting recent findings.
+
 The main idea of the WOM is to increase the sensitive area of a PMT by using 
 passive components that act as light collectors and concentrators (a sketch of 
 the module design is shown in Fig.~\ref{fig:WOM}). Due to Liouville's theorem, 
@@ -899,8 +905,8 @@ contact to the surroundings usually is desirable to gather as many photons as
 possible, in our case a large difference in refractive index is needed to
 achieve efficient total internal reflection.
 
-The three most important components of the WOM, for which we will discuss 
-details of their properties, are:
+The three most important components of the WOM, for which details of their
+properties will be discussed, are:
 
 \begin{itemize}
  \item the pressure housing
@@ -950,7 +956,7 @@ individual parts have to be combined:
 \item[Photon capture efficiency]
  \begin{figure}[t]
   \centering
-%   \includegraphics[width=0.5\textwidth]{icrc2013-0857-02}
+   \includegraphics[width=0.7\textwidth]{capture_eff_tube_with_spectrum}
   \caption{Capture efficiency and output spectrum of a 20\,mm diameter fused 
     quartz glass tube coated with EJ-298 wavelength-shifting paint.}
   \label{fig:capture_eff}
@@ -968,7 +974,7 @@ of wavelength are shown in Fig.~\ref{fig:capture_eff} for the 20\,mm sample
 described in the previous section. For the 5\,mm sample, the results are 
 identical within the precision of the measurement.
 
-The peak efficiency of $\approx$\,50\,\% has to be compared to the theoretical 
+The peak efficiency of $\approx$\,23\,\% has to be compared to the theoretical
 maximum, which, assuming that all incoming photons are absorbed by the active 
 dye and then re-emitted isotropically with 100\,\% quantum efficiency, and
 ignoring any transport loss, is given by the fraction of solid angle where total 
@@ -979,11 +985,13 @@ internal reflection occurs:
 \approx 75\,\%\quad.
 \end{equation}
 
-The decrease in efficiency down to $\approx$\,20\,\% below 350\,nm is assumed to 
+The decrease in efficiency down to $\approx$\,8\,\% below 350\,nm is assumed to
 be due to re-absorption and/or UV absorption inside the PVT base of the paint. 
 This should be reducible by thinning the paint layer and future R\&D for
 the dye. An improved production scheme allowing for thinner layers is under 
-development.
+development, and first studies with custom-made paint mixtures combining
+several dyes that are active in different wavelength regimes have been done
+\cite{DustinMaster}.
 
 \item[PMT readout efficiency]
 To account for the fact that the captured photons coming out at either end of 
@@ -996,24 +1004,38 @@ their R7600-EG prototype \cite{hamamatsu}, the readout efficiency can be
 calculated to be $\varepsilon_\mathrm{PMT} = 30.8\,\%$.
 
 \item[Angular efficiency]
-\begin{figure}[bht]
-  \centering
-%   \includegraphics[width=0.5\textwidth]{figures/ang_eff_both}
-%   \includegraphics[width=0.5\textwidth]{icrc2013-0857-03}
-  \caption{Relative angular acceptance of WOM and IceCube DOM.}
-  \label{fig:angular_eff}
+% \begin{figure}[bht]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{ang_eff_both}
+% %   \includegraphics[width=0.5\textwidth]{icrc2013-0857-03}
+%   \caption{Relative angular acceptance of WOM and IceCube DOM.}
+%   \label{fig:angular_eff}
+% \end{figure}
+
+\begin{figure}[htb]
+\centering
+  \subfloat[\label{fig:angular_eff}]
+    {\includegraphics[width=0.495\textwidth]{ang_eff_both}}
+  \subfloat[\label{fig:full_eff}]
+    {\includegraphics[width=0.495\textwidth]{all_modules_QE}}
+  \caption{Relative angular acceptance \protect\subref{fig:angular_eff} and full
+    module photo-detection efficiency at optimal illumination angle
+    \protect\subref{fig:full_eff} of WOM and IceCube DOM.}
+\label{fig:WOM_DOM_effs}
 \end{figure}
 
+
 The angular acceptance $\varepsilon_\Omega$ of the WOM can be calculated with 
-Fresnel's equations. Assuming a homogeneous, parallel bundle of light incident 
-onto the WOM at an angle $\vartheta$ \wrt its longitudinal (\ie vertical) axis. 
-The acceptance at this angle is calculated by integrating the transmission 
-probability from ice ($n=1.33$) through glass ($n=1.48$) into air ($n=1.0$) over 
-the whole visible surface of the WOM, including the fact that the WOM appears 
-shortened by a factor of $\sin(\vartheta)$ at angles different from $90^\circ$. 
-Note that this only covers the propagation of photons from the surrounding ice 
-into the air gap, since the penetration from air into the actual 
-wavelength-shifting tube is included in the capture efficiency described above.
+Fresnel's equations. For this a homogeneous, parallel bundle of light incident
+onto the WOM at an angle $\theta$ \wrt its longitudinal (\ie vertical) axis is
+assumed. The acceptance at this angle can be calculated by integrating the
+transmission probability from ice ($n=1.33$) through glass ($n=1.48$) into air
+($n=1.0$) over the whole visible surface of the WOM, including the fact that the
+WOM appears shortened by a factor of $\sin(\theta)$ at angles different from
+$90^\circ$. Note that this only covers the propagation of photons from the
+surrounding ice into the air gap, since the penetration from air into the
+actual wavelength-shifting tube is included in the measured capture efficiency
+which was described above.
 
 In Fig.~\ref{fig:angular_eff} the relative acceptance is shown \wrt the maximum 
 for the WOM and an IceCube Digital Optical Module (DOM), the photosensor module 
@@ -1026,14 +1048,14 @@ $\bar\varepsilon_\Omega(\mathrm{DOM}) = 34.1\,\%$, respectively.
 
 \end{description}
 
-\begin{figure}[tbh]
-  \centering
-%   \includegraphics[width=0.5\textwidth]{figures/all_modules_QE}
-%   \includegraphics[width=0.5\textwidth]{icrc2013-0857-04}
-  \caption{Full module photo-detection efficiency of WOM and IceCube DOM at 
-optimal illumination angles.}
-  \label{fig:full_eff}
-\end{figure}
+% \begin{figure}[tbh]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{all_modules_QE}
+% %   \includegraphics[width=0.5\textwidth]{icrc2013-0857-04}
+%   \caption{Full module photo-detection efficiency of WOM and IceCube DOM at 
+% optimal illumination angles.}
+%   \label{fig:full_eff}
+% \end{figure}
 
 Now to obtain the detection efficiency of the fully assembled module, the three 
 efficiencies discussed above, $CE$, $\varepsilon_\mathrm{PMT}$, and 
@@ -1042,15 +1064,14 @@ $\varepsilon_\Omega$, have to be multiplied:
  ME(\lambda) = \varepsilon_\Omega(\mathrm{max}) \cdot \varepsilon_\mathrm{PMT} 
 \cdot CE(\lambda)\quad.
 \end{equation}
-
-The result, assuming optimal illumination (i.e.\ $\vartheta=90^\circ$), is shown 
-in Fig.~\ref{fig:full_eff}, compared to the efficiency of an IceCube DOM at its 
-optimal illumination angle ($\vartheta=0^\circ$).
+The result, assuming optimal illumination (i.e.\ $\vartheta=90^\circ$), is
+shown in Fig.~\ref{fig:full_eff}, compared to the efficiency of an IceCube DOM
+at its optimal illumination angle ($\vartheta=0^\circ$).
 
 Comparing the module efficiencies of WOM and IceCube DOM in 
-Figs.~\ref{fig:angular_eff} and \ref{fig:full_eff}, at first sight the WOM only 
-provides a moderate improvement in photon collection efficiency. However, one 
-has to keep two things in mind:
+Figs.~\ref{fig:angular_eff} and \ref{fig:full_eff}, at first sight the WOM does
+not provide an improvement in photon collection efficiency. However, one has to
+keep two things in mind:
 
 First, the WOM can be produced in a very large size since its size-critical 
 components are just two glass tubes (pressure vessel and WLS painted inner 
@@ -1059,28 +1080,6 @@ by the size of the enclosed PMT which can hardly be pushed much further at
 reasonable cost\footnote{This is mostly due to the deployment in the antarctic 
 glacier: Larger spherical DOMs need larger diameter drill holes, dramatically 
 increasing the costs for drilling.}.
-
-\begin{table}[tbh]
-\begin{center}
-\begin{tabular}{ccccc}
-\toprule
-Module & $\overline{ME}$ & $\bar\varepsilon_\Omega$ & Eff. Area     & Noise      
-       \\ 
-\midrule
-WOM    & 4.40\,\%        & 57.5\,\%                 & 101\,cm$^2$   & 
-$\approx$\,10\,Hz \\ 
-DOM    & 5.36\,\%        & 34.1\,\%                 & 12.9\,cm$^2$  & 800\,Hz    
-       \\
-% \midrule
-% 300 --  & WOM    & 4.39\,\%  & 101\,cm$^2$   & $\approx$\,10\,Hz \\ 
-% 600\,nm & DOM    & 7.10\,\%  & 18.0\,cm$^2$  & 800\,Hz           \\ 
-\bottomrule
-\end{tabular}
-\caption{Comparison of WOM and IceCube DOM properties for a Cherenkov spectrum 
-between 250 and 600\,nm.}
-\label{tab:comparison}
-\end{center}
-\end{table}
 
 Second, the WOM is more sensitive in the UV below $\approx$\,370\,nm. As the 
 photons that are to be detected stem from Cherenkov radiation, their spectrum is 
@@ -1096,13 +1095,25 @@ calculating the mean module efficiency
 the performance of the WOM improves significantly \wrt the IceCube DOM.
 
 Assuming a WOM with a diameter of 20\,cm and a length of 2\,m as above and, for 
-comparison, a DOM with 30\,cm diameter \cite{ICdom}, convolving both with a 
-Cherenkov spectrum between 250 and 600\,nm, we can now calculate the full 
-effective area of WOM and DOM for an isotropic flux. The results are shown in 
-Tab.~\ref{tab:comparison}.
-% where we also include the same calculation for a Cherenkov spectrum between 
-% 300 and 600\,nm, corresponding to the
-% established IceCube metric.
+comparison, a DOM with 30\,cm diameter \cite{ICdom}, one can now calculate the
+full effective area of WOM and DOM for an isotropic Cherenkov spectrum between
+250 and 600\,nm. The results are shown in Tab.~\ref{tab:comparison}.
+
+\begin{table}[tbh]
+\caption{Comparison of WOM and IceCube DOM properties for a Cherenkov spectrum
+between 250 and 600\,nm.}
+\label{tab:comparison}
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+Module & $\overline{ME}$ & $\bar\varepsilon_\Omega$ & Eff. Area     & Noise  \\
+\midrule
+WOM    & 1.57\,\%        & 57.5\,\%      & 36.1\,cm$^2$   & $\approx$\,10\,Hz \\
+DOM    & 5.36\,\%        & 34.1\,\%      & 12.9\,cm$^2$   & 800\,Hz           \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
 
 So in terms of total effective area, 
 \begin{equation}
@@ -1110,18 +1121,24 @@ So in terms of total effective area,
 A_\mathrm{xsec}\quad,
 \end{equation}
 one WOM with a cross-section of $A_\mathrm{xsec} = 2 R L = 4000$\,cm$^2$ is the 
-equivalent of about eight IceCube DOMs ($A_\mathrm{xsec} = 707$\,cm$^2$). If one 
-would reduce the considered wavelength range to 300\,--\,600\,nm, the mean
-module efficiency increases by about 40\,\% for the DOM (since its ``blind'' 
-regime below 300\,nm does not enter in the calculation), while for the WOM it 
-remains essentially constant.
+equivalent of about three IceCube DOMs ($A_\mathrm{xsec} = 707$\,cm$^2$).
+% If one would reduce the considered wavelength range to 300\,--\,600\,nm, the
+% mean module efficiency increases by about 40\,\% for the DOM (since its
+% ``blind'' regime below 300\,nm does not enter in the calculation), while for the
+% WOM it remains essentially constant.
 
 In summary, the WOM concept offers a technological solution to obtain a 
-large area single photon sensor with exceptionally low noise rate. Future work 
-will concentrate on the optimization of the film coating, the choice of dyes,
+large area single photon sensor with exceptionally low noise rate. First
+measurements with off-the-shelf components already show promising results, yet
+the photon sensitivity of the module should be improvable especially in the UV
+range where the Cherenkov spectrum is peaked. This can be achieved by adding
+UV-active dyes to the paint mixture and improving the overall sample quality,
+avoiding the loss of already captured photons. Thus, future work
+will concentrate on the optimisation of the film coating, the choice of dyes,
 as well as on the proof of long term stability and large scale expandability.
-
-
+In the long term, the WOM technology is expected to enhance the number of
+detected photons per event by a factor of a few compared to the DOMs used in
+IceCube and PINGU.
 
 
 \subsection{Multi-PMT Optical Module (mDOM)}
