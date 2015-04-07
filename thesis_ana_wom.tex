@@ -113,6 +113,34 @@ increased by the factor \phfac:
  \sigma'_{\cos\theta}(E) = \sigma_{\cos\theta}(\phfac\cdot E) \quad.
 \end{equation}
 
+In addition, the threshold for passing PINGU's event selection is expected to
+become lower with an increasing number of photons per neutrino energy,
+enhancing the event statistics at low energy. This effect is mimicked by scaling
+the effective area at a given energy $E$ by the ratio of the selection
+efficiencies $\varepsilon_\mathrm{sel}$ (as shown in
+Fig.~\ref{fig:selection_eff}) at $E$ and $\phfac \cdot E$:
+\begin{equation}
+ \aeff'(E) = \aeff(E) \cdot \frac{\varepsilon_\mathrm{sel}(\phfac\cdot E)}
+                                 {\varepsilon_\mathrm{sel}(E)}
+\end{equation}
+The scaling is applied for all flavours except from \nutau and \nutaubar CC
+events as there the main feature is the kinematic cutoff due to the large mass
+of the tau lepton (cf.\ Sec.~\ref{sec:cuts_step2}), which of course is
+independent from the performance of the optical modules used in the detector.
+
+This gives a conservative estimate as only effects after the actual triggering
+of the detector are taken into account. Since the trigger condition essentially
+is a certain number of photon hits being registered within a short time window,
+the trigger threshold itself does sink as well, enhancing the overall effect.
+Yet as the available amount of MC events before triggering is insufficient to
+quantify this, the lower trigger threshold will be neglected.
+
+Finally, a similar reasoning can be applied for the particle identification
+efficiency, thus the PID functions will be read off at the scaled energy as
+well:
+\begin{equation}
+ P'_\mathrm{PID}(E) = P'_\mathrm{PID}(\phfac\cdot E)
+\end{equation}
 
 \begin{figure}[thp]
  \centering

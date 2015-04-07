@@ -715,6 +715,14 @@ recognised and removed in the first step. The reference reconstruction for the
 following cuts is the MultiNest reconstruction (Sec.~\ref{sec:reco_multinest})
 that has been run on all events passing the first stage of cuts.
 
+\begin{figure}
+ \centering
+ \includegraphics[width=0.7\textwidth]{selection_eff}
+  \caption{Selection efficiency for events of all interaction channels with
+    contained true vertices.}
+  \label{fig:selection_eff}
+\end{figure}
+
 \begin{description}
  \item[$\mathbf{-500}$\,m $\mathbf{< z_\mathrm{vertex} < -180}$\,m:] The upper
   boundary of the vertical containment, as shown in
@@ -743,6 +751,33 @@ that has been run on all events passing the first stage of cuts.
   atmospheric neutrino flux or to estimate the remaining background
   contamination at the final cut level.
 \end{description}
+
+The probability of passing all these cuts apart from the final directional cut
+is shown as a function of neutrino energy in Fig.~\ref{fig:selection_eff} for
+events whose true interaction vertex is inside PINGU's fiducial volume as
+defined by the containment cuts above. \nue and \nuebar events show the typical
+behaviour with a steady rise at low energies that reaches a plateau of $\approx
+85\,\%$ efficiency slightly below 10\,GeV. \numu and \numubar events behave
+similarly at low energies, but above $\approx 20$\,GeV the selection efficiency
+starts to decrease again as the event topology becomes less and less point-like
+with increasing energy of the outgoing muon. The prominent muon track increases
+the event's probability to fail especially the cuts on C2QR6 and $t_{90\,\%}$
+described in Sec.~\ref{sec:cuts_step1}. For \nutau and \nutaubar events, the
+most prominent feature is the sharp cutoff at $\approx 3.5$\,GeV. This is of
+kinematic nature, as a tau lepton with a rest mass of 1.78\,GeV \cite{PDG} has
+to be produced in the interaction between a massless neutrino and a nucleon at
+rest. Due to baryon number conservation, a nucleon has to be present in the
+final state as well, which leads to the following threshold energy (assuming a
+proton in both initial and final state):
+\begin{eqnarray}
+ s &=& m_p^2 + 2 E_\nu m_p \overset{!}{=} (m_\tau + m_p)^2 \\
+ \Rightarrow E_\nu &=& \frac{(m_\tau + m_p)^2 - m_p^2}{2 m_p} =
+  3.46\,\mathrm{GeV}
+\end{eqnarray}
+Neutral current events of all flavours finally show a behaviour similar
+behaviour as \nue and \nuebar CC events as they correspond point-like emissions
+of light as well, yet their turn-on until the efficiency plateau is reached is
+much slower due to the missing energy carried away by the outgoing neutrino.
 
 \subsection{Particle Flavour Identification}
 \label{sec:cuts_PID}
