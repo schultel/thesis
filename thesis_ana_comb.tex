@@ -395,3 +395,47 @@ precision.
   JUNO.}
  \label{fig:AtmoParamsWithJUNO}
 \end{figure}
+
+\FloatBarrier
+
+\section{Summary}
+\label{sec:ana_summary}
+
+In this chapter, PINGU's sensitivity to the neutrino oscillation parameters,
+especially the neutrino mass hierarchy, has been studied in depth. The baseline
+detector parametrisation leads to a median significance of 2.9\,$\sigma$ after
+three years of data taking. Looking at the track and cascade channels
+separately, the individual significances are 1.3\,$\sigma$ and 1.9\,$\sigma$,
+respectively. This is a somewhat conservative estimate, and various effects
+increasing the expected significance have been explored in this chapter. These
+are summarised in Tab.~\ref{tab:sigma_summary}.
+
+\begin{table}
+\caption{Summary of the effects studied in this chapter and their impact on
+PINGU's sensitivity to the NMH, relative to the baseline settings.}
+\label{tab:sigma_summary}
+
+\centering
+
+\begin{tabularx}{\textwidth}{@{}lccccY@{}}
+\toprule
+Effect & Section & Combined & Tracks & Cascades & Note\\
+\midrule
+Octant of \thet{23} & \ref{sec:results_octant} &
+$+2.7\,\sigma$ & $+0.2\,\sigma$ & $+2.3\,\sigma$ &
+Fiducial value of \thet{23} mirrored at $45^\circ$ \\
+True normal NMH & \ref{sec:results_NHtrue} &
+$+0.2\,\sigma$ & $+0.0\,\sigma$ & $+0.2\,\sigma$ & \\
+Three-channel PID & \ref{sec:results_includeunkn} &
+$+0.2\,\sigma$ & $\pm0.0\,\sigma$ & $-0.4\,\sigma$ &
+Unidentified events contribute $1.3\,\sigma$ \hspace{3cm}
+Reference uses PID from geometry V15 \\
+PINGU built from mDOMs & \ref{sec:mdom_effect} &
+$+0.1\,\sigma$ & $+0.0\,\sigma$ & $+0.0\,\sigma$ & \\
+PINGU built from WOMs & \ref{sec:wom_effect} &
+$+0.9\,\sigma$ & $+0.9\,\sigma$ & $+0.8\,\sigma$ &
+Assuming doubled photon statistics \\
+\bottomrule
+\end{tabularx}
+
+\end{table} 

@@ -115,6 +115,13 @@
 \usepackage{placeins}
 % \usepackage{listing}
 %------------------------------------------------------------------------------
+% fancy tables
+\usepackage{tabularx}  % for 'tabularx' environment and 'X' column type
+\usepackage{ragged2e}  % for '\RaggedRight' macro (allows hyphenation)
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+% \newcommand{\specialcell}[2][c]{%
+%   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+%------------------------------------------------------------------------------
 % The following definitions are used to produce the title pages
 % needed at various stages
 \newcommand{\thesistitle}{Determining the Neutrino Mass Hierarchy with the
