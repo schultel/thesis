@@ -37,3 +37,52 @@ This also means that the asymmetry between the normal and inverted mass
 hierarchy cases grows with an increasing value of \thet{23}, such that the
 expected significance of the mass hierarchy measurement can reach 5\,$\sigma$
 and more if the true value of \thet{23} is in the second octant.
+The use of next-generation optical sensors---like the WOM concept, for which
+basic work has been done in the context of this thesis---can further enhance
+PINGU's performance by increasing the expected photon statistics per event and
+hence improving the detection threshold and reconstruction precision
+(Sec.~\ref{sec:om_effects}).
+
+Finally, in Sec.~\ref{sec:JUNO} a combined analysis of PINGU and JUNO, a medium
+baseline reactor neutrino experiment currently under construction, was done to
+explore possible synergies. Given the respective settings, JUNO's expected
+neutrino spectrum could be simulated with \papa without any modifications. Yet
+for the analysis with the Fisher matrix method the spectrum had to be Fourier
+transformed to achieve linear relations between the observables and the physics
+parameters. After this, JUNO's sensitivity to the neutrino mass hierarchy as
+reported by the JUNO collaboration itself could be reproduced. The combined
+analysis of both experiments, \ie adding the respective Fisher matrices,
+results in a NMH significance exceeding the squared sum of the individual ones
+by 0.5\,$\sigma$, mainly due to PINGU profiting from JUNO's constraint on the
+oscillation parameter \thet{13}\footnote{For this study, no detector systematics
+were considered and no external constraints were put on the oscillation
+parameters.}.
+
+In a broader picture, intermediate results of this work have been published as
+official sensitivity estimates by the PINGU collaboration. The current version
+of the PINGU Letter of Intent \cite{LoI} relies on the \papa simulation of the
+previous baseline geometry V15, evaluated with the Fisher matrix technique. An
+update of this report is planned in the near future, referring to the
+current baseline geometry V36, reflecting all improvements on event
+selection, reconstruction etc.\ achieved in the meantime, and covering a wider
+range of systematic parameters.
+
+In this update, the analysis will only partly depend on \papa. The main
+calculations will be done with \texttt{pisa} \cite{pisa}, the software framework
+\papa has evolved into. It keeps the idea of a direct simulation of event
+histograms in a staged way and develops it further. Separating the individual
+stages even more than \papa, \texttt{pisa} offers the option to add alternative
+implementations of particular stages\footnote{E.\,g.\ other oscillation codes,
+event reconstruction from parametrised reconstruction functions or directly
+from Monte Carlo data, \dots} and easily apply different analysis
+methods\footnote{E.\,g.\ the Fisher Matrix and the Likelihood Ratio techniques.}
+to exactly the same data, as well as better maintainability of the code itself.
+
+Since \papa and the Fisher Matrix analysis have been fully re-implemented
+within \texttt{pisa} and both input and output format are compatible, the
+results presented in this thesis can always be reproduced. Vice versa, the
+concepts first introduced here, namely the staged simulation of event
+histograms using parametrisations fitted to distributions of Monte Carlo events
+and the Fisher matrix analysis, leading to a very fast evaluation of systematic
+effects, will stay present within PINGU and might even be adopted by other
+collaborations.
