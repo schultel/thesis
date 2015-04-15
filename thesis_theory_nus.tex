@@ -231,8 +231,8 @@ be accelerated directly, usually a high-energy, high-intensity proton beam is
 aimed at a target in which it produces mesons, mostly pions and kaons, which
 subsequently decay under the emission of neutrinos \cite{NuBeams}:
 \begin{eqnarray}
- \pi^\pm &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:pi_decay} \\
- K^\pm   &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:K_decay}\\
+ \pi^\pm &\to\ & \mu^\pm + \overset{(-)}{\numu}  \label{eqn:pi_decay} \\
+ K^\pm   &\to\ & \mu^\pm + \overset{(-)}{\numu}  \label{eqn:K_decay}\\
 \end{eqnarray}
 
 Such beams are the source of neutrinos that can be controlled best in terms of
@@ -336,7 +336,7 @@ will then further decay into two $\alpha$ particles immediately.
 
 Neutrinos that are created in the interaction of high-energy charged particles
 with atoms in the Earth's atmosphere are several orders of magnitude higher in
-energy. During the past decades, the spectrum of those particles, the
+energy. During the past decades, the spectrum of these particles, the
 so-called cosmic radiation, has been measured in great detail over many orders
 of magnitude. Although it covers such a wide range in energy and flux, it shows
 almost no features and can be described by a simple power law with a spectral
@@ -376,17 +376,17 @@ a nucleus in the air (usually nitrogen or oxygen) in a so-called deep-inelastic
 scattering process. Since the energy of the incoming particle is far beyond all
 binding energies in the nucleus, it is completely disrupted. From the fragments
 of the nucleus that are still highly energetic, a shower of secondary particles
-develops, that then travels down to Earth.
+develops, which then travels down to Earth.
 
-Main components of these particle showers are muons and pions. Both particles
+Main components of these particle showers are kaons, pions, and muons. All of 
+these particles
 are relatively short-lived\footnote{$\tau_\mu = 2.2 \times 10^{-6}$\,s,
 $\tau_K = 1.2 \times 10^{-8}$\,s, and $\tau_\pi = 2.6 \times 10^{-8}$\,s
-\cite{PDG}} and produce neutrinos in their decay:
-\begin{eqnarray}
- \pi^\pm &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:pi_decay} \\
- K^\pm   &\to\ & \mu^\pm + \numu(\numubar) \\
- \mu^\pm &\to\ & e^\pm + \nue(\nuebar) + \numubar(\numu)
-\end{eqnarray}
+\cite{PDG}} and produce neutrinos in their decay, according to 
+(\ref{eqn:pi_decay}), (\ref{eqn:K_decay}), and
+\begin{equation}
+ \mu^\pm \to e^\pm + \overset{(-)}{\nue} + \overset{(-)}{\numu}
+\end{equation}
 As one can see from the above equations, these so-called conventional
 atmospheric neutrinos coming mostly from pion and kaon decays have a flavour
 ratio of $\overset{(-)}{\numu}:\overset{(-)}{\nue} = 2:1$.
@@ -403,7 +403,7 @@ cosmic ray distribution.
 
 For a more precise calculation, details of high-energy proton interactions and
 the geomagnetic field have to be taken into account \cite{Honda2007, Bartol}. As
-shown in Fig.~\ref{fig:cosmic_rays_atm_nus}, these predictions show good
+shown in Fig.~\ref{fig:AtmFlux}, these predictions show good
 agreement with measurements.
 
 Another predicted, but not yet observed component of the atmospheric neutrino
@@ -468,7 +468,7 @@ the challenge is the smallness of the cross-sections. The key point on the
 theoretical side is the calculation of the matrix elements associated with the
 interaction of interest.
 
-\begin{figure}[b]
+\begin{figure}[htb]
  \vspace{\baselineskip}
  \centering
  \begin{fmffile}{nue_e_CC}
@@ -507,7 +507,7 @@ interaction of interest.
 \label{fig:nue_e_CC}
 \end{figure}
 
-Neutrinos scattering off a free lepton will serve as an introductory example.
+Neutrinos scattering off a free electron will serve as an introductory example.
 The cross-section is \cite{NuXsec_review}
 \begin{equation}
  \frac{d\sigma}{dq^2} = \frac{1}{16\pi} \frac{|\mathcal{M}^2|}{(s-m_e^2)^2}\ ,
@@ -516,9 +516,28 @@ with $s$ and $q^2$ being the centre-of-mass energy and the four-momentum
 transfer, respectively, assuming very small neutrino mass. In this case,
 calculating the matrix element $|\mathcal{M}^2|$ is rather straightforward,
 since only weak interactions between fundamental particles have to be
-considered. The scattering process itself is the sum of a charged-current
-($W^\pm$ exchange, CC) and a neutral current ($Z^0$ exchange, NC) contribution,
-as shown in Fig.~\ref{fig:nue_e_CC}.
+considered. The scattering process itself is the sum of a charged-current 
+($W^\pm$ exchange, CC) 
+\begin{equation}
+ \mathcal{M}_\mathrm{CC} = -\frac{G_F}{\sqrt{2}}
+ \left\{\left[\bar l \gamma^\mu\left(1-\gamma^5\right)\nu_l\right]
+       \left[\nuebar\gamma_\mu\left(1-\gamma^5\right)e\right]\right\}
+\end{equation}
+and a neutral current ($Z^0$ exchange, NC) contribution,
+\begin{equation}
+ \mathcal{M}_\mathrm{NC} = -\sqrt{2}G_F
+\left\{\left[\bar\nu_l\gamma^\mu\left(g^\nu_V-g^\nu_A\gamma^5\right)\nu_l\right]
+       \left[\bar e\gamma_\mu\left(g^f_V-g^f_A\gamma^5\right)e\right]\right\}
+       \quad,
+\end{equation}
+as shown in Fig.~\ref{fig:nue_e_CC}. The vector and axial couplings of the 
+involved leptons are given by:
+\begin{eqnarray}
+ g^\nu_V &=& g^\nu_A = +\frac{1}{2} \\
+ g^f_V   &=& -\frac{1}{2} + 2\sin^2\thet{W} \\
+ g^f_A   &=& -\frac{1}{2}
+\end{eqnarray}
+
 
 \begin{figure}[t!]
  \centering
@@ -533,7 +552,7 @@ After converting the momentum transfer to the energy fraction $y$ carried by
 the outgoing lepton, $\frac{dq^2}{dy} = 2m_e E_\nu$, the charged current
 cross-section for scattering off an electron is given by \cite{NuXsec_review}
 \begin{equation}
- \frac{d\sigma}{dq^2}\bigg\rvert_\mathrm{CC} = \frac{2m_e G_F^2 E_\nu}{\pi}
+ \frac{d\sigma}{dy}\bigg\rvert_\mathrm{CC} = \frac{2m_e G_F^2 E_\nu}{\pi}
   \left(1 - \frac{m_f^2 - m_e^2}{2m_e E_\nu}\right)\ ,
  \label{eqn:nue_e_xsec}
 \end{equation}
@@ -547,7 +566,8 @@ the total cross-section:
  \sigma \simeq \frac{2m_e G_F^2 E_\nu}{\pi} = \frac{G_F^2 s}{\pi}
 \end{equation}
 In Fig.~\ref{fig:nue_e_xsec}, this corresponds to the regime above about
-$10^7$\,eV, well above the electron mass. The sharp peak at $\sim 10^{16}$\,eV
+$10^7$\,eV, well above the electron mass. The sharp peak at $\approx 
+10^{16}$\,eV
 is the so-called Glashow resonance, at which the centre-of-mass energy is
 comparable to the $W$ boson mass, enabling resonant production of real $W^-$
 bosons and hence causing a strong enhancement of the cross-section.
@@ -613,6 +633,23 @@ Fig.~\ref{fig:nue_e_CC}, only that the target is either a whole (for
 quasi-elastic and resonant processes) or a quark inside a nucleon (deep
 inelastic scattering).
 
+This means that four different classes of events can be observed. The first are
+neutral current interactions of any neutrino flavour, as shown in
+Fig.~\ref{fig:nux_NC}. In this case, the final state consists of the scattered
+neutrino $\nu'$ and a hadronic shower or cascade consisting of a variety of
+mesons, fermions, and photons developing from the fragments of the stricken
+nucleus.
+
+The details of the development of such a hadronic shower are not fully
+understood and have to be modelled in Monte Carlo based simulations. However,
+since the involved particles are mostly short-lived and strongly interacting,
+the typical size is on the order of one meter or below. 
+
+The outgoing neutrino on the other hand is virtually impossible to detect,
+meaning that the fraction of the total interaction energy that is carried by
+this neutrino remains invisible. In beam experiments, in which the energy of the
+incoming particles is known, this is commonly referred to as ``missing energy''.
+
 \begin{figure}
  \centering
  \begin{fmffile}{nux_NC}
@@ -638,23 +675,6 @@ inelastic scattering).
 \caption{Neutral current interaction between a neutrino and a nucleus.}
 \label{fig:nux_NC}
 \end{figure}
-
-This means that four different classes of events can be observed. The first are
-neutral current interactions of any neutrino flavour, as shown in
-Fig.~\ref{fig:nux_NC}. In this case, the final state consists of the scattered
-neutrino $\nu'$ and a hadronic shower or cascade consisting of a variety of
-mesons, fermions, and photons developing from the fragments of the stricken
-nucleus.
-
-The details of the development of such a hadronic shower are not fully
-understood and have to be modelled in MonteCarlo based simulations. However,
-since the involved particles are mostly short-lived and strongly interacting,
-the typical size is on the order of one meter or below. 
-
-The outgoing neutrino on the other hand is virtually impossible to detect,
-meaning that the fraction of the total interaction energy that is carried by
-this neutrino remains invisible. In beam experiments, in which the energy of the
-incoming particles is known, this is commonly referred to as ``missing energy''.
 
 \begin{figure}
 \centering
@@ -745,7 +765,7 @@ charged one, the flavour corresponding to the incoming neutrino's flavour. This
 charged lepton now dominates the event signature:
 
 \begin{description}
- \item[Electron:] In dense matter, a GeV electron will trigger an
+ \item[Electron:] In dense matter, a GeV electron will induce an
   electromagnetic shower by radiating high-energy photons (bremsstrahlung),
   which in turn will create electron-positron pairs. The typical scale length
   $X_0$ of such a shower is given by
@@ -761,7 +781,7 @@ charged lepton now dominates the event signature:
   semi-empirical parameters that have been tabulated \cite{PDG, bremsstrahlung}.
   For water, the scale length is $X_\mathrm{0,\,H_2O} =
   24.33\,\mathrm{g/cm}^2$, meaning that the typical size of such a shower is
-  about one metre, as water has a density of $\varrho_\mathrm{H_2O} =
+  below one metre, as water has a density of $\varrho_\mathrm{H_2O} =
   1$\,g/cm$^3$.
  \item[Muon:] In contrast to the much lighter electron, a muon of a few GeV is
   a so-called minimum ionising particle. This means it is in the minimum region
@@ -808,12 +828,12 @@ tracks and cascades.
  \item[Cascades] encompass all other types of events. A hadronic shower is 
   always present, and another shower of electromagnetic or hadronic nature 
   overlays it, if a CC interaction has occurred. The displacement of the second 
-  shower (if it exists) is far smaller than a millimetre and hence not 
+  shower (if it exists) is much smaller than a millimetre and hence not 
   resolvable. Also the showers themselves have to be considered point-like, but 
   have some directionality since the momentum of the incoming neutrino is 
   transferred to the final state. 
   
-  The achievable directional resolution is still worse than for tracks since 
+  The achievable directional resolution is worse than for tracks since 
   the events lack a long lever arm in form of an extended muon trajectory. Yet 
   the energy resolution should be better at least for \nue CC events, since the 
   event is always fully contained in the detector. For NC and \nutau CC events 
@@ -854,7 +874,8 @@ neutrino event.
 
 Whenever a charged particle moves through a dielectric medium, it shortly 
 polarises the atoms along its path, which in turn emit electromagnetic waves. 
-Usually waves from neighbouring cancel, such that no net effect is observable. 
+Usually waves from neighbouring atoms cancel, such that no net effect is 
+observable. 
 If, however, the velocity of the charged particle is higher than the local 
 phase velocity of light given by the index of refraction,
 \begin{equation}
@@ -901,7 +922,7 @@ energy spectrum, the number of photons generated per track length is
     = \frac{\alpha Z^2}{\hbar c} \left(1-\frac{1}{(\beta n(E))^2}\right) \quad,
 \end{equation}
 where for simplicity the refractive index was treated as constant. Evaluating 
-the constants, one finds for particles of unit charge ($Z^2 = 1$) in polar ice:
+the constants, one finds for particles of unit charge ($Z^2 = 1$) in ice:
 \begin{equation}
   \frac{d^2 N_{\gamma}}{dx\,dE} 
     \approx 370\,\sin^2\vartheta_{\mathrm{Ch}}\,\mathrm{eV}^{-1}\mathrm{cm}^{-1}
@@ -924,7 +945,7 @@ $n$.
 As mentioned above, the energy dependent expression can be treated as constant 
 with good accuracy. Then the integration over a certain energy interval becomes 
 trivial and one can easily estimate the number of Cherenkov photons for a
-certain particle. Again using the values for polar ice, the calculation yields a 
+certain particle. Again using the values for ice, the calculation yields a 
 number of
 \begin{equation}
   \frac{dN_{\gamma}}{dx} \approx 325 \,\mathrm{cm}^{-1}
