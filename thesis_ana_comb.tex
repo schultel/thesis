@@ -410,42 +410,54 @@ respectively. This is a somewhat conservative estimate, and various effects
 increasing the expected significance have been explored in this chapter. These
 are summarised in Tab.~\ref{tab:sigma_summary}.
 
-\begin{table}
+\begin{table}[t]
 \caption{Summary of the effects studied in this chapter and their impact on
 PINGU's sensitivity to the NMH, relative to the baseline settings.}
 \label{tab:sigma_summary}
 
 \begin{center}
 
-\begin{tabularx}{\textwidth}{@{}YccccY@{}}
+\begin{tabularx}{\textwidth}{@{}YcccYc@{}}
 \toprule
-Effect & Section & Combined & Tracks & Cascades & Note\\
+Model & Combined & Tracks & Cascades & Note & Section \\
 \midrule
-Octant of \thet{23} & \ref{sec:results_octant} &
+Baseline &
+$2.9\,\sigma$ & $1.3\,\sigma$ & $1.9\,\sigma$ &
+Absolute significance, reference for following rows &
+\ref{sec:results_baseline} \\
+Remove priors on oscillation parameters, no detector nuisance parameters & 
+$-1.4\,\sigma$ & $-1.0\,\sigma$ & $-0.6\,\sigma$ &
+To be compatible with JUNO's own analysis &
+\ref{sec:JUNO_comb} \\
+\midrule
+\thet{23} in 2nd octant&
 $+2.7\,\sigma$ & $+0.2\,\sigma$ & $+2.3\,\sigma$ &
-Fiducial value of \thet{23} mirrored at $45^\circ$ \\
-True normal NMH & \ref{sec:results_NHtrue} &
-$+0.2\,\sigma$ & $+0.0\,\sigma$ & $+0.2\,\sigma$ & \\
+Fiducial value of \thet{23} mirrored at $45^\circ$ &
+\ref{sec:results_octant} \\
+True normal NMH &
+$+0.2\,\sigma$ & $+0.0\,\sigma$ & $+0.2\,\sigma$ & 
+& 
+\ref{sec:results_NHtrue} \\
 \midrule
-Three-channel PID & \ref{sec:results_includeunkn} &
+Three-channel PID &
 $+0.2\,\sigma$ & $\pm0.0\,\sigma$ & $-0.4\,\sigma$ &
 Unidentified events contribute $1.3\,\sigma$ \hspace{3cm}
-Reference uses PID from geometry V15 \\
-PINGU built from mDOMs & \ref{sec:mdom_effect} &
+Reference uses PID from geometry V15  & 
+\ref{sec:results_includeunkn} \\
+No module noise & 
 $+0.1\,\sigma$ & $+0.0\,\sigma$ & $+0.0\,\sigma$ & 
-No module noise \\
-PINGU built from WOMs & \ref{sec:wom_effect} &
+PINGU built from mDOMs &
+\ref{sec:mdom_effect} \\
+Photon statistics doubled & 
 $+0.9\,\sigma$ & $+0.9\,\sigma$ & $+0.8\,\sigma$ &
-Assuming doubled photon statistics \\
+PINGU built from WOMs &
+\ref{sec:wom_effect} \\
 \midrule
-Remove priors on oscillation parameters, no detector parameters & 
-\ref{sec:JUNO_comb} &
-$-1.4\,\sigma$ & $-1.0\,\sigma$ & $-0.6\,\sigma$ &
-To be compatible with JUNO's own analysis \\
-Combining with JUNO & \ref{sec:JUNO_comb} &
+Combining with JUNO &
 $+2.8\,\sigma$ & n/a & n/a &
 JUNO contributes $3.5\,\sigma$ \hspace{3cm}
-Reference is above row \\
+Reference is second row & 
+\ref{sec:JUNO_comb} \\
 \bottomrule
 \end{tabularx}
 
@@ -455,14 +467,14 @@ Reference is above row \\
 
 The choice of the fiducial values for the oscillation parameters puts PINGU's 
 baseline sensitivity to the neutrino mass hierarchy at the lower bound of the 
-range of possible values: As one can see from the top two rows of 
+range of possible values: As one can see from the second set of rows in 
 Tab.~\ref{tab:sigma_summary}, PINGU will determine the NMH with higher 
 significance if the true mass hierarchy is normal or \thet{23} is in the second 
 octant. The latter effect is much more dramatic, possibly almost doubling the 
 expected significance. In both cases, the increase is primarily due to the 
 cascade channel.
 
-Technical improvements to the detector itself are covered in the middle section 
+Technical improvements to the detector itself are covered in the third section 
 of the table. A more evolved event classification with more channels than just 
 tracks and cascades only leads to a moderate increase of the NMH sensitivity, 
 thus efforts to modify the PID in this direction seem not too promising. In 
