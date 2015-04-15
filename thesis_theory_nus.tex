@@ -115,11 +115,11 @@ propagating over macroscopic distances can change their flavour eigenstate on
 the way between production and detection. The details of this effect will be
 described in Sec.~\ref{sec:osc}. However it can only occur when there are
 different mass eigenstates available for the neutrinos, meaning that only one of
-them---if any---can have mass zero, while the others must correspond to finite
+them---if any---can have zero mass, while the others must correspond to finite
 mass.
 
 Since their first observation, neutrino oscillations have been a field of
-intensive research. After establishing all oscillation channels, nowadays
+intensive research. After establishing all oscillation channels, nowadays'
 focus is on the precise measurement of the parameters that characterise the
 oscillation. The planned PINGU experiment (see Sec.~\ref{sec:PINGU}), whose
 simulation is the main topic of this thesis, is aimed to reach unprecedented
@@ -129,7 +129,7 @@ accuracy in measuring the parameters \thet{23} and \dm{31}.
 \section{Neutrino Sources}
 \label{sec:NuSources}
 
-As discussed above, neutrinos do not participate in the strong and
+As mentioned above, neutrinos do not participate in the strong and
 electromagnetic interaction, leaving only weak processes for them to be created
 or detected. On the other hand, neutrinos are produced in nearly every weak
 interaction, making them a very common particle that can stem from a variety of
@@ -148,29 +148,33 @@ equations read:
 Examples for typical $\beta$ emitters are $^{40}$K (both $\beta^+$ and
 $\beta^-$) and intermediate products from the decay chains of $^{232}$Th or
 $^{238}$U ($\beta^-$), the neutrino energies are usually on the scale of few
-MeV. These neutrinos originating from nuclear decays inside the Earth's crust
-and mantle are commonly referred to as geoneutrinos.
+MeV. These neutrinos, originating from nuclear decays inside the Earth's crust
+and mantle, are commonly referred to as geoneutrinos.
 
 In fact, the $\beta$ decay was the original reason to propose the existence of
-the then un-detectable neutrino. Since only the daughter nucleus and the
+the then undetectable neutrino. Since only the daughter nucleus and the
 charged lepton were visible as decay products, the process seemed to be a
 two-body decay. This means that the energies of the decay products are exactly
 determined from kinematics and hence the emitted electrons or positrons would
-be monoenergetic. Observations showed, however, a broad spectrum in energy
+be mono-energetic. Observations showed, however, a broad spectrum in energy
 instead of a single line. Without violating the conservation of energy, this
-can only be achieved if a third particle is produced in the process, which is
-electrically neutral but can carry away energy and momentum. 
+can only be achieved if a third particle is produced in the process, which has
+to be electrically neutral but can carry away energy and momentum. 
 
 On the subatomic level, in a $\beta^+$ decay one proton inside a nucleus emits a
 virtual $W^+$ boson, turning an $u$ into a $d$ quark, and becomes a neutron.
 During a $\beta^-$ decay, the opposite happens via the emission of a $W^-$, as
-shown in Fig.~\ref{fig:beta_minus}. The $W$ boson subsequently decays into a
-charged lepton and a neutrino.
+shown in Fig.~\ref{fig:beta_minus}. The $W$ boson subsequently decays into an
+electron and a \nuebar or positron and \nue, respectively\footnote{In
+principle, a $W$ boson can decay into any charged lepton and corresponding
+neutrino. Yet in natural radioactivity the typical decay energies are few MeV,
+hence the $W$ boson is only virtual and since the overall energy has to be
+conserved, muons or tau leptons are too massive to be produced.}.
 
 \begin{figure}
  \centering
  \begin{fmffile}{beta_minus}
- \begin{fmfgraph*}(80,50) \fmfpen{thin}
+ \begin{fmfgraph*}(70,40) \fmfpen{thin}
  \fmfstraight
   \fmfleft{i0,i1,i2,i3,i41,i42,i5,i51,i6}
   \fmfright{o0,o1,o2,o3,o41,o42,o5,051,o6}
@@ -207,8 +211,9 @@ compared to a stable configuration. These unstable nuclides undergo a series of
 $\beta^-$ decays until they they reach a stable ratio of proton and neutron
 numbers.
 
-Since in each of those $\beta$ decays neutrinos are emitted, a nuclear reactor
-provides a strong and steady flux of \nuebar, which can be monitored via the
+Since in each of those $\beta^-$ decays a neutrino is emitted, a nuclear reactor
+provides a strong and steady flux of \nuebar in the low MeV range, which can be
+monitored via the
 thermal power of the reactor. This makes reactor neutrinos a popular target for
 experiments, especially for the study of neutrino oscillations. The main
 challenge in such experiments is the accurate modelling of the neutrino energy
@@ -226,8 +231,8 @@ be accelerated directly, usually a high-energy, high-intensity proton beam is
 aimed at a target in which it produces mesons, mostly pions and kaons, which
 subsequently decay under the emission of neutrinos \cite{NuBeams}:
 \begin{eqnarray}
- \pi^+ & \to & \mu^+ + \numu \\
- \pi^- & \to & \mu^- + \numubar
+ \pi^\pm &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:pi_decay} \\
+ K^\pm   &\to\ & \mu^\pm + \numu(\numubar)  \label{eqn:K_decay}\\
 \end{eqnarray}
 
 Such beams are the source of neutrinos that can be controlled best in terms of
@@ -288,8 +293,9 @@ positron is produced:
  p + e^- + p \to\ d + \nue
 \end{equation}
 Since there are only two particles in the final state, the produced neutrinos
-are monoenergetic at 1.44\,MeV. Once a deuteron is produced, it quickly (YYY\,s)
-merges with another proton to $^3_2\mathrm{He}$ and emits a photon.
+are monoenergetic at 1.44\,MeV. Once a deuteron is produced, it quickly
+($\approx 1$\,s) merges with another proton to $^3_2\mathrm{He}$ and emits a
+photon.
 
 At this stage, the pp chain divides into three different branches (see
 Fig.~\ref{fig:pp_network}). In the main branch, ppI, two $^3_2\mathrm{He}$
