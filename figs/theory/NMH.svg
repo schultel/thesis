@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="NMH.pdf">
+   sodipodi:docname="NMH.svg">
   <defs
      id="defs4">
     <marker
@@ -566,7 +566,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -657,8 +657,8 @@
        d="m 410,632.36218 0,50 z"
        style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
     <path
-       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.1649648;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 400,622.36218 0,-190 z"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.01636922;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 400,622.65663 0,-139.78626 z"
        id="path9802-4"
        inkscape:connector-curvature="0" />
     <path
@@ -758,12 +758,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text13178-7"
-       y="482.2373"
+       y="432.2373"
        x="588.05566"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:16px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Oblique"
-         y="482.2373"
+         y="432.2373"
          x="588.05566"
          id="tspan13180-4"
          sodipodi:role="line">m<tspan
@@ -775,13 +775,13 @@
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="588.05566"
-       y="432.2373"
+       y="482.2373"
        id="text13188-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan13190-0"
          x="588.05566"
-         y="432.2373"
+         y="482.2373"
          style="font-size:16px;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Arial;-inkscape-font-specification:Arial Oblique">m<tspan
    style="font-size:65.00091553%;font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;baseline-shift:sub;font-family:Arial;-inkscape-font-specification:Arial Oblique"
    id="tspan13196-8">1</tspan><tspan

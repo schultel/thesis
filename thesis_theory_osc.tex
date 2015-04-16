@@ -105,8 +105,9 @@ the probability to detect it as \ket{\nu_\beta} after propagating over a
 distance $L$ has to be calculated according to
 \begin{equation}
  P_{\alpha\to\beta} = \left|\Braket{\nu_\beta
-                            \left|\,\mathcal{U}^\dagger\,\left|\,\hat{H}
-                             \,\right|\,\mathcal{U}\,\right|
+                             \left|\,\mathcal{U}_\mathrm{PMNS}^\dagger\,
+                             \left|\,\hat{H}\,\right|\,
+                             \mathcal{U}_\mathrm{PMNS}\,\right|
                              \nu_\alpha}\right|^2 \quad.
  \label{eqn:osc_prob_hamiltonian}
 \end{equation}
@@ -135,8 +136,8 @@ with the squared mass differences
 \begin{equation}
  \dm{kj} \equiv m^2_k - m^2_j \quad.
 \end{equation}
-In the mass base, the Hamiltonian can be replaced by
-an effective one containing the squared masses:
+In the mass base, the Hamiltonian can be replaced by an effective one containing
+the squared masses:
 \begin{equation}
  \hat{H}^\mathrm{eff}
  = \frac{1}{2E}\,\mathrm{diag}\left(m_1^2,\,m_2^2,\,m_3^2\right)
@@ -209,8 +210,8 @@ introducing the oscillation length
 From (\ref{eqn:twoflavour_prob}), the two different groups of parameters in
 neutrino oscillation phenomenology and how they influence the oscillation
 probabilities, become obvious:
-The mixing angles define the amplitude of the oscillation, with $\vartheta
-\approx \ang{45}$ giving rise to so-called ``maximum mixing'' where a full
+The mixing angles define the amplitude of the oscillation, with $\theta
+= \ang{45}$ giving rise to so-called ``maximum mixing'' where a full
 transition from one flavour to another is possible. The mass splittings
 determine the frequency at a given neutrino energy, expressed through the
 oscillation length at which the first full oscillation cycle is completed.
@@ -236,7 +237,7 @@ L^\mathrm{osc}$.}.
 Since the existence of neutrino oscillations has unambiguously shown that 
 neutrinos have non-zero masses, the question is what the absolute values of 
 these masses are. Although this question seems to be very simple, it turns out 
-to be experimentally very challenging.
+to be experimentally challenging.
 
 To establish absolute neutrino masses one has to consider effects such 
 as distortions at the upper end of the energy spectrum of nuclear $\beta$ 
@@ -259,8 +260,8 @@ measurement of the \numu or \nutau mass (or their antiparticles) is by far more
 difficult since they cannot be created in a controllable source like a nuclear
 decay. The only not completely unrealistic options here would be time-of-flight
 measurements with an extremely long baseline\footnote{E.\,g.\ astrophysical
-neutrinos that can be associated with a transient event such as a supernova or a
-gamma-ray burst.}. 
+neutrinos that can be associated with a transient optical event such as a
+supernova or a gamma-ray burst.}. 
 
 So the most promising overall approach is to fix the neutrino mass scale at one 
 point by measuring the \nue mass directly and then derive the other mass 
@@ -375,7 +376,7 @@ potential remains:
 \begin{equation}
  V_\mathrm{NC} = -\frac{1}{2}\sqrt{2}\,G_F\,N_n
 \end{equation}
-But since this potential affects all flavours and hence all mass eigenstates in
+Yet since this potential affects all flavours and hence all mass eigenstates in
 the same way, it also changes all effective masses by the same amount, but
 leaves the mass splittings unaffected.
 Charged current scattering (Fig.~\ref{fig:coh_CC}) on the other hand is only
@@ -395,6 +396,8 @@ first, then the potential can be added:
                            + \mathrm{diag}\left(V_\mathrm{NC}+V_\mathrm{CC},\,
                                             V_\mathrm{NC},\,V_\mathrm{NC}\right)
 \end{equation}
+Here and in the following, the index has been dropped from
+$\mathcal{U}_\mathrm{PMNS}$ to improve readability.
 Constant contributions can now be neglected again, which results in the
 following effective Hamiltonian in matter:
 \begin{equation}
@@ -421,7 +424,7 @@ potential of
 \label{sec:MSW}
 
 For simplicity, the effects of a matter potential will be discussed for only two
-neutrino flavours in the following, without loss of generality. In this case, 
+neutrino flavours here, without loss of generality. In this case,
 (\ref{eqn:matter_eff_hamiltonian}) reduces to
 \begin{equation}
  \hat{H}_\mathrm{matter}^\mathrm{eff} =
@@ -473,7 +476,7 @@ becomes equal to one and a full transition from one flavour to another is
 possible. At the same time, the mass splitting becomes minimal.
 
 Another thing to note is that in (\ref{eqn:matter_angle}), both $A_\mathrm{CC}$ 
-(by being replaced by $\bar{A}_\mathrm{CC}$ for antineutrinos)
+(by being replaced by $\bar{A}_\mathrm{CC}=-A_\mathrm{CC}$ for antineutrinos)
 and \dm{} can carry a negative sign. Thus one can infer the sign of \dm{} by
 observing the so-called MSW resonance\footnote{After Mikheyev, Smirnov, and
 Wolfenstein.} in either the neutrino or the antineutrino channel:
@@ -486,7 +489,7 @@ $A_\mathrm{CC}$ is positive and can cause a MSW resonance if it has the
 appropriate value.
 
 This measurement has been
-done by the SNO experiment, which measured the flux of solar \nue and the
+done by the SNO experiment, which measured both the flux of solar \nue and the
 all-flavour flux of solar neutrinos independently from each other with high
 precision \cite{SNOosc}. Clear signs for a MSW resonance were detected for the
 solar \nue\footnote{No antineutrinos are produced in the Sun, cf.\
@@ -513,18 +516,10 @@ in Sec.~\ref{sec:PINGUosc}.
  \label{fig:PREM}
 \end{figure}
 
+\noindent
 Another feature of neutrino oscillations in matter are parametric enhancements. 
 In contrast to MSW resonances, they depend on the shape of the matter potential 
 rather than its actual value.
-
-As shown in Fig.~\ref{fig:PREM}, the density profile and hence the matter 
-potential of the Earth is characterised by to major regions: the core in the 
-centre, with a radius of $\approx 3500$\,km, surrounded by the 
-mantle\footnote{The Earth crust has a thickness of only a few tens of km and 
-can thus be neglected.}. Within these regions, the density is rather constant 
-at $\approx 11$\,g/cm$^3$ and $\approx 5$\,g/cm$^3$, respectively, while at the 
-transition between the regions the density changes by almost a factor of two 
-quasi instantaneously. 
 
 \begin{figure}[th]
  \centering
@@ -538,6 +533,20 @@ quasi instantaneously.
  \label{fig:ParamRes}
 \end{figure}
 
+As shown in Fig.~\ref{fig:PREM}, the density profile and hence the matter 
+potential of the Earth is characterised by two major regions: the core in the 
+centre, with a radius of $\approx 3500$\,km, surrounded by the$\!\!$
+% 
+\footnotetext{As \cite{ParamRes2} has been published already in 1999, the
+values assumed for the mixing parameters do not coincide with the current best
+fits. The effect in general, however, is the same for more up-to-date values.}
+% 
+mantle\footnote{The Earth crust has a thickness of only a few tens of km and 
+can thus be neglected.}. Within these regions, the density is rather constant 
+at $\approx 11$\,g/cm$^3$ and $\approx 5$\,g/cm$^3$, respectively, while at the 
+transition between the regions the density changes by almost a factor of two 
+quasi instantaneously. 
+
 Thus for atmospheric neutrinos crossing the Earth, the matter potential can be 
 approximated by a so-called ``castle-wall'' profile with good precision: First 
 the neutrinos will experience a constant potential $A_\mathrm{CC}^m$ for a 
@@ -546,10 +555,6 @@ by (\ref{eqn:mat_pot}) inserting the mean electron density in the mantle.
 Thereafter, they traverse the core, represented by another constant potential 
 $A_\mathrm{CC}^c$ with a width of $l_c$, followed by a second crossing of the 
 mantle that is symmetric to the first one.
-
-\footnotetext{As \cite{ParamRes2} has been published already in 1999, the
-values assumed for the mixing parameters do not coincide with the current best
-fits. The effect in general, however, is the same for more up-to-date values.}
 
 The principal resonance occurs if both $l_m$ and $l_c$ are close to half the
 oscillation length (\ref{eqn:osc_length}) for the effective mass splittings 
@@ -668,8 +673,9 @@ Finally another class of experiments uses the strong flux of \nuebar at low MeV
 energies produced by commercial nuclear reactors to study neutrino
 oscillations. Typically, they consist of one ``near'' detector as close to the
 reactor core as possible to achieve a precise normalisation of the
-un-oscillated neutrino flux, and one ``far'' detector in the first oscillation
-minimum, usually at several kilometers distance.
+un-oscillated neutrino flux and the detector acceptance, and one identical
+``far'' detector in the first oscillation minimum, usually at several kilometres
+distance.
 The relevant mixing parameter in this regime is \thet{13}, the last one to be
 measured. The first measurement of \thet{13} was published in 2012 by the Daya
 Bay experiment \cite{DayaBay}, subsequently confirmed by RENO and Double Chooz
@@ -694,7 +700,7 @@ Global fits to neutrino oscillation results from different experiments are
 available from various authors and usually constantly updated once new results
 are published. For this thesis, the best fit values and uncertainties from Fogli
 et al.\ released in 2012 \cite{Fogli2012} are used, which include the results
-on \thet{13} from Daya Bay and RENO that where published shortly before. There
+on \thet{13} from Daya Bay and RENO that were published shortly before. There
 are more recent analyses available (e.\,g.\ \cite{Capozzi2013,
 GonzalezGarcia2014}), but the differences are small as no major results have
 been released in the meantime.
@@ -721,10 +727,10 @@ Since only two of the neutrino mass splittings are independent, Fogli et al.\
 choose to do their analysis in terms of one small and one large mass splitting:
 \begin{eqnarray}
  \delta m^2 &\equiv& m_2^2 - m_1^2 = \dm{21} > 0 \\
- \dm{} &\equiv& m_3^2 - \left(m_2^2 + m_1^2\right)/2 = \frac{\dm{31}+\dm{32}}{2}
-   = \dm{31} - \dm{21}/2 \quad
+ \dm{} &\equiv& m_3^2 - \left(m_2^2 + m_1^2\right)/\,2
+   = \left(\dm{31}+\dm{32}\right)/\,2 = \dm{31} - \dm{21}/\,2 \enspace
    \begin{cases}
-    \quad > 0 &\mbox{for NH} \\ \quad < 0 &\mbox{for IH}
+    \enspace > 0 &\mbox{for NH} \\ \enspace < 0 &\mbox{for IH}
    \end{cases}
 \end{eqnarray}
 The values and $1\sigma$ ranges given in \cite{Fogli2012} for $\delta m^2$,
@@ -737,7 +743,7 @@ violating phase $\delta_\mathrm{CP}$ is set to zero.
 
 \begin{table}[bht]
 \caption{Fiducial values of the oscillation parameters, according to Fogli et
-al., used throughout this thesis.}
+al.~\cite{Fogli}, used throughout this thesis.}
 \label{tab:fiducial_osc}
 \begin{center}
 \begin{tabular}{lcc}
@@ -788,7 +794,7 @@ The normalisation for \numu is about twice the \nue normalisation, while
 neutrinos and antineutrinos of the same flavour have about the same flux. This
 flux has to be multiplied by the oscillation probabilities, which depend not
 only on the neutrinos' energies, but also on the zenith angle at which they 
-arrive, since this determines the distance travelled since their production in
+arrive---this determines the distance travelled since their production in
 the Earth's atmosphere as well as the amount of matter traversed on their way
 through the Earth.
 
@@ -799,11 +805,11 @@ IceCube collaboration \cite{AtmoWeights} using the ``Preliminary Reference Earth
 Model'' (PREM) \cite{PREM} for the Earth's density profile, shown in
 Fig.~\ref{fig:PREM}. It is easily recognisable that the oscillation
 probabilities for $\nu_\alpha \to \nu_\beta$ are in principle equal to those for
-$\bar\nu_\alpha \to \bar\nu_\beta$, apart from the MSW resonance, easy to spot
-in the energy range from 2 to \SI{10}{\GeV} for zenith angles between
-$\coszen \approx -0.9$ and $-0.4$, that appears in neutrinos for the normal and
-in antineutrinos for the inverted mass hierarchy (see
-Sec.~\ref{sec:matter_osc}).
+$\bar\nu_\alpha \to \bar\nu_\beta$. Differences arise from the MSW resonance,
+easy to spot in the energy range from 2 to \SI{10}{\GeV} for zenith angles
+between $\coszen \approx -0.9$ and $-0.4$, that appears in neutrinos for the
+normal and in antineutrinos for the inverted mass hierarchy
+(cf.~Sec.~\ref{sec:matter_osc}).
 In addition, parametric enhancements occur for neutrinos passing through the
 Earth's core, corresponding to the steepest zenith angles values below $\coszen
 \approx -0.9$. These change between neutrinos and antineutrinos in the same way
@@ -826,7 +832,7 @@ responsible for most of the mass hierarchy asymmetry.
 \end{figure}
 
 \enlargethispage{\baselineskip}
-But since the fluxes of neutrinos and antineutrinos of the same flavour are 
+Yet since the fluxes of neutrinos and antineutrinos of the same flavour are
 essentially equal and PINGU cannot discriminate between them\footnote{The only
 method to do this would be to identify the sign of the electrical charge of 
 the lepton
@@ -839,9 +845,9 @@ Fig.~\ref{fig:NuXsec_GeV}, at the relevant energies just below \SI{10}{\GeV}
 the cross section for antineutrino interactions with a hadronic target
 material is about a factor of two lower than the one for neutrinos. Thus, the
 MSW resonance will appear in the data in any case, but much more prominent if
-the hierarchy is normal, as in this case roughly \sfrac{2}{3} of the
-events---the neutrino-induced ones---are affected by it, while in the inverted
-hierarchy case only the remaining third caused by antineutrinos is.
+the hierarchy is normal. In this case roughly \sfrac{2}{3} of the
+events---the neutrino-induced ones---are affected by the resonance, while in the
+inverted hierarchy case only the remaining third caused by antineutrinos is.
 
 So the quantities of interest are the sum of neutrino and antineutrino events
 for the different flavours at the energy and \coszen range where the MSW 
