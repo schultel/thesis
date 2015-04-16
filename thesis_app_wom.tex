@@ -103,8 +103,7 @@ where
 The capture efficiency is finally given by
 \begin{equation}
  CE(\lambda)=\frac{\dot{N}_{\gamma,\,\mathrm{out}}(\lambda)}{\dot{N}_{\gamma,\,
-\mathrm{in}}(\lambda)}
-\cdot\Omega\ ,
+\mathrm{in}}(\lambda)}\cdot\Omega \quad ,
 \end{equation}
 where $\Omega$ is a factor accounting for the fact that the readout area in this
 setup is smaller than it will be in a real application. Its value is given by
@@ -119,8 +118,8 @@ ends.
 \section*{\refstepcounter{section}\label{app:WOM_transmission}\thesection\enskip
 Transmission into the WOM}
 
-For light inciding into the WOM, we want to calculate the effective area $A_{\rm
-eff}$ given the the WOM length $L$ (without end caps) and radius $R$. For
+For light inciding into the WOM, its effective area $A_{\rm eff}$ is to be
+calculated given the the WOM length $L$ (without end caps) and radius $R$. For
 simplicity, we will first handle the case of frontal illumination and then
 extend the result for arbitrary angles.
 
@@ -143,7 +142,7 @@ T(\vartheta), \quad \sin\vartheta = r/R
 and $T$ being the transmission through two consecutive optical surfaces
 according to Fresnel's formulae. Since the transmission formulae are given as
 functions of the angle of incidence $\theta$, it is convenient to transform
-the integral in Eqn.~\ref{eqn:int-over-theta} to depend on this angle (for an
+the integral in (\ref{eqn:int-over-theta}) to depend on this angle (for an
 illustration see Fig.~\ref{fig:angle-of-incidence-theta}). 
 Assuming the permeability is $\mu=1$, Fresnel's formulae for the transmission of
 light polarised parallel and perpendicular to the optical surface read
@@ -187,9 +186,9 @@ written as the product of two transmissions of a single surface where the angle
 of incidence on the second surface is given by the refraction at the first one:
 \begin{equation}
  T(\vartheta,\,n_1,\,n_2,\,n_3) = T_{\rm mean}(\vartheta,\,n_1,\,n_2)\cdot
-  T_{\rm mean}(\vartheta_t(\vartheta,\,n_1,\,n_2),\,n_2,\,n_3) \ .
+  T_{\rm mean}(\vartheta_t(\vartheta,\,n_1,\,n_2),\,n_2,\,n_3) \quad .
 \end{equation}
-Putting this into Eqn.~\ref{eqn:int-over-theta}, the integral can be solved
+Putting this into (\ref{eqn:int-over-theta}), the integral can be solved
 numerically.
 
 If now the incident light has an angle $\varphi\neq\pi/2$ with the WOM axis (see
@@ -209,9 +208,11 @@ needed for the Fresnel transmission. It is determined by
 
 Additionally one has to account for the fact that for light inciding at an angle
 $\varphi$ the length $L$ of the WOM is jolted by a factor $\sin\varphi$.
-Including all this in Eqn.~\ref{eqn:int-over-theta} one ends up with
+Including all this in (\ref{eqn:int-over-theta}) one ends up with
 \begin{equation}
  \varepsilon_\Omega(\varphi) = \sin\varphi \int_0^{\frac{\pi}{2}} \cos\vartheta
 \, {\rm d}\vartheta\,
-T\left(\alpha(\vartheta,\,\varphi)\right)\ .
+T\left(\alpha(\vartheta,\,\varphi)\right)\quad .
 \end{equation}
+The full transmission efficiency $\varepsilon_\Omega$ is plotted as a
+function of $\cos\varphi$ in Fig.~\ref{fig:angular_eff}.
