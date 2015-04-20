@@ -29,8 +29,9 @@ published by Honda et al.\ \cite{Honda, HondaSP}. A plot of the flux in the
 energy range covered by the PINGU simulation (1\,--\,80\,GeV) is shown in
 Fig.~\ref{fig:summed_flux}. The flux has been integrated over all upgoing
 (\coszen in $[-1,0]$) directions, as downgoing neutrinos arriving from above
-the detector do not pass through a significant amount of matter and hence do
-not bear any information on the neutrino mass hierarchy.
+the detector are not included in the mass hierarchy analysis. Since they do not 
+pass through a significant amount of matter, they do not bear any information on 
+the neutrino mass hierarchy.
 
 \subsection{Oscillation Probabilities}
 \label{sec:input_osc}
@@ -68,7 +69,11 @@ OneWeight quantity multiplied by $4\pi$, which is equivalent to a per-event
 effective area \cite{OneWeight}. The zenith dependence of the effective area is
 modelled by an analytic fit to the MC data, assuming that energy and zenith
 dependence can be handled separately. A plot of the effective areas and their
-zenith dependence is shown in Fig.~\ref{fig:aeffs}.
+zenith dependence is shown in Fig.~\ref{fig:aeffs}. 
+
+Note that the absolute values of the functions describing the zenith dependence 
+are chosen to give a good visual separation between the channels. In \papa the 
+functions get internally normalised. 
 
 \subsection{Reconstruction Resolutions}
 \label{sec:input_reco}
@@ -151,5 +156,5 @@ cascade is one minus the probability to classify it as a track.
 Data points for the track identification probabilities in all channels as a
 function of the neutrino energy have been provided by \cite{JP_PID}. These data
 were fitted with analytic functions, the fits are shown together with the data
-points in Fig.~\ref{fig:PID}. The functions definitions themselves are listed
+points in Fig.~\ref{fig:PID}. The function definitions themselves are listed
 in App.~\ref{app:pid}.
