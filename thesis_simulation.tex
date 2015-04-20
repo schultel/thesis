@@ -364,9 +364,9 @@ once and can then be re-used for different detector settings.
 In the detector simulation the pure oscillation probabilities calculated in the
 physics simulation are converted into an actual detector response, taking into
 account all detector related parameters. It consists of three major steps, as
-depicted by the flow chart in Fig.~\ref{fig:papa_flowchart}. At each step, a set
-of histograms in ($E$,\,\coszen) will be produced according to the
-different signatures that have to be considered at the respective stage. Event
+depicted by the flow chart in Fig.~\ref{fig:papa_flowchart}. At each step, a 
+histogram in ($E$,\,\coszen) will be produced for every event signature that has 
+to be considered at the respective stage. Event
 histograms at all simulation stages are shown in Fig.~\ref{fig:SimSteps}.
 
 \begin{figure}
@@ -428,8 +428,8 @@ the interaction cross section in the given channel, and
 $\epsilon_\mathrm{channel}$ is the efficiency which interactions occurring
 inside the detector actually pass the triggering, reconstruction, and event
 selection process with. Although the selection efficiency is usually of the 
-order of
-90\,\% \cite{cutsV5}, the effective area is much smaller than the geometrical
+order of 80\,\% \cite{cutsV5}, see Fig.~\ref{fig:selection_eff}, the effective 
+area is much smaller than the geometrical
 size of the detector as the interaction cross sections for neutrinos are
 extremely small (see Sec.~\ref{sec:Xsecs}). Hence, most neutrinos pass the
 detector without any interaction.
@@ -470,13 +470,14 @@ There are two different ways how these kernels can be handed over to \papa:
 \begin{enumerate}[(a)]
  \item Parametrised point spread functions.\\ These have to be fitted from MC
   data and generally take the form of a double Gaussian for both energy and
-  $\cos\vartheta$ to properly account for the tails:
+  $\cos\vartheta$ to properly account for the tails of the reconstruction 
+  distributions:
   \begin{equation}
    \mathrm{PSF} = (1-f)\cdot \exp\left(-\frac{(x-\mu_1)^2}{\sigma_1^2}\right)
                   + f\cdot \exp\left(-\frac{(x-\mu_2)^2}{\sigma_2^2}\right)
    \label{eqn:reco_param}
   \end{equation}
-  The five parameters (two mean values $\mu$, two widths $\sigma$, and the
+  The five parameters (two mean values $\mu_i$, two widths $\sigma_i$, and the
   relative normalisation $f$) are supplied to the code as a function of true
   neutrino energy.\\
   Here it can happen that events are ``leaking'' out of the histograms. At
@@ -534,7 +535,7 @@ probabilities add up to less than one, the remaining events are assigned to an
 For the baseline settings (Sec.~\ref{sec:sim_input}), the PID is a binary
 decision, meaning that there are no unidentified events. In
 Sec.~\ref{sec:results_includeunkn}, the effects of an event selection producing
-cascade and track samples of higher purity plus an unidentified set of events
+cascade and track samples of higher purity plus a set of unidentified events
 will be discussed.
 
 After this final stage, all key features of a real experiment (triggering,
@@ -549,7 +550,7 @@ to illustrate the various effects studied.
 \subsection{Systematic Parameters}
 \label{sec:systematics}
 
-The main benefit of the fast simulation that \papa provides is that it makes the
+The main benefit of the fast simulation provided by \papa is that it makes the
 inclusion of
 the many systematic parameters feasible, which are needed to correctly evaluate
 the mass hierarchy significance. The parameters that were considered in this
@@ -594,9 +595,10 @@ distance of the hyperplanes in parameter spaces defined by normal and inverted
 hierarchy}.
 If no other parameters are present, this description is mathematically
 equivalent to a bin-wise $\Delta\chi^2$ sum as defined in \cite{Akhmedov}, as 
-it is shown in Sec.~\ref{sec:fisher_hierarchy}.
+it will be shown in Sec.~\ref{sec:fisher_hierarchy}.
 
-The second set of parameters are related to the detector, \ie the
+The second set of parameters are related to the detector, which is commonly 
+referred to as 
 nuisance parameters. Most of them scale properties of the detector up or down, 
 reflecting uncertainties in the knowledge of the detector performance. In 
 several cases, however, they can be interpreted as theoretical uncertainties 
@@ -608,9 +610,9 @@ entry point into the simulation chain:
  \item[The energy scale $\mathbf{s_E}$] describes a potential scaling error
   in the assumed relation 
   between true and reconstructed neutrino energy. Such a mis-scaling, \ie
-  an under- or overestimation of the neutrino energy can be the result of a
-  wrong value for \eg PMT efficiency, absorption effects in the ice model etc.\ 
-  that are used to reconstruct the neutrino events.
+  a systematic under- or overestimation of the neutrino energy can be the 
+  result of a wrong value for \eg PMT efficiency, absorption effects in the 
+  ice model etc.\ that are used to reconstruct the neutrino events.
   It is implemented in a way that the true values of the energy bins that are 
   fed to the oscillation code are scaled \wrt the energy bins in the analysis 
   according to
