@@ -63,7 +63,7 @@ constraints that have to be addressed as well:
   showers created by cosmic radiation (cf.\ Sec.~\ref{sec:AtmNus}) are a
   background whose rate is several orders of magnitude higher than the
   neutrino signal. In order to suppress those muons, detectors have to be
-  placed deep underground so that there is a shielding with several hundred
+  placed deep underground so that there is a shielding of several hundred
   meters thickness, comparable to the range of $\mathcal{O}
   (100\,\mathrm{GeV})$ muons.
 \end{description}
@@ -201,10 +201,10 @@ PINGU, the Precision IceCube Next Generation Upgrade, is planned as a further
 infill to the IceCube/DeepCore array, lowering the energy threshold to few GeV 
 \cite{LoI}. The current baseline geometry, V36, consists of forty additional 
 strings with 96 PINGU-DOMs (PDOMs, see below) each. In this layout, shown in
-Figs.~\ref{fig:string_layout} and \ref{fig:string_layout}, the string spacing is
-22\,m while the PDOMs are located the lowest 300\,m of IceCube with a vertical
-distance of 3\,m. In this depth, the same as the main part of DeepCore, the ice
-has the best optical properties.
+Figs.~\ref{fig:string_layout} and \ref{fig:string_layout_side}, the string 
+spacing is 22\,m while the PDOMs are located at the lowest 300\,m of IceCube 
+with a vertical distance of 3\,m. In this depth, the same as the main part of 
+DeepCore, the ice has the best optical properties.
 
 This detector geometry has been optimised to yield a maximum sensitivity for 
 the neutrino mass hierarchy. It will be used for all studies described in 
@@ -295,7 +295,7 @@ actual implementation of PINGU \cite{Trigger}.
 
 This SMT3 trigger requires at least three DOMs registering a hard local
 coincidence within a time window of 2.5\,\textmu s. A hard local coincidence
-means that two DOMs on the same string that a not more than two vertical
+means that two DOMs on the same string that are not more than two vertical
 positions (\ie 6\,m) apart have launched within 1\,\textmu s. For the PINGU
 trigger, all PINGU DOMs plus the DeepCore DOMs and the ones one the neighbouring
 IceCube strings are taken into account.
@@ -329,7 +329,7 @@ The pulse map returned by Wavedeform still contains noise hits caused by
 electronic thermal noise or radioactive decays inside the DOM that hold no
 information on the neutrino event, but might confuse the reconstructions. Yet
 the majority of these hits can be removed by noise cleaning algorithms. In
-PINGU, two different cleanings are are applied consecutively: first a seeded
+PINGU, two different cleanings are applied consecutively: first a seeded
 radius-time (SRT) cleaning, followed by a time-window (TW) cleaning.
 
 \begin{figure}
@@ -426,7 +426,7 @@ detector since the DOMs have a zenith dependent detection efficiency, as clearly
 visible from their layout (Fig.~\ref{fig:DOM}).
 
 Finally these tables are fitted with multidimensional spline functions, which
-leads to more smooth results and significantly reduces the amount of data that
+leads to smoother results and significantly reduces the amount of data that
 has to be stored \cite{Photospline}. This is an important issue, since one
 of those six-dimensional tables has to be loaded into the CPU memory for every
 source depth, orientation, and type (point-like and track-like, as these have
@@ -435,7 +435,7 @@ different light output distributions).
 \subsection{Monopod}
 \label{sec:reco_monopod}
 
-The Monopod algorithm is an likelihood reconstruction for cascade-like events
+The Monopod algorithm is a likelihood reconstruction for cascade-like events
 using detailed photon timing information. It is the single source case of the
 more general Millipede algorithm \cite{Millipede} that is used for high-energy
 track reconstruction, where it segments an extended track into a series of
@@ -501,11 +501,11 @@ ingredients: the HybridReco event hypothesis and the MultiNest minimiser.
 To conform to the actual event topology in PINGU, it is necessary to add the
 possibility of an outgoing muon of finite length to the pure cascade hypothesis
 that was used for the previous reconstructions. Since its starting point is
-fixed at the cascade vertex, the muon adds only three variable to the problem:
-its direction, again defined by two angles, and its length. However at PINGU
+fixed at the cascade vertex, the muon adds only three variables to the problem:
+its direction, again defined by two angles, and its length. However, at PINGU
 energies the kinematic angle between the hadronic cascade and the outgoing
 lepton is only a few degrees \cite{NuScattAng}, far below the directional
-resolution of the reconstruction (see Sec.~\ref{sec:sim_input}), thus the
+resolution of the reconstruction (see Sec.~\ref{sec:sim_input}). Thus the
 directions
 of muon and cascade are assumed to be aligned to reduce complexity. In addition,
 this alignment will cause the reconstructed direction to be a weighted average
@@ -625,7 +625,7 @@ separated maxima is shown in Fig.~\ref{fig:MultiNest_result}.
 \label{sec:EvtSel}
 %==============================================================================
 
-Since in PINGU the expected rate of neutrino events is in the order of $1 -
+Since in PINGU the expected rate of neutrino events is on the order of $1 -
 2$\,mHz, corresponding to about five neutrinos per hour, while background
 events, the vast majority caused by atmospheric muons, will be triggered at
 several kHz\footnote{In IceCube, the trigger rate is $\approx 3000$\,Hz.}, an
@@ -656,8 +656,8 @@ data sample.
 The first set of cuts is based on the rather fast CLast and Monopod
 reconstructions and on the topology of the charge distribution in the detector
 itself. The cut variables have demonstrated their discrimination power in
-previous DeepCore analyses, where atmospheric neutrino oscillations have already
-been measured at higher energy \cite{DCosc}.
+previous DeepCore analyses, in which atmospheric neutrino oscillations have 
+already been measured at higher energy \cite{DCosc}.
 
 \begin{description}
  \item[$\mathbf{z_\mathrm{CLast} < -200}$\,m:] The very first cut requires the
@@ -709,7 +709,7 @@ been measured at higher energy \cite{DCosc}.
 The intention of the second set of cuts is not so much to reject background
 events, which is the focus of the first cut level, but rather to select
 well-reconstructed events whose quality is sufficient for the final analysis.
-Therefore all the cuts in the second step are merely containment cuts, assuming
+Therefore, all the cuts in the second step are merely containment cuts, assuming
 any non-neutrino event fulfilling the strict containment has already been
 recognised and removed in the first step. The reference reconstruction for the
 following cuts is the MultiNest reconstruction (Sec.~\ref{sec:reco_multinest})
@@ -774,8 +774,8 @@ proton in both initial and final state):
  \Rightarrow E_\nu &=& \frac{(m_\tau + m_p)^2 - m_p^2}{2 m_p} =
   3.46\,\mathrm{GeV}
 \end{eqnarray}
-Neutral current events of all flavours finally show a behaviour similar
-behaviour as \nue and \nuebar CC events as they correspond point-like emissions
+Neutral current events of all flavours finally show a behaviour similar to \nue 
+and \nuebar CC events as they correspond to point-like emissions
 of light as well, yet their turn-on until the efficiency plateau is reached is
 much slower due to the missing energy carried away by the outgoing neutrino.
 
@@ -795,7 +795,7 @@ missing energy in form of an outgoing neutrino.
 To make this discrimination as efficient as possible, a boosted decision tree
 \cite{BDT} has been set up to generate a single cut variable from the
 combination of six input variables, all carrying information on the topology of
-the underlying event \cite{PID_BDT}. Three of these variables based on the
+the underlying event \cite{PID_BDT}. Three of these variables are based on the
 distribution of the reduced arrival times with respect to the reconstructed
 vertex ($\vec{x},\,t$),
 \begin{equation}
@@ -825,7 +825,7 @@ the MultiNest reconstruction:
   cascades should ideally contain a muon of zero length.
  \item[Muon fractional energy:] The fraction of the total reconstructed energy
   that is accounted to the muon, $\frac{E_\mu}{E_\mu+E_\mathrm{cscd}}$. Similar
-  to the above, this is a measure how prominent the muon features are in the
+  to the above, this is a measure of how prominent the muon features are in the
   event and is close to zero for cascades.
  \item[Best vs.\ cascade-only likelihood:] For the best fit parameters found by
   MultiNest, the likelihood of the cascade-only hypothesis is evaluated by
@@ -914,7 +914,7 @@ figures reflecting recent findings.
 The main idea of the WOM is to increase the sensitive area of a PMT by using 
 passive components that act as light collectors and concentrators (a sketch of 
 the module design is shown in Fig.~\ref{fig:WOM}). Due to Liouville's theorem, 
-mirrors or lenses can not be used for this purpose, however, by introducing a 
+mirrors or lenses can not be used for this purpose. However, by introducing a 
 wavelength shift (at the cost of a short time delay), this limitation can be 
 overcome.
 
@@ -937,7 +937,7 @@ protects the components from physical damage. It will also ensure that the
 wavelength-shifting tube is surrounded by a small gap of air and not in direct 
 optical contact with the outside (\eg the glacial ice). Although an optical 
 contact to the surroundings usually is desirable to gather as many photons as 
-possible, in our case a large difference in refractive index is needed to
+possible, in this case a large difference in refractive index is needed to
 achieve efficient total internal reflection.
 
 The three most important components of the WOM, for which details of their
@@ -1002,7 +1002,7 @@ The photon capture efficiency ($CE$), is defined as
     {\mathrm{\sharp\ photons\ injected\ at\ outer\ surface}}\quad.
 \end{equation}
 
-This quantity has been measured a lab setup using a monochromator with 
+This quantity has been measured in a lab setup using a monochromator with 
 wavelength range 250\,--\,1200\,nm and two identical photo-sensors, read out via 
 lock-in amplifiers. Details of the experimental setup for this measurement and
 the extraction of the capture efficiency are given in App.~\ref{app:wom_setup}
@@ -1087,7 +1087,7 @@ $\bar\varepsilon_\Omega(\mathrm{DOM}) = 34.1\,\%$, respectively.
 %   \label{fig:full_eff}
 % \end{figure}
 
-Now to obtain the detection efficiency of the fully assembled module, the three 
+To obtain the detection efficiency of the fully assembled module, the three 
 efficiencies discussed above, $CE$, $\varepsilon_\mathrm{PMT}$, and 
 $\varepsilon_\Omega$, have to be multiplied:
 \begin{equation}
@@ -1125,7 +1125,7 @@ calculating the mean module efficiency
 the performance of the WOM improves significantly \wrt the IceCube DOM.
 
 Assuming a WOM with a diameter of 20\,cm and a length of 2\,m as above and, for 
-comparison, a DOM with 30\,cm diameter \cite{ICdom}, one can now calculate the
+comparison, a DOM with 30\,cm diameter \cite{ICdom}, one can calculate the
 full effective area of WOM and DOM for an isotropic Cherenkov spectrum between
 250 and 600\,nm. The results are shown in Tab.~\ref{tab:comparison}.
 
@@ -1145,7 +1145,7 @@ DOM    & 5.36\,\%        & 34.1\,\%      & 12.9\,cm$^2$   & 800\,Hz           \\
 \end{center}
 \end{table}
 
-So in terms of total effective area, 
+Hence in terms of total effective area, 
 \begin{equation}
  A_\mathrm{eff} = \overline{ME}\cdot \bar\varepsilon_\Omega\cdot 
 A_\mathrm{xsec}\quad,
