@@ -20,8 +20,8 @@ modules described in Sec.~\ref{sec:Gen2DOM} will be estimated. Finally, one can
 make use of the
 Fisher matrix's ability to easily combine the results of different experiments
 measuring the same physical effect to evaluate the benefits gained from the
-joint analysis of PINGU and other neutrino oscillation experiments, in
-particular JUNO \cite{JUNO} (Sec.~\ref{sec:JUNO}). The chapter concludes with a
+joint analysis of PINGU and another neutrino oscillation experiment, JUNO 
+\cite{JUNO} (Sec.~\ref{sec:JUNO}). The chapter concludes with a
 summary of the findings in Sec.~\ref{sec:ana_summary}.
 
 
@@ -66,7 +66,7 @@ root of the number of events:
 \begin{equation}
  \sigma_n = \sqrt{f_n} = \sqrt{N_n}
 \end{equation}
-The derivatives in (\ref{eqn:fisher_def}) are evaluated at the set of ''true''
+The derivatives in (\ref{eqn:fisher_def}) are evaluated at the set of ``true''
 values of $p_i$ that are used as an input for the simulation. This set of
 parameters $p_i$ is called the \emph{fiducial model} and is chosen with the best
 existing knowledge.
@@ -82,7 +82,7 @@ be read from the covariance matrix $\mathcal{S}$:
                         = \sqrt{\left(\mathcal{F}^{-1}\right)_{ii}}
  \label{eqn:sigma_full}
 \end{equation}
-Also the purely statistical error of a given parameter $\sigma_i^\mathrm{stat}$
+The purely statistical error of a given parameter $\sigma_i^\mathrm{stat}$
 (\ie the error that is obtained assuming all other parameters are fixed) can be
 calculated from the corresponding diagonal element of the Fisher matrix:
 \begin{equation}
@@ -97,22 +97,25 @@ can simply be added to the corresponding diagonal element of the Fisher matrix:
  \mathcal{F}_{ii}^\mathrm{prior} = \mathcal{F}_{ii} +
      \left(\frac{1}{\sigma_i^\mathrm{ext}}\right)^2
 \end{equation}
+This assumes that the prior is \emph{Gaussian}, \ie the underlying probability 
+density function for the true value of parameter $p_i$ is a Gaussian 
+distribution with the width $\sigma_i^\mathrm{ext}$ centred at the fiducial 
+value of $p_i$.
 To fix one parameter completely, the corresponding row and column are removed
 from the Fisher matrix before inversion.
 
-The Fisher matrix allows not only to read off the full uncertainty of any
-parameter and all its correlations with other parameters, but also decompose the
-full error into the purely statistical part (\ref{eqn:sigma_stat}) and the
-contribution arising from the uncertainties of the other parameters, denoted as
-\emph{systematic} error $\sigma_i^\mathrm{syst}$ below:
+With this, the full error on a certain parameter can be decomposed into the 
+purely statistical part (\ref{eqn:sigma_stat}) and the contribution arising from 
+the uncertainties of the other parameters, denoted as \emph{systematic} error 
+$\sigma_i^\mathrm{syst}$ below:
 \begin{equation}
  \sigma^\mathrm{syst}_i =
          \sqrt{\sigma_i^2 - \left(\sigma^\mathrm{stat}_i\right)^2}\quad,
  \label{eqn:syst_error}
 \end{equation}
-where $\sigma_i$ is calculated without any possible priors on
-parameter $i$. The correlation coefficient between two parameters $i$ and $j$
-can be calculated as:
+where $\sigma_i$ is calculated without any possible priors on parameter $i$. 
+
+The correlation coefficient between two parameters $i$ and $j$ is given by:
 \begin{equation}
  c_{ij}
    = \frac{\left(\mathcal{F}^{-1}\right)_{ij}}{\sigma_i \sigma_j}
@@ -141,7 +144,7 @@ which are equal to \cite{Fisher_ellipse}
 for $\sigma_i > \sigma_j$. Otherwise, the roles of semi-major and semi-minor
 axis have to be exchanged. These values have to be scaled by a factor $\alpha$
 reflecting the confidence level the ellipse is supposed to represent, \eg
-$\mathrm{CL} = 68\,\%$ for a $1\sigma$ ellipse. It can be determined after
+$\mathrm{CL} = 68\,\%$ for a $1\sigma$ ellipse. It can be determined with
 \begin{equation}
  \alpha = \sqrt{\mathrm{PPF}_{\chi^2,\,2}(\mathrm{CL})} \quad,
 \end{equation}
@@ -165,13 +168,12 @@ see from (\ref{eqn:fisher_def}), where the total Fisher matrix is given by
 summing the contributions from all observables, one can always add a new
 measurement to the ones already accounted for just by adding the respective
 Fisher matrices. If there are parameters that only appear in one of the
-measurements---\eg the relative atmospheric neutrino flux scale
-$r_{\mathrm{flux},\,\nue-\numu}$ that has to be considered in PINGU, but not in
-JUNO as the latter relies on reactor neutrinos---the matrix of the experiment
+measurements---\eg some nuisance parameter for detector A that does not 
+affect detector B---the matrix of the experiment
 not yet having said parameter is expanded by a corresponding row and column
 filled with zeroes: As the measurement does not depend on the new parameter, the
 uncertainty on its value as extracted from the measurement
-(\ref{eqn:sigma_stat}) is $1/\sqrt{0} = \infty$. The full covariance matrix of
+(\ref{eqn:sigma_stat}) is $1/\sqrt{0} \to \infty$. The full covariance matrix of
 the combination of the two experiments is then simply given by the inverse of
 the added Fisher matrices.
 
@@ -281,14 +283,15 @@ with explicitly excluding systematics are, in fact, identical.
 
 \subsection{Constructing the Fisher Matrix with \papa}
 
-To construct the Fisher matrix for PINGU primarily means to derive the partial
+To construct the Fisher matrix for PINGU primarily means to calculate the 
+partial
 derivatives entering (\ref{eqn:fisher_def}), \ie the derivatives of the
 expected number of events \wrt to all systematic parameters $p_i$ introduced in
 Sec.~\ref{sec:systematics} for each bin in the final analysis histograms. In
-order to this, for every parameter a set of test points\footnote{Typically
-$\approx 10$ different values.} in the vicinity of its fiducial value and \papa
-is run for this test point while all other parameters are kept at their fiducial
-values.
+order to do this, for every parameter a set of test points\footnote{Typically
+$\approx 10$ different values.} is selected in the vicinity of its fiducial 
+value and \papa is run for each of these test points while all other parameters 
+are kept at their fiducial values.
 
 Then for every bin $b$ in the analysis histograms, the expected bin count $N_b$
 is fitted as a function of $p_i$ with a parabola, \ie
