@@ -64,7 +64,7 @@ reconstruction is needed to actually resolve the spectral features associated
 with the neutrino mass hierarchy.
 
 With the detector setup shown in Fig.~\ref{fig:JUNO_layout}, a relative
-resolution of $3\,\%/\sqrt{E [\mathrm{MeV}]}$ is aimed for. The target volume
+resolution of $3\,\%/\sqrt{E[\mathrm{MeV}]}$ is aimed for. The target volume
 is filled with 20\,kt of liquid scintillator to enhance the photon output. This
 essentially destroys any directionality of the event signatures, however, no
 information about the arrival direction of the neutrinos is needed as the
@@ -80,7 +80,8 @@ mineral oil \cite{JUNO2}.
 
 If this precision can indeed be realised, JUNO claims to be able to determine
 the neutrino mass hierarchy with a significance of $\approx 3.3\,\sigma$ with a
-total $10^5$ recorded neutrino events, corresponding to six years of data taking
+total of $10^5$ recorded neutrino events, corresponding to six years of data 
+taking
 \cite{JUNO, JUNO2, JUNO_TDR}. In the following sections a modification of \papa
 is described, aiming at a detector simulation for JUNO instead of PINGU in order
 to reproduce the reported sensitivity.
@@ -91,7 +92,8 @@ to reproduce the reported sensitivity.
 The major difference between the observable signals in PINGU and JUNO is that
 PINGU will record a two-dimensional histogram in ($E$,\,\coszen) while in JUNO
 only the energy spectrum is measured. Thus only one very narrow zenith bin
-with edges at $\coszen = [-0.0039245,\,-0.0039235]$ is simulated, corresponding
+with edges at $\coszen = [-0.0039245,\,-0.0039235]$ is simulated in \papa, 
+corresponding
 to a baseline of 50\,km. In energy, 300 bins between 2\,MeV and 8\,MeV are
 used. No oversampling is applied as the oscillation probabilities are
 already sufficiently smooth (see Fig.~\ref{fig:JUNO_osc_probs}).
@@ -132,7 +134,7 @@ contributions sum up to $\approx 0.8$\,MeV.
 The relative energy resolution refers to the visible energy as well.
 Additionally, it has been deteriorated \wrt the published specifications to be
 $4\,\%/\sqrt{E_\mathrm{vis} [\mathrm{MeV}]}$. This reflects the fact that the
-nuclear power plants used as neutrino sources have several reactor cores that
+nuclear power plants used as neutrino sources have several reactor cores which
 are up to 500\,m apart from each other. This introduces an uncertainty of 1\,\%
 on the baseline $L$, which is equivalent to an additional uncertainty of 1\,\%
 in the energy reconstruction as the relevant quantity is $L/E$.
@@ -209,7 +211,7 @@ errors $\sigma_i = \sqrt{N_i}$, hence $\Sigma$ is diagonal:
  = \mathrm{diag}(\sigma^2_1,\,\sigma^2_2,\,\dots,\,\sigma^2_n)
  = \mathrm{diag}(N_1,\,N_2,\,\dots,\,N_n)
 \end{equation}
-Propagating these properties through (\ref{eqn:FFTerror}) one finds that the
+Propagating these properties through (\ref{eqn:FFTerror}), one finds that the
 error on both the real and the imaginary part of the FFT output is constant and
 proportional to the square root of the total number of bin
 entries\footnote{The full error on any observable, \ie entry in the FFT output
@@ -241,9 +243,9 @@ increasing frequency, removing discontinuities. Their errors are then given by
 The FFT result in the amplitude-phase base is shown in the middle and right
 panel of Fig.~\ref{fig:JUNO_FFT}.
 One can see that the amplitude of the spectrum is virtually independent
-from \dm{31} while the phase is approximately proportional to its
-value\footnote{Note that all phases are shown relative to the phase spectrum
-for $\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$ to show the behaviour more
+from \dm{31} while the phase is approximately proportional to the mass 
+splitting\footnote{Note that all phases are shown relative to the phase spectrum
+for $\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$ to visualise the behaviour more
 clearly.}. The shaded region marks the error range for the spectra for
 $\dm{31}=2.33 \cdot 10^{-3}\,\mathrm{eV}^2$, for the other spectra the errors
 are very similar.
@@ -334,7 +336,7 @@ $\sigma^\mathrm{full}_{\sinsq{\thet{12}}}
 $\sigma^\mathrm{full}_\thet{12}$ in radians.}. Yet in the given reference it
 remains unclear whether the stated uncertainties include the prior on
 \dm{\mu\mu}. After adding priors on all oscillation parameters, the
-Fisher matrix still lists a precision of $\approx 3\,\%$ for both parameters
+Fisher matrix lists a precision of $\approx 3\,\%$ for both parameters
 (see Tab.~\ref{tab:JUNO_priors}). 
 
 \subsection{Joint Analysis of JUNO and PINGU}
@@ -371,13 +373,13 @@ from PINGU since the only parameter that it can measure with greater precision
 than JUNO is \thet{23}, which does not affect JUNO at all.
 
 A second outcome of the joint analysis is that JUNO's extremely precise
-measurement of \dm{31} can be used to shrink down PINGU's error ellipse in
+measurement of \dm{31} can be used to shrink down PINGU's error ellipse in the
 (\dm{31},\,\sinsq{\thet{23}}) parameter space, which was shown above in
 Fig.~\ref{fig:AtmoParamsBaseline}. Fig.~\ref{fig:AtmoParamsWithJUNO} is an
 update of the former including the expected result of JUNO. The combined
 ellipse of PINGU and JUNO demonstrates the enormous improvement in the
 knowledge about these two parameters that is to be expected over the course of
-the next five to ten years---the time needed for the two experiments to be
+the next decade---the time needed for the two experiments to be
 constructed and take their nominal amount of data.
 
 Since \dm{31} and \thet{23} are virtually uncorrelated in PINGU---as one can
@@ -427,7 +429,7 @@ Absolute significance, reference for following rows &
 \ref{sec:results_baseline} \\
 Remove priors on oscillation parameters, no detector nuisance parameters & 
 $-1.4\,\sigma$ & $-1.0\,\sigma$ & $-0.6\,\sigma$ &
-To be compatible with JUNO's own analysis &
+To be compatible with JUNO's analysis &
 \ref{sec:JUNO_comb} \\
 \midrule
 \thet{23} in 2nd octant&
@@ -489,7 +491,7 @@ other hand leads to improved reconstruction results. From these, PINGU's NMH
 measurement can indeed profit, as the features of the mass hierarchy pattern 
 can be resolved more precisely.
 
-The last section of Tab.~\ref{tab:sigma_summary} covers the combination of
+The last row of Tab.~\ref{tab:sigma_summary} covers the combination of
 PINGU and JUNO. For this, all priors and detector parameters are removed,
 strongly reducing PINGU's sensitivity, especially in the track channel. The
 joint analysis with JUNO then leads to an expected NMH significance exceeding
