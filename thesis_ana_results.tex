@@ -168,6 +168,14 @@ to the global effort of characterising neutrino oscillations, PINGU will go
 even further into that direction and provide tight constraints on the values of
 \dm{31} and in particular \thet{23}.
 
+\begin{figure}[tbhp]
+ \centering
+ \includegraphics[width=0.7\linewidth]{Exclude_MaxMix}
+ \caption{Confidence level of rejecting the maximal mixing case as a function
+  of PINGU's lifetime for different true values of \thet{23}.}
+ \label{fig:Exclude_MaxMix}
+\end{figure}
+
 These constraints are shown in Fig.~\ref{fig:AtmoParamsBaseline}, along with
 the most recent confidence regions of current oscillation experiments. For
 PINGU, no priors have been put on \dm{31} or \thet{23}, meaning that the
@@ -189,21 +197,13 @@ large event statistics, such that especially the overall detector
 efficiency\footnote{Represented by $n_\aeff$ in \papa.}, which usually is
 difficult to constrain in beam experiments, only has minor impact.
 
-\begin{figure}[thp]
- \centering
- \includegraphics[width=0.7\linewidth]{Exclude_MaxMix}
- \caption{Confidence level of rejecting the maximal mixing case as a function
-  of PINGU's lifetime for different true values of \thet{23}.}
- \label{fig:Exclude_MaxMix}
-\end{figure}
-
 From the error contours in Fig.~\ref{fig:AtmoParamsBaseline} one can also see
 that the value of the mixing angle \thet{23} is not very tightly constrained
 yet. So far, all experiments' results are compatible with the maximal mixing
 value of $\thet{23}=45^\circ$\footnote{Since the ``strength'' of the mixing is
 proportional to $\sin^2 2\theta$, see (\ref{eqn:twoflavour_prob}), it becomes
-maximal for $\theta=45^\circ$.}, however MINOS and SuperKamiokande get best fit
-points away from maximal mixing.
+maximal for $\theta=45^\circ$.}, however MINOS's and SuperKamiokande's best
+fit points are rather distant from maximal mixing.
 
 Since PINGU will make a much more precise measurement of \thet{23} than any
 current experiment, it will likely be able to exclude the maximal mixing case
@@ -217,18 +217,6 @@ experimental lifetime. Although this depends on the assumed true value of
 \subsection{Impact of the Octant of \thet{23}}
 \label{sec:results_octant}
 
-\begin{figure}[thp]
- \centering
-  \subfloat[\label{fig:sigma_vs_th23}]
-  {\includegraphics[width=0.495\linewidth]{sigma_vs_th23}}
-  \subfloat[\label{fig:th_mat_vs_th23}]
-  {\includegraphics[width=0.495\linewidth]{th_mat_vs_th23}}
- \caption{PINGU three-year sensitivity to the neutrino mass hierarchy (a)
-          and effective mixing angle in matter for $A_\mathrm{CC}/\dm{} = -0.5$
-          (b) as a function of the fiducial value of \thet{23}.}
- \label{fig:scan_th23}
-\end{figure}
-
 As shown in the previous section, currently it is still unclear whether
 \thet{23} is
 smaller or larger than $45^\circ$. The fiducial value chosen for the baseline
@@ -240,8 +228,8 @@ Thus it is important to test whether the fiducial value of \thet{23} that is
 chosen in \papa has any impact on the expected sensitivity to the mass
 hierarchy. The \texttt{PhysicsSimulation} step, \ie the calculation of the
 oscillation probabilities, has been repeated for several different fiducial 
-values of \thet{23},
-all larger than the baseline one, the result of which was consecutively
+values of \thet{23}, all larger than the baseline one. The resulting
+oscillation probabilities were consecutively
 processed through the \texttt{DetectorSimulation}. For each of these settings,
 the sensitivity to the neutrino mass hierarchy has been evaluated for a
 lifetime of three years and plotted against the injected fiducial value for
@@ -256,11 +244,25 @@ propagate through the Earth, so this angle has to be replaced by the
 corresponding effective mixing angle in matter (\ref{eqn:matter_angle}), which
 is further from maximal mixing than the vacuum value.
 
+\begin{figure}[thp]
+ \centering
+  \subfloat[\label{fig:sigma_vs_th23}]
+  {\includegraphics[width=0.495\linewidth]{sigma_vs_th23}}
+  \subfloat[\label{fig:th_mat_vs_th23}]
+  {\includegraphics[width=0.495\linewidth]{th_mat_vs_th23}}
+ \caption{PINGU three-year sensitivity to the neutrino mass hierarchy (a)
+          and effective mixing angle in matter for $A_\mathrm{CC}/\dm{} = -0.5$
+          (b) as a function of the fiducial value of \thet{23}.}
+ \label{fig:scan_th23}
+\end{figure}
+
 The relation between matter and vacuum value of \thet{23} is shown
 qualitatively in Fig.~\ref{fig:th_mat_vs_th23}. The choice of
-$A_\mathrm{CC}/\dm{} = -0.5$ is arbitrary, however the negative sign is
-important since $A_\mathrm{CC}$ is smaller than 0 as it caused by electrons
-with negative charge. So due to the effective reduction of \thet{23} in matter,
+$A_\mathrm{CC}/\dm{} = -0.5$ corresponds to a neutrino energy of $\approx
+3.2$\,GeV at a matter density of 5\,g/cm$^{-3}$, the negative sign is due to 
+$A_\mathrm{CC}$ being below zero as it caused by electrons with negative
+charge, see (\ref{eqn:mat_pot}). So due to the effective reduction of \thet{23}
+in matter,
 the amplitude of the oscillation, proportional to $\sinsq{2\thet{\mathrm{M}}}$,
 keeps growing even beyond $\thet{23}=45^\circ$, where for oscillations in
 vacuum the amplitude would decrease again.
@@ -395,11 +397,12 @@ tabulated in App.~\ref{app:fisher_threechannel}.
 
 This behaviour is expected as the event selection for tracks stays the same as
 in the two-channel settings while the cascade sample gets split into two
-subsamples. Comparing the two corresponding error listings,
-Tabs.~\ref{tab:fisher_PID_cscd_nontracks} for the case of all ``non-track''
-events being combined into one channel as in the baseline model and
-\ref{tab:fisher_PID_cscd_twochan} for having separate cascade and unidentified
-channels and combining the respective Fisher matrices, the statistical error on
+subsamples. Comparing the two corresponding error
+listings---Tabs.~\ref{tab:fisher_PID_cscd_nontracks} for the case of all
+``non-track'' events being combined into one channel as in the baseline model
+and \ref{tab:fisher_PID_cscd_twochan} for having separate cascade and
+unidentified channels and combining the respective Fisher matrices---the
+statistical error on
 the mass hierarchy parameter $h$ is slightly higher when the cascade channel is
 split due to larger relative statistical errors. The systematic uncertainty on
 $h$ on the other hand is reduced for the separate analysis, leading to the
@@ -409,7 +412,7 @@ this direction\footnote{As an extreme, one could imagine to open a third axis
 on the event histogram by introducing a Bj\"{o}rken-y-like variable, \eg the
 ratio of cascade and track energy reconstructed by HybridReco/MultiNest.}.
 
-For the remaining remaining parameters one can see that \eg the impact of the
+For the remaining parameters one can see that \eg the impact of the
 relative flux scaling $r_{\Phi,\,\nue-\numu}$ is reduced for the separated
 analysis, driven by the high-purity cascade sample that has only a small
 contamination of \numu events. Additionally, now the parameter $s_\mathrm{PID}$,
@@ -427,21 +430,8 @@ approach to evaluate PINGU's sensitivity to the neutrino mass hierarchy, \ie to
 propagate the full Monte Carlo detector simulation through the analysis, is not
 only computationally challenging, but introduces a bias towards too high
 significances if the amount of available MC statistics is insufficient. This
-effect can be demonstrated using an event reconstruction based on the earlier
-PINGU geometry V15.
-
-For this geometry, enough MC events have been generated and
-processed\footnote{For the most important channels, \nue and \numu,
-$\approx 270,000$ and $\approx 340,000$ events are available, respectively. In
-addition, $\approx 40,000$ \nutau and $\approx 80,000$ \nux NC events could be
-used for this study.} to use them for the reconstruction in PaPA directly. This
-is done by creating the reconstruction kernels by histogramming the MC events
-as described in Sec.~\ref{sec:papa_code}, \ie now option (b) is used for
-calculating the reconstructed histograms. This is repeated multiple times, 
-reducing the fraction of the total number of events that is actually filled into
-the kernels from 100\,\% to 1\,\%. Additionally, a reconstruction
-parametrisation is fitted to the data, which is given in
-App.~\ref{app:reco_V15}.
+effect can be demonstrated using an event reconstruction based on individual
+Monte Carlo events processed for the earlier PINGU geometry V15.
 
 \begin{figure}[thp]
  \centering
@@ -451,6 +441,19 @@ App.~\ref{app:reco_V15}.
   parametrisation from the same data is shown for reference.}
  \label{fig:sigma_vs_MCstat}
 \end{figure}
+
+For this geometry, enough MC events have been generated and
+processed\footnote{For the most important channels, \nue and \numu,
+$\approx 270,000$ and $\approx 340,000$ events are available, respectively. In
+addition, $\approx 40,000$ \nutau and $\approx 80,000$ \nux NC events could be
+used for this study.} to use them for the reconstruction in \papa directly. The
+the reconstruction kernels were created by histogramming the MC events
+as described in Sec.~\ref{sec:papa_code}, \ie now option (b) is used for
+calculating the reconstructed histograms. This is repeated multiple times, 
+reducing the fraction of the total number of events that is actually filled into
+the kernels from 100\,\% to 1\,\%. Additionally, a reconstruction
+parametrisation is fitted to the full dataset, which is given in
+App.~\ref{app:reco_V15}.
 
 In Fig.~\ref{fig:sigma_vs_MCstat}, the resulting mass hierarchy significances
 for three years of PINGU lifetime are shown as a function of the fraction of MC
