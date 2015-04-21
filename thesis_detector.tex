@@ -21,7 +21,7 @@ and finally how conceptually new hardware might improve the results.
 \label{sec:IClocation}
 
 As already mentioned (Sec.~\ref{sec:NuDetection}), the natural choice for
-observing the low natural fluxes of high energy neutrinos are water-based
+observing the low natural fluxes of high-energy neutrinos are water-based
 Cherenkov detectors. Although the basic requirement---a sufficiently large
 amount of water or ice---seems not very difficult to meet, there are additional
 constraints that have to be addressed as well:
@@ -50,21 +50,21 @@ constraints that have to be addressed as well:
   wavelengths of 300\,nm and below \cite{IceProps}, while the fluid starts to
   absorb significantly below 400\,nm \cite{WaterAbs}.
  \item[Purity:] The goal of all experiments is to reconstruct the neutrino
-  events
-  as accurately as possible. Therefore it is desirable to record a large number
-  of unscattered photons and hence a very clear environment. There might
-  be, however, situations where scattering is desired, e.\,g.\ when only the
+  events as accurately as possible. Therefore it is desirable to record a
+  large number of unscattered photons, for which a very clear environment is
+  needed. There might
+  be, however, situations where scattering is eligible, e.\,g.\ when only the
   neutrino energy is of interest: then strong scattering keeps the photons
   inside the detector for a longer time and hence increases the total number
   of detected photons, thereby improving the energy resolution. Absorption on
   the other hand is always a downside since it reduces the total number of
   photons and hence the information available for event reconstruction.
- \item[Shielding:] In high energy neutrino experiments, muons from atmospheric
+ \item[Shielding:] In high-energy neutrino experiments, muons from atmospheric
   showers created by cosmic radiation (cf.\ Sec.~\ref{sec:AtmNus}) are a
   background whose rate is several orders of magnitude higher than the
   neutrino signal. In order to suppress those muons, detectors have to be
   placed deep underground so that there is a shielding of several hundred
-  meters thickness, comparable to the range of $\mathcal{O}
+  meters thickness, comparable to the penetration depth of $\mathcal{O}
   (100\,\mathrm{GeV})$ muons.
 \end{description}
 
@@ -122,9 +122,9 @@ evenly spaced with a distance of 17\,m. In DeepCore, the vertical DOM spacing
 is only 7\,m below the dust layer found between 1950\,m and 2100\,m 
 depth\footnote{The dust layer can be recognised easily in 
 Fig.~\ref{fig:ice_scatt_abs} as the region of increased scattering and 
-absorption.}, with a veto cap of ten DOMs with 10\,m spacing per DeepCore 
-string above it \cite{I3Design,DCDesign}.
-
+absorption.}.
+Above it, ten DOMs with 10\,m spacing are attached to each DeepCore string to
+serve as a veto against atmospheric muons \cite{I3Design,DCDesign}.
 
 \subsection{Digital Optical Modules}
 \label{sec:ICDOM}
@@ -294,13 +294,13 @@ triple simple multiplicity trigger, however this is likely to change in the
 actual implementation of PINGU \cite{Trigger}.
 
 This SMT3 trigger requires at least three DOMs registering a hard local
-coincidence within a time window of 2.5\,\textmu s. A hard local coincidence
+coincidence (HLC) within a time window of 2.5\,\textmu s. A HLC
 means that two DOMs on the same string that are not more than two vertical
 positions (\ie 6\,m) apart have launched within 1\,\textmu s. For the PINGU
 trigger, all PINGU DOMs plus the DeepCore DOMs and the ones one the neighbouring
 IceCube strings are taken into account.
 
-If now an event satisfies the PINGU trigger, the full detector including
+If an event satisfies the PINGU trigger, the full detector including
 IceCube and DeepCore is read out. This is necessary for background suppression,
 since dim atmospheric muons might trigger only PINGU, which has a lower
 threshold than IceCube\footnote{In IceCube, the standard trigger is SMT8 with a
@@ -796,13 +796,13 @@ To make this discrimination as efficient as possible, a boosted decision tree
 \cite{BDT} has been set up to generate a single cut variable from the
 combination of six input variables, all carrying information on the topology of
 the underlying event \cite{PID_BDT}. Three of these variables are based on the
-distribution of the reduced arrival times with respect to the reconstructed
-vertex ($\vec{x},\,t$),
+distribution of the reduced arrival times $t_i^\mathrm{red}$ of the DOM hits
+($\vec{r}_i,\,t_i$) in the event with respect to the reconstructed vertex
+($\vec{x},\,t$),
 \begin{equation}
  t_i^\mathrm{red} = t_i - t - |\vec{r}_i - \vec{x}|/c \quad,
 \end{equation}
-of the DOM hits in the event while the remaining three refer to the result of
-the MultiNest reconstruction:
+while the remaining three refer to the result of the MultiNest reconstruction:
 \begin{description}
  \item[Early hit charge:] The number of DOM hits in the time window
   [$-200,\,-6$]\,ns (i.\,e.\ before) relative to the reconstructed vertex time.
